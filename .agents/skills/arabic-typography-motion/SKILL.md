@@ -1,6 +1,6 @@
 ---
 name: arabic-typography-motion
-description: Arabic typography and text animation for this presentation template — choosing a font pairing (preset) or individual Arabic typefaces by type (Kufi, Naskh, Ruqaa, modern sans, rounded, display) from the installed Fontsource catalogue, switching fonts via src/data/typography.ts, Arabic typographic rules (no letter-spacing, no synthetic italic/bold, word-level motion only, line-height, sizes), and the text-motion components VariableText, KineticHeadline, ClipReveal, HighlightSweep, FancyText. Use when asked to change fonts, pick a typeface for a mood/audience, animate a title or a key word, fix broken Arabic letter joins, or review typography before delivery. اختيار الخطوط العربية واقتراناتها وحركة النص الآمنة.
+description: Arabic typography and text animation for this presentation template — choosing a font pairing (preset) or individual Arabic typefaces by type (Kufi, Naskh, Ruqaa, modern sans, rounded, display) from the installed Fontsource catalogue, switching fonts via src/data/typography.ts, Arabic typographic rules (no letter-spacing, no synthetic italic/bold, word-level motion only, line-height, sizes), and the text-motion components VariableText, KineticHeadline, ClipReveal, HighlightSweep, FancyText, FitText, NumberRoll, CalligraphyText (HarfBuzz draw-on). Use when asked to change fonts, pick a typeface for a mood/audience, animate a title or a key word, fix broken Arabic letter joins, or review typography before delivery. اختيار الخطوط العربية واقتراناتها وحركة النص الآمنة.
 metadata:
   short-description: الخطوط العربية — أنواعها، اقتراناتها، وحركة النص بالكلمات والمحاور
 ---
@@ -74,6 +74,10 @@ import { VariableText, KineticHeadline, ClipReveal, HighlightSweep, FancyText } 
 | تمدّد/عرض (Noto Sans Arabic / Readex Pro) | `VariableText axis` | `<VariableText axis="wdth" from={62.5} to={100} style={{ fontFamily: fontStack(FONTS['noto-sans-arabic']) }}>` |
 | تدرّج احتفالي / توهج | `FancyText` | `<FancyText variant="gradient" animated className="font-display">تخرّج ٢٠٢٦</FancyText>` |
 | كشف أساسي للعناوين | `WordReveal` (موجود في `SlideHeader`) | لا تضف فوقه مؤثراً ثانياً |
+| «الخط يُكتب» بالقلم (بسملة، اقتباس، عنوان ≤ 6 كلمات) | `CalligraphyText` | `<CalligraphyText text="بسم الله الرحمن الرحيم" font="aref-ruqaa" size={96} />` — مهارة `calligraphy-draw-on` |
+| عنوان يملأ عرض الشاشة | `FitText` | `<FitText as="h1" minSize={32} maxSize={220}>{meta.title}</FitText>` |
+| رقم تتدحرج خاناته | `NumberRoll` | `<NumberRoll value={1284} suffix=" خرّيجاً" locales="ar-DZ" />` — مهارة `numbers-and-counters` |
+| كلمات تدخل بضبابية / تتبدّل / تلمع / تتحوّل | `TextEffect`, `TextLoop`, `TextShimmer`, `MorphingText`, `LineShadowText` من `@/components/gallery` | مهارة `kinetic-typography` (جدول القرار الكامل) |
 
 خط خاص بشريحة واحدة: `useEffect(() => { void ensureFontLoaded('amiri'); }, [])` ثم `style={{ fontFamily: fontStack(FONTS.amiri) }}`.
 التوقيت: استقرار العنوان ≤ 1.2 ث؛ مؤثر نصي واحد مهيمن لكل شريحة؛ كل المكونات تحترم `prefers-reduced-motion`.

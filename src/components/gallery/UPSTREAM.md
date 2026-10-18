@@ -16,6 +16,11 @@
 | magic-card | Magic UI | أُزيل `next-themes`؛ القالب داكن دائماً (`isDarkTheme = true`) |
 | text-animate | Magic UI | حارس العربية: `by="character"` يتحوّل تلقائياً إلى `word` إذا احتوى النص حروفاً عربية (قاعدة §9.5) |
 | glow-effect, image-comparison, transition-panel | motion-primitives | استيرادات الأنواع بـ `type` (verbatimModuleSyntax)، `BASE_TRANSITION: Transition` |
+| text-effect | motion-primitives | حارس العربية: `per="char"` → `word` إذا احتوى النص حروفاً عربية |
+| text-loop | motion-primitives | استيرادات الأنواع بـ `type` فقط |
+| text-shimmer | motion-primitives | ألوان `dark:` صارت الافتراضية (القالب داكن)؛ `motion.create` داخل `useMemo`؛ خيار `sweep="rtl"\|"ltr"` (الافتراضي rtl) |
+| morphing-text | Magic UI | `FC` مستورد؛ يحترم `prefers-reduced-motion` (يعرض النص الأول ثابتاً). يعمل على السلسلة كاملة، لذا هو آمن للعربية رغم إدراجه سابقاً مع «مفكّكات الحروف» بالخطأ |
+| line-shadow-text | Magic UI | إطار `line-shadow` + `--animate-line-shadow` في `gallery.css` |
 
 ### التكييف العام المطبّق على الجميع
 - حُذف `"use client"` (Vite لا يحتاجه).
@@ -24,7 +29,7 @@
 - إطارات الحركة (`@keyframes` و`--animate-*`) مجمّعة في `src/styles/gallery.css`.
 
 ### مكونات عُرضت ولم تُستعر (ولماذا)
-`file-tree` (يحتاج radix + shadcn)، `morphing-dialog`/`sliding-number` (تبعيات إضافية)، `retro-grid` (WebGL ضخم)، `globe`/`icon-cloud` (cobe/canvas)، `hyper-text`/`flip-text`/`morphing-text`/`spinning-text`/`text-roll`/`text-scramble` (تفكّك الحروف — ممنوع للعربية)، `typing-animation`/`highlighter`/`confetti`/`particles` (مغطاة في `effects/`).
+`file-tree` (يحتاج radix + shadcn)، `morphing-dialog`/`sliding-number` (تبعيات إضافية؛ `NumberRoll` في `typography/` يغطي الأرقام)، `retro-grid` (WebGL ضخم)، `globe`/`icon-cloud` (cobe/canvas)، `hyper-text`/`flip-text`/`spinning-text`/`text-roll`/`text-scramble`/`text-shimmer-wave`/`kinetic-text`/`text-3d-flip`/`dia-text-reveal` (تفكّك الحروف — ممنوع للعربية)، `comic-text` (italic اصطناعي + uppercase)، `video-text` (قناع SVG لا يرى خطوط الويب → العربية بخط النظام)، `text-reveal` (مرتبط بالتمرير لا بالشرائح)، `typing-animation` المستقل (يتعارض اسمه مع `TypingAnimation` في `terminal`)، `highlighter`/`confetti`/`particles` (مغطاة في `effects/`). **React Bits** غير مستعار إطلاقاً: رخصته MIT + Commons Clause تمنع إعادة توزيع المكونات — أعد الفكرة لا الكود.
 
 ## تحديث نسخة
 ```bash

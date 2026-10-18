@@ -9,6 +9,10 @@ export default defineConfig({
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
+  optimizeDeps: {
+    // harfbuzzjs يحمّل ملف wasm عبر new URL(..., import.meta.url) — يجب أن يبقى خارج التجميع المسبق ليُحلّ المسار صحيحاً
+    exclude: ['harfbuzzjs'],
+  },
   server: {
     host: '0.0.0.0',
     port: 5173,

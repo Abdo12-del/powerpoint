@@ -8,3 +8,6 @@ export { ClipReveal, clipStart, type ClipRevealProps, type ClipDirection } from 
 export { HighlightSweep, type HighlightSweepProps } from './HighlightSweep';
 export { FancyText, fancyStyle, type FancyTextProps, type FancyVariant } from './FancyText';
 export { FontSpecimen, weightSteps, type FontSpecimenProps } from './FontSpecimen';
+export { CalligraphyText, type CalligraphyTextProps, type CalligraphyMode } from './CalligraphyText';
+export { NumberRoll, type NumberRollProps } from './NumberRoll';
+export { FitText, type FitTextProps } from './FitText';

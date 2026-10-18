@@ -17,7 +17,7 @@ metadata:
 | مغلّفات المكتبات | `src/components/effects/` (`Typewriter`, `Annotate`, `GsapReveal`, `TiltCard`, `LottiePlayer`, `ParticlesBackground`, `ConfettiOnMount`, `AutoAnimate`) | مؤثر مهيمن واحد عند الحاجة |
 | معرض المكونات المستعارة | `src/components/gallery/` (Magic UI + motion-primitives: `AnimatedBeam`, `NumberTicker`, `TextAnimate`, `OrbitingCircles`, `Terminal`, `Marquee`, `BorderBeam`…) | عناصر بصرية جاهزة لأنماط محددة |
 | GSAP مُهيّأ | `src/lib/gsap.ts` (`useGSAP`, `splitWords`, Flip, MotionPath, TextPlugin) | تسلسل زمني معقّد داخل الشريحة |
-| حركة النص والخطوط | `src/components/typography/` (`KineticHeadline`, `VariableText`, `ClipReveal`, `HighlightSweep`, `FancyText`) + اقتران الخطوط في `src/data/typography.ts` | عنوان بطل، كلمة/رقم حاسم، تبديل طابع الخط — مهارة `arabic-typography-motion` |
+| حركة النص والخطوط | `src/components/typography/` (`KineticHeadline`, `VariableText`, `ClipReveal`, `HighlightSweep`, `FancyText`, `FitText`, `NumberRoll`, `CalligraphyText`) + نصوص المعرض (`TextEffect`, `TextLoop`, `TextShimmer`, `MorphingText`, `LineShadowText`) + اقتران الخطوط في `src/data/typography.ts` | عنوان بطل، كلمة/رقم حاسم، «الخط يُكتب»، تبديل طابع الخط — مهارات `arabic-typography-motion`, `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
 | وصفات مُختبَرة | `src/recipes/` | انسخ وعدّل — كل وصفة تمرّ في `npm run check` |
 
 الكتالوج: `docs/ANIMATION_LIBRARIES.md` و`docs/ANIMATION_PROJECTS.md`.
@@ -37,7 +37,7 @@ metadata:
 
 | الشاشة / النمط | الحركة الأساسية (موجودة) | مؤثر مهيمن مقترح (اختر واحداً) |
 |---|---|---|
-| **العنوان** | WordReveal للعنوان + stagger | `meta.background: 'stars'` (جسيمات) **أو** `<Meteors/>`/`<DotPattern/>` خلفية، أو `KineticHeadline` (خط متغيّر ينمو وزنه) / `ClipReveal` (خط نسخ) للعنوان |
+| **العنوان** | WordReveal للعنوان + stagger | `meta.background: 'stars'` (جسيمات) **أو** `<Meteors/>`/`<DotPattern/>` خلفية، أو `KineticHeadline` (خط متغيّر ينمو وزنه) / `ClipReveal` (خط نسخ) للعنوان، أو `CalligraphyText` (بسملة/عنوان يُكتب بالقلم ثم يدخل العنوان بـ `TextEffect per="word"`) |
 | **المقدمة** (سياق/إشكالية/أهداف/منهجية) | stagger الخطوات | الإشكالية: `<Typewriter>` للسؤال **أو** `<Annotate type="circle">` على الكلمة المفتاحية |
 | **الخريطة** | stagger البطاقات | لا شيء إضافي (الخريطة أداة تنقّل) — أقصى حد `TiltCard` |
 | **تمهيد الفصل** | WordReveal + outline | `GsapReveal` للمخطط، أو `<ParticlesBackground preset="network" density={0.5}>` خلف التمهيد |

@@ -17,8 +17,8 @@ const r = (el: React.ReactElement) => renderToStaticMarkup(el);
 Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', { value: () => null, configurable: true });
 
 describe('معرض المكونات المستعارة (Magic UI / motion-primitives) يُعرض بلا أخطاء', () => {
-  it('الفهرس يصدّر 37 مكوّناً', () => {
-    expect(Object.keys(gallery).length).toBe(37);
+  it('الفهرس يصدّر 42 مكوّناً', () => {
+    expect(Object.keys(gallery).length).toBe(42);
   });
 
   it('مكونات النصوص', () => {

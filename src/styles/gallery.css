@@ -15,6 +15,7 @@
   --animate-gradient: gradient 8s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  --animate-line-shadow: line-shadow 15s linear infinite;
 
   @keyframes shine {
     0% { background-position: 0% 0%; }
@@ -68,5 +69,9 @@
   @keyframes background-position-spin {
     0% { background-position: top center; }
     100% { background-position: bottom center; }
+  }
+  @keyframes line-shadow {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% -100%; }
   }
 }

@@ -41,6 +41,9 @@ import {
 | بطاقة تميل مع المؤشر (شاشة العنوان، الخريطة) | `TiltCard` | react-parallax-tilt |
 | قائمة تتغيّر أثناء العرض (كشف تدريجي، فلترة) | `AutoAnimate` | @formkit/auto-animate |
 | حركة سريعة بأصناف CSS فقط | `className="animate-in fade-in slide-in-from-bottom-4 duration-700"` | tw-animate-css |
+| بسملة/عنوان «يُكتب بالقلم» (مسارات SVG حقيقية للعربية) | `CalligraphyText` (`@/components/typography`) | harfbuzzjs — [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md) |
+| رقم بطل تتدحرج خاناته بحسب المحلية | `NumberRoll` (`@/components/typography`) | @number-flow/react |
+| عنوان يملأ عرض الشاشة | `FitText` (`@/components/typography`) | fitty |
 
 ---
 
@@ -192,6 +195,7 @@ const [shown, setShown] = useState(1);
 - **مهارات** تشرح متى وكيف (`.agents/skills/`): `presentation-motion-director`, `gsap-react-timelines`, `framer-motion-recipes`, `gallery-components`, `svg-diagram-animation`, `lottie-and-media`, `arabic-typography-motion`, `animation-qa`.
 - **معرض 37 مكوّناً** مستعاراً (`@/components/gallery`) و**8 وصفات** (`@/recipes`).
 - **الخطوط وحركة النص**: 29 خطاً عربياً حسب النوع و10 اقترانات ومكونات `KineticHeadline`/`VariableText`/`ClipReveal`/`HighlightSweep`/`FancyText` — [`TYPOGRAPHY.md`](TYPOGRAPHY.md).
+- **مشاريع حركة الخطوط**: `harfbuzzjs` (الخط يُكتب — `CalligraphyText`)، `@number-flow/react` (`NumberRoll`)، `fitty` (`FitText`) + 5 مكونات نصية مستعارة؛ وما رُفض (`opentype.js`، React Bits) ولماذا — [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md).
 - التفاصيل وكتالوج مشاريع GitHub: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md).
 
 ## إضافة مكتبة جديدة

@@ -1,13 +1,13 @@
 ---
 name: gallery-components
-description: Use the vendored animated component gallery in src/components/gallery (Magic UI + motion-primitives, MIT) — AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, OrbitingCircles, AnimatedList, Marquee, Terminal/TypingAnimation, BorderBeam, ShineBorder, MagicCard, Meteors, Ripple, DotPattern, GridPattern, FlickeringGrid, WarpBackground, Safari, Iphone, ImageComparison, TransitionPanel, GlowEffect, ShimmerButton… Use when a slide needs a ready-made visual effect, when asked for "Magic UI"/"shadcn animated components", or when vendoring a new component from those projects. معرض مكونات الحركة الجاهزة وكيفية استعارتها.
+description: Use the vendored animated component gallery in src/components/gallery (Magic UI + motion-primitives, MIT) — AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, TextShimmer, MorphingText, LineShadowText, WordRotate, BlurFade, OrbitingCircles, AnimatedList, Marquee, Terminal/TypingAnimation, BorderBeam, ShineBorder, MagicCard, Meteors, Ripple, DotPattern, GridPattern, FlickeringGrid, WarpBackground, Safari, Iphone, ImageComparison, TransitionPanel, GlowEffect, ShimmerButton… Use when a slide needs a ready-made visual effect, when asked for "Magic UI"/"shadcn animated components", or when vendoring a new component from those projects. معرض مكونات الحركة الجاهزة وكيفية استعارتها.
 metadata:
   short-description: معرض Magic UI / motion-primitives المستعار — أي مكوّن لأي شريحة
 ---
 
 # معرض المكونات المستعارة (`src/components/gallery/`)
 
-37 مكوّناً مُكيَّفاً ومُختبَراً (MIT) من **Magic UI** و**motion-primitives**. استيراد واحد:
+42 مكوّناً مُكيَّفاً ومُختبَراً (MIT) من **Magic UI** و**motion-primitives**. استيراد واحد:
 
 ```tsx
 import { AnimatedBeam, NumberTicker, TextAnimate, OrbitingCircles, Terminal, TypingAnimation } from '@/components/gallery';
@@ -21,8 +21,12 @@ import { AnimatedBeam, NumberTicker, TextAnimate, OrbitingCircles, Terminal, Typ
 
 | الحاجة في الشريحة | المكوّن | ملاحظة |
 |---|---|---|
-| عنوان يدخل بضبابية/انزلاق كلمةً كلمة | `TextAnimate by="word" animation="blurInUp"` | `by="character"` يتحوّل تلقائياً إلى كلمات مع العربية |
-| كلمة تتبدّل (سريع / موثوق / آمن) | `WordRotate words={[…]} duration={2200}` | كلمة أو عبارة قصيرة |
+| عنوان يدخل بضبابية/انزلاق كلمةً كلمة | `TextAnimate by="word" animation="blurInUp"` أو `TextEffect per="word" preset="fade-in-blur"` | `by="character"`/`per="char"` يتحوّلان تلقائياً إلى كلمات مع العربية |
+| فقرة تدخل سطراً سطراً | `TextEffect per="line" preset="slide"` | أسطر مفصولة بـ `\n`؛ ≤ 3 أسطر |
+| كلمة تتبدّل (سريع / موثوق / آمن) | `WordRotate words={[…]} duration={2200}` أو `TextLoop interval={1.8}` | كلمة أو عبارة قصيرة؛ `TextLoop` يقبل عناصر JSX |
+| لمعة تمرّ على نص انتظار/عنوان | `TextShimmer duration={1.6} sweep="rtl"` | ليس للنص الأساسي |
+| كلمات كاملة تتحوّل إلى بعضها | `MorphingText texts={[…]}` | نسخة واحدة في الشريحة (فلتر SVG عام) |
+| عنوان بظل مخطّط متحرك | `LineShadowText shadowColor="#fbbf24"` | خط ثقيل، بلا italic |
 | ظهور تدريجي لأي عنصر | `BlurFade delay={0.3} inView={false}` | ضع `inView={false}` داخل الشرائح |
 | تسمية لامعة / تدرّج لوني | `AnimatedShinyText`, `AnimatedGradientText`, `AuroraText` | للشارات والعناوين القصيرة |
 | بريق حول كلمة | `SparklesText` | عنوان قصير واحد |
@@ -68,6 +72,8 @@ import { AnimatedBeam, NumberTicker, TextAnimate, OrbitingCircles, Terminal, Typ
 - مكونات `startOnView`/`inView` تنتظر الظهور في viewport — داخل الشرائح اضبطها على التشغيل الفوري (`inView={false}`, `startOnView={false}`) إن تأخر الظهور.
 - `Marquee`, `Terminal`, `ImageComparison`, العدّادات: إحداثيات LTR (`dir="ltr"`)، والنص داخلها يمكن أن يبقى RTL.
 - أي مكوّن يعتمد canvas (`FlickeringGrid`, `WarpBackground`): واحد فقط في الشاشة.
+
+للنص خصوصاً (قرار أدق، تركيبات لكل شاشة، وما استُبعد ولماذا): مهارة `kinetic-typography`؛ للأرقام: `numbers-and-counters`؛ للخط الذي يُكتب: `calligraphy-draw-on`.
 
 ## استعارة مكوّن جديد (Vendoring)
 

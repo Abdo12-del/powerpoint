@@ -167,8 +167,11 @@ useEffect(() => { void ensureFontLoaded('amiri'); }, []);
 | `HighlightSweep` | تظليل «قلم فسفوري» يُمسح من اليمين خلف الكلمة المهمة (`marker` / `underline`) | ✘ | `نسبة <HighlightSweep>٩٥٪</HighlightSweep>` |
 | `FancyText` | أنماط ثابتة آمنة: `gradient` (ثابت/متحرك) · `outline` · `glow` · `shadow3d` · `emboss` | ✘ | `<FancyText variant="gradient" animated>تخرّج ٢٠٢٦</FancyText>` |
 | `FontSpecimen` | بطاقة عيّنة لخط من السجل (يستعملها المختبر) | — | `<FontSpecimen font={FONTS.amiri} />` |
+| `CalligraphyText` | «الخط يُكتب»: تشكيل HarfBuzz إلى مسارات SVG حقيقية تُرسم بالقلم من اليمين ثم تُملأ (10 خطوط قابلة للرسم) | ✘ (ملفات `.woff` ثابتة) | `<CalligraphyText text="بسم الله الرحمن الرحيم" font="aref-ruqaa" size={96} />` |
+| `NumberRoll` | رقم تتدحرج خاناته (number-flow) بحسب المحلية، نسب/عملات، داخل `dir="ltr"` | ✘ | `<NumberRoll value={1284} suffix=" خرّيجاً" locales="ar-DZ" />` |
+| `FitText` | العنوان يملأ عرض حاويته (fitty) ويعيد القياس بعد تحميل الخط | ✘ | `<FitText as="h1" minSize={32} maxSize={220}>{meta.title}</FitText>` |
 
-تكمّلها الموجودة سابقاً: `WordReveal` (`@/components/ui`) للكشف الأساسي، `TextAnimate`/`WordRotate`/`AuroraText`/`SparklesText`/`AnimatedShinyText` (`@/components/gallery`)، `Typewriter` (`@/components/effects`)، و`splitWords()` + GSAP للتسلسلات الدقيقة (مهارة `gsap-react-timelines`).
+تكمّلها الموجودة سابقاً: `WordReveal` (`@/components/ui`) للكشف الأساسي، `TextAnimate`/`WordRotate`/`AuroraText`/`SparklesText`/`AnimatedShinyText` + الجديدة `TextEffect`/`TextLoop`/`TextShimmer`/`MorphingText`/`LineShadowText` (`@/components/gallery`)، `Typewriter` (`@/components/effects`)، و`splitWords()` + GSAP للتسلسلات الدقيقة (مهارة `gsap-react-timelines`). تفاصيل المشاريع المثبّتة لحركة النص وما استُبعد منها: [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md).
 
 ### متى أستعمل ماذا؟
 
@@ -180,6 +183,9 @@ useEffect(() => { void ensureFontLoaded('amiri'); }, []);
 | كلمة واحدة «تتنفس» في الخلفية أو شعار | `VariableText mode="loop"` |
 | عنوان بمحور عرض (Noto Sans Arabic) أو تمدّد (Readex Pro) | `VariableText axis="wdth"` / `axis="HEXP"` |
 | تدرّج احتفالي (تخرّج، إطلاق) | `FancyText variant="gradient" animated` + `ConfettiOnMount` |
+| بسملة / اقتباس / عنوان «يُكتب بالقلم» (≤ 6 كلمات) | `CalligraphyText` (مهارة `calligraphy-draw-on`) |
+| رقم بطل يتغيّر أو يظهر | `NumberRoll` (مهارة `numbers-and-counters`) |
+| عنوان يملأ الشاشة / كلمة تتبدّل / كلمات تتحوّل | `FitText` / `TextLoop` / `MorphingText` (مهارة `kinetic-typography`) |
 
 كلها تحترم `prefers-reduced-motion` (تقفز إلى الحالة النهائية) ولا تستعمل `letter-spacing`.
 
@@ -189,6 +195,8 @@ useEffect(() => { void ensureFontLoaded('amiri'); }, []);
 
 - **الاقترانات**: بطاقة لكل اقتران مع عنوان/فقرة/كلمة عرضية/كود بخطوطه، زر **«طبّق على الصفحة»** يبدّل متغيرات `:root` حياً، ومقتطف `typography.ts` جاهز للنسخ.
 - **حركات النص**: عرض حي للمكونات الستة مع زر إعادة.
+- **الخط يُكتب**: نص قابل للتحرير، اختيار الخط من العشرة القابلة للرسم، الأوضاع الثلاثة، وإعادة الكتابة.
+- **مشاريع حركة النص المثبّتة**: `NumberRoll` (غيّر القيمة)، `FitText`، `TextEffect`، `TextLoop`، `TextShimmer`، `LineShadowText`، `MorphingText`.
 - **الكتالوج**: كل الخطوط حسب النوع، نص اختبار قابل للتحرير، حجم، تشغيل «تنفّس الوزن» على كل الخطوط المتغيرة، وتصفية حسب النوع.
 
 المختبر يُحمَّل كسولاً (`React.lazy`) فلا يؤثر في حزمة العرض.

@@ -14,7 +14,7 @@ metadata:
 npm run check          # أنواع + اختبارات + بناء — يجب أن يمرّ
 npm run dev            # افتح وحدة تحكم المتصفح: تقرير validatePresentation (لا slide.placeholder)
 ```
-- في البناء راقب حجم `dist/assets/index-*.js`: الأساسي ≈ 400KB؛ Lottie وtsParticles يجب أن يبقيا **chunks منفصلة**. إن قفز الأساسي بـ > 150KB فأحدهم استُورد استيراداً ثابتاً — استعمل المغلّفات الكسولة.
+- في البناء راقب حجم `dist/assets/index-*.js`: الأساسي ≈ 450KB؛ Lottie وtsParticles وHarfBuzz (`harfbuzz-*.wasm` ≈ 430KB + `text-shaper-*.js`) يجب أن تبقى **chunks منفصلة** تُحمَّل كسولاً. إن قفز الأساسي بـ > 150KB فأحدهم استُورد استيراداً ثابتاً — استعمل المغلّفات الكسولة.
 - أضف اختبار عرض (`renderToStaticMarkup`) لأي مكوّن/وصفة جديدة في `src/__tests__/` (انظر `gallery.test.tsx` و`recipes.test.tsx`).
 
 ## 2. قائمة المراجعة لكل شريحة
@@ -22,8 +22,8 @@ npm run dev            # افتح وحدة تحكم المتصفح: تقرير v
 | # | البند | كيف تتحقق |
 |---|---|---|
 | 1 | **مؤثر مهيمن واحد** فوق الحركة الأساسية | عدّ المؤثرات: جسيمات/beam/typing/عدّاد… ≤ 1 |
-| 2 | **لا حروف عربية منفصلة** | ابحث: `type: 'chars'`, `by="character"`, `split('')`, HyperText/FlipText/Scramble؛ ولا `tracking-*`/`italic` على نص عربي (مهارة `arabic-typography-motion`) |
-| 3 | **الاتجاه RTL صحيح** | الإزاحات الأفقية: «من بداية القراءة» = `x` موجب؛ `transformOrigin: right`؛ `dir="ltr"` على svg/marquee/terminal/أرقام |
+| 2 | **لا حروف عربية منفصلة** | ابحث: `type: 'chars'`, `by="character"`, `per="char"`, `split('')`, HyperText/FlipText/Scramble؛ ولا `tracking-*`/`italic` على نص عربي (مهارات `arabic-typography-motion`, `kinetic-typography`). `CalligraphyText` مستثنى: أشكاله من HarfBuzz متصلة |
+| 3 | **الاتجاه RTL صحيح** | الإزاحات الأفقية: «من بداية القراءة» = `x` موجب؛ `transformOrigin: right`؛ `dir="ltr"` على svg/marquee/terminal/أرقام (`NumberRoll` يفعلها)؛ نمط أرقام واحد (هندي أو غربي) في العرض كله |
 | 4 | **التوقيت** | الدخول الكلي ≤ 1.5 ث (استثناء: آلة كاتبة الإشكالية ≤ 4 ث)؛ stagger 0.06–0.12 ث |
 | 5 | **المؤثر المستمر هادئ** | سرعة الجسيمات ≤ 0.6، marquee ≥ 30 ث للدورة، orbit ≥ 15 ث |
 | 6 | **الخلفية لا تعيق** | `pointer-events-none`؛ التباين فوقها ≥ 4.5:1 للنص |
@@ -46,7 +46,9 @@ npm run dev            # افتح وحدة تحكم المتصفح: تقرير v
 |---|---|---|
 | حركة تقفز/تتقطّع | تحريك `height`/`top` أو blur كبير | استعمل `transform`/`opacity`، `layout` من framer |
 | المؤثر يبدأ قبل ظهور المحتوى | `delay` صغير | `delay ≈ 0.2 + n × stagger + 0.3` |
-| الحروف العربية مفككة | تقسيم حروف أو `letter-spacing` | `WordReveal`/`splitWords`/`by="word"`؛ احذف `tracking-*` |
+| الحروف العربية مفككة | تقسيم حروف أو `letter-spacing` | `WordReveal`/`splitWords`/`by="word"`/`per="word"`؛ احذف `tracking-*` |
+| مربعات أو حروف ناقصة في `CalligraphyText` | الحرف غائب من ملفي الخط (عربي/لاتيني) أو WOFF2 | خط آخر أو `latin` إضافي؛ حوّل WOFF2 إلى WOFF/TTF (مهارة `calligraphy-draw-on`) |
+| `MorphingText` يبطّئ الشريحة | فلتر blur+threshold على عنصر كبير أو أكثر من نسخة | نسخة واحدة، حجم ≤ 6rem، أو `TextLoop` بدلاً |
 | وزن الخط لا يتحرك / يقفز | خط ثابت (غير متغيّر) | خط `variable: true` من `src/fonts/registry.ts` أو `ClipReveal`/`HighlightSweep` |
 | عنصر يدخل من الجهة الخطأ | إشارة `x` | اعكس الإشارة أو استعمل `y` |
 | beam لا يظهر | الحاوية ليست `relative` أو refs قبل التثبيت | `relative` على الحاوية، refs على عناصر مُصيّرة |

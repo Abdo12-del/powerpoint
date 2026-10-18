@@ -13,6 +13,12 @@ export { AuroraText } from './aurora-text';
 export { SparklesText } from './sparkles-text';
 // أرقام ومؤشرات
 export { NumberTicker } from './number-ticker';
+// نص (الدفعة الثانية — حركة الخطوط): كلها تعمل على الكلمة/الكتلة لا على الحروف
+export { TextEffect, type TextEffectProps, type PresetType as TextEffectPreset } from './text-effect';
+export { TextLoop, type TextLoopProps } from './text-loop';
+export { TextShimmer, type TextShimmerProps } from './text-shimmer';
+export { MorphingText } from './morphing-text';
+export { LineShadowText } from './line-shadow-text';
 export { AnimatedCircularProgressBar } from './animated-circular-progress-bar';
 // مخططات وعلاقات
 export { AnimatedBeam } from './animated-beam';

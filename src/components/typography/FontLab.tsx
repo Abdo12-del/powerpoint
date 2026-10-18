@@ -21,6 +21,11 @@ import { VariableText } from './VariableText';
 import { ClipReveal } from './ClipReveal';
 import { HighlightSweep } from './HighlightSweep';
 import { FancyText } from './FancyText';
+import { CalligraphyText } from './CalligraphyText';
+import { NumberRoll } from './NumberRoll';
+import { FitText } from './FitText';
+import { CALLIGRAPHY_FONT_LIST, type CalligraphyFontId } from '@/fonts/calligraphy';
+import { LineShadowText, MorphingText, TextEffect, TextLoop, TextShimmer } from '@/components/gallery';
 
 const CATEGORY_ORDER: FontCategory[] = ['modern', 'kufi', 'naskh', 'ruqaa', 'display', 'rounded', 'latin', 'mono'];
 
@@ -88,6 +93,10 @@ export default function FontLab() {
   const [filter, setFilter] = useState<FontCategory | 'all'>('all');
   const [active, setActive] = useState<PresetId>('default');
   const [replay, setReplay] = useState(0);
+  const [calliFont, setCalliFont] = useState<CalligraphyFontId>('aref-ruqaa');
+  const [calliText, setCalliText] = useState('بسم الله الرحمن الرحيم');
+  const [calliMode, setCalliMode] = useState<'draw' | 'draw-fill' | 'fill'>('draw-fill');
+  const [counter, setCounter] = useState(1284);
 
   const groups = useMemo(
     () =>
@@ -182,6 +191,125 @@ export default function FontLab() {
               >
                 يتمدّد وينكمش
               </VariableText>
+            </Demo>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="text-2xl font-extrabold">الخط يُكتب — HarfBuzz + SVG</h2>
+              <p className="mt-1 text-sm text-slate-400">
+                النص يُشكَّل إلى مسارات حقيقية (حروف متصلة بحركاتها) ثم يُرسم بالقلم من اليمين. {CALLIGRAPHY_FONT_LIST.length} خطوط ثابتة قابلة للرسم.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setReplay((n) => n + 1)}
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-bold hover:bg-white/15"
+            >
+              <RefreshCw size={14} /> إعادة الكتابة
+            </button>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <input
+              value={calliText}
+              onChange={(e) => setCalliText(e.target.value)}
+              className="min-w-64 flex-1 rounded-lg border border-white/10 bg-slate-900 px-3 py-2 text-sm outline-none focus:border-amber-400/60"
+            />
+            <div className="flex flex-wrap gap-1.5">
+              {CALLIGRAPHY_FONT_LIST.map((f) => (
+                <button
+                  key={f.id}
+                  type="button"
+                  onClick={() => setCalliFont(f.id)}
+                  title={f.bestFor}
+                  className={cn(
+                    'rounded-full px-3 py-1 text-xs font-bold transition',
+                    calliFont === f.id ? 'bg-amber-400 text-slate-950' : 'bg-white/10 hover:bg-white/15',
+                  )}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-1.5">
+              {(['draw-fill', 'draw', 'fill'] as const).map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  onClick={() => setCalliMode(m)}
+                  className={cn(
+                    'rounded-full px-3 py-1 text-xs font-bold transition',
+                    calliMode === m ? 'bg-sky-400 text-slate-950' : 'bg-white/10 hover:bg-white/15',
+                  )}
+                >
+                  {m === 'draw-fill' ? 'رسم ثم تعبئة' : m === 'draw' ? 'رسم فقط' : 'ظهور تدريجي'}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div
+            key={`calli-${replay}-${calliFont}-${calliMode}`}
+            className="flex min-h-40 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+          >
+            <CalligraphyText text={calliText} font={calliFont} size={88} mode={calliMode} duration={3.5} />
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-extrabold">مشاريع حركة النص المثبّتة</h2>
+          <div key={`projects-${replay}`} className="grid gap-4 md:grid-cols-2">
+            <Demo title="NumberRoll — number-flow: الخانات تتدحرج">
+              <div className="flex flex-wrap items-center gap-4">
+                <NumberRoll value={counter} suffix=" خرّيجاً" className="text-4xl font-black text-amber-300" />
+                <NumberRoll
+                  value={counter / 1500}
+                  format={{ style: 'percent', maximumFractionDigits: 1 }}
+                  locales="ar-DZ"
+                  className="text-3xl font-bold text-sky-300"
+                />
+                <button
+                  type="button"
+                  onClick={() => setCounter((n) => n + Math.round(Math.random() * 400 - 150))}
+                  className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold hover:bg-white/15"
+                >
+                  غيّر القيمة
+                </button>
+              </div>
+            </Demo>
+            <Demo title="FitText — fitty: العنوان يملأ العرض">
+              <FitText as="div" minSize={24} maxSize={120} className="font-black text-slate-100">
+                دفعة ٢٠٢٦
+              </FitText>
+            </Demo>
+            <Demo title="TextEffect — motion-primitives: كلمات بضبابية (حارس العربية يمنع التفكيك)">
+              <TextEffect as="h3" per="char" preset="fade-in-blur" className="text-3xl font-bold">
+                تظهر الكلمات واحدة تلو الأخرى بضبابية خفيفة
+              </TextEffect>
+            </Demo>
+            <Demo title="TextLoop — motion-primitives: تبديل كلمة في جملة">
+              <p className="text-3xl font-bold">
+                مشروع{' '}
+                <TextLoop className="text-amber-300" interval={1.8}>
+                  <span>ناجح</span>
+                  <span>مبتكر</span>
+                  <span>قابل للتوسّع</span>
+                </TextLoop>
+              </p>
+            </Demo>
+            <Demo title="TextShimmer — motion-primitives: لمعة تمرّ على النص">
+              <TextShimmer as="h3" className="text-3xl font-bold" duration={1.6}>
+                جارٍ تحميل النتائج…
+              </TextShimmer>
+            </Demo>
+            <Demo title="LineShadowText — Magic UI: ظل مخطّط متحرك">
+              <LineShadowText as="h3" className="text-4xl font-black" shadowColor="#fbbf24">
+                التخرّج
+              </LineShadowText>
+            </Demo>
+            <Demo title="MorphingText — Magic UI: تحوّل بين كلمات كاملة">
+              <MorphingText className="h-20 text-[2.5rem] lg:text-[3.5rem]" texts={['تحليل', 'تصميم', 'تنفيذ', 'اختبار']} />
             </Demo>
           </div>
         </section>

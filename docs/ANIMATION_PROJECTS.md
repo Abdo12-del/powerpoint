@@ -3,7 +3,7 @@
 هذا الملف يكمّل [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md) (المكتبات المثبتة). هنا ثلاثة أشياء إضافية جاهزة في المستودع:
 
 1. **المهارات** (`.agents/skills/`) — معرفة إجرائية يقرأها أي وكيل عند الحاجة.
-2. **معرض المكونات المستعارة** (`src/components/gallery/`) — 37 مكوّناً من مشاريع مفتوحة MIT مُكيَّفة ومُختبَرة.
+2. **معرض المكونات المستعارة** (`src/components/gallery/`) — 42 مكوّناً من مشاريع مفتوحة MIT مُكيَّفة ومُختبَرة.
 3. **الوصفات** (`src/recipes/`) — 8 تركيبات جاهزة لأنماط الشرائح.
 
 وفي الأخير كتالوج **مشاريع GitHub** يمكن الاستعارة منها لاحقاً مع ملاحظات الرخصة والعربية.
@@ -23,6 +23,9 @@
 | `svg-diagram-animation` | مخططات، روابط، خط زمني، شجرة | `AnimatedBeam`، `pathLength`، نبض على الروابط، ترتيب القراءة RTL |
 | `lottie-and-media` | رسوم Lottie، لقطات شاشة، فيديو، إطارات أجهزة | أين توضع الملفات، اختيار Lottie، بدائل dotLottie/Rive، الصور والفيديو |
 | `arabic-typography-motion` | «غيّر الخط»، اختيار خط لطابع العرض، تحريك عنوان/كلمة، حروف عربية منفصلة | جدول الطابع ← الاقتران، أنواع الخط العربي ومتى يصلح كلٌّ، قواعد لا تُكسر، مقتطفات `@/components/typography`، أعطال وإصلاحها (`docs/TYPOGRAPHY.md`) |
+| `kinetic-typography` | «حرّك العنوان»، نص أكثر حيوية، تبديل/لمعة/تحوّل كلمات، عنوان يملأ الشاشة | جدول الموقف ← المكوّن لكل أدوات النص (المعرض + typography)، حراس العربية، ميزانية التوقيت، تركيبات لكل شاشة، ما استُبعد ولماذا (`docs/TEXT_ANIMATION_PROJECTS.md`) |
+| `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم»، نص إلى مسارات SVG | `CalligraphyText` (HarfBuzz → SVG)، اختيار الخط من 10 خطوط قابلة للرسم، الأوضاع والتوقيت، خط خاص، واجهة `text-shaper` للأقنعة، استكشاف الأخطاء |
+| `numbers-and-counters` | KPI متحرك، نسبة، عدّاد، أرقام معكوسة في RTL | `NumberRoll` (number-flow) مقابل `NumberTicker`/نمط `stats`، المحلية ونمط الأرقام، `dir="ltr"`، وصفة شريحة إحصاء |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.
@@ -34,12 +37,14 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
          Terminal, TypingAnimation, BorderBeam, ShineBorder, MagicCard, NeonGradientCard, GlowEffect, ShimmerButton,
          Meteors, Ripple, DotPattern, GridPattern, AnimatedGridPattern, FlickeringGrid, WarpBackground,
          Safari, Iphone, AvatarCircles, ImageComparison, TransitionPanel, AnimatedCircularProgressBar,
-         AnimatedShinyText, AnimatedGradientText, AuroraText, SparklesText } from '@/components/gallery';
+         AnimatedShinyText, AnimatedGradientText, AuroraText, SparklesText,
+         TextEffect, TextLoop, TextShimmer, MorphingText, LineShadowText } from '@/components/gallery';
 ```
 
 | العائلة | المكونات | المصدر |
 |---|---|---|
-| نصوص | `TextAnimate` (كلمات/أسطر؛ يمنع تفكيك العربية)، `WordRotate`، `BlurFade`، `AnimatedShinyText`، `AnimatedGradientText`، `AuroraText`، `SparklesText` | Magic UI |
+| نصوص | `TextAnimate` (كلمات/أسطر؛ يمنع تفكيك العربية)، `WordRotate`، `BlurFade`، `AnimatedShinyText`، `AnimatedGradientText`، `AuroraText`، `SparklesText`، `MorphingText`، `LineShadowText` | Magic UI |
+| نصوص (حركة الخطوط) | `TextEffect` (كلمات/أسطر بإعدادات blur/scale/slide؛ حارس العربية)، `TextLoop`، `TextShimmer` — انظر [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md) | motion-primitives |
 | أرقام | `NumberTicker`، `AnimatedCircularProgressBar` | Magic UI |
 | مخططات | `AnimatedBeam`، `OrbitingCircles`، `AnimatedList`، `Marquee`، `TransitionPanel`، `ImageComparison` | Magic UI / motion-primitives |
 | بطاقات | `BorderBeam`، `ShineBorder`، `MagicCard`، `NeonGradientCard`، `GlowEffect`، `ShimmerButton` | Magic UI / motion-primitives |
@@ -75,9 +80,9 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 
 | المشروع | ⭐ | الرخصة | ما يستحق الاستعارة | العربية/RTL |
 |---|---|---|---|---|
-| [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | 22.7k | MIT | 80+ مكوّناً (استعرنا 29). متبقٍ مفيد: `globe` (+cobe)، `file-tree`، `arc-timeline`، `bento-grid`، `lens`، `pixel-image`، `light-rays` | تجنّب `hyper-text`/`flip-text`/`morphing-text`/`spinning-text` |
-| [ibelick/motion-primitives](https://github.com/ibelick/motion-primitives) | 6.7k | MIT | `morphing-dialog` (تكبير صورة)، `sliding-number`، `animated-number`، `text-loop`، `in-view`، `spotlight`، `border-trail`، `magnetic`، `progressive-blur`، `carousel` | تجنّب `text-morph`/`text-roll`/`text-scramble` |
-| [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits) | 49.6k | MIT + Commons Clause | خلفيات مذهلة (Aurora, Silk, Beams, Threads, Dither)، `CountUp`، `SpotlightCard`، `TiltedCard`، `Stepper`، `Carousel` | رخصة خاصة (لا بيع المكوّن ذاته) — مقبولة للعروض؛ تجنّب مكونات الحروف (`SplitText`, `BlurText` بالحروف، `DecryptedText`) |
+| [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | 22.7k | MIT | 80+ مكوّناً (استعرنا 31). متبقٍ مفيد: `globe` (+cobe)، `file-tree`، `arc-timeline`، `bento-grid`، `lens`، `pixel-image`، `light-rays` | تجنّب `hyper-text`/`flip-text`/`spinning-text`/`kinetic-text`/`text-3d-flip` (حروف) و`video-text` (قناع بلا خطوط ويب) |
+| [ibelick/motion-primitives](https://github.com/ibelick/motion-primitives) | 6.7k | MIT | `morphing-dialog` (تكبير صورة)، `animated-number`، `in-view`، `spotlight`، `border-trail`، `magnetic`، `progressive-blur`، `carousel` (استعرنا 6 منها `text-effect`/`text-loop`/`text-shimmer`) | تجنّب `text-morph`/`text-roll`/`text-scramble`/`text-shimmer-wave` |
+| [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits) | 49.6k | MIT + Commons Clause | أفكار: خلفيات (Aurora, Silk, Beams, Threads)، `TextPressure`، `VariableProximity`، `CountUp`، `SpotlightCard`، `TiltedCard` | **لا يُنسخ إلى هذا المستودع**: الرخصة تمنع إعادة توزيع المكونات «وحدها أو في حزمة أو كنسخة منقولة» — القالب العام حزمة. استعماله داخل عرض نهائي مسموح؛ هنا نعيد كتابة الفكرة فقط (مثال: ضغط النص = `VariableText axis="wdth"`). ومعظم مكونات النص فيه حرفية |
 | [codse/animata](https://github.com/codse/animata) | 3.0k | MIT | بطاقات وأزرار ورسوم بيانية صغيرة (`bar-chart`, `progress`), `typing-text` | معظمها آمن؛ افحص `text` قبل النسخ |
 | [Aceternity UI](https://ui.aceternity.com) | — | مجاني (بدون مستودع كامل) | `background-beams`, `sparkles`, `lamp`, `tracing-beam`, `card-stack` | انسخ من الموقع؛ `text-generate-effect` بالكلمات (آمن) |
 | [uiverse.io](https://github.com/uiverse-io/galaxy) | — | MIT | أزرار/بطاقات CSS خالصة | آمن |
@@ -90,7 +95,10 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 | [greensock/GSAP](https://github.com/greensock/GSAP) | 29.4k | Standard (مجانية كلياً) | مثبتة؛ إضافات إضافية: `DrawSVGPlugin`, `MorphSVGPlugin`, `ScrambleTextPlugin` (الأخيرة ليست للعربية) |
 | [juliangarnier/anime](https://github.com/juliangarnier/anime) | 73.7k | MIT | anime.js v4 — خفيفة، timelines وstagger شبكي؛ بديل GSAP إن لزم |
 | [pmndrs/react-spring](https://github.com/pmndrs/react-spring) | 29.2k | MIT | فيزياء نوابض؛ `useTrail` للقوائم |
-| [barvian/number-flow](https://github.com/barvian/number-flow) | 7.8k | MIT | `@number-flow/react` — أرقام تتدحرج بأناقة (بديل NumberTicker) |
+| [barvian/number-flow](https://github.com/barvian/number-flow) | 7.8k | MIT | **مثبتة** (`NumberRoll` في `@/components/typography`) — أرقام تتدحرج خانةً خانة بحسب المحلية |
+| [harfbuzz/harfbuzzjs](https://github.com/harfbuzz/harfbuzzjs) | 0.3k | MIT | **مثبتة** (`src/lib/text-shaper.ts`) — تشكيل العربية إلى مسارات SVG لمؤثر «الخط يُكتب» (`CalligraphyText`) |
+| [rikschennink/fitty](https://github.com/rikschennink/fitty) | 3.9k | MIT | **مثبتة** (`FitText`) — عنوان يملأ عرض حاويته |
+| [opentypejs/opentype.js](https://github.com/opentypejs/opentype.js) | 5.0k | MIT | **جُرّبت ورُفضت**: تشكيلها للعربية ناقص (تُسقط كلمات، Amiri يفشل)؛ HarfBuzz هو المرجع |
 | [tsparticles/tsparticles](https://github.com/tsparticles/tsparticles) | 9.0k | MIT | مثبتة؛ إعدادات مسبقة إضافية: `@tsparticles/preset-*` (confetti, fireworks, links, sea-anemone) |
 | [airbnb/lottie-web](https://github.com/airbnb/lottie-web) | 32.2k | MIT | مثبتة عبر lottie-react |
 | [LottieFiles/dotlottie-web](https://github.com/LottieFiles/dotlottie-web) | 0.9k | MIT | `.lottie` مضغوط + WASM أسرع: `@lottiefiles/dotlottie-react` |
@@ -122,7 +130,7 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 
 ## كيف تضيف مشروعاً/مكوّناً جديداً إلى المستودع
 
-1. تحقق من الرخصة (MIT/ISC/Apache مقبولة؛ Commons Clause مقبولة للاستعمال لا لإعادة البيع؛ GPL لا).
+1. تحقق من الرخصة (MIT/ISC/Apache مقبولة؛ Commons Clause — كما في React Bits — تمنع إعادة توزيع المكوّن في مستودع قالب، فأعد كتابة الفكرة؛ GPL لا).
 2. انسخ الملف إلى `src/components/gallery/` وطبّق التكييف القياسي (مهارة `gallery-components`، القسم «استعارة مكوّن جديد»).
 3. افحص العربية: لا تفكيك حروف، `dir="ltr"` حيث تلزم الإحداثيات.
 4. سجّل المصدر في `UPSTREAM.md` وأضف اختبار عرض.
