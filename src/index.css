@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Cairo Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-950 font-sans text-slate-100 antialiased;
+  overscroll-behavior: none;
+}
+
+/* الشفرة والمعرفات دائماً LTR */
+code,
+kbd,
+pre {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* شريط تمرير هادئ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
