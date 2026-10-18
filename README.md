@@ -12,6 +12,8 @@
 - **خريطة الفصول تُبنى آلياً** من مصفوفة الفصول، مع تمييز الفصل الحالي ونقطة الاستئناف والشرائح المزارة والشرائح الفارغة.
 - **عقد التحكم** كاملاً: أسهم / Enter / Space / Esc / M / F، شريط تقدّم، عدّاد «الشريحة 5 / 12»، فأرة ولمس.
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
+- **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
+- **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
 
 ## ماذا يوجد في القالب الفارغ؟
 
@@ -47,7 +49,7 @@ npm run dev        # http://localhost:5173
 3. **قسّم كل فصل إلى 4–8 محاور** ← كل محور شريحة؛ انسخ كتلة «المحور»، وحدّث `outline` في `ChapterPreface`.
 4. **صنّف كل شريحة** بنمط من العشرة: غيّر `archetype: 'placeholder'` إلى المفتاح المناسب واستبدل `<Placeholder />` بالمكوّن ([المقتطفات](docs/ARCHETYPES.md)).
 5. **اكتب الأغلفة**: `id` ببادئة الفصل (`ch2-kpis`)، `title` اسم من 3–6 كلمات، `subtitle` اختياري، `icon` دالة.
-6. **املأ الشاشات الثابتة** في `presentation.tsx`: `meta` (شاشة العنوان)، `preface` (سياق ← إشكالية كسؤال واحد ← أهداف ← منهجية)، `final` (3–4 جمل تلخيص + دعوة تأمل + شكر).
+6. **املأ الشاشات الثابتة** في `presentation.tsx`: `meta` (شاشة العنوان)، `preface` (سياق ← إشكالية كسؤال واحد ← أهداف ← منهجية)، `final` (3–4 جمل تلخيص + دعوة تأمل + شكر). اختر `meta.background` (خلفية جسيمات) و`final.celebrate` (قصاصات الخاتمة؛ `false` للمناقشات الرسمية).
 7. **شغّل `npm run check`** — لا يُعدّ العرض مكتملاً ما دام التحقق يحذّر من `slide.placeholder`.
 
 ### الحد الأدنى لشريحة
@@ -69,6 +71,29 @@ npm run dev        # http://localhost:5173
   ),
 }
 ```
+
+## مكتبات الحركة المثبتة
+
+لا تحتاج إلى تثبيت شيء لبناء عرض غني بالحركة — كل ما يلي في `package.json` وله مغلّف في `src/components/effects/` ([الكتالوج الكامل مع جدول القرار والأمثلة](docs/ANIMATION_LIBRARIES.md)):
+
+| المكتبة | الدور | المغلّف |
+|---|---|---|
+| `framer-motion` | انتقالات الشاشات، stagger، عدّادات، كشف الكلمات | `Stagger`, `WordReveal`, `motion.*` |
+| `gsap` + `@gsap/react` (كل الإضافات: SplitText, Flip, TextPlugin, MotionPath) | تسلسلات زمنية معقّدة داخل الشريحة | `useGSAP`, `GsapReveal`, `splitWords` |
+| `canvas-confetti` | احتفال في الخاتمة / إعلان نتيجة | `ConfettiOnMount`, `fireConfetti` — يُفعَّل بـ `final.celebrate` |
+| `@tsparticles/react` + `slim` | خلفية نجوم/شبكة/ثلج/فقاعات | `ParticlesBackground` — يُفعَّل بـ `meta.background` |
+| `lottie-react` | رسوم Lottie (JSON) دون اتصال | `LottiePlayer` (تحميل كسول) |
+| `react-type-animation` | نص يُكتب أمام الجمهور | `Typewriter` |
+| `rough-notation` | تحديد/تدوير/تظليل كلمة بخط اليد (RTL) | `Annotate` |
+| `react-parallax-tilt` | بطاقة تميل مع المؤشر | `TiltCard` |
+| `@formkit/auto-animate` | قوائم تتحرك عند الإضافة/الحذف | `AutoAnimate` |
+| `tw-animate-css` | أصناف `animate-in fade-in slide-in-from-bottom-4 …` | مستورد في `index.css` |
+
+```tsx
+import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/effects';
+```
+
+الثقيل منها (Lottie ≈ 300KB، tsParticles ≈ 80KB) يُحمَّل كسولاً فلا يدخل الحزمة الأساسية إلا عند الاستعمال. القاعدة §9.5 سارية على الجميع: النص العربي يتحرك بالكلمات لا بالحروف.
 
 ## التحكم أثناء العرض
 
@@ -95,14 +120,17 @@ src/
 │   ├── screens/                 # الشاشات الخمس: Title, Preface, Map, Slide, Final
 │   ├── archetypes/              # الأنماط العشرة + ChapterPreface + ChapterSummary
 │   ├── chrome/                  # ProgressBar, ControlBar, SlideHeader, KeyboardHelp
-│   └── ui/                      # Card, Badge/Num/Term, WordReveal (بالكلمات لا بالحروف), Stagger, Placeholder
+│   ├── ui/                      # Card, Badge/Num/Term, WordReveal (بالكلمات لا بالحروف), Stagger, Placeholder
+│   └── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
-├── lib/                         # navigation.ts (التسلسل/التالي/السابق/Esc), validate.ts (Definition of Done)
+├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts
 ├── config/controls.ts           # خريطة المفاتيح
-└── __tests__/                   # validate, navigation, render, archetypes
+└── __tests__/                   # validate, navigation, render, archetypes, effects
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
-└── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
+├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
+└── ANIMATION_LIBRARIES.md        # كتالوج مكتبات الحركة: جدول القرار + مثال لكل مكتبة
+AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
 ```
 
 ## قواعد لا تُكسر (§9)

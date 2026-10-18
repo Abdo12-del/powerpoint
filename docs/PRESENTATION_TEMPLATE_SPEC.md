@@ -271,4 +271,12 @@ export const ch1: ChapterData = {
 
 ---
 
+## ملحق: طبقة الحركة (Animation Layer)
+
+القالب يأتي بعدّة حركة مثبتة مسبقاً حتى لا يحتاج الوكيل إلى تثبيت شيء: `framer-motion` (الأساس)، `gsap` + `@gsap/react` (تسلسلات معقّدة، SplitText بالكلمات)، `canvas-confetti`، `tsParticles`، `lottie-react`، `react-type-animation`، `rough-notation`، `react-parallax-tilt`، `@formkit/auto-animate`، `tw-animate-css`. لكل منها مغلّف في `src/components/effects/`، ومفتاحان في البيانات: `meta.background` (خلفية جسيمات لشاشة العنوان) و`final.celebrate` (قصاصات الخاتمة).
+
+قاعدة الاختيار: **مؤثر واحد مهيمن لكل شريحة**، والقاعدة §9.5 سارية على كل المكتبات (كلمات لا حروف). جدول القرار والأمثلة: [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md).
+
+---
+
 **خلاصة الوكيل في سطر**: *خذ مشروعك، استخرج 3–5 أسئلة = فصول، قسّم كل فصل إلى 4–8 محاور، صنّف كل محور بنمط من الأنماط العشرة، ضعه في عقد `SlideData`، أضف الشاشات الخمس الثابتة — ويصبح جاهزاً كأي قالب عرض تقديمي متكامل.*

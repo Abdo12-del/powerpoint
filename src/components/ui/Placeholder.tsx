@@ -73,6 +73,9 @@ export function Placeholder({ hint, suggested, compact, className }: Placeholder
               </li>
             ))}
           </ul>
+          <p className="text-xs text-slate-500">
+            مؤثرات اختيارية جاهزة في <code className="rounded bg-white/10 px-1.5 py-0.5 text-slate-300">@/components/effects</code>: Typewriter · Annotate · GsapReveal · TiltCard · LottiePlayer · ParticlesBackground · Confetti
+          </p>
         </>
       )}
     </motion.div>

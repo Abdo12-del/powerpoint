@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Map as MapIcon, Quote, RotateCcw, Sparkles } from 'lucide-react';
 import type { FinalData } from '@/types/presentation';
 import { WordReveal, fadeUp, staggerContainer } from '@/components/ui';
+import { ConfettiOnMount } from '@/components/effects/Confetti';
 
 interface FinalScreenProps {
   data: FinalData;
@@ -11,6 +12,7 @@ interface FinalScreenProps {
 
 /** 2.5 الخاتمة النهائية — خلاصة في 3–4 جمل + دعوة تأمل + شكر. لا معلومات جديدة. */
 export function FinalScreen({ data, onMap, onRestart }: FinalScreenProps) {
+  const celebrate = data.celebrate === true ? 'cannons' : data.celebrate || undefined;
   return (
     <motion.div
       variants={staggerContainer(0.12, 0.15)}
@@ -18,6 +20,7 @@ export function FinalScreen({ data, onMap, onRestart }: FinalScreenProps) {
       animate="show"
       className="mx-auto flex h-full w-full max-w-5xl flex-col justify-center px-6 pt-10 pb-24 sm:px-10"
     >
+      {celebrate && <ConfettiOnMount preset={celebrate} delay={700} />}
       <motion.div variants={fadeUp} className="flex items-center gap-2 text-sm font-bold text-amber-300">
         <Sparkles className="h-4 w-4" /> الخاتمة
       </motion.div>

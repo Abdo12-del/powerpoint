@@ -29,6 +29,8 @@ export const presentation: PresentationData = {
     ],
     date: 'التاريخ / الدفعة / السنة الجامعية',
     startLabel: 'اضغط للبدء',
+    // خلفية جسيمات لشاشة العنوان: 'stars' | 'network' | 'snow' | 'bubbles' | 'fireflies' | 'none'
+    background: 'stars',
   },
 
   // ── 2.2 المقدمة: 3–4 خطوات، كل خطوة شريحة كاملة ─────────────────────────
@@ -82,5 +84,7 @@ export const presentation: PresentationData = {
     ],
     closing: 'نتيجة أو دعوة تأمل في جملة واحدة تُغلق بها العرض.',
     thanks: 'شكراً لحسن إصغائكم — أسئلتكم مرحّب بها',
+    // قصاصات احتفالية عند الوصول للخاتمة: true (= 'cannons') | 'burst' | 'stars' | 'fireworks' | 'rain' | false للعروض الرسمية
+    celebrate: true,
   },
 };

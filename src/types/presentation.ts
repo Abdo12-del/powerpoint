@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
+import type { ConfettiPreset, ParticlesPreset } from './effects';
+
+export type { ConfettiPreset, ParticlesPreset } from './effects';
 
 /**
  * أنماط الشرائح المعيارية (§5 من المواصفة) + شريحتا حصر الفصل.
@@ -77,6 +80,8 @@ export interface PresentationMeta {
   date: string;
   /** نص زر البدء — الافتراضي «اضغط للبدء» */
   startLabel?: string;
+  /** خلفية جسيمات متحركة لشاشة العنوان ('none' أو بدون الحقل = لا شيء) */
+  background?: ParticlesPreset | 'none';
 }
 
 /** نوع خطوة المقدمة (§2.2) */
@@ -100,6 +105,8 @@ export interface FinalData {
   closing: string;
   /** شكر / أسئلة */
   thanks: string;
+  /** قصاصات احتفالية عند الوصول إلى الخاتمة: true = 'cannons'، أو اسم إعداد مسبق، أو false */
+  celebrate?: boolean | ConfettiPreset;
 }
 
 /** العرض الكامل — رأس الهرم. */

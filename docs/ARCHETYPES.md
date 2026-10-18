@@ -294,3 +294,10 @@ CREATE TABLE commande (
 1. أضف الاسم إلى `SlideArchetype` في `src/types/presentation.ts`.
 2. أنشئ المكوّن في `src/components/archetypes/` وصدّره من `index.ts`.
 3. وثّقه هنا، وأضف له اختبار عرض في `src/__tests__/archetypes.test.tsx`.
+
+---
+
+## المؤثرات الإضافية داخل الأنماط
+
+أي نمط يقبل `ReactNode` في حقوله النصية (مثل `description`، `points`، `highlight`) يمكن تزيينه بمغلّفات `src/components/effects/`:
+`<Annotate type="circle">` لإبراز مصطلح، `<Typewriter>` لسؤال الإشكالية، `<GsapReveal>` أو `<TiltCard>` حول البطاقات، و`<ParticlesBackground>` خلف شريحة تمهيد الفصل. الكتالوج الكامل: [ANIMATION_LIBRARIES.md](ANIMATION_LIBRARIES.md).
