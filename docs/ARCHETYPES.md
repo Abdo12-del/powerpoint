@@ -230,6 +230,8 @@ CREATE TABLE commande (
 />
 ```
 
+**رسم بياني بدل العدّادات؟** يبقى النمط `stats` (أو `comparison`/`timeline` حسب الرسالة) ويدخل الرسم كـ `content`: `<ChartFrame title="…" note="…"><MotionBarChart … /></ChartFrame>` من `@/components/charts`، أو وصفتا `KpiCards`/`ChartStory`. لا نمط حادي عشر — الدليل `docs/CHARTS.md` ومهارة `data-charts-motion`.
+
 ---
 
 ## شريحتا الحصر

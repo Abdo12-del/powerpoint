@@ -18,6 +18,16 @@ if (params.get('lab') === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (params.get('lab') === 'charts') {
+  // مختبر الرسوم البيانية: ?lab=charts — الرسوم الحركية والمكتبات الأربع بسمة واحدة (لا يدخل حزمة العرض)
+  const ChartLab = lazy(() => import('@/components/charts/lab/ChartLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <ChartLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else {
   // تحميل خطوط الاقتران المختار (src/data/typography.ts) قبل أول رسم لتفادي وميض الخط في شاشة العنوان
   const timeout = new Promise<void>((r) => setTimeout(r, 1500));

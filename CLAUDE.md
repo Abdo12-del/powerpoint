@@ -1,3 +1,3 @@
 # CLAUDE.md
 
-اقرأ [`AGENTS.md`](AGENTS.md) — فيه كل ما يحتاجه الوكيل لتحويل هذا القالب إلى عرض تقديمي مكتمل: البنية، الوصفة، المكتبات المثبتة (`docs/ANIMATION_LIBRARIES.md`)، المهارات في `.claude/skills/` (= `.agents/skills/`)، معرض المكونات والوصفات (`docs/ANIMATION_PROJECTS.md`)، الخطوط العربية واقتراناتها وحركة النص (`docs/TYPOGRAPHY.md`)، مشاريع حركة الخطوط — الخط يُكتب والأرقام المتدحرجة (`docs/TEXT_ANIMATION_PROJECTS.md`)، القواعد، و`npm run check` قبل التسليم.
+اقرأ [`AGENTS.md`](AGENTS.md) — فيه كل ما يحتاجه الوكيل لتحويل هذا القالب إلى عرض تقديمي مكتمل: البنية، الوصفة، المكتبات المثبتة (`docs/ANIMATION_LIBRARIES.md`)، المهارات في `.claude/skills/` (= `.agents/skills/`)، معرض المكونات والوصفات (`docs/ANIMATION_PROJECTS.md`)، الخطوط العربية واقتراناتها وحركة النص (`docs/TYPOGRAPHY.md`)، مشاريع حركة الخطوط — الخط يُكتب والأرقام المتدحرجة (`docs/TEXT_ANIMATION_PROJECTS.md`)، الرسوم البيانية وحركاتها (`docs/CHARTS.md`)، القواعد، و`npm run check` قبل التسليم.

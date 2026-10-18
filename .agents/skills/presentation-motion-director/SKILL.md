@@ -18,6 +18,7 @@ metadata:
 | معرض المكونات المستعارة | `src/components/gallery/` (Magic UI + motion-primitives: `AnimatedBeam`, `NumberTicker`, `TextAnimate`, `OrbitingCircles`, `Terminal`, `Marquee`, `BorderBeam`…) | عناصر بصرية جاهزة لأنماط محددة |
 | GSAP مُهيّأ | `src/lib/gsap.ts` (`useGSAP`, `splitWords`, Flip, MotionPath, TextPlugin) | تسلسل زمني معقّد داخل الشريحة |
 | حركة النص والخطوط | `src/components/typography/` (`KineticHeadline`, `VariableText`, `ClipReveal`, `HighlightSweep`, `FancyText`, `FitText`, `NumberRoll`, `CalligraphyText`) + نصوص المعرض (`TextEffect`, `TextLoop`, `TextShimmer`, `MorphingText`, `LineShadowText`) + اقتران الخطوط في `src/data/typography.ts` | عنوان بطل، كلمة/رقم حاسم، «الخط يُكتب»، تبديل طابع الخط — مهارات `arabic-typography-motion`, `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
+| الرسوم البيانية | `src/components/charts/` (`ChartFrame`, `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` + مغلّفات كسولة لـ Recharts/Nivo/Chart.js/ECharts) | شريحة بيانات: الرسم هو المؤثر المهيمن — مهارة `data-charts-motion` (`?lab=charts`) |
 | وصفات مُختبَرة | `src/recipes/` | انسخ وعدّل — كل وصفة تمرّ في `npm run check` |
 
 الكتالوج: `docs/ANIMATION_LIBRARIES.md` و`docs/ANIMATION_PROJECTS.md`.
@@ -50,7 +51,7 @@ metadata:
 | table (جدول) | stagger الصفوف | `Annotate type="highlight"` على الخلية الحاسمة فقط |
 | relation (مخطط علائقي) | stagger العقد | `AnimatedBeam` (أشعة بين المكونات) — وصفة `RelationBeams` |
 | code (كود) | ظهور الكتلة | `Terminal` + `TypingAnimation` لسطرين–أربعة أسطر **أو** `CodeBlock` ثابت + `Annotate` |
-| stats (إحصائيات) | عدّادات | `NumberTicker` + `AnimatedCircularProgressBar` — وصفة `StatsCountUp` |
+| stats (إحصائيات) | عدّادات | `NumberTicker` + `AnimatedCircularProgressBar` — وصفة `StatsCountUp`؛ مؤشرات بخط اتجاه: `KpiCards`؛ رسم بياني (مقارنة/اتجاه/حصص): `ChartFrame` + `MotionBarChart`/`MotionLineChart`/`MotionDonutChart` أو وصفة `ChartStory` (مهارة `data-charts-motion`) |
 | **خلاصة الفصل** | stagger النقاط | لا شيء إضافي |
 | **الخاتمة** | WordReveal + stagger | `final.celebrate: true` (قصاصات) — `false` للمناقشات الرسمية |
 

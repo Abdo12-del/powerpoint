@@ -10,3 +10,5 @@ export { TimelineDraw, type TimelineDrawProps, type Milestone } from './Timeline
 export { EcosystemOrbit, type EcosystemOrbitProps } from './EcosystemOrbit';
 export { GsapTitleTimeline, type GsapTitleTimelineProps } from './GsapTitleTimeline';
 export { BeforeAfterCompare, type BeforeAfterCompareProps } from './BeforeAfterCompare';
+export { KpiCards, type KpiCardsProps, type KpiItem } from './KpiCards';
+export { ChartStory, type ChartStoryProps } from './ChartStory';

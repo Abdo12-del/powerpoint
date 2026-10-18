@@ -26,6 +26,7 @@
 | `kinetic-typography` | «حرّك العنوان»، نص أكثر حيوية، تبديل/لمعة/تحوّل كلمات، عنوان يملأ الشاشة | جدول الموقف ← المكوّن لكل أدوات النص (المعرض + typography)، حراس العربية، ميزانية التوقيت، تركيبات لكل شاشة، ما استُبعد ولماذا (`docs/TEXT_ANIMATION_PROJECTS.md`) |
 | `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم»، نص إلى مسارات SVG | `CalligraphyText` (HarfBuzz → SVG)، اختيار الخط من 10 خطوط قابلة للرسم، الأوضاع والتوقيت، خط خاص، واجهة `text-shaper` للأقنعة، استكشاف الأخطاء |
 | `numbers-and-counters` | KPI متحرك، نسبة، عدّاد، أرقام معكوسة في RTL | `NumberRoll` (number-flow) مقابل `NumberTicker`/نمط `stats`، المحلية ونمط الأرقام، `dir="ltr"`، وصفة شريحة إحصاء |
+| `data-charts-motion` | شريحة فيها رسم بياني، لوحة مؤشرات، رسم معكوس/غير مقروء في RTL | الرسالة ← الشكل، الطبقة (مخصّص/Recharts/Nivo/Chart.js/ECharts)، التحميل الكسول، كوريغرافيا الكشف، جدول مرايا RTL لكل مكتبة، الأرقام والألوان، مراجع لكل مكتبة في `references/` (`docs/CHARTS.md`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.
@@ -67,6 +68,8 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 | `EcosystemOrbit` | tree / relation دائري | مركز + حلقتا `OrbitingCircles` |
 | `GsapTitleTimeline` | أي شريحة تحتاج تسلسلاً | `useGSAP` + `splitWords` + خط + عناصر + شارة |
 | `BeforeAfterCompare` | comparison (صور) | `ImageComparison` + تسميتان |
+| `KpiCards` | stats | `NumberRoll` + `Sparkline` + شارة تغيّر ملوّنة، البطاقات تدخل بالتتابع ثم تتدحرج الأرقام |
+| `ChartStory` | stats / comparison | `ChartFrame` + `MotionBarChart` بثلاثة فصول: نمو ← إبراز المحور ← الخلاصة |
 
 كل وصفة تقبل بيانات عبر props (لا محتوى مضمّناً) وتمرّ في `npm run check` (`src/__tests__/recipes.test.tsx`). انسخها إلى `content` الشريحة أو استوردها مباشرة من `@/recipes`.
 
@@ -99,6 +102,15 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 | [harfbuzz/harfbuzzjs](https://github.com/harfbuzz/harfbuzzjs) | 0.3k | MIT | **مثبتة** (`src/lib/text-shaper.ts`) — تشكيل العربية إلى مسارات SVG لمؤثر «الخط يُكتب» (`CalligraphyText`) |
 | [rikschennink/fitty](https://github.com/rikschennink/fitty) | 3.9k | MIT | **مثبتة** (`FitText`) — عنوان يملأ عرض حاويته |
 | [opentypejs/opentype.js](https://github.com/opentypejs/opentype.js) | 5.0k | MIT | **جُرّبت ورُفضت**: تشكيلها للعربية ناقص (تُسقط كلمات، Amiri يفشل)؛ HarfBuzz هو المرجع |
+| [recharts/recharts](https://github.com/recharts/recharts) | 27.6k | MIT | **مثبتة** (`@/components/charts/recharts` بحاوية shadcn المستعارة) — تركيب تصريحي للرسوم؛ كسولة |
+| [plouc/nivo](https://github.com/plouc/nivo) | 14.1k | MIT | **مثبتة** (`@nivo/bar,line,pie,radar,funnel,waffle,treemap,sankey,heatmap,radial-bar,bump` + `nivoTheme`) — أشكال متقدّمة بحركة سبرينغ؛ كسولة |
+| [chartjs/Chart.js](https://github.com/chartjs/Chart.js) | 67.7k | MIT | **مثبتة** (`<ChartJs />` + react-chartjs-2 + datalabels) — canvas سريع، RTL مدمج |
+| [apache/echarts](https://github.com/apache/echarts) | 67.5k | Apache-2.0 | **مثبتة** (`<EChart />` على `echarts/core`) — تحوّل شامل، مقاييس، سانكي، خرائط شجرية |
+| [d3/d3](https://github.com/d3/d3) | 113.8k | ISC | **مثبتة جزئياً** (`d3-scale`, `d3-shape`, `d3-array`, `d3-interpolate`) — أساس الرسوم الحركية المخصّصة في `@/components/charts` |
+| [shadcn-ui/ui](https://github.com/shadcn-ui/ui) | 125.9k | MIT | **مستعار منها** `chart.tsx` (حاوية Recharts) → `src/components/charts/recharts/chart.tsx` |
+| [airbnb/visx](https://github.com/airbnb/visx) | 21.1k | MIT | غير مثبتة — طبقة d3 منخفضة المستوى؛ الرسوم المخصّصة تغطي الحاجة |
+| [xyflow/xyflow](https://github.com/xyflow/xyflow) | 38.7k | MIT | غير مثبتة — مخططات عقد تفاعلية (ليست رسوم بيانات)؛ نمط `relation` + `AnimatedBeam` يغطيان العلاقات |
+| [stevenpetryk/mafs](https://github.com/stevenpetryk/mafs) | 3.4k | MIT | غير مثبتة — رسوم رياضية تفاعلية (دوال، متجهات) لشريحة رياضيات استثنائية |
 | [tsparticles/tsparticles](https://github.com/tsparticles/tsparticles) | 9.0k | MIT | مثبتة؛ إعدادات مسبقة إضافية: `@tsparticles/preset-*` (confetti, fireworks, links, sea-anemone) |
 | [airbnb/lottie-web](https://github.com/airbnb/lottie-web) | 32.2k | MIT | مثبتة عبر lottie-react |
 | [LottieFiles/dotlottie-web](https://github.com/LottieFiles/dotlottie-web) | 0.9k | MIT | `.lottie` مضغوط + WASM أسرع: `@lottiefiles/dotlottie-react` |

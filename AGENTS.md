@@ -14,6 +14,7 @@
 | `docs/ANIMATION_PROJECTS.md` | المهارات، معرض المكونات المستعارة، الوصفات، وكتالوج مشاريع GitHub |
 | `docs/TYPOGRAPHY.md` | 29 خطاً عربياً حسب النوع، 10 اقترانات جاهزة، قواعد الطباعة العربية، ومكونات حركة النص |
 | `docs/TEXT_ANIMATION_PROJECTS.md` | مشاريع حركة الخطوط المثبّتة (HarfBuzz «الخط يُكتب»، number-flow، fitty) والمكونات النصية الخمسة الجديدة وما رُفض ولماذا |
+| `docs/CHARTS.md` | الرسوم البيانية وحركاتها: الرسوم الحركية المخصّصة (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة)، Recharts/Nivo/Chart.js/ECharts بسمة واحدة، مرايا RTL، التحميل الكسول، والمختبر `?lab=charts` |
 | `.agents/skills/*/SKILL.md` | **المهارات** — اقرأ المناسبة قبل العمل على الحركة (الجدول أدناه) |
 | `src/types/presentation.ts` | العقود: `PresentationMeta`, `PrefaceStep`, `ChapterData`, `SlideData`, `FinalData` |
 | `src/data/` | الاستمارات التي تملؤها (بها نصوص نائبة و`<Placeholder />`) |
@@ -32,6 +33,7 @@
 | `kinetic-typography` | «حرّك العنوان/النص»، كلمة تتبدّل، لمعة، تحوّل كلمات، عنوان يملأ الشاشة — جدول القرار لكل أدوات النص |
 | `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم» (`CalligraphyText` — HarfBuzz → SVG) أو نص إلى مسارات |
 | `numbers-and-counters` | KPI/نسبة/عدّاد متحرك (`NumberRoll`)، أو أرقام معكوسة/مهتزّة في RTL |
+| `data-charts-motion` | شريحة فيها رسم بياني (أعمدة/خط/حلقة/رادار/قمع/سانكي/مقياس/خريطة حرارية)، لوحة مؤشرات، أو رسم معكوس/غير مقروء في RTL — اختيار الشكل والطبقة والكوريغرافيا |
 | `animation-qa` | قبل التسليم، أو عند حركة بطيئة/متقطعة |
 
 إن لم يحمّلها وكيلك تلقائياً فاقرأ ملف `SKILL.md` المناسب مباشرة.
@@ -71,6 +73,8 @@
 | حركة نص عربي آمنة (وزن/قناع/تظليل/تدرّج) | `KineticHeadline`, `VariableText`, `ClipReveal`, `HighlightSweep`, `FancyText` من `@/components/typography` | framer-motion + خطوط متغيّرة |
 | «الخط يُكتب» بالقلم (بسملة/عنوان ≤ 6 كلمات) | `CalligraphyText text font="aref-ruqaa"` من `@/components/typography` | harfbuzzjs (wasm كسول) |
 | رقم بطل تتدحرج خاناته / عنوان يملأ الشاشة | `NumberRoll value locales="ar-DZ"` / `FitText` من `@/components/typography` | @number-flow/react / fitty |
+| رسم بياني متحرك (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة) | `ChartFrame` + `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` من `@/components/charts`؛ وصفتا `KpiCards`, `ChartStory` من `@/recipes` | framer-motion + d3-scale/shape (RTL أصلي) |
+| شكل متقدّم (قمع، وافل، سانكي، مقياس، خريطة حرارية/شجرية، تحوّل شامل) | `lazyChart(() => import('…'))` حول Recharts (`@/components/charts/recharts`) أو Nivo (`@nivo/*` + `nivoTheme`)، أو `<ChartJs />` / `<EChart />` (كسولان) | recharts / nivo / chart.js / echarts — كلها كسولة |
 
 الأيقونات: `lucide-react` فقط. الخطوط: 29 خطاً مثبتاً دون اتصال (`src/fonts/registry.ts`؛ كوفي/نسخ/رقعة/حديث/مدوّر/زخرفي + Inter وJetBrains Mono وFira Code) تُختار بالاقتران من `src/data/typography.ts`؛ الافتراضي Cairo + JetBrains Mono.
 
@@ -104,3 +108,4 @@ npm run check        # أنواع + اختبارات + بناء — يجب أن 
 - [ ] كل شريحة نمط واحد ومؤثر مهيمن واحد على الأكثر.
 - [ ] مرّت قائمة مهارة `animation-qa` (عربية بالكلمات، RTL، تقليل الحركة، أداء).
 - [ ] اقتران الخطوط مقصود (`src/data/typography.ts`) ومرّت قائمة `arabic-typography-motion` (لا تباعد حروف/مائل على العربية).
+- [ ] كل رسم بياني: أول فئة يميناً، عنوان خبري، لون مميَّز واحد، ≤ 7 فئات، اكتمال ≤ 2 ث، والمكتبة الثقيلة كسولة (قائمة `data-charts-motion`).

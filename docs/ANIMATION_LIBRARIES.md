@@ -44,6 +44,8 @@ import {
 | بسملة/عنوان «يُكتب بالقلم» (مسارات SVG حقيقية للعربية) | `CalligraphyText` (`@/components/typography`) | harfbuzzjs — [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md) |
 | رقم بطل تتدحرج خاناته بحسب المحلية | `NumberRoll` (`@/components/typography`) | @number-flow/react |
 | عنوان يملأ عرض الشاشة | `FitText` (`@/components/typography`) | fitty |
+| رسم بياني متحرك (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة) بـ RTL أصلي | `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` + `ChartFrame` (`@/components/charts`) | framer-motion + d3-scale/shape — [`CHARTS.md`](CHARTS.md) |
+| شكل بياني متقدّم (قمع، وافل، سانكي، مقياس، خريطة حرارية/شجرية، تحوّل أعمدة ⇄ فطيرة) | `lazyChart` + Recharts/Nivo، أو `<ChartJs />` / `<EChart />` | recharts / @nivo/* / chart.js / echarts (كلها كسولة) — [`CHARTS.md`](CHARTS.md) |
 
 ---
 
@@ -189,6 +191,10 @@ const [shown, setShown] = useState(1);
 4. **الخلفيات بلا تفاعل** (`pointer-events-none`) حتى لا تعيق الأزرار والخريطة.
 5. **التحميل الكسول للثقيل** — Lottie وtsParticles مفصولان؛ GSAP لا يدخل الحزمة إلا إذا استوردته.
 6. **التنظيف** — أي حركة يدوية داخل `useEffect`/`useGSAP` تُعاد عند الخروج (الشرائح تُفكَّك عند التنقل).
+
+## الرسوم البيانية (`recharts`, `@nivo/*`, `chart.js`, `echarts`, `d3-scale/shape`)
+
+مكتبات البيانات لها دليلها الخاص [`CHARTS.md`](CHARTS.md) ومهارة `data-charts-motion`. الخلاصة: ابدأ بالرسوم الحركية المخصّصة في `@/components/charts` (خفيفة، RTL أصلي، كوريغرافيا جاهزة)، وانتقل إلى مكتبة فقط لشكل لا تغطيه — دائماً عبر التحميل الكسول (`lazyChart`/`ChartJs`/`EChart`) حتى تبقى الحزمة الرئيسية كما هي. المختبر: `?lab=charts`.
 
 ## ما بعد المكتبات: المهارات والمعرض والوصفات
 

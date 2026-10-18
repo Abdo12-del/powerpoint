@@ -15,8 +15,9 @@
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **11 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **8 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **12 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
+- **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
 
 ## ماذا يوجد في القالب الفارغ؟
 
@@ -42,7 +43,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 82 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات والخطوط |
+| `npm test` | 120 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات والخطوط وحركة النص والرسوم البيانية |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -91,6 +92,7 @@ npm run dev        # http://localhost:5173
 | `react-parallax-tilt` | بطاقة تميل مع المؤشر | `TiltCard` |
 | `@formkit/auto-animate` | قوائم تتحرك عند الإضافة/الحذف | `AutoAnimate` |
 | `tw-animate-css` | أصناف `animate-in fade-in slide-in-from-bottom-4 …` | مستورد في `index.css` |
+| `recharts`, `@nivo/*`, `chart.js`, `echarts` (+ `d3-scale/shape`) | الرسوم البيانية وحركاتها — سمة واحدة ومرايا RTL، كلها كسولة | `@/components/charts` (`MotionBarChart`…, `ChartJs`, `EChart`, `lazyChart`) — [الدليل](docs/CHARTS.md) |
 
 ```tsx
 import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/effects';
@@ -102,9 +104,9 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (8) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (12) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
 | **معرض المكونات** (42، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, MorphingText, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
-| **الوصفات** (8) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal } from '@/recipes'` — انسخ وعدّل |
+| **الوصفات** (10) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal, KpiCards, ChartStory } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
 
 ## الخطوط وأنواعها وحركتها
@@ -117,6 +119,7 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 | **حركة النص** | `src/components/typography/` | `KineticHeadline`, `VariableText` (محاور wght/wdth/slnt/HEXP), `ClipReveal`, `HighlightSweep`, `FancyText`, `FontSpecimen`, **`CalligraphyText`** (الخط يُكتب — HarfBuzz)، **`NumberRoll`** (number-flow)، **`FitText`** (fitty) |
 | **مشاريع حركة الخطوط** | `src/lib/text-shaper.ts`, `src/fonts/calligraphy.ts` + `@/components/gallery` | HarfBuzz wasm كسول (≈430KB خارج الحزمة الأساسية)، 10 خطوط قابلة للرسم، و`TextEffect`/`TextLoop`/`TextShimmer`/`MorphingText`/`LineShadowText` — [`docs/TEXT_ANIMATION_PROJECTS.md`](docs/TEXT_ANIMATION_PROJECTS.md) + مهارات `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
 | **المختبر** | `/?lab=fonts` | الكتالوج حسب النوع + الاقترانات مع تطبيق حي + عروض الحركة (كسول، خارج حزمة العرض) |
+| **الرسوم البيانية** | `@/components/charts` + `/?lab=charts` | رسوم حركية مخصّصة (RTL أصلي، framer-motion + d3) ومغلّفات كسولة لـ Recharts/Nivo/Chart.js/ECharts بسمة واحدة — [`docs/CHARTS.md`](docs/CHARTS.md) + مهارة `data-charts-motion` |
 | **الدليل والقواعد** | `docs/TYPOGRAPHY.md` + مهارة `arabic-typography-motion` | لا `letter-spacing`/مائل اصطناعي على العربية، حركة بالكلمات والمحاور فقط، أحجام وارتفاعات السطر |
 
 ## التحكم أثناء العرض
@@ -149,21 +152,23 @@ src/
 │   ├── ui/                      # Card, Badge/Num/Term, WordReveal (بالكلمات لا بالحروف), Stagger, Placeholder
 │   ├── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
 │   ├── typography/              # حركة النص العربي: KineticHeadline, VariableText, ClipReveal, HighlightSweep, FancyText, FontSpecimen + FontLab (?lab=fonts)
+│   ├── charts/                  # الرسوم البيانية: theme + motion/ (6 رسوم مخصّصة) + recharts/ (حاوية shadcn) + nivo/ + chartjs/ + echarts/ + lab/ (?lab=charts)
 │   └── gallery/                 # 42 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
-├── recipes/                     # 8 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
+├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts (clsx + tailwind-merge)
 ├── config/controls.ts           # خريطة المفاتيح
-└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography
-.agents/skills/                   # 11 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts
+.agents/skills/                   # 12 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
 ├── ANIMATION_LIBRARIES.md        # كتالوج مكتبات الحركة: جدول القرار + مثال لكل مكتبة
 ├── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
 ├── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
-└── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
+├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
+└── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
 AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
 ```
 
