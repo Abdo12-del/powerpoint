@@ -275,7 +275,7 @@ export const ch1: ChapterData = {
 
 القالب يأتي بعدّة حركة مثبتة مسبقاً حتى لا يحتاج الوكيل إلى تثبيت شيء: `framer-motion` (الأساس)، `gsap` + `@gsap/react` (تسلسلات معقّدة، SplitText بالكلمات)، `canvas-confetti`، `tsParticles`، `lottie-react`، `react-type-animation`، `rough-notation`، `react-parallax-tilt`، `@formkit/auto-animate`، `tw-animate-css`. لكل منها مغلّف في `src/components/effects/`، ومفتاحان في البيانات: `meta.background` (خلفية جسيمات لشاشة العنوان) و`final.celebrate` (قصاصات الخاتمة).
 
-قاعدة الاختيار: **مؤثر واحد مهيمن لكل شريحة**، والقاعدة §9.5 سارية على كل المكتبات (كلمات لا حروف). جدول القرار والأمثلة: [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md). المهارات ومعرض المكونات المستعارة والوصفات: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md).
+قاعدة الاختيار: **مؤثر واحد مهيمن لكل شريحة**، والقاعدة §9.5 سارية على كل المكتبات (كلمات لا حروف). جدول القرار والأمثلة: [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md). المهارات ومعرض المكونات المستعارة والوصفات: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md). الخطوط العربية حسب النوع واقتراناتها وقواعد الطباعة وحركة النص: [`TYPOGRAPHY.md`](TYPOGRAPHY.md).
 
 ---
 

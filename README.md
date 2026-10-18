@@ -7,14 +7,15 @@
 ```
 
 - **React 19 + Vite 7 + TypeScript + Tailwind CSS 4** مع `framer-motion` للحركة و`lucide-react` للأيقونات.
-- **RTL أصلاً**: واجهة عربية كاملة بخط Cairo (مُضمَّن محلياً)، والشفرة/المعرّفات LTR تلقائياً.
+- **RTL أصلاً**: واجهة عربية كاملة بخط Cairo افتراضياً، والشفرة/المعرّفات LTR تلقائياً.
+- **29 خطاً عربياً مثبتاً دون اتصال** مصنّفة حسب النوع (كوفي، نسخ، رقعة، حديث، مدوّر، زخرفي + لاتيني وكود) مع **10 اقترانات جاهزة** تُبدَّل من سطر واحد في `src/data/typography.ts`، ومختبر حي `/?lab=fonts`، ومكونات حركة نص آمنة للعربية — [الدليل](docs/TYPOGRAPHY.md).
 - **الأنماط العشرة** (§5) كمكونات عامة تستقبل بيانات فقط — [المرجع مع مقتطفات الاستعمال](docs/ARCHETYPES.md).
 - **خريطة الفصول تُبنى آلياً** من مصفوفة الفصول، مع تمييز الفصل الحالي ونقطة الاستئناف والشرائح المزارة والشرائح الفارغة.
 - **عقد التحكم** كاملاً: أسهم / Enter / Space / Esc / M / F، شريط تقدّم، عدّاد «الشريحة 5 / 12»، فأرة ولمس.
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **7 مهارات (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، مراجعة الجودة) + **معرض 37 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **8 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **8 مهارات (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، مراجعة الجودة) + **معرض 37 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **8 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 
 ## ماذا يوجد في القالب الفارغ؟
 
@@ -40,7 +41,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 65 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات |
+| `npm test` | 82 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات والخطوط |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -100,10 +101,21 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (7) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (8) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
 | **معرض المكونات** (37، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
 | **الوصفات** (8) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
+
+## الخطوط وأنواعها وحركتها
+
+| ما هو | أين | الاستعمال |
+|---|---|---|
+| **سجل الخطوط** (29: 11 حديث، 3 كوفي، 5 نسخ، 1 رقعة، 3 زخرفي، 3 مدوّر، Inter، 2 كود؛ 17 منها متغيّرة) | `src/fonts/registry.ts` | `FONTS[id]`, `fontStack()`, `ensureFontLoaded()` — تحميل كسول لكل خط |
+| **الاقترانات** (10) | `src/fonts/presets.ts` | `default` · `academic` · `modern-tech` · `corporate` · `editorial` · `heritage` · `kufi-bold` · `friendly` · `geometric` · `maghrebi` |
+| **إعداد العرض** | `src/data/typography.ts` | `{ preset: 'academic', display: 'katibeh', latin: 'inter', scale: 1.05 }` — الأدوار: heading (h1–h3) / body / display (`font-display`) / mono |
+| **حركة النص** | `src/components/typography/` | `KineticHeadline`, `VariableText` (محاور wght/wdth/slnt/HEXP), `ClipReveal`, `HighlightSweep`, `FancyText`, `FontSpecimen` |
+| **المختبر** | `/?lab=fonts` | الكتالوج حسب النوع + الاقترانات مع تطبيق حي + عروض الحركة (كسول، خارج حزمة العرض) |
+| **الدليل والقواعد** | `docs/TYPOGRAPHY.md` + مهارة `arabic-typography-motion` | لا `letter-spacing`/مائل اصطناعي على العربية، حركة بالكلمات والمحاور فقط، أحجام وارتفاعات السطر |
 
 ## التحكم أثناء العرض
 
@@ -124,7 +136,9 @@ src/
 ├── types/presentation.ts        # العقود: PresentationData, ChapterData, SlideData, PrefaceStep, FinalData
 ├── data/                        # ← الاستمارات التي تُملأ لكل عرض (فارغة افتراضياً)
 │   ├── presentation.tsx         #    شاشة العنوان + المقدمة + الخاتمة
+│   ├── typography.ts            #    اقتران الخطوط للعرض (preset + تجاوزات)
 │   └── chapters/ch1..ch3.tsx    #    الفصول والشرائح
+├── fonts/                       # سجل 29 خطاً (registry.ts) + 10 اقترانات (presets.ts) + applyTypography (apply.ts)
 ├── components/
 │   ├── Presentation.tsx         # يربط آلة الحالة بالشاشات والتحكم
 │   ├── screens/                 # الشاشات الخمس: Title, Preface, Map, Slide, Final
@@ -132,19 +146,21 @@ src/
 │   ├── chrome/                  # ProgressBar, ControlBar, SlideHeader, KeyboardHelp
 │   ├── ui/                      # Card, Badge/Num/Term, WordReveal (بالكلمات لا بالحروف), Stagger, Placeholder
 │   ├── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
+│   ├── typography/              # حركة النص العربي: KineticHeadline, VariableText, ClipReveal, HighlightSweep, FancyText, FontSpecimen + FontLab (?lab=fonts)
 │   └── gallery/                 # 37 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
 ├── recipes/                     # 8 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts (clsx + tailwind-merge)
 ├── config/controls.ts           # خريطة المفاتيح
-└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes
-.agents/skills/                   # 7 مهارات (Agent Skills) — .claude/skills رابط رمزي إليها
+└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography
+.agents/skills/                   # 8 مهارات (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
 ├── ANIMATION_LIBRARIES.md        # كتالوج مكتبات الحركة: جدول القرار + مثال لكل مكتبة
-└── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
+├── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
+└── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
 AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
 ```
 
@@ -152,6 +168,6 @@ AGENTS.md                         # موجز لأي وكيل برمجي يُطل
 
 - فكرة واحدة لكل شريحة؛ العنوان اسم لا جملة (≤ 6 كلمات).
 - الأرقام والمصطلحات تُبرز بـ `<Num>` / `<Term>` / `<Badge>` لا في نص سائب.
-- النص العربي لا يُقسَّم إلى حروف في أي حركة — `WordReveal` يقسّم بالكلمات فقط.
+- النص العربي لا يُقسَّم إلى حروف في أي حركة — `WordReveal` يقسّم بالكلمات فقط؛ ولا `letter-spacing` ولا مائل اصطناعي على العربية.
 - معرفات الشرائح فريدة وببادئة الفصل؛ الخريطة والتنقل يعتمدان عليها.
 - الخاتمة تلخّص ولا تُدخل معلومة جديدة.

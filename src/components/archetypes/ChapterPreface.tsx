@@ -21,7 +21,7 @@ export function ChapterPreface({ number, lead, question, outline, note }: Chapte
   return (
     <Stagger className="grid h-full content-center gap-8 lg:grid-cols-[1.3fr_1fr]">
       <div className="flex flex-col justify-center gap-6">
-        <motion.div variants={fadeUp} className="text-sm font-bold tracking-wide text-amber-300">
+        <motion.div variants={fadeUp} className="text-sm font-bold text-amber-300">
           الفصل {number}
         </motion.div>
         <p className="text-2xl leading-relaxed text-slate-100 sm:text-3xl">

@@ -189,8 +189,9 @@ const [shown, setShown] = useState(1);
 
 ## ما بعد المكتبات: المهارات والمعرض والوصفات
 
-- **مهارات** تشرح متى وكيف (`.agents/skills/`): `presentation-motion-director`, `gsap-react-timelines`, `framer-motion-recipes`, `gallery-components`, `svg-diagram-animation`, `lottie-and-media`, `animation-qa`.
+- **مهارات** تشرح متى وكيف (`.agents/skills/`): `presentation-motion-director`, `gsap-react-timelines`, `framer-motion-recipes`, `gallery-components`, `svg-diagram-animation`, `lottie-and-media`, `arabic-typography-motion`, `animation-qa`.
 - **معرض 37 مكوّناً** مستعاراً (`@/components/gallery`) و**8 وصفات** (`@/recipes`).
+- **الخطوط وحركة النص**: 29 خطاً عربياً حسب النوع و10 اقترانات ومكونات `KineticHeadline`/`VariableText`/`ClipReveal`/`HighlightSweep`/`FancyText` — [`TYPOGRAPHY.md`](TYPOGRAPHY.md).
 - التفاصيل وكتالوج مشاريع GitHub: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md).
 
 ## إضافة مكتبة جديدة

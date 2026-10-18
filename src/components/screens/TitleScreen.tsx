@@ -35,7 +35,7 @@ export function TitleScreen({ meta, onStart }: { meta: PresentationMeta; onStart
         </motion.div>
 
         {/* العنوان الرئيسي — كشف بالكلمات لا بالحروف */}
-        <h1 className="mt-6 text-balance text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="mt-6 text-balance text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
           <WordReveal text={meta.title} delay={0.6} stagger={0.08} />
         </h1>
 

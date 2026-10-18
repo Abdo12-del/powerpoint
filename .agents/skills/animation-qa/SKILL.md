@@ -22,7 +22,7 @@ npm run dev            # افتح وحدة تحكم المتصفح: تقرير v
 | # | البند | كيف تتحقق |
 |---|---|---|
 | 1 | **مؤثر مهيمن واحد** فوق الحركة الأساسية | عدّ المؤثرات: جسيمات/beam/typing/عدّاد… ≤ 1 |
-| 2 | **لا حروف عربية منفصلة** | ابحث: `type: 'chars'`, `by="character"`, `split('')`, HyperText/FlipText/Scramble |
+| 2 | **لا حروف عربية منفصلة** | ابحث: `type: 'chars'`, `by="character"`, `split('')`, HyperText/FlipText/Scramble؛ ولا `tracking-*`/`italic` على نص عربي (مهارة `arabic-typography-motion`) |
 | 3 | **الاتجاه RTL صحيح** | الإزاحات الأفقية: «من بداية القراءة» = `x` موجب؛ `transformOrigin: right`؛ `dir="ltr"` على svg/marquee/terminal/أرقام |
 | 4 | **التوقيت** | الدخول الكلي ≤ 1.5 ث (استثناء: آلة كاتبة الإشكالية ≤ 4 ث)؛ stagger 0.06–0.12 ث |
 | 5 | **المؤثر المستمر هادئ** | سرعة الجسيمات ≤ 0.6، marquee ≥ 30 ث للدورة، orbit ≥ 15 ث |
@@ -46,7 +46,8 @@ npm run dev            # افتح وحدة تحكم المتصفح: تقرير v
 |---|---|---|
 | حركة تقفز/تتقطّع | تحريك `height`/`top` أو blur كبير | استعمل `transform`/`opacity`، `layout` من framer |
 | المؤثر يبدأ قبل ظهور المحتوى | `delay` صغير | `delay ≈ 0.2 + n × stagger + 0.3` |
-| الحروف العربية مفككة | تقسيم حروف | `WordReveal`/`splitWords`/`by="word"` |
+| الحروف العربية مفككة | تقسيم حروف أو `letter-spacing` | `WordReveal`/`splitWords`/`by="word"`؛ احذف `tracking-*` |
+| وزن الخط لا يتحرك / يقفز | خط ثابت (غير متغيّر) | خط `variable: true` من `src/fonts/registry.ts` أو `ClipReveal`/`HighlightSweep` |
 | عنصر يدخل من الجهة الخطأ | إشارة `x` | اعكس الإشارة أو استعمل `y` |
 | beam لا يظهر | الحاوية ليست `relative` أو refs قبل التثبيت | `relative` على الحاوية، refs على عناصر مُصيّرة |
 | keyframes المعرض لا تعمل | الصنف غير معرّف | أضفه إلى `src/styles/gallery.css` |
