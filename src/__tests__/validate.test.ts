@@ -2,17 +2,42 @@ import { describe, expect, it } from 'vitest';
 import { Info } from 'lucide-react';
 import { presentation } from '@/data/presentation';
 import { validatePresentation } from '@/lib/validate';
-import type { PresentationData } from '@/types/presentation';
+import type { ChapterData, PresentationData } from '@/types/presentation';
+
+/** فصل مكتمل اصطناعي (تمهيد + محوران + خلاصة) لبناء عرض صالح بالكامل. */
+function completeChapter(n: number): ChapterData {
+  const id = `ch${n}`;
+  return {
+    id,
+    title: `الفصل ${n}`,
+    icon: Info,
+    color: '',
+    accent: '',
+    slides: [
+      { id: `${id}-preface`, chapterId: id, title: 'تمهيد', icon: Info, archetype: 'chapter-preface', content: 'x' },
+      { id: `${id}-a`, chapterId: id, title: 'محور أول', icon: Info, archetype: 'bullets', content: 'x' },
+      { id: `${id}-b`, chapterId: id, title: 'محور ثانٍ', icon: Info, archetype: 'stats', content: 'x' },
+      { id: `${id}-conclusion`, chapterId: id, title: 'خلاصة', icon: Info, archetype: 'chapter-summary', content: 'x' },
+    ],
+  };
+}
 
 describe('قائمة تحقق الهيكل (Definition of Done)', () => {
-  it('المشروع النموذجي يجتاز كل القواعد بلا أخطاء ولا تحذيرات', () => {
+  it('القالب الفارغ بلا أخطاء: قابل للتشغيل والتنقل مباشرة', () => {
     const report = validatePresentation(presentation);
     expect(report.errors).toEqual([]);
-    expect(report.warnings).toEqual([]);
     expect(report.ok).toBe(true);
   });
 
-  it('3–5 فصول، كل فصل يبدأ بتمهيد وينتهي بخلاصة، 4–8 شرائح', () => {
+  it('القالب الفارغ يحذّر فقط من الشرائح النائبة (قائمة مهام التعبئة)', () => {
+    const report = validatePresentation(presentation);
+    const rules = new Set(report.warnings.map((w) => w.rule));
+    expect(rules).toEqual(new Set(['slide.placeholder']));
+    const placeholders = presentation.chapters.flatMap((c) => c.slides).filter((s) => s.archetype === 'placeholder');
+    expect(report.warnings).toHaveLength(placeholders.length);
+  });
+
+  it('القالب الفارغ يحترم البنية: 3–5 فصول، كل فصل 4–8 شرائح يبدأ بتمهيد وينتهي بخلاصة', () => {
     expect(presentation.chapters.length).toBeGreaterThanOrEqual(3);
     expect(presentation.chapters.length).toBeLessThanOrEqual(5);
     for (const ch of presentation.chapters) {
@@ -21,12 +46,15 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
       expect(ch.slides[0].archetype).toBe('chapter-preface');
       expect(ch.slides[ch.slides.length - 1].archetype).toBe('chapter-summary');
     }
+    expect(presentation.preface.length).toBeGreaterThanOrEqual(3);
+    expect(presentation.preface.length).toBeLessThanOrEqual(4);
   });
 
-  it('الأنماط العشرة كلها مستعملة في المثال', () => {
-    const used = new Set(presentation.chapters.flatMap((c) => c.slides.map((s) => s.archetype)));
-    for (const a of ['profile', 'bullets', 'timeline', 'tree', 'comparison', 'process', 'table', 'relation', 'code', 'stats'])
-      expect(used.has(a as never)).toBe(true);
+  it('عرض مكتمل التعبئة يجتاز كل القواعد بلا أخطاء ولا تحذيرات', () => {
+    const complete: PresentationData = { ...presentation, chapters: [1, 2, 3].map(completeChapter) };
+    const report = validatePresentation(complete);
+    expect(report.errors).toEqual([]);
+    expect(report.warnings).toEqual([]);
   });
 
   it('يكشف المعرفات المكررة وبادئة الفصل الخاطئة و chapterId غير المطابق', () => {
@@ -54,25 +82,25 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
     expect(rules).toContain('slide.idPrefix');
     expect(rules).toContain('slide.chapterId');
     expect(report.ok).toBe(false);
-    // تحذير عدد الفصول (< 3)
     expect(report.warnings.map((w) => w.rule)).toContain('chapters.count');
   });
 
   it('يحذّر من العناوين الطويلة (> 6 كلمات) ومن غياب التمهيد/الخلاصة', () => {
+    const base = completeChapter(1);
     const bad: PresentationData = {
       ...presentation,
-      chapters: presentation.chapters.map((c, i) =>
-        i !== 0
-          ? c
-          : {
-              ...c,
-              slides: [
-                { id: 'ch1-long', chapterId: 'ch1', title: 'في هذا الجزء سوف ندرس الوثائق المستعملة في المؤسسة', icon: Info, archetype: 'bullets', content: 'x' },
-                ...c.slides.slice(1, -1),
-                { id: 'ch1-end', chapterId: 'ch1', title: 'نهاية', icon: Info, archetype: 'bullets', content: 'x' },
-              ],
-            },
-      ),
+      chapters: [
+        {
+          ...base,
+          slides: [
+            { id: 'ch1-long', chapterId: 'ch1', title: 'في هذا الجزء سوف ندرس الوثائق المستعملة في المؤسسة', icon: Info, archetype: 'bullets', content: 'x' },
+            ...base.slides.slice(1, -1),
+            { id: 'ch1-end', chapterId: 'ch1', title: 'نهاية', icon: Info, archetype: 'bullets', content: 'x' },
+          ],
+        },
+        completeChapter(2),
+        completeChapter(3),
+      ],
     };
     const rules = validatePresentation(bad).warnings.map((w) => w.rule);
     expect(rules).toContain('slide.titleLength');

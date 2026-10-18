@@ -114,6 +114,9 @@ export function validatePresentation(data: PresentationData): ValidationReport {
 
       if (slide.content === null || slide.content === undefined)
         error('slide.content', `الشريحة ${slide.id} بلا محتوى`, sw);
+
+      if (slide.archetype === 'placeholder')
+        warn('slide.placeholder', `الشريحة «${slide.title}» ما تزال فارغة — صنّفها بنمط من الأنماط العشرة وضع محتواها`, sw);
     }
   }
 

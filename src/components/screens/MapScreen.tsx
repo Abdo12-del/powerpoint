@@ -99,6 +99,7 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
                   const isLast = slide.id === lastSlideId;
                   const seen = visited.includes(slide.id);
                   const isEdge = slide.archetype === 'chapter-preface' || slide.archetype === 'chapter-summary';
+                  const isPlaceholder = slide.archetype === 'placeholder';
                   return (
                     <li key={slide.id}>
                       <button
@@ -108,7 +109,9 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
                           'group relative flex w-full items-center gap-3 rounded-xl border px-2 py-1.5 text-start transition',
                           isLast
                             ? 'border-amber-400/50 bg-amber-400/15'
-                            : 'border-transparent hover:border-white/15 hover:bg-white/[0.07]',
+                            : isPlaceholder
+                              ? 'border-dashed border-white/15 hover:bg-white/[0.07]'
+                              : 'border-transparent hover:border-white/15 hover:bg-white/[0.07]',
                         )}
                       >
                         <span
@@ -121,7 +124,10 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
                           {seen && !isLast ? <Check className="h-4 w-4" /> : <SlideIcon className="h-4 w-4" />}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className={cn('block truncate text-[15px] font-semibold', isEdge && 'text-slate-300')}>{slide.title}</span>
+                          <span className={cn('block truncate text-[15px] font-semibold', (isEdge || isPlaceholder) && 'text-slate-300')}>
+                            {slide.title}
+                            {isPlaceholder && <span className="ms-2 text-[11px] font-normal text-amber-300/80">فارغة</span>}
+                          </span>
                           {slide.subtitle && <span className="block truncate text-xs text-slate-400">{slide.subtitle}</span>}
                         </span>
                         <span className="text-xs text-slate-500 tabular-nums">{si + 1}</span>

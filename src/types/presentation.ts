@@ -17,7 +17,8 @@ export type SlideArchetype =
   | 'table' // 7. جدول / بطاقات بيانات
   | 'relation' // 8. مخطط علائقي
   | 'code' // 9. كود / نموذج تقني
-  | 'stats'; // 10. إحصائيات / مؤشرات
+  | 'stats' // 10. إحصائيات / مؤشرات
+  | 'placeholder'; // شريحة لم تُصنَّف بعد — هيكل فارغ ينتظر المحتوى (<Placeholder />)
 
 /** عقد الشريحة — المستوى الثالث من الهرم (§4). */
 export interface SlideData {
