@@ -189,7 +189,8 @@ AGENTS.md                         # موجز لأي وكيل برمجي يُطل
 
 ## النشر
 
-- **النسخة الحية**: <https://abdo12-del.github.io/powerpoint/> — تُبنى وتُنشر تلقائياً بسير العمل `deploy.yml` عند كل دفع إلى `main` (Settings → Pages → Source: **GitHub Actions**).
+- **النسخة الحية**: <https://abdo12-del.github.io/powerpoint/> — تُبنى وتُنشر تلقائياً بسير العمل `deploy.yml` عند كل دفع إلى `main`.
+- **تفعيل لمرة واحدة** (لا يمكن عبر API من خارج المستودع): Settings → Pages → Build and deployment → Source: **GitHub Actions**. قبل التفعيل يبقى سير العمل أخضر (بناء + اختبارات + رفع الأداة) ويتخطّى خطوة النشر مع تنبيه؛ بعده شغّله من Actions → «Deploy to GitHub Pages» → Run workflow، أو ادفع أي تعديل إلى `main`.
 - **مستودع مشتق أو اسم مختلف؟** لا شيء يُعدَّل: سير العمل يمرّر `BASE_PATH=/<اسم-المستودع>/` إلى Vite؛ محلياً يبقى `base: '/'`. لنشر يدوي على مسار آخر: `BASE_PATH=/my-path/ npm run build`.
 - **الشعار**: `public/logo.png` (1024×1024، خلفية شفافة خارج المربع) و`public/favicon.png` و`public/apple-touch-icon.png`؛ وصورة المعاينة `.github/social-preview.png`.
 

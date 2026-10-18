@@ -1,5 +1,6 @@
-# نشر العرض على GitHub Pages عند كل دفع إلى main (أو يدوياً من تبويب Actions).
-# المتطلب الوحيد: Settings → Pages → Source = «GitHub Actions».
+# نشر العرض على GitHub Pages عند كل دفع إلى main (أو يدوياً من تبويب Actions → Run workflow).
+# المتطلب الوحيد (مرة واحدة): Settings → Pages → Build and deployment → Source = «GitHub Actions».
+# ما دام Pages غير مفعّل يُبنى المشروع ويُختبر ويُرفع كأداة، ويُتخطّى النشر مع تنبيه بدل الفشل.
 name: Deploy to GitHub Pages
 
 on:
@@ -19,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.pages.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,13 +35,24 @@ jobs:
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Is GitHub Pages enabled for this repository?
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" --silent 2>/dev/null; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=GitHub Pages is not enabled::Enable it once: Settings → Pages → Build and deployment → Source: GitHub Actions — then re-run this workflow (Actions → Deploy to GitHub Pages → Run workflow) or push to main."
+          fi
 
   deploy:
     needs: build
+    if: needs.build.outputs.pages_enabled == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
