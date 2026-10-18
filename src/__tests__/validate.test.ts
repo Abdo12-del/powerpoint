@@ -2,7 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { Info } from 'lucide-react';
 import { presentation } from '@/data/presentation';
 import { validatePresentation } from '@/lib/validate';
+import { isBlankDeck } from '@/lib/blank';
 import type { ChapterData, PresentationData } from '@/types/presentation';
+
+/** شاشة عنوان + مقدمة + خاتمة معبّأة (بيانات اصطناعية) لبناء عرض صالح بالكامل. */
+const filledShell: Omit<PresentationData, 'chapters'> = {
+  meta: {
+    organization: ['الجهة'],
+    workType: 'تقرير',
+    title: 'عنوان العرض',
+    authors: [{ role: 'إعداد', names: ['اسم'] }],
+    date: '2026',
+  },
+  preface: presentation.preface.map((step, i) => ({ ...step, title: `خطوة ${i + 1}`, content: 'x' })),
+  final: { title: 'خلاصة', summary: ['أ', 'ب', 'ج'], closing: 'ختام', thanks: 'شكراً' },
+};
 
 /** فصل مكتمل اصطناعي (تمهيد + محوران + خلاصة) لبناء عرض صالح بالكامل. */
 function completeChapter(n: number): ChapterData {
@@ -29,12 +43,66 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
     expect(report.ok).toBe(true);
   });
 
-  it('القالب الفارغ يحذّر فقط من الشرائح النائبة (قائمة مهام التعبئة)', () => {
+  it('القالب أبيض تماماً: لا نصّ في أي حقل ولا محتوى في أي شريحة', () => {
+    expect(isBlankDeck(presentation)).toBe(true);
+    const texts = [
+      presentation.meta.title,
+      presentation.meta.workType,
+      presentation.meta.date,
+      presentation.meta.subtitle ?? '',
+      presentation.meta.startLabel ?? '',
+      ...presentation.meta.organization,
+      ...presentation.preface.map((s) => s.title),
+      ...presentation.chapters.flatMap((c) => [c.title, c.subtitle ?? '', ...c.slides.flatMap((s) => [s.title, s.subtitle ?? ''])]),
+      presentation.final.title,
+      presentation.final.closing,
+      presentation.final.thanks,
+      ...presentation.final.summary,
+    ];
+    expect(texts.every((t) => t.trim() === '')).toBe(true);
+    expect(presentation.meta.authors).toEqual([]);
+    for (const step of presentation.preface) expect(step.content).toBeNull();
+    for (const slide of presentation.chapters.flatMap((c) => c.slides)) expect(slide.content).toBeNull();
+  });
+
+  it('القالب الأبيض يحذّر تحذيراً واحداً فقط (template.blank) ولا يطبّق قواعد المحتوى', () => {
     const report = validatePresentation(presentation);
-    const rules = new Set(report.warnings.map((w) => w.rule));
-    expect(rules).toEqual(new Set(['slide.placeholder']));
-    const placeholders = presentation.chapters.flatMap((c) => c.slides).filter((s) => s.archetype === 'placeholder');
-    expect(report.warnings).toHaveLength(placeholders.length);
+    expect(report.warnings.map((w) => w.rule)).toEqual(['template.blank']);
+    expect(report.warnings[0].message).toContain('12 شريحة');
+  });
+
+  it('أثناء التعبئة: الشريحة البيضاء تحذير (slide.blank)، والعنوان بلا محتوى أو العكس خطأ', () => {
+    const base = completeChapter(1);
+    const partial: PresentationData = {
+      ...filledShell,
+      chapters: [
+        {
+          ...base,
+          slides: [
+            base.slides[0],
+            { id: 'ch1-blank', chapterId: 'ch1', title: '', icon: Info, archetype: 'placeholder', content: null },
+            { id: 'ch1-no-content', chapterId: 'ch1', title: 'عنوان بلا محتوى', icon: Info, archetype: 'bullets', content: null },
+            { id: 'ch1-no-title', chapterId: 'ch1', title: '', icon: Info, archetype: 'bullets', content: 'x' },
+            base.slides[3],
+          ],
+        },
+        completeChapter(2),
+        { ...completeChapter(3), title: '' },
+      ],
+    };
+    const report = validatePresentation(partial);
+    expect(report.warnings.map((w) => w.rule)).toContain('slide.blank');
+    expect(report.warnings.map((w) => w.rule)).toContain('chapter.title');
+    expect(report.warnings.map((w) => w.rule)).not.toContain('template.blank');
+    expect(report.errors.map((e) => `${e.rule}@${e.where}`)).toEqual([
+      'slide.content@chapters.ch1.ch1-no-content',
+      'slide.title@chapters.ch1.ch1-no-title',
+    ]);
+  });
+
+  it('عرض معبّأ بشاشة عنوان بيضاء: العنوان الرئيسي خطأ (title.required)', () => {
+    const report = validatePresentation({ ...filledShell, meta: presentation.meta, chapters: [1, 2, 3].map(completeChapter) });
+    expect(report.errors.map((e) => e.rule)).toEqual(['title.required']);
   });
 
   it('القالب الفارغ يحترم البنية: 3–5 فصول، كل فصل 4–8 شرائح يبدأ بتمهيد وينتهي بخلاصة', () => {
@@ -51,7 +119,7 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
   });
 
   it('عرض مكتمل التعبئة يجتاز كل القواعد بلا أخطاء ولا تحذيرات', () => {
-    const complete: PresentationData = { ...presentation, chapters: [1, 2, 3].map(completeChapter) };
+    const complete: PresentationData = { ...filledShell, chapters: [1, 2, 3].map(completeChapter) };
     const report = validatePresentation(complete);
     expect(report.errors).toEqual([]);
     expect(report.warnings).toEqual([]);
@@ -59,7 +127,7 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
 
   it('يكشف المعرفات المكررة وبادئة الفصل الخاطئة و chapterId غير المطابق', () => {
     const bad: PresentationData = {
-      ...presentation,
+      ...filledShell,
       chapters: [
         {
           id: 'ch1',
@@ -88,12 +156,19 @@ describe('قائمة تحقق الهيكل (Definition of Done)', () => {
   it('يحذّر من العناوين الطويلة (> 6 كلمات) ومن غياب التمهيد/الخلاصة', () => {
     const base = completeChapter(1);
     const bad: PresentationData = {
-      ...presentation,
+      ...filledShell,
       chapters: [
         {
           ...base,
           slides: [
-            { id: 'ch1-long', chapterId: 'ch1', title: 'في هذا الجزء سوف ندرس الوثائق المستعملة في المؤسسة', icon: Info, archetype: 'bullets', content: 'x' },
+            {
+              id: 'ch1-long',
+              chapterId: 'ch1',
+              title: 'في هذا الجزء سوف ندرس الوثائق المستعملة في المؤسسة',
+              icon: Info,
+              archetype: 'bullets',
+              content: 'x',
+            },
             ...base.slides.slice(1, -1),
             { id: 'ch1-end', chapterId: 'ch1', title: 'نهاية', icon: Info, archetype: 'bullets', content: 'x' },
           ],

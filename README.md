@@ -1,6 +1,16 @@
+<p align="center">
+  <img src=".github/social-preview.png" alt="قالب العرض التقديمي — شعار المشروع" width="100%" />
+</p>
+
 # قالب العرض التقديمي المهيكل — Presentation Template
 
-قالب **فارغ وجاهز للتعبئة** لأي عرض تقديمي (مذكرة، تقرير، دورة، منتج، دراسة حالة)، يعمل في المتصفح ويطبّق [المواصفة القياسية](docs/PRESENTATION_TEMPLATE_SPEC.md):
+<p align="center">
+  <a href="https://abdo12-del.github.io/powerpoint/"><img alt="النسخة الحية" src="https://img.shields.io/badge/النسخة_الحية-GitHub_Pages-fbbf24?style=flat-square&logo=github" /></a>
+  <a href="https://github.com/Abdo12-del/powerpoint/actions/workflows/deploy.yml"><img alt="النشر" src="https://github.com/Abdo12-del/powerpoint/actions/workflows/deploy.yml/badge.svg" /></a>
+  <a href="https://github.com/Abdo12-del/powerpoint/actions/workflows/ci.yml"><img alt="الفحص" src="https://github.com/Abdo12-del/powerpoint/actions/workflows/ci.yml/badge.svg" /></a>
+</p>
+
+قالب **أبيض تماماً وجاهز للتعبئة** لأي عرض تقديمي (مذكرة، تقرير، دورة، منتج، دراسة حالة)، يعمل في المتصفح ويطبّق [المواصفة القياسية](docs/PRESENTATION_TEMPLATE_SPEC.md):
 
 ```
 العنوان ─(ابدأ)─▶ المقدمة (3–4 خطوات) ─▶ خريطة الفصول ─▶ الفصول / الشرائح ─▶ الخاتمة
@@ -19,17 +29,17 @@
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
 
-## ماذا يوجد في القالب الفارغ؟
+## القالب الأبيض: ماذا ترى عند التشغيل؟
 
-`src/data/` هي **استمارات** بنصوص نائبة واضحة — لا محتوى حقيقياً:
+**لا نصّ في أي شاشة.** كل حقول `src/data/` فارغة وكل `content` يساوي `null`، فتظهر الشاشات الخمس كصفحات بيضاء (بسمة القالب الداكنة) لا يبقى فيها إلا عناصر التنقل: شريط التقدّم، العدّاد، أزرار شريط التحكم، زر البدء (أيقونة)، وخريطة من أيقونات وأرقام. الشاشات **تُخفي عناوينها وشاراتها وتلميحاتها تلقائياً ما دامت بياناتها بلا نصّ، وتُظهرها فور الكتابة فيها** — القرار في مكان واحد: `src/lib/blank.ts`.
 
 | الملف | ما يحتويه | ما تفعله |
 |---|---|---|
-| `src/data/presentation.tsx` | شاشة العنوان (`meta`)، المقدمة (4 خطوات `Placeholder`)، الخاتمة (`final`) | استبدل النصوص والـ `<Placeholder />` |
-| `src/data/chapters/ch1.tsx` … `ch3.tsx` | فصل = تمهيد + محوران `placeholder` + خلاصة | املأ العناوين، أضف/احذف محاور، استبدل كل `<Placeholder />` بنمط |
+| `src/data/presentation.tsx` | شاشة العنوان (`meta`)، المقدمة (4 خطوات)، الخاتمة (`final`) — كلها فارغة مع تعليقات تشرح كل حقل | اكتب في الحقول وضع المحتوى مكان `null` |
+| `src/data/chapters/ch1.tsx` … `ch3.tsx` | فصل = تمهيد + محوران `placeholder` + خلاصة، كل شريحة `title: ''` و`content: null` | اكتب العناوين، أضف/احذف محاور، ضع مكوّن النمط مكان `null` |
 | `src/data/chapters/index.ts` | مصفوفة الفصول | أضف `ch4`/`ch5` إن لزم (الحد 3–5) |
 
-عند التشغيل يظهر العرض كاملاً بشكله النهائي مع كتل «شريحة فارغة — ضع المحتوى هنا» تعدّد الأنماط العشرة، ويطبع التحقق في وحدة تحكم المتصفح قائمة الشرائح المتبقية.
+التحقق في وحدة تحكم المتصفح يعرف القالب الأبيض ويطبع تحذيراً واحداً (`template.blank`: «12 شريحة و4 خطوات بانتظار المحتوى»)؛ وبمجرد أن تبدأ التعبئة يصبح كل ما بقي أبيض تحذيراً مستقلاً (`slide.blank`, `preface.blank`, `chapter.title`) ويصبح العنوان بلا محتوى أو العكس خطأً.
 
 ## التشغيل
 
@@ -43,7 +53,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 120 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات والخطوط وحركة النص والرسوم البيانية |
+| `npm test` | 130 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -51,10 +61,10 @@ npm run dev        # http://localhost:5173
 1. **انسخ المستودع** (أو «Use this template» على GitHub) وثبّت الحزم.
 2. **استخرج 3–5 أسئلة** يجيب عنها العرض ← كل سؤال فصل: املأ `title`/`subtitle`/`icon` في `chN.tsx` (انسخ `ch3.tsx` لفصل إضافي وغيّر `id` وبادئة معرفات شرائحه).
 3. **قسّم كل فصل إلى 4–8 محاور** ← كل محور شريحة؛ انسخ كتلة «المحور»، وحدّث `outline` في `ChapterPreface`.
-4. **صنّف كل شريحة** بنمط من العشرة: غيّر `archetype: 'placeholder'` إلى المفتاح المناسب واستبدل `<Placeholder />` بالمكوّن ([المقتطفات](docs/ARCHETYPES.md)).
+4. **صنّف كل شريحة** بنمط من العشرة: غيّر `archetype: 'placeholder'` إلى المفتاح المناسب وضع المكوّن مكان `content: null` ([المقتطفات](docs/ARCHETYPES.md)). أثناء الصياغة يمكنك وضع `<Placeholder hint="…" />` مؤقتاً فتظهر كتلة إرشادية مكان الشريحة.
 5. **اكتب الأغلفة**: `id` ببادئة الفصل (`ch2-kpis`)، `title` اسم من 3–6 كلمات، `subtitle` اختياري، `icon` دالة.
 6. **املأ الشاشات الثابتة** في `presentation.tsx`: `meta` (شاشة العنوان)، `preface` (سياق ← إشكالية كسؤال واحد ← أهداف ← منهجية)، `final` (3–4 جمل تلخيص + دعوة تأمل + شكر). اختر `meta.background` (خلفية جسيمات) و`final.celebrate` (قصاصات الخاتمة؛ `false` للمناقشات الرسمية).
-7. **شغّل `npm run check`** — لا يُعدّ العرض مكتملاً ما دام التحقق يحذّر من `slide.placeholder`.
+7. **شغّل `npm run check`** — لا يُعدّ العرض مكتملاً ما دام التحقق يحذّر من `slide.blank` / `slide.placeholder` / `preface.blank`.
 
 ### الحد الأدنى لشريحة
 
@@ -139,7 +149,7 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 ```
 src/
 ├── types/presentation.ts        # العقود: PresentationData, ChapterData, SlideData, PrefaceStep, FinalData
-├── data/                        # ← الاستمارات التي تُملأ لكل عرض (فارغة افتراضياً)
+├── data/                        # ← الاستمارات التي تُملأ لكل عرض (بيضاء تماماً افتراضياً: حقول فارغة و content: null)
 │   ├── presentation.tsx         #    شاشة العنوان + المقدمة + الخاتمة
 │   ├── typography.ts            #    اقتران الخطوط للعرض (preset + تجاوزات)
 │   └── chapters/ch1..ch3.tsx    #    الفصول والشرائح
@@ -157,7 +167,7 @@ src/
 ├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
-├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts (clsx + tailwind-merge)
+├── lib/                         # navigation.ts, validate.ts (Definition of Done), blank.ts (قرار «الشاشة البيضاء»), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts
 ├── config/controls.ts           # خريطة المفاتيح
 └── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts
 .agents/skills/                   # 12 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
@@ -169,8 +179,19 @@ docs/
 ├── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
 └── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
+public/                           # الشعار (logo.png) + favicon.png + apple-touch-icon.png
+.github/
+├── workflows/deploy.yml          # نشر تلقائي على GitHub Pages عند كل دفع إلى main (BASE_PATH = /<اسم-المستودع>/)
+├── workflows/ci.yml              # فحص طلبات السحب: npm run check
+└── social-preview.png            # صورة المعاينة الاجتماعية (1280×640) — تُرفع من Settings → Social preview
 AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
 ```
+
+## النشر
+
+- **النسخة الحية**: <https://abdo12-del.github.io/powerpoint/> — تُبنى وتُنشر تلقائياً بسير العمل `deploy.yml` عند كل دفع إلى `main` (Settings → Pages → Source: **GitHub Actions**).
+- **مستودع مشتق أو اسم مختلف؟** لا شيء يُعدَّل: سير العمل يمرّر `BASE_PATH=/<اسم-المستودع>/` إلى Vite؛ محلياً يبقى `base: '/'`. لنشر يدوي على مسار آخر: `BASE_PATH=/my-path/ npm run build`.
+- **الشعار**: `public/logo.png` (1024×1024، خلفية شفافة خارج المربع) و`public/favicon.png` و`public/apple-touch-icon.png`؛ وصورة المعاينة `.github/social-preview.png`.
 
 ## قواعد لا تُكسر (§9)
 

@@ -80,7 +80,9 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp }: Control
 
         <div className="hidden min-w-[9rem] flex-col items-center px-2 text-center sm:flex">
           <span className="text-sm font-bold tabular-nums">{counter}</span>
-          {current && <span className="max-w-[14rem] truncate text-[11px] text-slate-400">{current.chapter.title}</span>}
+          {current && current.chapter.title.trim() && (
+            <span className="max-w-[14rem] truncate text-[11px] text-slate-400">{current.chapter.title}</span>
+          )}
         </div>
         <span className="px-1 text-xs font-bold tabular-nums sm:hidden">{counter}</span>
 
@@ -91,7 +93,11 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp }: Control
 
         <span className="mx-1 h-6 w-px bg-white/10" />
 
-        <CtrlButton label="خريطة الفصول (↓ / M / Esc)" onClick={ctrl.openMap} className={cn(screen.kind === 'map' && 'border-amber-400/40 bg-amber-400/15 text-amber-100')}>
+        <CtrlButton
+          label="خريطة الفصول (↓ / M / Esc)"
+          onClick={ctrl.openMap}
+          className={cn(screen.kind === 'map' && 'border-amber-400/40 bg-amber-400/15 text-amber-100')}
+        >
           <MapIcon className="h-5 w-5" />
           <span className="hidden text-sm font-semibold md:inline">الخريطة</span>
         </CtrlButton>

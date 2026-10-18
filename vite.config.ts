@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  // مسار النشر: '/' محلياً، و'/<اسم-المستودع>/' على GitHub Pages (يضبطه سير العمل .github/workflows/deploy.yml عبر BASE_PATH)
+  base: process.env.BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },

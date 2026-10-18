@@ -4,7 +4,7 @@
 
 ## ما هذا المستودع؟
 
-قالب عرض تقديمي **فارغ** يعمل في المتصفح (React 19 + Vite 7 + TypeScript + Tailwind 4، عربي RTL)، يطبّق مواصفة ثابتة: **عنوان ← مقدمة (3–4 خطوات) ← خريطة فصول ← شرائح (3–5 فصول × 4–8 شرائح) ← خاتمة**. كل البنية والتنقل والتحقق والمكتبات جاهزة؛ **عملك يقتصر على تعبئة `src/data/`** — ولا تعدّل المكونات إلا لإضافة نمط أو مؤثر جديد فعلاً.
+قالب عرض تقديمي **أبيض تماماً (لا نصّ في أي شاشة)** يعمل في المتصفح (React 19 + Vite 7 + TypeScript + Tailwind 4، عربي RTL)، يطبّق مواصفة ثابتة: **عنوان ← مقدمة (3–4 خطوات) ← خريطة فصول ← شرائح (3–5 فصول × 4–8 شرائح) ← خاتمة**. كل البنية والتنقل والتحقق والمكتبات جاهزة؛ **عملك يقتصر على تعبئة `src/data/`** — ولا تعدّل المكونات إلا لإضافة نمط أو مؤثر جديد فعلاً.
 
 | اقرأ | لماذا |
 |---|---|
@@ -17,7 +17,7 @@
 | `docs/CHARTS.md` | الرسوم البيانية وحركاتها: الرسوم الحركية المخصّصة (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة)، Recharts/Nivo/Chart.js/ECharts بسمة واحدة، مرايا RTL، التحميل الكسول، والمختبر `?lab=charts` |
 | `.agents/skills/*/SKILL.md` | **المهارات** — اقرأ المناسبة قبل العمل على الحركة (الجدول أدناه) |
 | `src/types/presentation.ts` | العقود: `PresentationMeta`, `PrefaceStep`, `ChapterData`, `SlideData`, `FinalData` |
-| `src/data/` | الاستمارات التي تملؤها (بها نصوص نائبة و`<Placeholder />`) |
+| `src/data/` | الاستمارات التي تملؤها — بيضاء تماماً: كل الحقول `''` وكل `content: null`، والتعليقات تشرح كل حقل؛ الشاشات تُظهر عناوينها وشاراتها تلقائياً فور الكتابة (`src/lib/blank.ts`) |
 
 ## المهارات (Agent Skills) — `.agents/skills/` (و`.claude/skills` رابط إليها)
 
@@ -43,14 +43,14 @@
 1. **اجمع مادة العرض** من المستخدم (العنوان، الجهة، المنجزون، المشرف، التاريخ، محتوى المذكرة/التقرير). إن نقصت معلومة اسأل أو ضع نصاً نائباً واضحاً — لا تخترع أرقاماً أو أسماء.
 2. **استخرج 3–5 أسئلة** يجيب عنها العرض ← كل سؤال فصل في `src/data/chapters/chN.tsx` (`id`: `ch1`…`ch5`، `title`، `subtitle`، `icon` من `lucide-react`، `color` من المجموعة الموجودة).
 3. **قسّم كل فصل إلى 4–8 شرائح**: الأولى `ChapterPreface` (مع `outline` من 3–5 نقاط)، الأخيرة `ChapterSummary`، وبينهما محاور بنمط واحد لكل شريحة من: `profile | bullets | timeline | tree | comparison | process | table | relation | code | stats`.
-4. **كل شريحة**: `id` ببادئة الفصل (`ch2-kpis`)، `chapterId` مطابق، `title` اسم من 3–6 كلمات (ليس جملة)، `subtitle` اختياري، `icon` دالة، `archetype`، `content` مكوّن النمط. لا تترك `archetype: 'placeholder'`.
+4. **كل شريحة**: `id` ببادئة الفصل (`ch2-kpis`)، `chapterId` مطابق، `title` اسم من 3–6 كلمات (ليس جملة)، `subtitle` اختياري، `icon` دالة، `archetype`، `content` مكوّن النمط مكان `null`. لا تترك `archetype: 'placeholder'` ولا `content: null`؛ عنوان بلا محتوى أو محتوى بلا عنوان = خطأ في التحقق. أثناء الصياغة يمكنك وضع `<Placeholder hint="…" />` من `@/components/ui` مؤقتاً.
 5. **الشاشات الثابتة** في `src/data/presentation.tsx`:
    - `meta`: الجهة (سطور)، نوع العمل، العنوان، المنجزون، المشرف، التاريخ، `background` (`'stars' | 'network' | 'snow' | 'bubbles' | 'fireflies' | 'none'`).
    - `preface`: 3–4 خطوات بترتيب **سياق ← إشكالية (سؤال واحد) ← أهداف ← منهجية**.
    - `final`: 3–4 جمل تلخّص (لا معلومة جديدة) + `closing` + `thanks` + `celebrate` (`true`/`'fireworks'`… أو `false` للمناقشات الرسمية).
 6. **الخطوط**: اختر اقتراناً يناسب طابع العرض في `src/data/typography.ts` (`preset: 'academic' | 'modern-tech' | 'corporate' | 'editorial' | 'heritage' | 'kufi-bold' | 'friendly' | 'geometric' | 'maghrebi'`؛ الافتراضي Cairo). عاينه في `/?lab=fonts`. الدليل: `docs/TYPOGRAPHY.md`.
 7. **الحركة**: الأساس يعمل تلقائياً (انتقالات، stagger، كشف الكلمات). أضف مؤثراً **واحداً مهيمناً** حيث يخدم الفكرة فقط — من `@/components/effects` أو `@/components/gallery` أو وصفة من `@/recipes` (مهارة `presentation-motion-director` تحسم الاختيار).
-8. **شغّل `npm run check`** (أنواع + اختبارات + بناء) وأصلح كل خطأ. راجع تحذيرات التحقق في وحدة تحكم المتصفح (`npm run dev`): لا `slide.placeholder` متبقية.
+8. **شغّل `npm run check`** (أنواع + اختبارات + بناء) وأصلح كل خطأ. راجع تحذيرات التحقق في وحدة تحكم المتصفح (`npm run dev`): القالب الأبيض يطبع `template.blank` وحده؛ ومع التعبئة لا يجوز أن يبقى `slide.blank` / `preface.blank` / `chapter.title` / `slide.placeholder`. اختبارات `render.test.tsx` تتحقق من أن القالب الأبيض بلا نصّ — إن ملأت `src/data/` فعلاً لعرض حقيقي، حدّث مجموعة «القالب الأبيض» فيها (أو اجعلها تعمل على نسخة من البيانات).
 
 ## المكتبات المثبتة (لا تثبّت شيئاً إضافياً إلا لضرورة)
 
@@ -101,7 +101,7 @@ npm run check        # أنواع + اختبارات + بناء — يجب أن 
 ## تعريف الاكتمال (Definition of Done)
 
 - [ ] `npm run check` يمرّ بلا أخطاء.
-- [ ] لا تحذير `slide.placeholder` ولا نصوص «…» نائبة في `src/data/`.
+- [ ] لا تحذير `template.blank` / `slide.blank` / `preface.blank` / `chapter.title` / `slide.placeholder`، ولا نصوص «…» نائبة في `src/data/`.
 - [ ] 3–5 فصول، كل فصل تمهيد + 2–6 محاور + خلاصة.
 - [ ] المقدمة 3–4 خطوات والإشكالية سؤال واحد.
 - [ ] الخاتمة 3–4 جمل بلا معلومة جديدة؛ `celebrate` مناسب لطابع العرض.

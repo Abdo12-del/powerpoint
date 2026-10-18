@@ -3,6 +3,7 @@ import { Map as MapIcon, Quote, RotateCcw, Sparkles } from 'lucide-react';
 import type { FinalData } from '@/types/presentation';
 import { WordReveal, fadeUp, staggerContainer } from '@/components/ui';
 import { ConfettiOnMount } from '@/components/effects/Confetti';
+import { finalHasText, hasText } from '@/lib/blank';
 
 interface FinalScreenProps {
   data: FinalData;
@@ -11,8 +12,14 @@ interface FinalScreenProps {
 }
 
 /** 2.5 الخاتمة النهائية — خلاصة في 3–4 جمل + دعوة تأمل + شكر. لا معلومات جديدة. */
+/**
+ * 2.5 الخاتمة — تلخّص فقط.
+ * القالب الأبيض: بلا نصّ لا يظهر إلا زرا التنقل.
+ */
 export function FinalScreen({ data, onMap, onRestart }: FinalScreenProps) {
   const celebrate = data.celebrate === true ? 'cannons' : data.celebrate || undefined;
+  const filled = finalHasText(data);
+  const summary = data.summary.filter((s) => s.trim());
   return (
     <motion.div
       variants={staggerContainer(0.12, 0.15)}
@@ -21,15 +28,19 @@ export function FinalScreen({ data, onMap, onRestart }: FinalScreenProps) {
       className="mx-auto flex h-full w-full max-w-5xl flex-col justify-center px-6 pt-10 pb-24 sm:px-10"
     >
       {celebrate && <ConfettiOnMount preset={celebrate} delay={700} />}
-      <motion.div variants={fadeUp} className="flex items-center gap-2 text-sm font-bold text-amber-300">
-        <Sparkles className="h-4 w-4" /> الخاتمة
-      </motion.div>
-      <h2 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">
-        <WordReveal text={data.title} delay={0.2} />
-      </h2>
+      {filled && (
+        <motion.div variants={fadeUp} className="flex items-center gap-2 text-sm font-bold text-amber-300">
+          <Sparkles className="h-4 w-4" /> الخاتمة
+        </motion.div>
+      )}
+      {hasText(data.title) && (
+        <h2 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">
+          <WordReveal text={data.title} delay={0.2} />
+        </h2>
+      )}
 
       <ol className="mt-8 grid gap-3">
-        {data.summary.map((s, i) => (
+        {summary.map((s, i) => (
           <motion.li
             key={s}
             variants={fadeUp}
@@ -43,19 +54,23 @@ export function FinalScreen({ data, onMap, onRestart }: FinalScreenProps) {
         ))}
       </ol>
 
-      <motion.blockquote
-        variants={fadeUp}
-        className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 text-xl font-bold leading-relaxed"
-      >
-        <Quote className="mt-1 h-6 w-6 shrink-0 text-amber-300" />
-        <span>{data.closing}</span>
-      </motion.blockquote>
+      {hasText(data.closing) && (
+        <motion.blockquote
+          variants={fadeUp}
+          className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 text-xl font-bold leading-relaxed"
+        >
+          <Quote className="mt-1 h-6 w-6 shrink-0 text-amber-300" />
+          <span>{data.closing}</span>
+        </motion.blockquote>
+      )}
 
-      <motion.p variants={fadeUp} className="mt-8 text-center text-2xl font-extrabold text-slate-100 sm:text-3xl">
-        {data.thanks}
-      </motion.p>
+      {hasText(data.thanks) && (
+        <motion.p variants={fadeUp} className="mt-8 text-center text-2xl font-extrabold text-slate-100 sm:text-3xl">
+          {data.thanks}
+        </motion.p>
+      )}
 
-      <motion.div variants={fadeUp} className="mt-8 flex flex-wrap justify-center gap-3">
+      <motion.div variants={fadeUp} className={filled ? 'mt-8 flex flex-wrap justify-center gap-3' : 'flex flex-wrap justify-center gap-3'}>
         <button
           type="button"
           onClick={onMap}
