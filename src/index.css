@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 /* أصناف حركة جاهزة لـ Tailwind v4: animate-in fade-in slide-in-from-bottom-4 zoom-in … (tw-animate-css) */
 @import 'tw-animate-css';
+/* إطارات الحركة لمكونات المعرض المستعارة (Magic UI / motion-primitives) */
+@import './styles/gallery.css';
 
 @theme {
   --font-sans: 'Cairo Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;

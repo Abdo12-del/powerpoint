@@ -14,6 +14,7 @@
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
+- **7 مهارات (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، مراجعة الجودة) + **معرض 37 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **8 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 
 ## ماذا يوجد في القالب الفارغ؟
 
@@ -39,7 +40,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | اختبارات التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة |
+| `npm test` | 65 اختباراً: التحقق والتدفق وعرض كل شاشة/شريحة والأنماط العشرة والمؤثرات والمعرض والوصفات |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -95,6 +96,15 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 الثقيل منها (Lottie ≈ 300KB، tsParticles ≈ 80KB) يُحمَّل كسولاً فلا يدخل الحزمة الأساسية إلا عند الاستعمال. القاعدة §9.5 سارية على الجميع: النص العربي يتحرك بالكلمات لا بالحروف.
 
+## المهارات والمعرض والوصفات
+
+| ما هو | أين | الاستعمال |
+|---|---|---|
+| **مهارات الوكلاء** (7) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **معرض المكونات** (37، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
+| **الوصفات** (8) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal } from '@/recipes'` — انسخ وعدّل |
+| **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
+
 ## التحكم أثناء العرض
 
 | المفتاح | الفعل |
@@ -121,15 +131,20 @@ src/
 │   ├── archetypes/              # الأنماط العشرة + ChapterPreface + ChapterSummary
 │   ├── chrome/                  # ProgressBar, ControlBar, SlideHeader, KeyboardHelp
 │   ├── ui/                      # Card, Badge/Num/Term, WordReveal (بالكلمات لا بالحروف), Stagger, Placeholder
-│   └── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
+│   ├── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
+│   └── gallery/                 # 37 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
+├── recipes/                     # 8 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
+├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
-├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts
+├── lib/                         # navigation.ts, validate.ts (Definition of Done), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts (clsx + tailwind-merge)
 ├── config/controls.ts           # خريطة المفاتيح
-└── __tests__/                   # validate, navigation, render, archetypes, effects
+└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes
+.agents/skills/                   # 7 مهارات (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
-└── ANIMATION_LIBRARIES.md        # كتالوج مكتبات الحركة: جدول القرار + مثال لكل مكتبة
+├── ANIMATION_LIBRARIES.md        # كتالوج مكتبات الحركة: جدول القرار + مثال لكل مكتبة
+└── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
 AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
 ```
 

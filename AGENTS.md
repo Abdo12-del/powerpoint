@@ -11,8 +11,24 @@
 | `docs/PRESENTATION_TEMPLATE_SPEC.md` | المواصفة الكاملة والقواعد وقائمة الاكتمال |
 | `docs/ARCHETYPES.md` | الأنماط العشرة للشرائح مع مقتطف استعمال لكل واحد |
 | `docs/ANIMATION_LIBRARIES.md` | مكتبات الحركة المثبتة: جدول «ماذا أريد ← ماذا أستعمل» |
+| `docs/ANIMATION_PROJECTS.md` | المهارات، معرض المكونات المستعارة، الوصفات، وكتالوج مشاريع GitHub |
+| `.agents/skills/*/SKILL.md` | **المهارات** — اقرأ المناسبة قبل العمل على الحركة (الجدول أدناه) |
 | `src/types/presentation.ts` | العقود: `PresentationMeta`, `PrefaceStep`, `ChapterData`, `SlideData`, `FinalData` |
 | `src/data/` | الاستمارات التي تملؤها (بها نصوص نائبة و`<Placeholder />`) |
+
+## المهارات (Agent Skills) — `.agents/skills/` (و`.claude/skills` رابط إليها)
+
+| المهارة | اقرأها عندما |
+|---|---|
+| `presentation-motion-director` | تختار أي مؤثر لأي شريحة/شاشة، أو يُطلب «حسّن الحركة» |
+| `gallery-components` | تحتاج عنصراً بصرياً جاهزاً (beam، عدّاد، طرفية، خلفية، إطار جهاز…) أو تستعير مكوّناً من Magic UI/motion-primitives |
+| `framer-motion-recipes` | تضيف دخولاً/خروجاً/stagger/layout/pathLength |
+| `gsap-react-timelines` | تحتاج تسلسلاً زمنياً دقيقاً أو SplitText أو Flip أو مساراً |
+| `svg-diagram-animation` | شريحة مخطط/علاقات/سير إجراء/خط زمني/شجرة |
+| `lottie-and-media` | رسوم Lottie، لقطات شاشة، فيديو، إطارات أجهزة |
+| `animation-qa` | قبل التسليم، أو عند حركة بطيئة/متقطعة |
+
+إن لم يحمّلها وكيلك تلقائياً فاقرأ ملف `SKILL.md` المناسب مباشرة.
 
 ## خطوات التنفيذ (الوصفة)
 
@@ -24,7 +40,7 @@
    - `meta`: الجهة (سطور)، نوع العمل، العنوان، المنجزون، المشرف، التاريخ، `background` (`'stars' | 'network' | 'snow' | 'bubbles' | 'fireflies' | 'none'`).
    - `preface`: 3–4 خطوات بترتيب **سياق ← إشكالية (سؤال واحد) ← أهداف ← منهجية**.
    - `final`: 3–4 جمل تلخّص (لا معلومة جديدة) + `closing` + `thanks` + `celebrate` (`true`/`'fireworks'`… أو `false` للمناقشات الرسمية).
-6. **الحركة**: الأساس يعمل تلقائياً (انتقالات، stagger، كشف الكلمات). أضف مؤثراً **واحداً مهيمناً** حيث يخدم الفكرة فقط — من `@/components/effects` (انظر الجدول أدناه).
+6. **الحركة**: الأساس يعمل تلقائياً (انتقالات، stagger، كشف الكلمات). أضف مؤثراً **واحداً مهيمناً** حيث يخدم الفكرة فقط — من `@/components/effects` أو `@/components/gallery` أو وصفة من `@/recipes` (مهارة `presentation-motion-director` تحسم الاختيار).
 7. **شغّل `npm run check`** (أنواع + اختبارات + بناء) وأصلح كل خطأ. راجع تحذيرات التحقق في وحدة تحكم المتصفح (`npm run dev`): لا `slide.placeholder` متبقية.
 
 ## المكتبات المثبتة (لا تثبّت شيئاً إضافياً إلا لضرورة)
@@ -42,6 +58,9 @@
 | بطاقة تميل مع المؤشر | `TiltCard` | react-parallax-tilt |
 | قائمة تتحرك عند التغيير | `AutoAnimate` | @formkit/auto-animate |
 | حركة بأصناف CSS فقط | `className="animate-in fade-in slide-in-from-bottom-4"` | tw-animate-css |
+
+| عنصر بصري جاهز (37 مكوّناً MIT) | `AnimatedBeam`, `NumberTicker`, `TextAnimate`, `OrbitingCircles`, `Terminal`, `Marquee`, `BorderBeam`, `Meteors`, `Safari`, `Iphone`, `ImageComparison`… من `@/components/gallery` | Magic UI + motion-primitives (مستعارة) |
+| تركيبة كاملة لنمط | `StatsCountUp`, `RelationBeams`, `TitleHero`, `CodeTerminal`, `TimelineDraw`, `EcosystemOrbit`, `GsapTitleTimeline`, `BeforeAfterCompare` من `@/recipes` | وصفات مُختبَرة |
 
 الأيقونات: `lucide-react` فقط. الخطوط: Cairo (عربي) وJetBrains Mono (كود) مضمّنان.
 
@@ -61,7 +80,7 @@
 ```bash
 npm install          # مرة واحدة
 npm run dev          # http://localhost:5173 — يطبع تقرير التحقق في وحدة تحكم المتصفح
-npm test             # 49 اختباراً (تحقق، تدفق، عرض كل شاشة، الأنماط العشرة، المؤثرات)
+npm test             # 65 اختباراً (تحقق، تدفق، عرض كل شاشة، الأنماط العشرة، المؤثرات، المعرض، الوصفات)
 npm run check        # أنواع + اختبارات + بناء — يجب أن يمرّ قبل التسليم
 ```
 
@@ -73,3 +92,4 @@ npm run check        # أنواع + اختبارات + بناء — يجب أن 
 - [ ] المقدمة 3–4 خطوات والإشكالية سؤال واحد.
 - [ ] الخاتمة 3–4 جمل بلا معلومة جديدة؛ `celebrate` مناسب لطابع العرض.
 - [ ] كل شريحة نمط واحد ومؤثر مهيمن واحد على الأكثر.
+- [ ] مرّت قائمة مهارة `animation-qa` (عربية بالكلمات، RTL، تقليل الحركة، أداء).

@@ -187,6 +187,12 @@ const [shown, setShown] = useState(1);
 5. **التحميل الكسول للثقيل** — Lottie وtsParticles مفصولان؛ GSAP لا يدخل الحزمة إلا إذا استوردته.
 6. **التنظيف** — أي حركة يدوية داخل `useEffect`/`useGSAP` تُعاد عند الخروج (الشرائح تُفكَّك عند التنقل).
 
+## ما بعد المكتبات: المهارات والمعرض والوصفات
+
+- **مهارات** تشرح متى وكيف (`.agents/skills/`): `presentation-motion-director`, `gsap-react-timelines`, `framer-motion-recipes`, `gallery-components`, `svg-diagram-animation`, `lottie-and-media`, `animation-qa`.
+- **معرض 37 مكوّناً** مستعاراً (`@/components/gallery`) و**8 وصفات** (`@/recipes`).
+- التفاصيل وكتالوج مشاريع GitHub: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md).
+
 ## إضافة مكتبة جديدة
 
 1. `npm install <pkg>`.
