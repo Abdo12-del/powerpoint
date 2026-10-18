@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+/* أصناف حركة جاهزة لـ Tailwind v4: animate-in fade-in slide-in-from-bottom-4 zoom-in … (tw-animate-css) */
+@import 'tw-animate-css';
+/* إطارات الحركة لمكونات المعرض المستعارة (Magic UI / motion-primitives) */
+@import './styles/gallery.css';
+
+/*
+ * أدوار الخطوط — القيم هنا احتياطية فقط؛ `applyTypography()` (src/fonts) يضبطها حياً على :root
+ * حسب src/data/typography.ts. الأصناف: font-heading | font-body (= font-sans) | font-display | font-mono
+ */
+@theme static {
+  --font-heading: 'Cairo Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-body: 'Cairo Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-display: 'Cairo Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  /* مضاعف حجم الخط العام (--type-scale من إعدادات الطباعة) لتعويض الفروق البصرية بين الخطوط */
+  font-size: calc(100% * var(--type-scale, 1));
+}
+
+body {
+  @apply bg-slate-950 font-sans text-slate-100 antialiased;
+  line-height: var(--leading-body, 1.6);
+  overscroll-behavior: none;
+  /* تفعيل الميزات الطباعية الآمنة للعربية: الروابط (liga) والتشكيل السياقي (calt) */
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* العناوين تأخذ خط العناوين من الاقتران المختار */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-heading, 1.3);
+}
+
+/* قواعد العربية: لا تباعد حروف (يكسر الاتصال) ولا مائل/عريض اصطناعي */
+[dir='rtl'],
+[lang='ar'] {
+  letter-spacing: 0;
+  font-synthesis: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* الشفرة والمعرفات دائماً LTR */
+code,
+kbd,
+pre {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* شريط تمرير هادئ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
