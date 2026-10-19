@@ -4,7 +4,7 @@
 
 1. **المهارات** (`.agents/skills/`) — معرفة إجرائية يقرأها أي وكيل عند الحاجة.
 2. **معرض المكونات المستعارة** (`src/components/gallery/`) — 42 مكوّناً من مشاريع مفتوحة MIT مُكيَّفة ومُختبَرة.
-3. **الوصفات** (`src/recipes/`) — 8 تركيبات جاهزة لأنماط الشرائح.
+3. **الوصفات** (`src/recipes/`) — 10 تركيبات جاهزة لأنماط الشرائح.
 
 وفي الأخير كتالوج **مشاريع GitHub** يمكن الاستعارة منها لاحقاً مع ملاحظات الرخصة والعربية.
 
@@ -27,6 +27,7 @@
 | `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم»، نص إلى مسارات SVG | `CalligraphyText` (HarfBuzz → SVG)، اختيار الخط من 10 خطوط قابلة للرسم، الأوضاع والتوقيت، خط خاص، واجهة `text-shaper` للأقنعة، استكشاف الأخطاء |
 | `numbers-and-counters` | KPI متحرك، نسبة، عدّاد، أرقام معكوسة في RTL | `NumberRoll` (number-flow) مقابل `NumberTicker`/نمط `stats`، المحلية ونمط الأرقام، `dir="ltr"`، وصفة شريحة إحصاء |
 | `data-charts-motion` | شريحة فيها رسم بياني، لوحة مؤشرات، رسم معكوس/غير مقروء في RTL | الرسالة ← الشكل، الطبقة (مخصّص/Recharts/Nivo/Chart.js/ECharts)، التحميل الكسول، كوريغرافيا الكشف، جدول مرايا RTL لكل مكتبة، الأرقام والألوان، مراجع لكل مكتبة في `references/` (`docs/CHARTS.md`) |
+| `technical-diagrams-code` | مخطط تقني أو شفرة/SQL/diff في شريحة | اختيار Mermaid/Shiki/React Flow + Dagre/Excalidraw، RTL، السمة الداكنة، كشف الروابط، الحركة المخفّضة، بيانات الحزم/الرخص (`docs/DIAGRAMS_CODE.md`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.
@@ -109,7 +110,11 @@ import { AnimatedBeam, NumberTicker, TextAnimate, WordRotate, BlurFade, Orbiting
 | [d3/d3](https://github.com/d3/d3) | 113.8k | ISC | **مثبتة جزئياً** (`d3-scale`, `d3-shape`, `d3-array`, `d3-interpolate`) — أساس الرسوم الحركية المخصّصة في `@/components/charts` |
 | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) | 125.9k | MIT | **مستعار منها** `chart.tsx` (حاوية Recharts) → `src/components/charts/recharts/chart.tsx` |
 | [airbnb/visx](https://github.com/airbnb/visx) | 21.1k | MIT | غير مثبتة — طبقة d3 منخفضة المستوى؛ الرسوم المخصّصة تغطي الحاجة |
-| [xyflow/xyflow](https://github.com/xyflow/xyflow) | 38.7k | MIT | غير مثبتة — مخططات عقد تفاعلية (ليست رسوم بيانات)؛ نمط `relation` + `AnimatedBeam` يغطيان العلاقات |
+| [xyflow/xyflow](https://github.com/xyflow/xyflow) | 38.7k | MIT | **مثبتة** (`@xyflow/react` + `@dagrejs/dagre`) — مخططات عقد تفاعلية مع تخطيط Dagre واتجاه RTL؛ `NodeDiagram` في `@/components/diagrams`, و`AnimatedBeam` اختياري |
+| [mermaid-js/mermaid](https://github.com/mermaid-js/mermaid) | — | MIT (حزمة Mermaid) | **مثبتة** (Mermaid 12) — Flowchart/sequence/ERD/UML نصّي، مع سمة RTL وحركة رسم الروابط؛ `MermaidDiagram`. تجلب `elkjs@0.9.3` انتقالياً (EPL-2.0 OR GPL-3.0-or-later)؛ راجع إشعار الرخص في [`DIAGRAMS_CODE.md`](DIAGRAMS_CODE.md) |
+| [shikijs/shiki](https://github.com/shikijs/shiki) | — | MIT | **مثبتة** (Shiki 4) — تلوين واقعي للشفرة داخل `CodeBlock`، قواعد اللغات عند الطلب، أسطر بارزة وdiff |
+| [excalidraw/excalidraw](https://github.com/excalidraw/excalidraw) | — | MIT | **مثبتة** — لوحة رسم حرّ عربية بتحميل كسول؛ `ExcalidrawBoard` |
+| [tldraw/tldraw](https://github.com/tldraw/tldraw) | — | tldraw license (ليست MIT) | **مستبعدة** من القالب؛ نستخدم Excalidraw MIT للرسم الحرّ |
 | [stevenpetryk/mafs](https://github.com/stevenpetryk/mafs) | 3.4k | MIT | غير مثبتة — رسوم رياضية تفاعلية (دوال، متجهات) لشريحة رياضيات استثنائية |
 | [tsparticles/tsparticles](https://github.com/tsparticles/tsparticles) | 9.0k | MIT | مثبتة؛ إعدادات مسبقة إضافية: `@tsparticles/preset-*` (confetti, fireworks, links, sea-anemone) |
 | [airbnb/lottie-web](https://github.com/airbnb/lottie-web) | 32.2k | MIT | مثبتة عبر lottie-react |

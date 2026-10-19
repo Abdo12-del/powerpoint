@@ -28,6 +28,16 @@ if (params.get('lab') === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (params.get('lab') === 'diagrams') {
+  // مختبر المخططات والكود: ?lab=diagrams — Mermaid، Shiki، React Flow/Dagre، وExcalidraw (كلها كسولة)
+  const DiagramsLab = lazy(() => import('@/components/diagrams/lab/DiagramsLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <DiagramsLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else {
   // تحميل خطوط الاقتران المختار (src/data/typography.ts) قبل أول رسم لتفادي وميض الخط في شاشة العنوان
   const timeout = new Promise<void>((r) => setTimeout(r, 1500));

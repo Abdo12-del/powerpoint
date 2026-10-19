@@ -1,0 +1,64 @@
+.mermaid-diagram svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.mermaid-diagram foreignObject,
+.mermaid-diagram .nodeLabel,
+.mermaid-diagram .edgeLabel,
+.mermaid-diagram .messageText,
+.mermaid-diagram .noteText,
+.mermaid-diagram .loopText {
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+.mermaid-diagram foreignObject div,
+.mermaid-diagram foreignObject span,
+.mermaid-diagram foreignObject p {
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+.flow-diagram-theme .react-flow {
+  --xy-background-color: #020617;
+  --xy-edge-stroke: rgba(148, 163, 184, 0.7);
+  --xy-edge-stroke-selected: #fbbf24;
+  --xy-edge-stroke-width: 1.8;
+  --xy-connectionline-stroke: #fbbf24;
+  --xy-controls-button-background-color: #0f172a;
+  --xy-controls-button-background-color-hover: #1e293b;
+  --xy-controls-button-color: #e2e8f0;
+  --xy-controls-button-border-color: rgba(255, 255, 255, 0.12);
+  --xy-minimap-background-color: #0f172a;
+  --xy-minimap-mask-background-color: rgba(2, 6, 23, 0.68);
+  --xy-minimap-node-background-color: #38bdf8;
+  --xy-minimap-node-stroke-color: #020617;
+}
+
+.flow-diagram-theme .react-flow__controls,
+.flow-diagram-theme .react-flow__minimap {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.8rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+.flow-diagram-theme .react-flow__controls-button {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.flow-diagram-theme .react-flow__attribution {
+  background: rgba(2, 6, 23, 0.7);
+  color: rgba(226, 232, 240, 0.65);
+}
+
+.flow-diagram-theme > svg.pointer-events-none {
+  z-index: 5;
+}
+
+.flow-diagram-theme .react-flow__nodes {
+  z-index: 10;
+}

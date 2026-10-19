@@ -4,7 +4,7 @@
 
 ## ما هذا المستودع؟
 
-قالب عرض تقديمي **أبيض تماماً (لا نصّ في أي شاشة)** يعمل في المتصفح (React 19 + Vite 7 + TypeScript + Tailwind 4، عربي RTL)، يطبّق مواصفة ثابتة: **عنوان ← مقدمة (3–4 خطوات) ← خريطة فصول ← شرائح (3–5 فصول × 4–8 شرائح) ← خاتمة**. كل البنية والتنقل والتحقق والمكتبات جاهزة؛ **عملك يقتصر على تعبئة `src/data/`** — ولا تعدّل المكونات إلا لإضافة نمط أو مؤثر جديد فعلاً.
+قالب عرض تقديمي **أبيض تماماً (لا نصّ في أي شاشة)** يعمل في المتصفح (React 19 + Vite 7 + TypeScript + Tailwind 4، عربي RTL)، يطبّق مواصفة ثابتة: **عنوان ← مقدمة (3–4 خطوات) ← خريطة فصول ← شرائح (3–5 فصول × 4–8 شرائح) ← خاتمة**. كل البنية والتنقل والتحقق والمكتبات جاهزة؛ عند **إنتاج عرض** اقتصر على تعبئة `src/data/` ولا تعدّل المكونات لمجرد إدخال المحتوى. أما طلبات تطوير القالب فتسمح بإضافة أداة أو سلوك جديد دون كسر عقد الأنماط.
 
 | اقرأ | لماذا |
 |---|---|
@@ -15,6 +15,7 @@
 | `docs/TYPOGRAPHY.md` | 29 خطاً عربياً حسب النوع، 10 اقترانات جاهزة، قواعد الطباعة العربية، ومكونات حركة النص |
 | `docs/TEXT_ANIMATION_PROJECTS.md` | مشاريع حركة الخطوط المثبّتة (HarfBuzz «الخط يُكتب»، number-flow، fitty) والمكونات النصية الخمسة الجديدة وما رُفض ولماذا |
 | `docs/CHARTS.md` | الرسوم البيانية وحركاتها: الرسوم الحركية المخصّصة (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة)، Recharts/Nivo/Chart.js/ECharts بسمة واحدة، مرايا RTL، التحميل الكسول، والمختبر `?lab=charts` |
+| `docs/DIAGRAMS_CODE.md` | Mermaid 12، Shiki 4، React Flow/Dagre، Excalidraw؛ RTL، الثيم، الحركة التدريجية، أمثلة ومختبر `?lab=diagrams` |
 | `.agents/skills/*/SKILL.md` | **المهارات** — اقرأ المناسبة قبل العمل على الحركة (الجدول أدناه) |
 | `src/types/presentation.ts` | العقود: `PresentationMeta`, `PrefaceStep`, `ChapterData`, `SlideData`, `FinalData` |
 | `src/data/` | الاستمارات التي تملؤها — بيضاء تماماً: كل الحقول `''` وكل `content: null`، والتعليقات تشرح كل حقل؛ الشاشات تُظهر عناوينها وشاراتها تلقائياً فور الكتابة (`src/lib/blank.ts`) |
@@ -34,6 +35,7 @@
 | `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم» (`CalligraphyText` — HarfBuzz → SVG) أو نص إلى مسارات |
 | `numbers-and-counters` | KPI/نسبة/عدّاد متحرك (`NumberRoll`)، أو أرقام معكوسة/مهتزّة في RTL |
 | `data-charts-motion` | شريحة فيها رسم بياني (أعمدة/خط/حلقة/رادار/قمع/سانكي/مقياس/خريطة حرارية)، لوحة مؤشرات، أو رسم معكوس/غير مقروء في RTL — اختيار الشكل والطبقة والكوريغرافيا |
+| `technical-diagrams-code` | إضافة مخطط تقني/شفرة: Mermaid، Shiki، React Flow/Dagre، Excalidraw، سمة القالب، RTL، الحركة التدريجية والرخص |
 | `animation-qa` | قبل التسليم، أو عند حركة بطيئة/متقطعة |
 
 إن لم يحمّلها وكيلك تلقائياً فاقرأ ملف `SKILL.md` المناسب مباشرة.
@@ -75,6 +77,10 @@
 | رقم بطل تتدحرج خاناته / عنوان يملأ الشاشة | `NumberRoll value locales="ar-DZ"` / `FitText` من `@/components/typography` | @number-flow/react / fitty |
 | رسم بياني متحرك (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة) | `ChartFrame` + `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` من `@/components/charts`؛ وصفتا `KpiCards`, `ChartStory` من `@/recipes` | framer-motion + d3-scale/shape (RTL أصلي) |
 | شكل متقدّم (قمع، وافل، سانكي، مقياس، خريطة حرارية/شجرية، تحوّل شامل) | `lazyChart(() => import('…'))` حول Recharts (`@/components/charts/recharts`) أو Nivo (`@nivo/*` + `nivoTheme`)، أو `<ChartJs />` / `<EChart />` (كسولان) | recharts / nivo / chart.js / echarts — كلها كسولة |
+| مخطط نصّي ثابت (flow / sequence / MCD / UML) | `MermaidDiagram` من `@/components/diagrams` — RTL، سمة slate/amber/sky، روابط تدريجية، strict security | Mermaid 12 (MIT؛ Node `>=22.12`؛ ElkJS متعدٍ ورخصته موضحة في `docs/DIAGRAMS_CODE.md`) |
+| شبكة عقد قابلة للسحب أو القراءة | `NodeDiagram` من `@/components/diagrams` + `AnimatedBeam` اختياري؛ Dagre تلقائي | `@xyflow/react` + `@dagrejs/dagre` (MIT) |
+| رسمة حرة «بخط اليد» | `ExcalidrawBoard` من `@/components/diagrams` (عربي، read-only افتراضياً) | `@excalidraw/excalidraw` (MIT؛ لا تضف tldraw) |
+| شفرة مع ألوان أو diff أو كشف أسطر | `CodeBlock` من `@/components/archetypes` — `highlightLines`, `diff`, `revealLines` | Shiki 4 (MIT) |
 
 الأيقونات: `lucide-react` فقط. الخطوط: 29 خطاً مثبتاً دون اتصال (`src/fonts/registry.ts`؛ كوفي/نسخ/رقعة/حديث/مدوّر/زخرفي + Inter وJetBrains Mono وFira Code) تُختار بالاقتران من `src/data/typography.ts`؛ الافتراضي Cairo + JetBrains Mono.
 
@@ -84,17 +90,20 @@
 - **لا تقسّم النص العربي إلى حروف** في أي حركة (كلمات/أسطر فقط)، ولا `tracking-*`/`italic` على العربية (الخطوط العرضية بحجم كبير فقط).
 - الأرقام والمصطلحات في `<Num>` / `<Term>` / `<Badge>` لا داخل فقرات.
 - معرفات الشرائح فريدة وببادئة الفصل؛ `chapterId` يطابق الفصل.
-- RTL للعربية، و`dir="ltr"` تلقائي للكود والمعرّفات (`<code>`, `Term`).
+- RTL للعربية، و`dir="ltr"` تلقائي للكود والمعرّفات (`<code>`, `Term`). للمخططات اقرأ `docs/DIAGRAMS_CODE.md`: Mermaid بسمته الآمنة RTL، واتجاه العقد `RL` عند الحاجة، وحركة الروابط تحترم تقليل الحركة.
+- لا تثبّت tldraw؛ إذا احتجت رسم حرّ استخدم Excalidraw MIT. لا تضف ELK مباشرة ما دام Dagre يفي بمتطلبات التخطيط.
 - الخاتمة تلخّص فقط. الخلفيات `pointer-events-none`. احترم `prefers-reduced-motion` (المغلّفات تفعل).
 - لا تعدّل `src/components/`، `src/hooks/`، `src/lib/` لمجرد تعبئة محتوى.
 - لا تضف ملفات ثقيلة إلى Git (فيديو، Lottie ضخم > 1MB) — استعمل `public/` أو روابط.
 
 ## أوامر
 
+يلزم Node.js `>=22.12.0` لتبعيات Mermaid 12؛ أمر `npm run build` يرفع حد V8 heap إلى 4 GiB لحزم الإنتاج الكبيرة.
+
 ```bash
 npm install          # مرة واحدة
 npm run dev          # http://localhost:5173 — يطبع تقرير التحقق في وحدة تحكم المتصفح
-npm test             # 82 اختباراً (تحقق، تدفق، عرض كل شاشة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط)
+npm test             # 136 اختباراً (تحقق، تدفق، الأنماط، المؤثرات، المعرض، الوصفات، الخطوط/النص، الرسوم البيانية، المخططات والشفرة)
 npm run check        # أنواع + اختبارات + بناء — يجب أن يمرّ قبل التسليم
 ```
 

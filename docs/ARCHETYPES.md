@@ -192,8 +192,10 @@ import { Num, Term, Badge, Placeholder } from '@/components/ui'; // لإبراز
 |---|---|---|
 | `code` | `string` | يُعرض بأرقام أسطر و`dir="ltr"` |
 | `title?` | `string` | اسم الملف/النموذج في شريط النافذة |
-| `language?` | `string` | شارة اللغة |
+| `language?` | `string` | لغة Shiki؛ القواعد الشائعة تُحمّل عند الطلب، والنص العادي يبقى fallback |
 | `highlightLines?` | `number[]` | أسطر مُبرزة (1-based) |
+| `diff?` | `boolean` | يعرض unified diff بالألوان؛ اذكر `language` لتلوين الشفرة المعدّلة |
+| `revealLines?` | `boolean` | كشف الأسطر بالتتابع عند دخول الشريحة؛ افتراضياً `true`، ويحترم تقليل الحركة |
 | `aside?` | `{ title; points: string[] }` | شرح جانبي (قواعد الترجمة مثلاً) |
 
 ```tsx
@@ -209,6 +211,8 @@ CREATE TABLE commande (
   aside={{ title: 'قواعد الترجمة', points: ['كل كيان ← جدول.', 'المعرّف ← مفتاح رئيسي.'] }}
 />
 ```
+
+يحمّل `CodeBlock` Shiki 4 وقواعد اللغة عند الحاجة؛ إبراز الأسطر وdiff وظهور السطر تلو الآخر لا تغيّر `archetype: 'code'`. تفاصيل اللغات وأمثلة Unified Diff: [`DIAGRAMS_CODE.md`](./DIAGRAMS_CODE.md).
 
 ## 10. `stats` — `StatCounters`
 
@@ -263,6 +267,12 @@ CREATE TABLE commande (
 | `compact?` | `boolean` | إخفاء قائمة الأنماط (يُستعمل في المقدمة) |
 
 في القالب الأبيض (كل الشرائح بلا عنوان ولا محتوى) يطبع التحقق تحذيراً واحداً `template.blank`؛ وبمجرد بدء التعبئة تصبح كل شريحة بيضاء تحذير `slide.blank`، وكل شريحة لها محتوى وما تزال `archetype: 'placeholder'` تحذير `slide.placeholder` (غير مصنَّفة).
+
+---
+
+## أدوات مخططات داخل الأنماط (لا تضف نمطاً حادي عشر)
+
+للمخطط النصّي الثابت استعمل `MermaidDiagram`، وللشبكة القابلة للسحب `NodeDiagram` (React Flow + Dagre)، وللرسم الحر `ExcalidrawBoard` من `@/components/diagrams`. ضع أيّاً منها في `content` لشريحة `relation` أو `process` أو `tree` بحسب الرسالة؛ احتفظ بـ `CodeBlock` في `code`. دليل الاختيار وواجهات الاستخدام: [`DIAGRAMS_CODE.md`](./DIAGRAMS_CODE.md)، والمختبر `/?lab=diagrams`.
 
 ---
 

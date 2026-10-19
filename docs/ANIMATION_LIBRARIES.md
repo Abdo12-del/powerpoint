@@ -1,6 +1,6 @@
 # كتالوج مكتبات الحركة المثبتة (Animation Toolkit)
 
-كل ما يلي **مثبت وجاهز** في `package.json`، وله مغلّف بسيط في `src/components/effects/` يُستورد هكذا:
+كل ما يلي **مثبت وجاهز** في `package.json`؛ أدوات الحركة العامة لها مغلّفات في `src/components/effects/`، أما حزمة المخططات التقنية (Mermaid/Shiki/React Flow/Excalidraw) فلها مكونات مستقلة ودليل [`DIAGRAMS_CODE.md`](DIAGRAMS_CODE.md).
 
 ```tsx
 import {
@@ -46,6 +46,10 @@ import {
 | عنوان يملأ عرض الشاشة | `FitText` (`@/components/typography`) | fitty |
 | رسم بياني متحرك (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة) بـ RTL أصلي | `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` + `ChartFrame` (`@/components/charts`) | framer-motion + d3-scale/shape — [`CHARTS.md`](CHARTS.md) |
 | شكل بياني متقدّم (قمع، وافل، سانكي، مقياس، خريطة حرارية/شجرية، تحوّل أعمدة ⇄ فطيرة) | `lazyChart` + Recharts/Nivo، أو `<ChartJs />` / `<EChart />` | recharts / @nivo/* / chart.js / echarts (كلها كسولة) — [`CHARTS.md`](CHARTS.md) |
+| مخطط ثابت من نص (flowchart, sequence, ERD/UML) | `MermaidDiagram` — ثيم القالب، RTL، وروابط تُرسم بالتتابع | Mermaid 12 (MIT؛ lazy) |
+| كود ملوّن أو diff مع تمييز الأسطر | `CodeBlock` — Shiki، diff، revealLines | Shiki 4 (MIT؛ لغات عند الطلب) |
+| شبكة عقد قابلة للتفاعل وتخطيط آلي | `NodeDiagram` — React Flow + Dagre، AnimatedBeam اختياري | `@xyflow/react` + `@dagrejs/dagre` (MIT؛ lazy) |
+| رسم حرّ بأسلوب يدوي | `ExcalidrawBoard` — توطين ar-SA، read-only افتراضياً | Excalidraw (MIT؛ runtime lazy) |
 
 ---
 
@@ -198,8 +202,8 @@ const [shown, setShown] = useState(1);
 
 ## ما بعد المكتبات: المهارات والمعرض والوصفات
 
-- **مهارات** تشرح متى وكيف (`.agents/skills/`): `presentation-motion-director`, `gsap-react-timelines`, `framer-motion-recipes`, `gallery-components`, `svg-diagram-animation`, `lottie-and-media`, `arabic-typography-motion`, `animation-qa`.
-- **معرض 37 مكوّناً** مستعاراً (`@/components/gallery`) و**8 وصفات** (`@/recipes`).
+- **مهارات** تشرح متى وكيف (`.agents/skills/`)، ومنها `technical-diagrams-code` للمخططات والشفرة و`data-charts-motion` للرسوم البيانية.
+- **معرض 42 مكوّناً** مستعاراً (`@/components/gallery`) و**10 وصفات** (`@/recipes`).
 - **الخطوط وحركة النص**: 29 خطاً عربياً حسب النوع و10 اقترانات ومكونات `KineticHeadline`/`VariableText`/`ClipReveal`/`HighlightSweep`/`FancyText` — [`TYPOGRAPHY.md`](TYPOGRAPHY.md).
 - **مشاريع حركة الخطوط**: `harfbuzzjs` (الخط يُكتب — `CalligraphyText`)، `@number-flow/react` (`NumberRoll`)، `fitty` (`FitText`) + 5 مكونات نصية مستعارة؛ وما رُفض (`opentype.js`، React Bits) ولماذا — [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md).
 - التفاصيل وكتالوج مشاريع GitHub: [`ANIMATION_PROJECTS.md`](ANIMATION_PROJECTS.md).
