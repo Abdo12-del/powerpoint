@@ -1,10 +1,12 @@
 # مشاريع ومهارات تحسين الحركة (Animation Projects & Skills)
 
-هذا الملف يكمّل [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md) (المكتبات المثبتة). هنا ثلاثة أشياء إضافية جاهزة في المستودع:
+هذا الملف يكمّل [`ANIMATION_LIBRARIES.md`](ANIMATION_LIBRARIES.md) (المكتبات المثبتة). هنا خمسة أشياء إضافية جاهزة في المستودع:
 
 1. **المهارات** (`.agents/skills/`) — معرفة إجرائية يقرأها أي وكيل عند الحاجة.
 2. **معرض المكونات المستعارة** (`src/components/gallery/`) — 42 مكوّناً من مشاريع مفتوحة MIT مُكيَّفة ومُختبَرة.
 3. **الوصفات** (`src/recipes/`) — 10 تركيبات جاهزة لأنماط الشرائح.
+4. **عدة الصور والفيديو** (`src/components/media/`) — صور lazy، zoom/pan، معرض RTL، إطارات أجهزة وفيديو مربوط بنشاط الشريحة؛ [`MEDIA.md`](MEDIA.md).
+5. **السمات والهوية** (`src/components/themes/`) — CSS themes، خلفيات العرض، لوحات فصول Culori، شعار الجامعة والذيل؛ [`THEMES_BRANDING.md`](THEMES_BRANDING.md).
 
 وفي الأخير كتالوج **مشاريع GitHub** يمكن الاستعارة منها لاحقاً مع ملاحظات الرخصة والعربية.
 
@@ -21,13 +23,15 @@
 | `framer-motion-recipes` | دخول/خروج، stagger، layout، pathLength | 10 وصفات بالرموز المشتركة في `ui/motion.ts` |
 | `gallery-components` | «استعمل Magic UI»، عنصر بصري جاهز، استعارة مكوّن جديد | دليل الشريحة ← المكوّن، القيود، خطوات الاستعارة، المهارة الرسمية لـ Magic UI كمرجع |
 | `svg-diagram-animation` | مخططات، روابط، خط زمني، شجرة | `AnimatedBeam`، `pathLength`، نبض على الروابط، ترتيب القراءة RTL |
-| `lottie-and-media` | رسوم Lottie، لقطات شاشة، فيديو، إطارات أجهزة | أين توضع الملفات، اختيار Lottie، بدائل dotLottie/Rive، الصور والفيديو |
+| `lottie-and-media` | رسوم Lottie، معرض/تكبير صور، لقطات شاشة، فيديو محلي/YouTube | قواعد الصور والـSVG والفيديو، lazy + blur placeholders، إطارات الأجهزة، نشاط الفيديو أثناء خروج الشريحة ورخص الحزم (`docs/MEDIA.md`) |
 | `arabic-typography-motion` | «غيّر الخط»، اختيار خط لطابع العرض، تحريك عنوان/كلمة، حروف عربية منفصلة | جدول الطابع ← الاقتران، أنواع الخط العربي ومتى يصلح كلٌّ، قواعد لا تُكسر، مقتطفات `@/components/typography`، أعطال وإصلاحها (`docs/TYPOGRAPHY.md`) |
 | `kinetic-typography` | «حرّك العنوان»، نص أكثر حيوية، تبديل/لمعة/تحوّل كلمات، عنوان يملأ الشاشة | جدول الموقف ← المكوّن لكل أدوات النص (المعرض + typography)، حراس العربية، ميزانية التوقيت، تركيبات لكل شاشة، ما استُبعد ولماذا (`docs/TEXT_ANIMATION_PROJECTS.md`) |
 | `calligraphy-draw-on` | بسملة/عنوان/اقتباس «يُكتب بالقلم»، نص إلى مسارات SVG | `CalligraphyText` (HarfBuzz → SVG)، اختيار الخط من 10 خطوط قابلة للرسم، الأوضاع والتوقيت، خط خاص، واجهة `text-shaper` للأقنعة، استكشاف الأخطاء |
 | `numbers-and-counters` | KPI متحرك، نسبة، عدّاد، أرقام معكوسة في RTL | `NumberRoll` (number-flow) مقابل `NumberTicker`/نمط `stats`، المحلية ونمط الأرقام، `dir="ltr"`، وصفة شريحة إحصاء |
-| `data-charts-motion` | شريحة فيها رسم بياني، لوحة مؤشرات، رسم معكوس/غير مقروء في RTL | الرسالة ← الشكل، الطبقة (مخصّص/Recharts/Nivo/Chart.js/ECharts)، التحميل الكسول، كوريغرافيا الكشف، جدول مرايا RTL لكل مكتبة، الأرقام والألوان، مراجع لكل مكتبة في `references/` (`docs/CHARTS.md`) |
+| `data-charts-motion` | رسم بياني أو لوحة مؤشرات، موقع تطبيق، مقارنة جغرافية/choropleth، أو انتشار دولي على كرة أرضية | الرسالة ← الشكل، الرسوم المخصّصة/مكتبات charts، `MapChart` و`GlobeCanvas`، التحميل الكسول، اللون المشترك، RTL، تقليل الحركة والرخص (`docs/CHARTS.md`, `docs/MAPS.md`) |
 | `technical-diagrams-code` | مخطط تقني أو شفرة/SQL/diff في شريحة | اختيار Mermaid/Shiki/React Flow + Dagre/Excalidraw، RTL، السمة الداكنة، كشف الروابط، الحركة المخفّضة، بيانات الحزم/الرخص (`docs/DIAGRAMS_CODE.md`) |
+| `math-science-rtl` | صيغة، اشتقاق، كيمياء، وحدات، أو رسم دالة في عرض عربي | KaTeX 0.19 + mhchem، عزل LTR والترقيم، `EquationReveal`، Mafs/منزلق الوصول، التوافق والرخص (`docs/MATH_SCIENCE.md`) |
+| `themes-branding-rtl` | إعداد سمة فاتحة/داكنة/مؤسسية، لون فصل، خلفية زخرفية، أو شعار وذيل جامعي | متغيرات CSS، لوحات Culori/OKLCH، RTL والتباين، `BrandChrome` و`?lab=themes` (`docs/THEMES_BRANDING.md`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.

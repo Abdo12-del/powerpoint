@@ -4,6 +4,27 @@ import type { ConfettiPreset, ParticlesPreset } from './effects';
 
 export type { ConfettiPreset, ParticlesPreset } from './effects';
 
+/** ثيمات القالب العامة — كل وضع يضبط أدوار CSS مستقلة عن محتوى الشرائح. */
+export type ThemeMode = 'dark' | 'light' | 'corporate';
+export type ThemeBackdrop = 'aurora' | 'mesh' | 'grid' | 'noise' | 'none';
+
+export interface PresentationThemeConfig {
+  /** الوضع البصري: داكن افتراضياً، أو فاتح، أو مؤسسي. */
+  mode?: ThemeMode;
+  /** طبقة الخلفية الزخرفية؛ لا تؤثر في خلفية جسيمات شاشة العنوان. */
+  backdrop?: ThemeBackdrop;
+}
+
+/** هوية الجامعة الاختيارية، تظهر كترويسة وذيل ثابتين فوق كل شاشة. */
+export interface PresentationBranding {
+  university?: string;
+  unit?: string;
+  /** مسار صورة الشعار (يفضّل ملفاً محلياً في public/branding/). */
+  logoSrc?: string;
+  logoAlt?: string;
+  footer?: string;
+}
+
 /**
  * أنماط الشرائح المعيارية (§5 من المواصفة) + شريحتا حصر الفصل.
  * كل شريحة تُصنَّف أولاً إلى نمط ثم تُبنى — هذا يجعل الهيكل متوقّعاً لأي وكيل.
@@ -52,9 +73,11 @@ export interface ChapterData {
   /** السؤال الذي يجيب عنه الفصل (اختياري) */
   subtitle?: string;
   icon: LucideIcon;
-  /** أصناف تدرّج Tailwind للخلفية: 'from-blue-600/20 to-blue-400/20' */
+  /** لون أساس sRGB أو CSS؛ تُشتق منه ألوان الفصل المتناغمة بواسطة Culori. */
+  brandColor?: string;
+  /** أصناف تدرّج Tailwind القديمة (احتياط للتوافق مع بيانات العروض الموجودة). */
   color: string;
-  /** أصناف لون التمييز (نص/حدود): 'text-blue-300 border-blue-400/40' */
+  /** أصناف لون التمييز القديمة (احتياط للتوافق مع بيانات العروض الموجودة). */
   accent: string;
   slides: SlideData[];
 }
@@ -112,6 +135,10 @@ export interface FinalData {
 /** العرض الكامل — رأس الهرم. */
 export interface PresentationData {
   meta: PresentationMeta;
+  /** الوضع العام والخلفية الزخرفية (اختياريان؛ الافتراضي داكن/aurora). */
+  theme?: PresentationThemeConfig;
+  /** شعار الجامعة والجهة والذيل الثابت؛ لا يظهر شيء عند تركه فارغاً. */
+  branding?: PresentationBranding;
   preface: PrefaceStep[];
   chapters: ChapterData[];
   final: FinalData;

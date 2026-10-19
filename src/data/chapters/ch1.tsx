@@ -21,6 +21,7 @@ export const ch1: ChapterData = {
   title: '', // اسم معرفي: 'الدراسة التمهيدية'
   // subtitle: 'السؤال الذي يجيب عنه هذا الفصل؟',
   icon: Layers,
+  brandColor: '#0ea5e9', // Culori يشتق درجات متناسقة بحسب سمة العرض
   color: 'from-sky-600/20 to-sky-400/10',
   accent: 'text-sky-200 border-sky-400/40',
   slides: [

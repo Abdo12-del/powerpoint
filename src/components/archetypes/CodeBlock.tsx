@@ -161,7 +161,7 @@ export function CodeBlock({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduceMotion ? 0 : 0.45 }}
         dir="ltr"
-        className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b1220] shadow-2xl"
+        className="theme-code-window overflow-hidden rounded-2xl border border-white/10 bg-[#0b1220] shadow-2xl"
       >
         <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-2">
           <span aria-hidden className="h-3 w-3 rounded-full bg-rose-400/80" />

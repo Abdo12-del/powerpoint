@@ -6,6 +6,7 @@ export const ch2: ChapterData = {
   id: 'ch2',
   title: '',
   icon: ChartColumn,
+  brandColor: '#a855f7',
   color: 'from-violet-600/20 to-fuchsia-400/10',
   accent: 'text-violet-200 border-violet-400/40',
   slides: [

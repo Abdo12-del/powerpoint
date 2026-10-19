@@ -11,11 +11,15 @@ export function SlideHeader({ item }: { item: FlatSlide }) {
   const { slide, chapter, chapterIndex, indexInChapter } = item;
   const ChapterIcon = chapter.icon;
   const SlideIcon = slide.icon;
+  const hasChapterPalette = Boolean(chapter.brandColor);
   return (
     <header className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2 text-sm">
         <span
-          className={cn('inline-flex items-center gap-1.5 rounded-full border bg-white/[0.04] px-3 py-1 font-semibold tabular-nums', chapter.accent)}
+          className={cn(
+            'inline-flex items-center gap-1.5 rounded-full border bg-white/[0.04] px-3 py-1 font-semibold tabular-nums',
+            hasChapterPalette ? 'chapter-palette-pill' : chapter.accent,
+          )}
         >
           <ChapterIcon className="h-4 w-4" />
           {hasText(chapter.title) ? `الفصل ${chapterIndex + 1} — ${chapter.title}` : chapterIndex + 1}
@@ -30,7 +34,10 @@ export function SlideHeader({ item }: { item: FlatSlide }) {
             initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-            className={cn('flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br', chapter.color, chapter.accent)}
+            className={cn(
+              'flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border',
+              hasChapterPalette ? 'chapter-palette-icon chapter-palette-border' : cn('bg-gradient-to-br', chapter.color, chapter.accent),
+            )}
           >
             <SlideIcon className="h-7 w-7" />
           </motion.span>

@@ -13,7 +13,7 @@ export function ProgressBar({ progress }: { progress: number }) {
       aria-label="تقدّم العرض"
     >
       <motion.div
-        className="h-full bg-gradient-to-l from-amber-300 to-amber-500 shadow-[0_0_12px_rgba(251,191,36,0.6)]"
+        className="presentation-progress-fill h-full bg-gradient-to-l from-amber-300 to-amber-500"
         initial={false}
         animate={{ width: `${pct}%` }}
         transition={{ type: 'spring', stiffness: 120, damping: 20 }}

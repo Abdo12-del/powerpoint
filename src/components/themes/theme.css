@@ -1,0 +1,429 @@
+/* Theme roles and CSS-only backdrops for the presentation shell. */
+.presentation-shell {
+  --presentation-background: #020617;
+  --presentation-foreground: #f1f5f9;
+  --presentation-surface: #0f172a;
+  --presentation-surface-raised: #1e293b;
+  --presentation-muted: #94a3b8;
+  --presentation-border: rgba(255, 255, 255, 0.14);
+  --presentation-accent: #fbbf24;
+  --presentation-secondary: #38bdf8;
+  --presentation-on-accent: #020617;
+  --presentation-grid: rgba(255, 255, 255, 0.09);
+  position: relative;
+  isolation: isolate;
+  background-color: var(--presentation-background);
+  color: var(--presentation-foreground);
+  color-scheme: dark;
+}
+
+.presentation-shell[data-presentation-theme='light'] {
+  --presentation-background: #f8fafc;
+  --presentation-foreground: #0f172a;
+  --presentation-surface: #ffffff;
+  --presentation-surface-raised: #e2e8f0;
+  --presentation-muted: #475569;
+  --presentation-border: rgba(15, 23, 42, 0.15);
+  --presentation-accent: #d97706;
+  --presentation-secondary: #0284c7;
+  --presentation-on-accent: #172033;
+  --presentation-grid: rgba(15, 23, 42, 0.08);
+  --presentation-text-amber: #92400e;
+  --presentation-text-sky: #075985;
+  --presentation-text-emerald: #047857;
+  --presentation-text-rose: #be123c;
+  --presentation-text-violet: #6d28d9;
+  --presentation-text-orange: #c2410c;
+  --color-white: #0f172a;
+  --color-slate-950: #f8fafc;
+  --color-slate-900: #ffffff;
+  --color-slate-800: #e2e8f0;
+  --color-slate-700: #cbd5e1;
+  --color-slate-600: #475569;
+  --color-slate-500: #475569;
+  --color-slate-400: #64748b;
+  --color-slate-300: #334155;
+  --color-slate-200: #1e293b;
+  --color-slate-100: #0f172a;
+  --color-amber-100: #ffedd5;
+  --color-amber-200: #9a3412;
+  --color-amber-300: #c2410c;
+  --color-amber-400: #d97706;
+  --color-amber-500: #b45309;
+  color-scheme: light;
+}
+
+.presentation-shell[data-presentation-theme='corporate'] {
+  --presentation-background: #f3f6fb;
+  --presentation-foreground: #142945;
+  --presentation-surface: #ffffff;
+  --presentation-surface-raised: #e8eef7;
+  --presentation-muted: #52667e;
+  --presentation-border: rgba(20, 41, 69, 0.16);
+  --presentation-accent: #1d4ed8;
+  --presentation-secondary: #b89556;
+  --presentation-on-accent: #ffffff;
+  --presentation-grid: rgba(20, 41, 69, 0.08);
+  --presentation-text-amber: #1e40af;
+  --presentation-text-sky: #1e40af;
+  --presentation-text-emerald: #047857;
+  --presentation-text-rose: #be123c;
+  --presentation-text-violet: #6d28d9;
+  --presentation-text-orange: #c2410c;
+  --color-white: #142945;
+  --color-slate-950: #f3f6fb;
+  --color-slate-900: #ffffff;
+  --color-slate-800: #e8eef7;
+  --color-slate-700: #d2deed;
+  --color-slate-600: #52667e;
+  --color-slate-500: #52667e;
+  --color-slate-400: #61748a;
+  --color-slate-300: #40536d;
+  --color-slate-200: #263c59;
+  --color-slate-100: #142945;
+  --color-amber-100: #dbeafe;
+  --color-amber-200: #bfdbfe;
+  --color-amber-300: #60a5fa;
+  --color-amber-400: #1d4ed8;
+  --color-amber-500: #1e40af;
+  --color-sky-100: #dbeafe;
+  --color-sky-200: #bfdbfe;
+  --color-sky-300: #93c5fd;
+  --color-sky-400: #3b82f6;
+  --color-sky-500: #1d4ed8;
+  color-scheme: light;
+}
+
+/* Keep semantic accent labels readable on the light surfaces. */
+.presentation-shell[data-presentation-theme='light'] [class*='text-amber-'] {
+  color: var(--presentation-text-amber);
+}
+
+.presentation-shell[data-presentation-theme='light'] [class*='text-sky-'] {
+  color: var(--presentation-text-sky);
+}
+
+.presentation-shell[data-presentation-theme='light'] [class*='text-emerald-'] {
+  color: var(--presentation-text-emerald);
+}
+
+.presentation-shell[data-presentation-theme='light'] [class*='text-rose-'] {
+  color: var(--presentation-text-rose);
+}
+
+.presentation-shell[data-presentation-theme='light'] [class*='text-violet-'] {
+  color: var(--presentation-text-violet);
+}
+
+.presentation-shell[data-presentation-theme='light'] [class*='text-orange-'] {
+  color: var(--presentation-text-orange);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-amber-'] {
+  color: var(--presentation-text-amber);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-sky-'] {
+  color: var(--presentation-text-sky);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-emerald-'] {
+  color: var(--presentation-text-emerald);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-rose-'] {
+  color: var(--presentation-text-rose);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-violet-'] {
+  color: var(--presentation-text-violet);
+}
+
+.presentation-shell[data-presentation-theme='corporate'] [class*='text-orange-'] {
+  color: var(--presentation-text-orange);
+}
+
+/* Code remains a dark surface even when the surrounding presentation is light. */
+.presentation-shell .theme-code-window [class*='text-slate-100'] {
+  color: #f1f5f9;
+}
+
+.presentation-shell .theme-code-window [class*='text-slate-300'] {
+  color: #cbd5e1;
+}
+
+.presentation-shell .theme-code-window [class*='text-slate-500'] {
+  color: #64748b;
+}
+
+.presentation-shell .theme-code-window [class*='text-sky-'] {
+  color: #7dd3fc;
+}
+
+.presentation-shell .theme-code-window [class*='text-emerald-'] {
+  color: #6ee7b7;
+}
+
+.presentation-shell .theme-code-window [class*='text-rose-'] {
+  color: #fda4af;
+}
+
+.presentation-shell .theme-code-window [class*='text-violet-'] {
+  color: #ddd6fe;
+}
+
+/* Existing utility classes inherit the theme's slate/white/gold roles. */
+.presentation-shell .text-slate-950 {
+  color: var(--presentation-on-accent);
+}
+
+.presentation-progress-fill {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--presentation-accent) 60%, transparent);
+}
+
+.presentation-accent-shadow {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--presentation-accent) 35%, transparent);
+}
+
+.presentation-accent-shadow-strong {
+  box-shadow: 0 0 60px color-mix(in srgb, var(--presentation-accent) 35%, transparent);
+}
+
+.presentation-backdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 42rem 32rem at 8% 8%, color-mix(in srgb, var(--presentation-accent) 13%, transparent), transparent 72%),
+    radial-gradient(ellipse 38rem 30rem at 92% 88%, color-mix(in srgb, var(--presentation-secondary) 11%, transparent), transparent 74%);
+}
+
+.presentation-shell[data-presentation-backdrop='aurora'] .presentation-backdrop::before {
+  position: absolute;
+  inset: -45%;
+  content: '';
+  background: conic-gradient(
+    from 35deg at 50% 50%,
+    transparent 0deg,
+    color-mix(in srgb, var(--presentation-accent) 10%, transparent) 70deg,
+    transparent 130deg,
+    color-mix(in srgb, var(--presentation-secondary) 12%, transparent) 220deg,
+    transparent 300deg
+  );
+  filter: blur(72px);
+  animation: theme-aurora-drift 34s ease-in-out infinite alternate;
+}
+
+.presentation-shell[data-presentation-backdrop='mesh'] .presentation-backdrop {
+  background:
+    radial-gradient(ellipse 48% 40% at 12% 16%, color-mix(in srgb, var(--presentation-accent) 20%, transparent), transparent 82%),
+    radial-gradient(ellipse 42% 55% at 88% 18%, color-mix(in srgb, var(--presentation-secondary) 16%, transparent), transparent 78%),
+    radial-gradient(ellipse 52% 45% at 56% 96%, color-mix(in srgb, var(--presentation-accent) 12%, transparent), transparent 82%);
+}
+
+.presentation-shell[data-presentation-backdrop='grid'] .presentation-backdrop {
+  background-image:
+    linear-gradient(var(--presentation-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--presentation-grid) 1px, transparent 1px),
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--presentation-accent) 8%, transparent), transparent 76%);
+  background-size: 42px 42px, 42px 42px, auto;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 65%, transparent 100%);
+}
+
+.presentation-shell[data-presentation-backdrop='noise'] .presentation-backdrop::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  opacity: 0.14;
+  mix-blend-mode: soft-light;
+}
+
+.presentation-shell[data-presentation-backdrop='none'] .presentation-backdrop {
+  display: none;
+}
+
+@keyframes theme-aurora-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) rotate(-7deg) scale(1.02);
+  }
+  to {
+    transform: translate3d(2%, 1%, 0) rotate(7deg) scale(1.08);
+  }
+}
+
+.brand-chrome-header {
+  position: absolute;
+  z-index: 30;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 1.5rem;
+  display: flex;
+  max-width: calc(100% - 3rem);
+  align-items: center;
+  gap: 0.55rem;
+  pointer-events: none;
+}
+
+.brand-chrome-mark {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--presentation-border);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--presentation-accent) 13%, var(--presentation-surface));
+  color: var(--presentation-accent);
+}
+
+.brand-chrome-logo {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--presentation-border);
+  border-radius: 0.7rem;
+  background: var(--presentation-surface);
+  object-fit: contain;
+  padding: 0.15rem;
+}
+
+.brand-chrome-header-copy {
+  min-width: 0;
+  text-align: start;
+  line-height: 1.25;
+}
+
+.brand-chrome-university {
+  overflow: hidden;
+  color: var(--presentation-foreground);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-chrome-unit {
+  overflow: hidden;
+  color: var(--presentation-muted);
+  font-size: 0.63rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-chrome-footer {
+  position: absolute;
+  z-index: 30;
+  inset-inline: 1.5rem;
+  inset-block-end: 6rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.brand-chrome-footer span {
+  max-width: 100%;
+  border-block-start: 1px solid var(--presentation-border);
+  padding: 0.45rem 0.8rem 0;
+  color: var(--presentation-muted);
+  font-size: 0.66rem;
+  text-align: center;
+}
+
+.chapter-palette-scope {
+  --chapter-accent: var(--chapter-dark-accent, #38bdf8);
+  --chapter-accent-strong: var(--chapter-dark-accent-strong, #7dd3fc);
+  --chapter-accent-soft: var(--chapter-dark-soft, #0c4a6e);
+  --chapter-gradient-start: var(--chapter-dark-gradient-start, #0c4a6e);
+  --chapter-gradient-end: var(--chapter-dark-gradient-end, #082f49);
+  --chapter-complementary: var(--chapter-dark-complementary, #fda4af);
+  --chapter-on-accent: var(--chapter-dark-on-accent, #020617);
+}
+
+[data-presentation-theme='light'] .chapter-palette-scope {
+  --chapter-accent: var(--chapter-light-accent);
+  --chapter-accent-strong: var(--chapter-light-accent-strong);
+  --chapter-accent-soft: var(--chapter-light-soft);
+  --chapter-gradient-start: var(--chapter-light-gradient-start);
+  --chapter-gradient-end: var(--chapter-light-gradient-end);
+  --chapter-complementary: var(--chapter-light-complementary);
+  --chapter-on-accent: var(--chapter-light-on-accent);
+}
+
+[data-presentation-theme='corporate'] .chapter-palette-scope {
+  --chapter-accent: var(--chapter-corporate-accent);
+  --chapter-accent-strong: var(--chapter-corporate-accent-strong);
+  --chapter-accent-soft: var(--chapter-corporate-soft);
+  --chapter-gradient-start: var(--chapter-corporate-gradient-start);
+  --chapter-gradient-end: var(--chapter-corporate-gradient-end);
+  --chapter-complementary: var(--chapter-corporate-complementary);
+  --chapter-on-accent: var(--chapter-corporate-on-accent);
+}
+
+.chapter-palette-card {
+  border-color: color-mix(in srgb, var(--chapter-accent) 36%, transparent);
+  background-image: linear-gradient(145deg, color-mix(in srgb, var(--chapter-gradient-start) 60%, transparent), color-mix(in srgb, var(--chapter-gradient-end) 48%, transparent));
+}
+
+.chapter-palette-current {
+  border-color: color-mix(in srgb, var(--chapter-accent) 72%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--chapter-accent) 42%, transparent), 0 20px 60px -20px color-mix(in srgb, var(--chapter-accent) 42%, transparent);
+}
+
+.chapter-palette-border {
+  border-color: color-mix(in srgb, var(--chapter-accent) 48%, transparent);
+}
+
+.chapter-palette-pill {
+  border-color: color-mix(in srgb, var(--chapter-accent) 46%, transparent);
+  background-color: color-mix(in srgb, var(--chapter-accent) 12%, var(--presentation-surface));
+  color: var(--chapter-accent);
+}
+
+.chapter-palette-icon {
+  background-image: linear-gradient(135deg, color-mix(in srgb, var(--chapter-gradient-start) 72%, transparent), color-mix(in srgb, var(--chapter-gradient-end) 68%, transparent));
+  color: var(--chapter-accent);
+}
+
+.chapter-palette-fill {
+  background-color: var(--chapter-accent);
+}
+
+.chapter-palette-track {
+  background-color: color-mix(in srgb, var(--chapter-accent) 42%, transparent);
+}
+
+.chapter-palette-active-node {
+  border-color: color-mix(in srgb, var(--chapter-accent) 78%, transparent);
+  color: var(--chapter-accent);
+}
+
+.chapter-palette-current-badge {
+  background-color: var(--chapter-accent);
+  color: var(--chapter-on-accent);
+}
+
+.chapter-palette-selected-slide {
+  border-color: color-mix(in srgb, var(--chapter-accent) 58%, transparent);
+  background-color: color-mix(in srgb, var(--chapter-accent) 15%, var(--presentation-surface));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presentation-shell[data-presentation-backdrop='aurora'] .presentation-backdrop::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-chrome-header {
+    inset-inline-start: 0.75rem;
+    max-width: calc(100% - 1.5rem);
+  }
+
+  .brand-chrome-footer {
+    inset-inline: 0.75rem;
+  }
+}

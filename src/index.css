@@ -3,6 +3,7 @@
 @import 'tw-animate-css';
 /* إطارات الحركة لمكونات المعرض المستعارة (Magic UI / motion-primitives) */
 @import './styles/gallery.css';
+@import './components/themes/theme.css';
 
 /*
  * أدوار الخطوط — القيم هنا احتياطية فقط؛ `applyTypography()` (src/fonts) يضبطها حياً على :root
@@ -60,6 +61,32 @@ kbd,
 pre {
   direction: ltr;
   unicode-bidi: isolate;
+}
+
+/* Mafs inherits the presentation's dark slate/amber/sky palette instead of its black default. */
+.math-mafs .MafsView {
+  --mafs-bg: color-mix(in srgb, var(--presentation-surface, #020617) 78%, transparent);
+  --mafs-fg: var(--presentation-foreground, #cbd5e1);
+  --mafs-origin-color: var(--presentation-accent, #fbbf24);
+  --mafs-line-color: color-mix(in srgb, var(--presentation-foreground, #94a3b8) 28%, transparent);
+  --grid-line-subdivision-color: color-mix(in srgb, var(--presentation-foreground, #94a3b8) 12%, transparent);
+  --mafs-blue: var(--presentation-secondary, #38bdf8);
+  --mafs-yellow: var(--presentation-accent, #fbbf24);
+}
+
+.math-mafs .MafsView:focus-visible {
+  outline-color: #fbbf24;
+}
+
+/* Keep KaTeX inline spans isolated in Arabic copy; punctuation stays with its RTL sentence. */
+.math-katex-inline {
+  vertical-align: -0.16em;
+}
+
+.math-katex-block .katex-display {
+  margin: 0.2em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* شريط تمرير هادئ */

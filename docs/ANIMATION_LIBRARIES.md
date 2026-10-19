@@ -1,6 +1,6 @@
 # كتالوج مكتبات الحركة المثبتة (Animation Toolkit)
 
-كل ما يلي **مثبت وجاهز** في `package.json`؛ أدوات الحركة العامة لها مغلّفات في `src/components/effects/`، أما حزمة المخططات التقنية (Mermaid/Shiki/React Flow/Excalidraw) فلها مكونات مستقلة ودليل [`DIAGRAMS_CODE.md`](DIAGRAMS_CODE.md).
+كل ما يلي **مثبت وجاهز** في `package.json`؛ أدوات الحركة العامة لها مغلّفات في `src/components/effects/`، والمخططات التقنية في [`DIAGRAMS_CODE.md`](DIAGRAMS_CODE.md)، والصور/الفيديو في [`MEDIA.md`](MEDIA.md)، والخرائط الجغرافية في [`MAPS.md`](MAPS.md)، والرياضيات/العلوم في [`MATH_SCIENCE.md`](MATH_SCIENCE.md)، والسمات والهوية في [`THEMES_BRANDING.md`](THEMES_BRANDING.md).
 
 ```tsx
 import {
@@ -46,10 +46,20 @@ import {
 | عنوان يملأ عرض الشاشة | `FitText` (`@/components/typography`) | fitty |
 | رسم بياني متحرك (أعمدة/خط/حلقة/رادار/خط مصغّر/قائمة أشرطة) بـ RTL أصلي | `MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList` + `ChartFrame` (`@/components/charts`) | framer-motion + d3-scale/shape — [`CHARTS.md`](CHARTS.md) |
 | شكل بياني متقدّم (قمع، وافل، سانكي، مقياس، خريطة حرارية/شجرية، تحوّل أعمدة ⇄ فطيرة) | `lazyChart` + Recharts/Nivo، أو `<ChartJs />` / `<EChart />` | recharts / @nivo/* / chart.js / echarts (كلها كسولة) — [`CHARTS.md`](CHARTS.md) |
+| خريطة موقع/مقارنة جغرافية/choropleth وعلامات نابضة | `MapChart` (`@/components/maps`) — العالم، العالم العربي، 69 ولاية جزائرية؛ يرث لوحة charts ويدعم تقليل الحركة | `react-simple-maps` 5 (MIT) + `d3-geo`/`topojson-client` (ISC)، البيانات المحلية ورخصها — [`MAPS.md`](MAPS.md) |
+| انتشار دولي زخرفي أو مسارات ربط على كرة أرضية | `GlobeCanvas` (`@/components/maps`) — نقاط/أقواس Cobe، يرث ألوان السمة ويتوقف عند تقليل الحركة؛ استخدمه للهوية لا لعرض قيم جغرافية | `cobe` 2.0.1 (MIT، 0 تبعيات تشغيل، بلا React peer)؛ تحميل كسول — [`MAPS.md`](MAPS.md) |
+| صيغة رياضية أو اشتقاق أو كيمياء/وحدات RTL | `MathInline`, `MathBlock`, `EquationReveal`, `ChemicalEquation`, `UnitValue` (`@/components/math`) | KaTeX 0.19 + mhchem (MIT) — [`MATH_SCIENCE.md`](MATH_SCIENCE.md) |
+| رسم دالة تفاعلي مع نقطة سحب | `FunctionPlot` (`@/components/math`) — منزلق لوحة مفاتيح مسمى؛ تحميل كسول | Mafs 0.21 (MIT؛ React 19) — [`MATH_SCIENCE.md`](MATH_SCIENCE.md) |
+| سمات عرض فاتحة/داكنة/مؤسسية، لون فصل أو هوية جامعية | `PresentationData.theme`, `brandColor`, `BrandChrome` من `@/components/themes` — الخلفيات والذيل والشعار اختيارية | CSS variables + Culori 4.0.2 (MIT) — [`THEMES_BRANDING.md`](THEMES_BRANDING.md) |
 | مخطط ثابت من نص (flowchart, sequence, ERD/UML) | `MermaidDiagram` — ثيم القالب، RTL، وروابط تُرسم بالتتابع | Mermaid 12 (MIT؛ lazy) |
 | كود ملوّن أو diff مع تمييز الأسطر | `CodeBlock` — Shiki، diff، revealLines | Shiki 4 (MIT؛ لغات عند الطلب) |
 | شبكة عقد قابلة للتفاعل وتخطيط آلي | `NodeDiagram` — React Flow + Dagre، AnimatedBeam اختياري | `@xyflow/react` + `@dagrejs/dagre` (MIT؛ lazy) |
 | رسم حرّ بأسلوب يدوي | `ExcalidrawBoard` — توطين ar-SA، read-only افتراضياً | Excalidraw (MIT؛ runtime lazy) |
+| عرض صورة كسولة مع placeholder / نسبة محجوزة | `MediaImage` من `@/components/media` | native `<img>` |
+| تكبير حواري أو تحريك/تكبير باللمس | `ZoomImage` / `PanZoomImage` من `@/components/media` | `react-medium-image-zoom` (BSD-3) / `react-zoom-pan-pinch` (MIT) |
+| معرض صور RTL يسحب مع أسهم ونقاط | `MediaGallery` من `@/components/media` | `embla-carousel-react` (MIT) |
+| لقطة متجاوبة داخل متصفح/هاتف/لوحي | `DeviceFrame` من `@/components/media` | محلي، `public/media/` |
+| فيديو محلي أو YouTube مرتبط بنشاط الشريحة | `MediaVideo` — يبدأ ويقف مع الشريحة حتى أثناء خروج AnimatePresence | `react-player` v3 (MIT؛ React 19) — [`MEDIA.md`](MEDIA.md) |
 
 ---
 
@@ -198,11 +208,11 @@ const [shown, setShown] = useState(1);
 
 ## الرسوم البيانية (`recharts`, `@nivo/*`, `chart.js`, `echarts`, `d3-scale/shape`)
 
-مكتبات البيانات لها دليلها الخاص [`CHARTS.md`](CHARTS.md) ومهارة `data-charts-motion`. الخلاصة: ابدأ بالرسوم الحركية المخصّصة في `@/components/charts` (خفيفة، RTL أصلي، كوريغرافيا جاهزة)، وانتقل إلى مكتبة فقط لشكل لا تغطيه — دائماً عبر التحميل الكسول (`lazyChart`/`ChartJs`/`EChart`) حتى تبقى الحزمة الرئيسية كما هي. المختبر: `?lab=charts`.
+مكتبات البيانات لها دليلها الخاص [`CHARTS.md`](CHARTS.md) ومهارة `data-charts-motion`. ابدأ بالرسوم الحركية المخصّصة في `@/components/charts` (خفيفة، RTL أصلي، كوريغرافيا جاهزة)، وانتقل إلى مكتبة فقط لشكل لا تغطيه — دائماً عبر التحميل الكسول (`lazyChart`/`ChartJs`/`EChart`). الخرائط الجغرافية لها نقطة دخول منفصلة `@/components/maps`، وبيانات محلية مرخصة، مع مختبر `?lab=maps`؛ اخترها للموقع أو المقارنة بين المناطق بدلاً من استخدام خريطة حرارية غير جغرافية.
 
 ## ما بعد المكتبات: المهارات والمعرض والوصفات
 
-- **مهارات** تشرح متى وكيف (`.agents/skills/`)، ومنها `technical-diagrams-code` للمخططات والشفرة و`data-charts-motion` للرسوم البيانية.
+- **مهارات** تشرح متى وكيف (`.agents/skills/`)، ومنها `technical-diagrams-code` للمخططات والشفرة و`data-charts-motion` للرسوم البيانية والخرائط الجغرافية.
 - **معرض 42 مكوّناً** مستعاراً (`@/components/gallery`) و**10 وصفات** (`@/recipes`).
 - **الخطوط وحركة النص**: 29 خطاً عربياً حسب النوع و10 اقترانات ومكونات `KineticHeadline`/`VariableText`/`ClipReveal`/`HighlightSweep`/`FancyText` — [`TYPOGRAPHY.md`](TYPOGRAPHY.md).
 - **مشاريع حركة الخطوط**: `harfbuzzjs` (الخط يُكتب — `CalligraphyText`)، `@number-flow/react` (`NumberRoll`)، `fitty` (`FitText`) + 5 مكونات نصية مستعارة؛ وما رُفض (`opentype.js`، React Bits) ولماذا — [`TEXT_ANIMATION_PROJECTS.md`](TEXT_ANIMATION_PROJECTS.md).

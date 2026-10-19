@@ -38,6 +38,46 @@ if (params.get('lab') === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (params.get('lab') === 'media') {
+  // مختبر الصور والفيديو: ?lab=media — الصور lazy، معرض RTL، التكبير وإطارات الأجهزة والفيديو
+  const MediaLab = lazy(() => import('@/components/media/MediaLab').then((module) => ({ default: module.MediaLab })));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <MediaLab />
+      </Suspense>
+    </StrictMode>,
+  );
+} else if (params.get('lab') === 'maps') {
+  // مختبر الخرائط: ?lab=maps — خرائط العالم والعالم العربي وولايات الجزائر مع طبقات البيانات والعلامات المتحركة
+  const MapLab = lazy(() => import('@/components/maps/lab/MapLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <MapLab />
+      </Suspense>
+    </StrictMode>,
+  );
+} else if (params.get('lab') === 'math') {
+  // مختبر الرياضيات والعلوم: ?lab=math — KaTeX/mhchem مع عزل LTR وMafs للرسم التفاعلي
+  const MathLab = lazy(() => import('@/components/math/lab/MathLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <MathLab />
+      </Suspense>
+    </StrictMode>,
+  );
+} else if (params.get('lab') === 'themes') {
+  // مختبر السمات والهوية: ?lab=themes — أوضاع الضوء/الظلام/المؤسسة والخلفيات ولوحات الفصول
+  const ThemeLab = lazy(() => import('@/components/themes/ThemeLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <ThemeLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else {
   // تحميل خطوط الاقتران المختار (src/data/typography.ts) قبل أول رسم لتفادي وميض الخط في شاشة العنوان
   const timeout = new Promise<void>((r) => setTimeout(r, 1500));

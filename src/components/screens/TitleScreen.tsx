@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import type { PresentationMeta } from '@/types/presentation';
 import { WordReveal, fadeUp, staggerContainer } from '@/components/ui';
+import { cn } from '@/lib/cn';
 import { ParticlesBackground } from '@/components/effects/ParticlesBackground';
 import { hasText, titleHasText } from '@/lib/blank';
 
@@ -9,7 +10,17 @@ import { hasText, titleHasText } from '@/lib/blank';
  * 2.1 شاشة العنوان — بطاقة تعريف العرض: هوية فقط، لا محتوى تعليمي.
  * القالب الأبيض: ما دامت الحقول فارغة لا يظهر إلا زر البدء (أيقونة) فوق الخلفية.
  */
-export function TitleScreen({ meta, onStart }: { meta: PresentationMeta; onStart: () => void }) {
+export function TitleScreen({
+  meta,
+  onStart,
+  reserveHeader = false,
+  reserveFooter = false,
+}: {
+  meta: PresentationMeta;
+  onStart: () => void;
+  reserveHeader?: boolean;
+  reserveFooter?: boolean;
+}) {
   const background = meta.background && meta.background !== 'none' ? meta.background : undefined;
   const filled = titleHasText(meta);
   const organization = meta.organization.filter((line) => line.trim());
@@ -24,7 +35,11 @@ export function TitleScreen({ meta, onStart }: { meta: PresentationMeta; onStart
         variants={staggerContainer(0.1, 0.15)}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-6 text-center"
+        className={cn(
+          'relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-6 text-center',
+          reserveHeader && 'pt-14 sm:pt-16',
+          reserveFooter && 'pb-28',
+        )}
       >
         {/* الجهة الرسمية */}
         {organization.length > 0 && (
@@ -95,8 +110,8 @@ export function TitleScreen({ meta, onStart }: { meta: PresentationMeta; onStart
           whileTap={{ scale: 0.97 }}
           className={
             startLabel
-              ? 'group mt-10 inline-flex items-center gap-3 rounded-full bg-amber-400 px-8 py-3.5 text-lg font-extrabold text-slate-950 shadow-[0_0_40px_rgba(251,191,36,0.35)] transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300'
-              : 'group inline-flex h-20 w-20 items-center justify-center rounded-full bg-amber-400 text-slate-950 shadow-[0_0_60px_rgba(251,191,36,0.35)] transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300'
+              ? 'group mt-10 inline-flex items-center gap-3 rounded-full bg-amber-400 px-8 py-3.5 text-lg font-extrabold text-slate-950 presentation-accent-shadow transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300'
+              : 'group inline-flex h-20 w-20 items-center justify-center rounded-full bg-amber-400 text-slate-950 presentation-accent-shadow-strong transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300'
           }
         >
           {startLabel && <span>{startLabel}</span>}

@@ -1,18 +1,19 @@
 ---
 name: data-charts-motion
-description: Charts, graphs and data visualisation with motion for this Arabic RTL presentation template — choosing the chart type from the message (comparison/trend/share/ranking/profile/flow), the built-in animated charts (MotionBarChart, MotionLineChart, MotionDonutChart, MotionRadarChart, Sparkline, MotionBarList, ChartFrame, KpiCards/ChartStory recipes), when and how to use Recharts (shadcn ChartContainer), Nivo, Chart.js and Apache ECharts with the shared theme, RTL mirroring (first category on the right, value axis on the right, tooltips/legends rtl), number formatting (ar-DZ vs ar-EG digits), reveal choreography (axes → bars in sequence → labels → insight), lazy loading of heavy libraries, reduced motion, and testing. Use when a slide needs a bar/line/area/pie/donut/radar/funnel/waffle/sankey/gauge/heatmap/treemap chart, a KPI dashboard, a sparkline, or when a chart looks mirrored, jumpy or unreadable in Arabic. الرسوم البيانية وحركاتها في RTL.
+description: Data visualization for this Arabic RTL presentation template — choosing animated charts, chart libraries, geographic maps/choropleths, and the decorative Cobe WebGL globe. Covers shared palettes, RTL labels, number formatting, lazy loading, reduced motion, licensing, and testing. Use for a comparison, trend, share, ranking, KPI dashboard, geographic location, regional comparison, globe/route visual, or when a chart/map looks mirrored or unreadable in Arabic. الرسوم البيانية والخرائط والكرة الأرضية في RTL.
 metadata:
-  short-description: الرسوم البيانية وحركاتها — الرسوم الحركية المخصّصة وRecharts/Nivo/Chart.js/ECharts في RTL
+  short-description: الرسوم البيانية والخرائط — رسوم الحركة والخرائط المتدرجة والعلامات المتحركة في RTL
 ---
 
 # الرسوم البيانية وحركاتها
 
 ```tsx
 import { ChartFrame, MotionBarChart, MotionLineChart, MotionDonutChart, MotionRadarChart, Sparkline, MotionBarList, lazyChart, formatNumber } from '@/components/charts';
+import { MapChart, GlobeCanvas } from '@/components/maps';  // الخرائط الجغرافية أو الكرة الزخرفية
 import { KpiCards, ChartStory } from '@/recipes';          // وصفتان جاهزتان لشريحة stats
 ```
 
-الدليل الكامل: `docs/CHARTS.md` · المختبر الحي: `?lab=charts` (5 أقسام، زر «إعادة الحركة») · مراجع المكتبات: `references/{recharts,nivo,chartjs,echarts}.md`
+دليل الرسوم: `docs/CHARTS.md` · دليل الخرائط: `docs/MAPS.md` · مختبر الرسوم: `?lab=charts` (5 أقسام) · مختبر الخرائط: `?lab=maps` · مراجع المكتبات: `references/{recharts,nivo,chartjs,echarts}.md`
 
 ## 1. من الرسالة إلى الشكل (قرار واحد لكل شريحة)
 
@@ -28,6 +29,9 @@ import { KpiCards, ChartStory } from '@/recipes';          // وصفتان جا�
 | «من أين إلى أين تذهب الكميات» | سانكي | ECharts `sankey` |
 | «نسبة إنجاز واحدة» | مقياس | ECharts `gauge` أو `AnimatedCircularProgressBar` |
 | «الكثافة عبر بعدين» | خريطة حرارية | Nivo `ResponsiveHeatMap` / ECharts `heatmap` |
+| «أين يقع التطبيق؟» | خريطة موقع بعلامات | `MapChart variant="world"` أو `"arab-world"` أو `"algeria"` |
+| «كيف تختلف القيمة بين المناطق؟» | Choropleth | `MapChart mode="choropleth"` مع `values` ومفتاح تلقائي |
+| «كيف ترتبط مراكز دولية ببعضها؟» | كرة أرضية زخرفية مع مسارات | `GlobeCanvas`؛ كرات Cobe تستخدم `[latitude, longitude]`، ولا تعرض قيماً إحصائية أو حدوداً جغرافية دقيقة |
 | «الحصص الهرمية بالمساحة» | خريطة شجرية | ECharts `treemap` / Nivo `ResponsiveTreeMap` |
 | تركيب خاص (أعمدة + خط + مرجع) | Recharts `ComposedChart` | عبر `@/components/charts/recharts` |
 
@@ -40,8 +44,9 @@ import { KpiCards, ChartStory } from '@/recipes';          // وصفتان جا�
 3. **Nivo** (`@nivo/*` + `nivoTheme`) — الأشكال الجاهزة المتقدّمة (قمع، وافل، سانكي، خريطة شجرية، حرارية، bump) بحركة سبرينغ. ثقيل → `lazyChart`.
 4. **Chart.js** (`<ChartJs />`) — canvas، الأسرع مع مئات النقاط، RTL مدمج في المفتاح والتلميح. المغلّف كسول تلقائياً.
 5. **ECharts** (`<EChart />`) — التحوّل الشامل بين الأشكال (أعمدة ⇄ فطيرة)، مقاييس، سانكي، خرائط شجرية، شمسية. المغلّف كسول تلقائياً (القطعة ~850KB لذا رسم واحد أو اثنان في العرض).
+6. **خرائط جغرافية** (`@/components/maps`) — `MapChart` للعالم/العالم العربي/ولايات الجزائر، مع choropleth وعلامات `CHART_COLORS`؛ `GlobeCanvas` من Cobe للانتشار الزخرفي ومسارات الربط (ليس لبيانات choropleth). `react-simple-maps`/TopoJSON وCobe محمّلة عند الاستعمال؛ راجع `docs/MAPS.md` للمصادر والرخص وترتيب الإحداثيات.
 
-لا تخلط مكتبتين في الشريحة الواحدة، ويُفضَّل مكتبة واحدة في العرض كله (سمة واحدة = هوية واحدة).
+لا تخلط مكتبتين في الشريحة الواحدة، ويُفضَّل مكتبة واحدة في العرض كله (سمة واحدة = هوية واحدة). الخريطة نفسها طبقة جغرافية مستقلة ويمكن وضعها بجوار رسم في شريحة مقارنة فقط إذا ظلّت الرسالة واحدة.
 
 ## 3. التحميل الكسول (إلزامي للمكتبات)
 
@@ -93,7 +98,7 @@ const EnrollmentChart = lazyChart(() => import('@/data/charts/EnrollmentChart'),
 
 - `formatNumber(v, { style: 'percent' | 'compact' | 'currency' })` بمحلية `chartSettings.locale` (`ar-DZ` غربية افتراضياً؛ `configureCharts({ locale: 'ar-EG' })` للهندية). نمط أرقام واحد في العرض كله (نفس قاعدة `NumberRoll`/`stats`).
 - القيم فوق الأعمدة بـ `tabular-nums`، المحاور بـ 4–5 خطوات «جميلة» (`niceTicks`) تبدأ من 0 دائماً للأعمدة.
-- اللوحة `CHART_COLORS`: أصفر التمييز للسلسلة الأولى/الفئة المحورية، ثم سماوي، زمرّدي، وردي، بنفسجي. دلالات: إيجابي زمرّدي، سلبي وردي، محايد رمادي (`CHART_SEMANTIC`). لا أكثر من 4 ألوان فئوية في الشريحة؛ التدرّج `CHART_SEQUENTIAL` للكثافة.
+- اللوحة `CHART_COLORS`: أصفر التمييز للسلسلة الأولى/الفئة المحورية، ثم سماوي، زمرّدي، وردي، بنفسجي. دلالات: إيجابي زمرّدي، سلبي وردي، محايد رمادي (`CHART_SEMANTIC`). لا أكثر من 4 ألوان فئوية في الشريحة؛ التدرّج `CHART_SEQUENTIAL` للكثافة ويُعاد استخدامه حرفياً في `MapChart` للـ choropleth.
 - خلفية شفافة دائماً (الرسم يرث خلفية الشريحة)، الشبكة `rgba(255,255,255,.08)` منقّطة، الخط `var(--font-body)`.
 
 ## 7. تقليل الحركة والجودة

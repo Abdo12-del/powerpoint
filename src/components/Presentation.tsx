@@ -16,6 +16,8 @@ import { PrefaceScreen } from '@/components/screens/PrefaceScreen';
 import { MapScreen } from '@/components/screens/MapScreen';
 import { SlideScreen } from '@/components/screens/SlideScreen';
 import { FinalScreen } from '@/components/screens/FinalScreen';
+import { ActiveSlideIdContext } from '@/components/media/slideActivity';
+import { BrandChrome } from '@/components/themes/BrandChrome';
 
 /**
  * العرض التقديمي: ينفّذ التدفق (§6)
@@ -50,11 +52,21 @@ export function Presentation({ data }: { data: PresentationData }) {
   const { screen } = ctrl;
   // آخر شريحة زارها المشاهد — تُميَّز في الخريطة كنقطة استئناف
   const lastSlideId = ctrl.visited.length > 0 ? ctrl.slides[ctrl.lastSlide]?.slide.id : undefined;
+  const activeSlideId = screen.kind === 'slide' ? ctrl.current?.slide.id ?? null : null;
+  const hasBrandHeader = Boolean(data.branding?.university?.trim() || data.branding?.unit?.trim() || data.branding?.logoSrc?.trim());
+  const hasBrandFooter = Boolean(data.branding?.footer?.trim());
 
   let content: ReactNode;
   switch (screen.kind) {
     case 'title':
-      content = <TitleScreen meta={data.meta} onStart={ctrl.next} />;
+      content = (
+        <TitleScreen
+          meta={data.meta}
+          onStart={ctrl.next}
+          reserveHeader={hasBrandHeader}
+          reserveFooter={hasBrandFooter}
+        />
+      );
       break;
     case 'preface':
       content = (
@@ -85,30 +97,36 @@ export function Presentation({ data }: { data: PresentationData }) {
       break;
   }
 
+  const themeMode = data.theme?.mode ?? 'dark';
+  const backdrop = data.theme?.backdrop ?? 'aurora';
+
   return (
-    <div className="relative h-dvh w-full overflow-hidden bg-slate-950 text-slate-100" {...swipe}>
-      {/* خلفية زخرفية هادئة */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 end-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-400/10 blur-3xl" />
-        <div className="absolute -bottom-40 start-[-10rem] h-[32rem] w-[32rem] rounded-full bg-sky-500/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_60%)]" />
-      </div>
+    <div
+      className="presentation-shell relative h-dvh w-full overflow-hidden"
+      data-presentation-theme={themeMode}
+      data-presentation-backdrop={backdrop}
+      {...swipe}
+    >
+      <div aria-hidden="true" className="presentation-backdrop" />
+      <BrandChrome branding={data.branding} />
 
       <ProgressBar progress={ctrl.progress} />
 
-      <AnimatePresence mode="wait" custom={ctrl.direction} initial={false}>
-        <motion.main
-          key={screenKey(screen)}
-          custom={ctrl.direction}
-          variants={screenVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="relative z-10 h-full w-full"
-        >
-          {content}
-        </motion.main>
-      </AnimatePresence>
+      <ActiveSlideIdContext.Provider value={activeSlideId}>
+        <AnimatePresence mode="wait" custom={ctrl.direction} initial={false}>
+          <motion.main
+            key={screenKey(screen)}
+            custom={ctrl.direction}
+            variants={screenVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="relative z-10 h-full w-full"
+          >
+            {content}
+          </motion.main>
+        </AnimatePresence>
+      </ActiveSlideIdContext.Provider>
 
       <ControlBar ctrl={ctrl} isFullscreen={isFullscreen} onFullscreen={toggleFullscreen} onHelp={onHelp} />
       <KeyboardHelp open={helpOpen} onClose={() => setHelpOpen(false)} />

@@ -18,6 +18,7 @@
 
 - **React 19 + Vite 7 + TypeScript + Tailwind CSS 4** مع `framer-motion` للحركة و`lucide-react` للأيقونات.
 - **RTL أصلاً**: واجهة عربية كاملة بخط Cairo افتراضياً، والشفرة/المعرّفات LTR تلقائياً.
+- **السمات والهوية**: أوضاع `dark`/`light`/`corporate` بمتغيرات CSS، لوحات فصول متناسقة عبر Culori، خلفيات aurora/mesh/grid/noise، وشعار جامعة وذيل ثابت اختياريان — المختبر `/?lab=themes`، [الدليل](docs/THEMES_BRANDING.md).
 - **29 خطاً عربياً مثبتاً دون اتصال** مصنّفة حسب النوع (كوفي، نسخ، رقعة، حديث، مدوّر، زخرفي + لاتيني وكود) مع **10 اقترانات جاهزة** تُبدَّل من سطر واحد في `src/data/typography.ts`، ومختبر حي `/?lab=fonts`، ومكونات حركة نص آمنة للعربية — [الدليل](docs/TYPOGRAPHY.md).
 - **الأنماط العشرة** (§5) كمكونات عامة تستقبل بيانات فقط — [المرجع مع مقتطفات الاستعمال](docs/ARCHETYPES.md).
 - **خريطة الفصول تُبنى آلياً** من مصفوفة الفصول، مع تمييز الفصل الحالي ونقطة الاستئناف والشرائح المزارة والشرائح الفارغة.
@@ -25,10 +26,14 @@
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **13 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، المخططات التقنية والشفرة، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **15 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، المخططات التقنية والشفرة، الرياضيات والعلوم، السمات والهوية، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
+- **حزمة الخرائط**: `MapChart` للعالم والعالم العربي وولايات الجزائر الـ69 مع choropleth وعلامات نابضة، و`GlobeCanvas` مجسّم Cobe/WebGL صغير لمسارات الربط والانتشار؛ بيانات محلية، RTL، تقليل الحركة وبديل دون WebGL — المختبر `/?lab=maps`، [الدليل والرخص](docs/MAPS.md).
+- **الرياضيات والعلوم**: KaTeX 0.19 مع mhchem (`\ce` للكيمياء و`\pu` للوحدات)، `EquationReveal` بخطوات متتابعة، عزل LTR للصيغ داخل العربية، و`FunctionPlot` تفاعلي من Mafs 0.21 — المختبر `/?lab=math`، [الدليل والتوافق](docs/MATH_SCIENCE.md).
+- **السمات والهوية**: CSS variables لأوضاع الضوء والظلام والمؤسسة، خلفيات mesh/aurora/grid/noise، Culori لاشتقاق ألوان الفصول، و`BrandChrome` لشعار الجامعة والذيل الثابت — المختبر `/?lab=themes`، [الدليل](docs/THEMES_BRANDING.md) + مهارة `themes-branding-rtl`.
 - **حزمة المخططات التقنية والشفرة**: Mermaid 12 (RTL، سمة القالب، رسم متتابع للروابط)، Shiki 4 داخل `CodeBlock` (تلوين، أسطر مبرزة، diff، كشف تدريجي)، React Flow + Dagre لتخطيط العقد، وExcalidraw للرسم الحر. كلها دون إضافة نمط شريحة جديد، وبقطع كسولة — المختبر `/?lab=diagrams`، [الدليل](docs/DIAGRAMS_CODE.md).
+- **عدة الصور والفيديو**: `MediaImage` (تحميل كسول وموضع ضبابي)، `ZoomImage`، `PanZoomImage`، معرض Embla متوافق مع RTL، إطارات متصفح/هاتف/لوحي، و`MediaVideo` محلي/YouTube يوقف التشغيل فور مغادرة الشريحة حتى أثناء حركة الخروج — المختبر `/?lab=media`، [قواعد الاستخدام والأوزان](docs/MEDIA.md).
 
 ## القالب الأبيض: ماذا ترى عند التشغيل؟
 
@@ -44,7 +49,7 @@
 
 ## التشغيل
 
-يتطلب **Node.js 22.12 أو أحدث** (Mermaid 12). يبني المشروع بحزمة Node heap تصل إلى 4 GiB كي يظل بناء الإنتاج مستقراً مع مكتبات المخططات الكبيرة.
+يتطلب **Node.js 22.12 أو أحدث** (Mermaid 12). يبني المشروع بحزمة Node heap حتى 3 GiB ليترك مساحة تشغيل لخادم Vite ومكتبات المخططات الكبيرة.
 
 ```bash
 npm install
@@ -54,9 +59,9 @@ npm run dev        # http://localhost:5173
 | الأمر | الوظيفة |
 |---|---|
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
-| `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` (Node heap حتى 4 GiB) |
+| `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` (Node heap حتى 3 GiB) |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 136 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، المخططات التقنية والشفرة |
+| `npm test` | 171 اختباراً في 19 ملفاً: التحقق والتدفق، الشاشات والأنماط، المؤثرات والمعرض والوصفات، الخطوط/النص، الرسوم البيانية، الخرائط الجغرافية/GlobeCanvas، الرياضيات والعلوم، السمات والهوية، المخططات والشفرة، والوسائط |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -66,7 +71,7 @@ npm run dev        # http://localhost:5173
 3. **قسّم كل فصل إلى 4–8 محاور** ← كل محور شريحة؛ انسخ كتلة «المحور»، وحدّث `outline` في `ChapterPreface`.
 4. **صنّف كل شريحة** بنمط من العشرة: غيّر `archetype: 'placeholder'` إلى المفتاح المناسب وضع المكوّن مكان `content: null` ([المقتطفات](docs/ARCHETYPES.md)). أثناء الصياغة يمكنك وضع `<Placeholder hint="…" />` مؤقتاً فتظهر كتلة إرشادية مكان الشريحة.
 5. **اكتب الأغلفة**: `id` ببادئة الفصل (`ch2-kpis`)، `title` اسم من 3–6 كلمات، `subtitle` اختياري، `icon` دالة.
-6. **املأ الشاشات الثابتة** في `presentation.tsx`: `meta` (شاشة العنوان)، `preface` (سياق ← إشكالية كسؤال واحد ← أهداف ← منهجية)، `final` (3–4 جمل تلخيص + دعوة تأمل + شكر). اختر `meta.background` (خلفية جسيمات) و`final.celebrate` (قصاصات الخاتمة؛ `false` للمناقشات الرسمية).
+6. **املأ الشاشات الثابتة** في `presentation.tsx`: `meta` (شاشة العنوان)، `preface` (سياق ← إشكالية كسؤال واحد ← أهداف ← منهجية)، `final` (3–4 جمل تلخيص + دعوة تأمل + شكر). اختر `theme.mode`/`theme.backdrop` عند الحاجة، و`branding` الاختياري (الجامعة/الشعار/الذيل)، و`meta.background` (خلفية جسيمات) و`final.celebrate` (قصاصات الخاتمة؛ `false` للمناقشات الرسمية).
 7. **شغّل `npm run check`** — لا يُعدّ العرض مكتملاً ما دام التحقق يحذّر من `slide.blank` / `slide.placeholder` / `preface.blank`.
 
 ### الحد الأدنى لشريحة
@@ -106,6 +111,9 @@ npm run dev        # http://localhost:5173
 | `@formkit/auto-animate` | قوائم تتحرك عند الإضافة/الحذف | `AutoAnimate` |
 | `tw-animate-css` | أصناف `animate-in fade-in slide-in-from-bottom-4 …` | مستورد في `index.css` |
 | `recharts`, `@nivo/*`, `chart.js`, `echarts` (+ `d3-scale/shape`) | الرسوم البيانية وحركاتها — سمة واحدة ومرايا RTL، كلها كسولة | `@/components/charts` (`MotionBarChart`…, `ChartJs`, `EChart`, `lazyChart`) — [الدليل](docs/CHARTS.md) |
+| `react-simple-maps` 5 + `d3-geo` + `topojson-client` | خريطة عالم/عالم عربي/جزائر، choropleth وعلامات مواقع متحركة | `MapChart` من `@/components/maps`; بيانات محلية، React 19، الحركة المخفّضة — [المصادر والرخص](docs/MAPS.md) |
+| `cobe` 2.0.1 (MIT) | مجسّم WebGL خفيف بنقاط ومسارات، بلا تبعيات وقت تشغيل أو peer لـ React | `GlobeCanvas` من `@/components/maps`; تحميل كسول، ألوان سمة العرض، وتقليل الحركة |
+| `katex` 0.19 + mhchem + `mafs` 0.21 | معادلات رياضية LTR معزولة، كيمياء ووحدات، واشتقاق متتابع ورسم دوال تفاعلي | `@/components/math` (`MathInline`, `MathBlock`, `EquationReveal`, `ChemicalEquation`, `UnitValue`, `FunctionPlot`) — [الدليل والرخص](docs/MATH_SCIENCE.md) |
 
 ```tsx
 import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/effects';
@@ -117,7 +125,7 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (13) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (15) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
 | **معرض المكونات** (42، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, MorphingText, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
 | **الوصفات** (10) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal, KpiCards, ChartStory } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
@@ -133,7 +141,11 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 | **مشاريع حركة الخطوط** | `src/lib/text-shaper.ts`, `src/fonts/calligraphy.ts` + `@/components/gallery` | HarfBuzz wasm كسول (≈430KB خارج الحزمة الأساسية)، 10 خطوط قابلة للرسم، و`TextEffect`/`TextLoop`/`TextShimmer`/`MorphingText`/`LineShadowText` — [`docs/TEXT_ANIMATION_PROJECTS.md`](docs/TEXT_ANIMATION_PROJECTS.md) + مهارات `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
 | **المختبر** | `/?lab=fonts` | الكتالوج حسب النوع + الاقترانات مع تطبيق حي + عروض الحركة (كسول، خارج حزمة العرض) |
 | **الرسوم البيانية** | `@/components/charts` + `/?lab=charts` | رسوم حركية مخصّصة (RTL أصلي، framer-motion + d3) ومغلّفات كسولة لـ Recharts/Nivo/Chart.js/ECharts بسمة واحدة — [`docs/CHARTS.md`](docs/CHARTS.md) + مهارة `data-charts-motion` |
+| **الخرائط الجغرافية** | `@/components/maps` + `/?lab=maps` | `MapChart` للعالم/العالم العربي/ولايات الجزائر الـ69 و`GlobeCanvas` لمسارات الربط على كرة WebGL — [`docs/MAPS.md`](docs/MAPS.md) + بيانات ورخصها في `public/maps/NOTICE.md` |
+| **الرياضيات والعلوم** | `@/components/math` + `/?lab=math` | `MathInline` (عزل LTR)، `EquationReveal`، `ChemicalEquation`, `UnitValue`، `FunctionPlot` — [`docs/MATH_SCIENCE.md`](docs/MATH_SCIENCE.md) + مهارة `math-science-rtl` |
+| **السمات والهوية** | `@/components/themes` + `/?lab=themes` | أوضاع `dark`/`light`/`corporate`، خلفيات CSS، لوحات فصول Culori، `BrandChrome` — [`docs/THEMES_BRANDING.md`](docs/THEMES_BRANDING.md) + مهارة `themes-branding-rtl` |
 | **المخططات التقنية والشفرة** | `@/components/diagrams` + `/?lab=diagrams` | `MermaidDiagram`، `NodeDiagram` (React Flow + Dagre)، `ExcalidrawBoard`، و`CodeBlock` (Shiki؛ diff/reveal) — [`docs/DIAGRAMS_CODE.md`](docs/DIAGRAMS_CODE.md) + مهارة `technical-diagrams-code` |
+| **الصور والفيديو** | `@/components/media` + `/?lab=media` | `MediaImage`, `ZoomImage`, `PanZoomImage`, `MediaGallery`, `DeviceFrame`, `MediaVideo` (إيقاف عند مغادرة الشريحة) — [`docs/MEDIA.md`](docs/MEDIA.md) + مهارة `lottie-and-media` |
 | **الدليل والقواعد** | `docs/TYPOGRAPHY.md` + مهارة `arabic-typography-motion` | لا `letter-spacing`/مائل اصطناعي على العربية، حركة بالكلمات والمحاور فقط، أحجام وارتفاعات السطر |
 
 ## التحكم أثناء العرض
@@ -167,15 +179,19 @@ src/
 │   ├── effects/                 # مغلّفات مكتبات الحركة: Confetti, ParticlesBackground, LottiePlayer, Typewriter, Annotate, TiltCard, GsapReveal, AutoAnimate
 │   ├── typography/              # حركة النص العربي: KineticHeadline, VariableText, ClipReveal, HighlightSweep, FancyText, FontSpecimen + FontLab (?lab=fonts)
 │   ├── charts/                  # الرسوم البيانية: theme + motion/ (6 رسوم مخصّصة) + recharts/ (حاوية shadcn) + nivo/ + chartjs/ + echarts/ + lab/ (?lab=charts)
+│   ├── maps/                    # MapChart: العالم/العربي/الجزائر + GlobeCanvas (Cobe/WebGL)، choropleth، المختبر والاختبارات
+│   ├── math/                    # KaTeX/mhchem RTL، EquationReveal، Mafs FunctionPlot + lab/ (?lab=math) + math.test.tsx
+│   ├── themes/                  # CSS themes، Culori chapter palettes، BrandChrome + lab/ (?lab=themes) + themes.test.tsx
 │   ├── diagrams/                # Mermaid + React Flow/Dagre + Excalidraw، ثيم RTL/حركة/تحميل كسول + lab/ (?lab=diagrams)
+│   ├── media/                   # صور lazy/blur، zoom/pan، معرض Embla RTL، DeviceFrame، ReactPlayer ونشاط الشريحة + lab/ (?lab=media)
 │   └── gallery/                 # 42 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
 ├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), blank.ts (قرار «الشاشة البيضاء»), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts
 ├── config/controls.ts           # خريطة المفاتيح
-└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts, diagrams
-.agents/skills/                   # 13 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+└── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts, maps, GlobeCanvas, math, diagrams, media
+.agents/skills/                   # 15 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
@@ -184,8 +200,11 @@ docs/
 ├── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
 ├── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
-└── DIAGRAMS_CODE.md              # Mermaid/Shiki/React Flow/Dagre/Excalidraw، RTL، أمثلة ومختبر
-public/                           # الشعار (logo.png) + favicon.png + apple-touch-icon.png
+├── MAPS.md                       # MapChart وGlobeCanvas، الخرائط والكرة الأرضية، البيانات والرخص
+├── MATH_SCIENCE.md               # KaTeX/mhchem، RTL، الاشتقاقات، الوحدات، Mafs ومختبر الرياضيات
+├── DIAGRAMS_CODE.md              # Mermaid/Shiki/React Flow/Dagre/Excalidraw، RTL، أمثلة ومختبر
+└── MEDIA.md                      # الصور والفيديو، نشاط الشريحة، lazy loading، إطارات الأجهزة، أوزان الأصول
+public/                           # الشعار + الأيقونات + media/ (صور SVG نموذجية) + maps/ (بيانات جغرافية وإشعارات الرخص)
 .github/
 ├── workflows/deploy.yml          # نشر تلقائي على GitHub Pages عند كل دفع إلى main (BASE_PATH = /<اسم-المستودع>/)
 ├── workflows/ci.yml              # فحص طلبات السحب: npm run check

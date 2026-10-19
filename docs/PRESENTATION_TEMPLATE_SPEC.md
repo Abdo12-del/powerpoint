@@ -10,6 +10,7 @@
 > | §3–§4 عقود الفصل والشريحة | `src/types/presentation.ts` |
 > | §5 الأنماط العشرة | `src/components/archetypes/` (المرجع: [`ARCHETYPES.md`](./ARCHETYPES.md)) |
 > | المخططات التقنية والشفرة | [`DIAGRAMS_CODE.md`](./DIAGRAMS_CODE.md) — Mermaid/Shiki/React Flow + Dagre/Excalidraw؛ مكونات داخل الأنماط وليست أنواع شرائح جديدة |
+> | الخرائط الجغرافية | [`MAPS.md`](./MAPS.md) — العالم، العالم العربي، ولايات الجزائر؛ choropleth وعلامات مواقع داخل الأنماط القائمة |
 > | §6 التدفق والتحكم | `src/lib/navigation.ts`، `src/hooks/usePresentation.ts`، `src/config/controls.ts` |
 > | §7 الاستمارة الفارغة (تُملأ لكل عرض) | `src/data/presentation.tsx` + `src/data/chapters/ch1..ch3.tsx` |
 > | §9–§10 قواعد الحماية وقائمة التحقق | `src/lib/validate.ts` + `src/__tests__/` |
@@ -135,7 +136,7 @@ interface SlideData {
 | **9. كود/نموذج تقني** | `code` | `CodeBlock` | MLD، SQL، أمثلة شفرة وdiff | نافذة Shiki بأرقام أسطر، تمييز وظهور تدريجي |
 | **10. إحصائيات/مؤشرات** | `stats` | `StatCounters` | الأرقام، الحصائل | عدّادات + أيقونات + وسوم |
 
-يمكن تركيب `MermaidDiagram` أو `NodeDiagram` أو `ExcalidrawBoard` داخل `content` لشرائح `relation`/`process`/`tree`، مع بقاء عقد الأنماط العشرة ثابتة. `CodeBlock` يستعمل Shiki للتلوين وdiff والكشف التدريجي؛ التفاصيل في [`DIAGRAMS_CODE.md`](./DIAGRAMS_CODE.md).
+يمكن تركيب `MermaidDiagram` أو `NodeDiagram` أو `ExcalidrawBoard` داخل `content` لشرائح `relation`/`process`/`tree`، مع بقاء عقد الأنماط العشرة ثابتة. ويمكن إدراج `MapChart` داخل `profile`/`comparison`/`stats` لعرض الموقع أو المقارنة الجغرافية دون نمط جديد؛ دليلها [`MAPS.md`](./MAPS.md). `CodeBlock` يستعمل Shiki للتلوين وdiff والكشف التدريجي؛ التفاصيل في [`DIAGRAMS_CODE.md`](./DIAGRAMS_CODE.md).
 
 وشريحتا الحصر: `chapter-preface` → `ChapterPreface`، و`chapter-summary` → `ChapterSummary`.
 وقيمة مؤقتة `placeholder`: شريحة لم تُصنَّف بعد (يأتي بها القالب الأبيض مع `content: null`، ويحذّر منها التحقق حتى تُصنَّف ويوضع محتواها؛ و`<Placeholder />` كتلة إرشادية اختيارية أثناء الصياغة).

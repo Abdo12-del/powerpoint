@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(619 479 -613 792 356 138)" gradientUnits="userSpaceOnUse"><stop stop-color="#155e75"/><stop offset=".56" stop-color="#151d35"/><stop offset="1" stop-color="#080d18"/></radialGradient>
+    <linearGradient id="accent" x1="566" y1="240" x2="714" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+  </defs>
+  <rect width="1280" height="720" rx="30" fill="url(#glow)"/>
+  <circle cx="640" cy="360" r="134" fill="#fbbf24" opacity=".12"/>
+  <circle cx="640" cy="360" r="97" fill="#fbbf24" opacity=".2"/>
+  <circle cx="640" cy="360" r="75" fill="#fbbf24"/>
+  <path d="m617 316 77 44-77 44v-88Z" fill="#101827"/>
+  <rect x="84" y="602" width="1112" height="6" rx="3" fill="#475569" opacity=".72"/>
+  <rect x="84" y="602" width="326" height="6" rx="3" fill="url(#accent)"/>
+  <circle cx="410" cy="605" r="10" fill="#fde68a"/>
+  <rect x="84" y="635" width="178" height="9" rx="4.5" fill="#cbd5e1" opacity=".8"/>
+  <rect x="1033" y="635" width="163" height="9" rx="4.5" fill="#94a3b8" opacity=".75"/>
+</svg>

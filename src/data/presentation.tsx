@@ -33,6 +33,13 @@ export const presentation: PresentationData = {
     background: 'stars',
   },
 
+  // ── سمة العرض والهوية (اختياريان) ───────────────────────────────────────
+  theme: {
+    mode: 'dark', // 'dark' | 'light' | 'corporate'
+    backdrop: 'aurora', // 'aurora' | 'mesh' | 'grid' | 'noise' | 'none'
+  },
+  // branding: { university: '…', unit: '…', logoSrc: '/branding/logo.svg', logoAlt: 'شعار الجامعة', footer: '…' },
+
   // ── 2.2 المقدمة: 3–4 خطوات، كل خطوة شريحة كاملة بيضاء ──────────────────
   // اكتب العنوان وضع المحتوى مكان null؛ المكونات المقترحة في التعليقات.
   preface: [

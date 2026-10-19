@@ -5,6 +5,7 @@ import type { FlatSlide } from '@/lib/navigation';
 import { fadeUp, staggerContainer } from '@/components/ui';
 import { cn } from '@/lib/cn';
 import { hasText, isBlankChapter } from '@/lib/blank';
+import { chapterPaletteStyle } from '@/components/themes/palette';
 
 interface MapScreenProps {
   chapters: ChapterData[];
@@ -55,6 +56,8 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
       >
         {chapters.map((chapter, ci) => {
           const ChapterIcon = chapter.icon;
+          const hasChapterPalette = Boolean(chapter.brandColor);
+          const paletteStyle = chapter.brandColor ? chapterPaletteStyle(chapter.brandColor) : undefined;
           const isCurrent = chapter.id === currentChapterId;
           const visitedCount = chapter.slides.filter((s) => visited.includes(s.id)).length;
           return (
@@ -63,16 +66,35 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
               variants={fadeUp}
               aria-label={chapter.title || `الفصل ${ci + 1}`}
               className={cn(
-                'relative flex flex-col overflow-hidden rounded-3xl border bg-gradient-to-b p-4 transition',
-                chapter.color,
-                isCurrent ? 'border-amber-400/60 shadow-[0_0_0_1px_rgba(251,191,36,0.4),0_20px_60px_-20px_rgba(251,191,36,0.35)]' : 'border-white/10',
+                'chapter-palette-scope relative flex flex-col overflow-hidden rounded-3xl border p-4 transition',
+                hasChapterPalette ? 'chapter-palette-card' : cn('bg-gradient-to-b', chapter.color),
+                isCurrent
+                  ? hasChapterPalette
+                    ? 'chapter-palette-current'
+                    : 'border-amber-400/60 shadow-[0_0_0_1px_rgba(251,191,36,0.4),0_20px_60px_-20px_rgba(251,191,36,0.35)]'
+                  : hasChapterPalette
+                    ? 'chapter-palette-border'
+                    : 'border-white/10',
               )}
+              style={paletteStyle}
             >
               {isCurrent && filled && (
-                <span className="absolute end-4 top-4 rounded-full bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-950">الفصل الحالي</span>
+                <span
+                  className={cn(
+                    'absolute end-4 top-4 rounded-full px-2 py-0.5 text-[11px] font-black',
+                    hasChapterPalette ? 'chapter-palette-current-badge' : 'bg-amber-400 text-slate-950',
+                  )}
+                >
+                  الفصل الحالي
+                </span>
               )}
               <div className="flex items-center gap-3">
-                <span className={cn('flex h-12 w-12 items-center justify-center rounded-2xl border bg-slate-950/40', chapter.accent)}>
+                <span
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-2xl border',
+                    hasChapterPalette ? 'chapter-palette-icon chapter-palette-border' : cn('bg-slate-950/40', chapter.accent),
+                  )}
+                >
                   <ChapterIcon className="h-6 w-6" />
                 </span>
                 <div className="min-w-0">
@@ -84,7 +106,10 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
 
               <div className="mt-2 flex items-center gap-2 text-[11px] text-slate-400">
                 <span className="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
-                  <span className="block h-full bg-amber-300/80" style={{ width: `${(visitedCount / chapter.slides.length) * 100}%` }} />
+                  <span
+                    className={cn('block h-full', hasChapterPalette ? 'chapter-palette-fill' : 'bg-amber-300/80')}
+                    style={{ width: `${(visitedCount / chapter.slides.length) * 100}%` }}
+                  />
                 </span>
                 <span className="tabular-nums">
                   {visitedCount} / {chapter.slides.length}
@@ -92,7 +117,10 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
               </div>
 
               <ol className="relative mt-4 space-y-1.5">
-                <span className="absolute inset-y-3 start-[1.55rem] w-px bg-white/15" aria-hidden />
+                <span
+                  className={cn('absolute inset-y-3 start-[1.55rem] w-px', hasChapterPalette ? 'chapter-palette-track' : 'bg-white/15')}
+                  aria-hidden
+                />
                 {chapter.slides.map((slide, si) => {
                   const SlideIcon = slide.icon;
                   const isLast = slide.id === lastSlideId;
@@ -107,7 +135,9 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
                         className={cn(
                           'group relative flex w-full items-center gap-3 rounded-xl border px-2 py-1.5 text-start transition',
                           isLast
-                            ? 'border-amber-400/50 bg-amber-400/15'
+                            ? hasChapterPalette
+                              ? 'chapter-palette-selected-slide'
+                              : 'border-amber-400/50 bg-amber-400/15'
                             : isPlaceholder
                               ? 'border-dashed border-white/15 hover:bg-white/[0.07]'
                               : 'border-transparent hover:border-white/15 hover:bg-white/[0.07]',
@@ -117,7 +147,9 @@ export function MapScreen({ chapters, slides, currentChapterId, lastSlideId, vis
                           className={cn(
                             'relative z-10 flex h-[2.1rem] w-[2.1rem] shrink-0 items-center justify-center rounded-full border bg-slate-950',
                             isLast
-                              ? 'border-amber-400 text-amber-300'
+                              ? hasChapterPalette
+                                ? 'chapter-palette-active-node'
+                                : 'border-amber-400 text-amber-300'
                               : seen
                                 ? 'border-emerald-400/50 text-emerald-300'
                                 : 'border-white/20 text-slate-300',

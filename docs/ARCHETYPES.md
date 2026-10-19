@@ -236,6 +236,8 @@ CREATE TABLE commande (
 
 **رسم بياني بدل العدّادات؟** يبقى النمط `stats` (أو `comparison`/`timeline` حسب الرسالة) ويدخل الرسم كـ `content`: `<ChartFrame title="…" note="…"><MotionBarChart … /></ChartFrame>` من `@/components/charts`، أو وصفتا `KpiCards`/`ChartStory`. لا نمط حادي عشر — الدليل `docs/CHARTS.md` ومهارة `data-charts-motion`.
 
+**خريطة لمكان التطبيق أو مقارنة جغرافية؟** أبقِ الشريحة ضمن `profile` أو `comparison` أو `stats` وأدرج `<MapChart variant="world|arab-world|algeria" … />` من `@/components/maps` داخل `content`. خريطة البيانات تعيد استعمال ألوان المخططات، وتدعم choropleth وعلامات نابضة؛ [دليل الخرائط والرخص](./MAPS.md)، والمختبر `/?lab=maps`.
+
 ---
 
 ## شريحتا الحصر

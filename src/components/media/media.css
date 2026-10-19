@@ -1,0 +1,31 @@
+/* The zoom dialog is portalled to body by react-medium-image-zoom. */
+.media-zoom-dialog[data-rmiz-modal] {
+  z-index: 100;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.media-zoom-dialog [data-rmiz-modal-overlay='visible'] {
+  background: rgb(2 6 23 / 94%);
+}
+
+.media-zoom-dialog [data-rmiz-btn-unzoom] {
+  inset-block-start: max(1rem, env(safe-area-inset-top));
+  inset-inline-end: max(1rem, env(safe-area-inset-right));
+  color: #f8fafc;
+  background: rgb(15 23 42 / 84%);
+}
+
+.media-zoom-dialog [data-rmiz-modal-img] {
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-zoom-dialog [data-rmiz-modal-img],
+  [data-rmiz-btn-zoom] {
+    transition-duration: 0.01ms !important;
+  }
+}

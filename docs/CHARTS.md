@@ -1,6 +1,6 @@
 # الرسوم البيانية وحركاتها
 
-كيف تعرض البيانات في هذا القالب: رسوم حركية مخصّصة خفيفة تُستعمل افتراضياً، وأربع مكتبات مثبّتة (Recharts، Nivo، Chart.js، Apache ECharts) بسمة واحدة ومرايا RTL جاهزة، مع مختبر حي `?lab=charts`، ووصفتين، ومهارة `data-charts-motion` التي تحسم الاختيار والكوريغرافيا.
+كيف تعرض البيانات في هذا القالب: رسوم حركية مخصّصة خفيفة تُستعمل افتراضياً، وأربع مكتبات رسوم مثبّتة (Recharts، Nivo، Chart.js، Apache ECharts) بسمة واحدة ومرايا RTL جاهزة. لوحة الألوان نفسها تُستخدم أيضاً في الخرائط الجغرافية المتدرجة والعلامات المتحركة — دليل الخرائط المستقل `docs/MAPS.md`، والمختبران `?lab=charts` و`?lab=maps`، ومهارة `data-charts-motion`.
 
 > القاعدة الأولى لم تتغيّر: **فكرة واحدة لكل شريحة** — رسم واحد يحمل رسالة واحدة، وعنوانه جملة خبرية تقولها.
 
@@ -19,6 +19,7 @@
 | الوصفات | `src/recipes/KpiCards.tsx`, `src/recipes/ChartStory.tsx` | بطاقات مؤشرات (NumberRoll + Sparkline + شارة تغيّر) و«قصة الرسم» بثلاثة فصول |
 | المهارة | `.agents/skills/data-charts-motion/` | `SKILL.md` + `references/{recharts,nivo,chartjs,echarts}.md` |
 | الاختبارات | `src/__tests__/charts.test.tsx` (19) + وصفتان في `recipes.test.tsx` | الهندسة النهائية في RTL، الحالة الأولية، المساعدات، تصيير المكتبات في jsdom |
+| الخرائط الجغرافية | `src/components/maps/` — دليل `docs/MAPS.md` | `MapChart` (العالم/العالم العربي/الجزائر)، choropleth، علامات نابضة؛ يعيد استخدام `CHART_COLORS` و`CHART_SEQUENTIAL` |
 
 نقطة الدخول الخفيفة `@/components/charts` **لا تسحب أي مكتبة ثقيلة**: الرسوم المخصّصة + السمات + المغلّفات الكسولة فقط. مكوّنات Recharts من `@/components/charts/recharts`، وNivo من `@nivo/*` مباشرة — كلاهما داخل ملف مستقل يُحمَّل بـ `lazyChart`.
 
