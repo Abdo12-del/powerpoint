@@ -18,6 +18,16 @@ if (params.get('lab') === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (params.get('lab') === 'cinematic') {
+  // مختبر العرض السينمائي ثلاثي الأبعاد: ?lab=cinematic (اختياري: &captures=/captures/landing/manifest.json)
+  const CinematicLab = lazy(() => import('@/components/cinematic/CinematicShowreel'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <CinematicLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (params.get('lab') === 'charts') {
   // مختبر الرسوم البيانية: ?lab=charts — الرسوم الحركية والمكتبات الأربع بسمة واحدة (لا يدخل حزمة العرض)
   const ChartLab = lazy(() => import('@/components/charts/lab/ChartLab'));

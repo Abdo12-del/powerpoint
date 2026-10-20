@@ -25,9 +25,10 @@
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **12 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **13 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، العرض السينمائي، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
+- **عرض سينمائي ثلاثي الأبعاد**: تحويل صفحة الهبوط (Playwright أو مولّد تجريبي) إلى مشهد WebGL2 بكاميرا على مسار Catmull-Rom، parallax ورفع بطاقات وظلال ناعمة وعمق ميدان، ثم انتقال إلى بطاقة ختامية باسم العلامة وعبارة متحركة — مع معاينة إطارات عند نقاط محددة وتحكم حيّ في المسار والسرعة والعمق وتثبيت أبعاد الصفحة. المختبر `/?lab=cinematic` — [الدليل](docs/CINEMATIC_FLYOVER.md).
 
 ## القالب الأبيض: ماذا ترى عند التشغيل؟
 
@@ -53,7 +54,8 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 130 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية |
+| `npm test` | 163 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، العرض السينمائي |
+| `npm run capture` | التقاط صفحة هبوط وطبقاتها عبر Playwright ← `manifest.json` (يتطلب `npm i -D playwright` و`npx playwright install chromium`) |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
 ## بدء عرض جديد من القالب (الوصفة — §7)
@@ -110,11 +112,30 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 الثقيل منها (Lottie ≈ 300KB، tsParticles ≈ 80KB) يُحمَّل كسولاً فلا يدخل الحزمة الأساسية إلا عند الاستعمال. القاعدة §9.5 سارية على الجميع: النص العربي يتحرك بالكلمات لا بالحروف.
 
+## العرض السينمائي ثلاثي الأبعاد
+
+حزمة `CinematicShowreel` تحوّل صفحة الهبوط إلى مشهد WebGL2 حقيقي بكاميرا متحركة، لا مجرد أنيميشن CSS:
+
+- **الطبقات**: تلتقط بـ Playwright (`scripts/capture-landing.mjs` → `manifest.json`) أو تُولَّد تجريبياً على canvas (`buildDemoLayers`)، ثم تُرفع إلى نُسج WebGL بمحددات `[data-flyover="hero|card|image|logo"]`.
+- **الكاميرا**: مسارات جاهزة (`flyover/orbit/dolly/crane/lateral`) أو نقاط مخصّصة `t · position · target · FOV · roll`، باستيفاء Catmull-Rom وتخفيف سينمائي رتيب، مع تذبذب محمول اختياري.
+- **الأثر**: parallax بطبقات عمق مستقلة، رفع البطاقات والشعارات مع تتابع وميل، ظل ناعم لكل بطاقة، إضاءة ambient/directional/fill، عمق ميدان باثنتي عشرة عينة bokeh، جزيئات غبار، ثم vignette وحبيبات فيلم في معالجة لاحقة.
+- **الختام**: انتقال عند 84% من المدة إلى خلفية البطاقة الختامية، ثم كشف اسم العلامة وعبارتها **كلمةً كلمة** (لا حروف) في طبقة DOM حادّة، مع زر إعادة.
+- **المعاينة والتحكم**: مسح زمني بدقة ربع ثانية، سرعة 0.25×–2×، تكرار، ملء شاشة، وشريط إطارات يُصيّر المشهد عند نقاط محددة ويسمح بتنزيلها.
+- **تثبيت الأبعاد**: `1440×900` افتراضياً مع `aspect-ratio` و`ResizeObserver`، وكل الطبقات تُحسب نسبةً إلى هذه المساحة فلا يتذبذب الإطار.
+
+```tsx
+import { CinematicShowreel } from '@/components/cinematic';
+<CinematicShowreel manifestUrl="/captures/landing/manifest.json" />
+```
+
+جرّبه من `/?lab=cinematic` (طبقات تجريبية) أو `/?lab=cinematic&captures=/captures/landing/manifest.json` بعد التقاط صفحتك.
+التفاصيل الكاملة والـ API: [`docs/CINEMATIC_FLYOVER.md`](docs/CINEMATIC_FLYOVER.md).
+
 ## المهارات والمعرض والوصفات
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (12) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (13) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
 | **معرض المكونات** (42، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, MorphingText, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
 | **الوصفات** (10) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal, KpiCards, ChartStory } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
@@ -164,13 +185,14 @@ src/
 │   ├── typography/              # حركة النص العربي: KineticHeadline, VariableText, ClipReveal, HighlightSweep, FancyText, FontSpecimen + FontLab (?lab=fonts)
 │   ├── charts/                  # الرسوم البيانية: theme + motion/ (6 رسوم مخصّصة) + recharts/ (حاوية shadcn) + nivo/ + chartjs/ + echarts/ + lab/ (?lab=charts)
 │   └── gallery/                 # 42 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
+├── cinematic/                   # محرّك WebGL2: camera, shaders, renderer, capture, landing (صفحة تجريبية)
 ├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), blank.ts (قرار «الشاشة البيضاء»), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts
 ├── config/controls.ts           # خريطة المفاتيح
 └── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts
-.agents/skills/                   # 12 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+.agents/skills/                   # 13 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
@@ -180,6 +202,8 @@ docs/
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
 └── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
 public/                           # الشعار (logo.png) + favicon.png + apple-touch-icon.png
+scripts/
+└── capture-landing.mjs          # التقاط صفحة الهبوط وطبقاتها عبر Playwright → manifest.json
 .github/
 ├── workflows/deploy.yml          # نشر تلقائي على GitHub Pages عند كل دفع إلى main (BASE_PATH = /<اسم-المستودع>/)
 ├── workflows/ci.yml              # فحص طلبات السحب: npm run check

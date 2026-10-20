@@ -22,3 +22,7 @@ yarn-error.log*
 
 # tests
 coverage/
+
+# لقطات Playwright (ثقيلة — تُولَّد محلياً أو تُخزَّن خارج Git)
+captures/
+public/captures/
