@@ -8,6 +8,20 @@ export interface KeyboardHandlers {
   escape: () => void;
   fullscreen: () => void;
   help: () => void;
+  /** تبديل التعليق فوق الشريحة (C) */
+  annotate?: () => void;
+  /** تبديل السبورة المستقلة (B) */
+  chalkboard?: () => void;
+  /** مسح رسم الطبقة الحالية (Delete) */
+  clearDrawing?: () => void;
+  /** تكبير/خروج مركزي (Z) — نموذج RevealZoom */
+  zoomToggle?: () => void;
+  /** تسليط الضوء (S) */
+  spotlight?: () => void;
+  /** مؤشر الليزر (L) */
+  laser?: () => void;
+  /** نافذة المعلم: ملاحظات ومعاينة ومؤقت (N) */
+  presenter?: () => void;
 }
 
 const INTERACTIVE = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
@@ -48,6 +62,27 @@ export function useKeyboardControls(handlers: KeyboardHandlers, enabled = true) 
       } else if (KEYS.help.includes(e.key)) {
         e.preventDefault();
         handlers.help();
+      } else if (KEYS.annotate.includes(e.key) && handlers.annotate) {
+        e.preventDefault();
+        handlers.annotate();
+      } else if (KEYS.chalkboard.includes(e.key) && handlers.chalkboard) {
+        e.preventDefault();
+        handlers.chalkboard();
+      } else if (KEYS.clearDrawing.includes(e.key) && handlers.clearDrawing) {
+        e.preventDefault();
+        handlers.clearDrawing();
+      } else if (KEYS.zoomToggle.includes(e.key) && handlers.zoomToggle) {
+        e.preventDefault();
+        handlers.zoomToggle();
+      } else if (KEYS.spotlight.includes(e.key) && handlers.spotlight) {
+        e.preventDefault();
+        handlers.spotlight();
+      } else if (KEYS.laser.includes(e.key) && handlers.laser) {
+        e.preventDefault();
+        handlers.laser();
+      } else if (KEYS.presenter.includes(e.key) && handlers.presenter) {
+        e.preventDefault();
+        handlers.presenter();
       }
     };
 

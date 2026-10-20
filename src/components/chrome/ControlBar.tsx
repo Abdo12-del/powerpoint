@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, CircleHelp, Home, Map as MapIcon, Maximize, Minimize } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleHelp, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
 import type { PresentationController } from '@/hooks/usePresentation';
 import { cn } from '@/lib/cn';
 
@@ -8,6 +8,16 @@ interface ControlBarProps {
   isFullscreen: boolean;
   onFullscreen: () => void;
   onHelp: () => void;
+  /** فتح السبورة المستقلة — يُمرَّر من Presentation عند تثبيت حزمة السبورة */
+  onChalkboard?: () => void;
+  /** تكبير/خروج مركزي (حزمة التكبير والتركيز) */
+  onZoom?: () => void;
+  /** تسليط الضوء */
+  onSpotlight?: () => void;
+  /** مؤشر الليزر */
+  onLaser?: () => void;
+  /** نافذة المعلم: الملاحظات والمعاينة والمؤقت (نموذج Reveal Notes) */
+  onPresenter?: () => void;
 }
 
 function CtrlButton({
@@ -46,7 +56,7 @@ function CtrlButton({
 }
 
 /** شريط التحكم أسفل الشاشة: أزرار + عدّاد «الشريحة 5 / 22» (§6). */
-export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp }: ControlBarProps) {
+export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
   const { screen, slides, current } = ctrl;
   const isTitle = screen.kind === 'title';
   const isFinal = screen.kind === 'final';
@@ -107,6 +117,31 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp }: Control
         <CtrlButton label={isFullscreen ? 'إنهاء ملء الشاشة (F)' : 'ملء الشاشة (F)'} onClick={onFullscreen}>
           {isFullscreen ? <Minimize className="h-5 w-5" /> : <Maximize className="h-5 w-5" />}
         </CtrlButton>
+        {onChalkboard && (
+          <CtrlButton label="سبورة مستقلة (B)" onClick={onChalkboard}>
+            <PenLine className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onZoom && (
+          <CtrlButton label="تكبير مركزي (Z) — أو Alt+Click على أي جزء" onClick={onZoom}>
+            <Search className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onSpotlight && (
+          <CtrlButton label="تسليط الضوء (S)" onClick={onSpotlight}>
+            <Lightbulb className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onLaser && (
+          <CtrlButton label="مؤشر ليزر (L)" onClick={onLaser}>
+            <Wifi className="h-5 w-5 rotate-90" />
+          </CtrlButton>
+        )}
+        {onPresenter && (
+          <CtrlButton label="نافذة المعلم: ملاحظات ومعاينة ومؤقت (N)" onClick={onPresenter}>
+            <GraduationCap className="h-5 w-5" />
+          </CtrlButton>
+        )}
         <CtrlButton label="اختصارات لوحة المفاتيح (?)" onClick={onHelp}>
           <CircleHelp className="h-5 w-5" />
         </CtrlButton>
