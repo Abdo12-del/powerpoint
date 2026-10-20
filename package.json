@@ -10,7 +10,10 @@
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc -b",
     "test": "vitest run",
-    "check": "npm run typecheck && npm run test && npm run build"
+    "check": "npm run typecheck && npm run test && npm run build",
+    "capture": "node scripts/capture-flyover.mjs",
+    "capture:flyover": "node scripts/capture-flyover.mjs",
+    "showreel:export": "echo '→ تصدير الشورييل كفيديو يتطلب Motion Canvas خارجياً — افتح /?lab=showreel للمعاينة ثم استعمل التسجيل من المتصفح'"
   },
   "dependencies": {
     "@fontsource-variable/alexandria": "^5.3.0",
