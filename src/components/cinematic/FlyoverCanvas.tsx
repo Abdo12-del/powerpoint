@@ -41,7 +41,6 @@ export const FlyoverCanvas = forwardRef<FlyoverHandle, FlyoverCanvasProps>(funct
   const rendererRef = useRef<FlyoverRenderer | null>(null);
   const rafRef = useRef(0);
   const timeRef = useRef(0);
-  const lastTsRef = useRef(0);
   const playingRef = useRef(playing ?? config.autoplay);
   /**
    * مرساة الزمن: «عند لحظة الجدار anchorRef كان الزمن baseTimeRef».
@@ -72,7 +71,6 @@ export const FlyoverCanvas = forwardRef<FlyoverHandle, FlyoverCanvasProps>(funct
     if (!renderer) return;
     const cfg = configRef.current;
     const duration = Math.max(0.1, cfg.speed.duration);
-    lastTsRef.current = ts;
 
     let t = timeRef.current;
     if (playingRef.current) {
@@ -126,7 +124,6 @@ export const FlyoverCanvas = forwardRef<FlyoverHandle, FlyoverCanvasProps>(funct
     rafRef.current = requestAnimationFrame(frame);
   }, [frame]);
 
-
   // ─── تهيئة المصيّر ────────────────────────────────────────
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -160,7 +157,6 @@ export const FlyoverCanvas = forwardRef<FlyoverHandle, FlyoverCanvasProps>(funct
       setAnchor(timeRef.current, performance.now());
       const duration = Math.max(0.1, configRef.current.speed.duration);
       renderer.render(timeRef.current / duration, timeRef.current);
-      lastTsRef.current = 0;
       startLoop();
     });
 
