@@ -59,6 +59,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'presenter' || lab === 'notes') {
+  // مختبر ملاحظات المعلم والمؤقت: ?lab=presenter — نموذج Reveal Notes (لا يدخل حزمة العرض)
+  const PresenterLab = lazy(() => import('@/presenter/lab/PresenterLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <PresenterLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'spotlight' || lab === 'zoom') {
   // مختبر التكبير والتركيز: ?lab=spotlight — نموذج RevealZoom + ليزر وتسليط ضوء (لا يدخل حزمة العرض)
   const SpotlightLab = lazy(() => import('@/spotlight/lab/SpotlightLab'));

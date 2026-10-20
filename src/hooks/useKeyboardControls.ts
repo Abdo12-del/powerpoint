@@ -20,6 +20,8 @@ export interface KeyboardHandlers {
   spotlight?: () => void;
   /** مؤشر الليزر (L) */
   laser?: () => void;
+  /** نافذة المعلم: ملاحظات ومعاينة ومؤقت (N) */
+  presenter?: () => void;
 }
 
 const INTERACTIVE = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
@@ -78,6 +80,9 @@ export function useKeyboardControls(handlers: KeyboardHandlers, enabled = true) 
       } else if (KEYS.laser.includes(e.key) && handlers.laser) {
         e.preventDefault();
         handlers.laser();
+      } else if (KEYS.presenter.includes(e.key) && handlers.presenter) {
+        e.preventDefault();
+        handlers.presenter();
       }
     };
 

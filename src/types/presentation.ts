@@ -82,6 +82,8 @@ export interface PresentationMeta {
   startLabel?: string;
   /** خلفية جسيمات متحركة لشاشة العنوان ('none' أو بدون الحقل = لا شيء) */
   background?: ParticlesPreset | 'none';
+  /** ملاحظات المُقدِّم لشاشة العنوان (تظهر في نافذة المعلم فقط) */
+  notes?: string;
 }
 
 /** نوع خطوة المقدمة (§2.2) */
@@ -94,6 +96,8 @@ export interface PrefaceStep {
   title: string;
   icon: LucideIcon;
   content: ReactNode;
+  /** ملاحظات المُقدِّم لهذه الخطوة (تظهر في نافذة المعلم فقط) */
+  notes?: string;
 }
 
 /** الخاتمة النهائية (§2.5) — تلخّص فقط، لا معلومات جديدة. */
@@ -107,6 +111,8 @@ export interface FinalData {
   thanks: string;
   /** قصاصات احتفالية عند الوصول إلى الخاتمة: true = 'cannons'، أو اسم إعداد مسبق، أو false */
   celebrate?: boolean | ConfettiPreset;
+  /** ملاحظات المُقدِّم للخاتمة (تظهر في نافذة المعلم فقط) */
+  notes?: string;
 }
 
 /** العرض الكامل — رأس الهرم. */

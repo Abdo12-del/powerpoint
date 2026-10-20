@@ -17,7 +17,8 @@ export const KEYS: Record<
   | 'clearDrawing'
   | 'spotlight'
   | 'laser'
-  | 'zoomToggle',
+  | 'zoomToggle'
+  | 'presenter',
   readonly string[]
 > = {
   next: ['ArrowRight', 'Enter', ' ', 'PageDown'],
@@ -34,6 +35,8 @@ export const KEYS: Record<
   zoomToggle: ['z', 'Z', 'ئ'],
   spotlight: ['s', 'S', 'س'],
   laser: ['l', 'L', 'م'],
+  // ملاحظات المعلم (نموذج Reveal Notes من reveal.js: S للنافذة — عندنا S مشغولة للتسليط فنستعمل N)
+  presenter: ['n', 'N', 'ى'],
 };
 
 /** تسميات الاختصارات كما تظهر في نافذة المساعدة. */
@@ -51,6 +54,7 @@ export const SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ['Z'], label: 'تكبير/خروج (مركزي)' },
   { keys: ['S'], label: 'تسليط الضوء على موضع الشرح' },
   { keys: ['L'], label: 'مؤشر ليزر' },
+  { keys: ['N'], label: 'نافذة المعلم: ملاحظات + معاينة + مؤقت' },
 ];
 
 /** الحد الأدنى لمسافة السحب باللمس (بكسل) لاعتباره تنقّلاً. */

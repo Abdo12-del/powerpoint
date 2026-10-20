@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, CircleHelp, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleHelp, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
 import type { PresentationController } from '@/hooks/usePresentation';
 import { cn } from '@/lib/cn';
 
@@ -16,6 +16,8 @@ interface ControlBarProps {
   onSpotlight?: () => void;
   /** مؤشر الليزر */
   onLaser?: () => void;
+  /** نافذة المعلم: الملاحظات والمعاينة والمؤقت (نموذج Reveal Notes) */
+  onPresenter?: () => void;
 }
 
 function CtrlButton({
@@ -54,7 +56,7 @@ function CtrlButton({
 }
 
 /** شريط التحكم أسفل الشاشة: أزرار + عدّاد «الشريحة 5 / 22» (§6). */
-export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onZoom, onSpotlight, onLaser }: ControlBarProps) {
+export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
   const { screen, slides, current } = ctrl;
   const isTitle = screen.kind === 'title';
   const isFinal = screen.kind === 'final';
@@ -133,6 +135,11 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkbo
         {onLaser && (
           <CtrlButton label="مؤشر ليزر (L)" onClick={onLaser}>
             <Wifi className="h-5 w-5 rotate-90" />
+          </CtrlButton>
+        )}
+        {onPresenter && (
+          <CtrlButton label="نافذة المعلم: ملاحظات ومعاينة ومؤقت (N)" onClick={onPresenter}>
+            <GraduationCap className="h-5 w-5" />
           </CtrlButton>
         )}
         <CtrlButton label="اختصارات لوحة المفاتيح (?)" onClick={onHelp}>

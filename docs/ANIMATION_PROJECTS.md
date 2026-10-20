@@ -33,6 +33,7 @@
 | `distilbook-motion` | «شورييل قصصي لمنصة»، موشن بحثي (أفكار/مراجع/ملخصات)، كتابة حركية بمحتوى مخصص | خط زمني حتمي (فلسفة Motion Canvas) + GSAP، 7 مشاهد/20ث، مشهد تقطير Three.js، شبكة استشهادات SVG، انتقالات Slide/Zoom/Glitch، تزامن BPM، فصول قابلة للقفز (`docs/DISTILBOOK_MOTION.md`، `?lab=distilbook`) |
 | `chalkboard-annotation` | «رسم فوق الشرائح»، سبورة أثناء الشرح، شرح مباشر تفاعلي | نموذج chalkboard من reveal.js-plugins (MIT)، طبقة تعليق لكل screenKey، سبورة صفحات، قلم/ماركر/ممحاة destination-out، تراجع/مسح/تصدير PNG، حفظ localStorage، مفاتيح C/B/Delete (`docs/CHALKBOARD.md`، `?lab=chalkboard`) |
 | `zoom-spotlight` | «تكبير على جزء من الشريحة»، «ليزر/تسليط ضوء»، تركيز الجمهور أثناء الشرح الحي | نموذج RevealZoom من reveal.js (MIT): Alt+Click نحو النقرة، التفاف أطراف 12%/14، Esc وzoomLevel، مسار ليزر متلاشٍ، فتحة ضوء تتبع المؤشر، عجلة للضبط الحي (`docs/SPOTLIGHT.md`، `?lab=spotlight`) |
+| `presenter-notes` | «ملاحظات المعلم»، «مؤقت عرض»، «نافذة متحدث»، إلقاء مباشر بملاحظات مخفية عن الطلاب | نموذج Reveal Notes من reveal.js (MIT): نافذة معلّم منفصلة بمعاينتين حقيقيتين (الحالية والتالية) وملاحظات لكل عقدة (meta/preface/slide/final) ومؤقت يجمع الفترات وساعة حائط، بديل مدمج عند حجب النوافذ، والملاحظات لا تظهر للطلاب إطلاقاً (`docs/PRESENTER.md`، `?lab=presenter`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.
