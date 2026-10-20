@@ -8,6 +8,12 @@
 - **الكود**: `src/cinematic/` (المحرّك) + `src/components/cinematic/` (الواجهة) + `scripts/capture-landing.mjs`
 - **الاختبارات**: `src/__tests__/cinematic.test.ts` (22) و`src/__tests__/cinematic-ui.test.tsx` (11)
 
+| البداية (t=0) | منتصف التحليق (t≈0.5) | البطاقة الختامية |
+|---|---|---|
+| ![البداية](cinematic-start.jpg) | ![التحليق](cinematic-flyover.jpg) | ![الختام](cinematic-final.jpg) |
+
+> اللقطات من متصفح حقيقي (Chromium + WebGL2) عبر السكربت `?lab=cinematic`.
+
 ---
 
 ## 1. ما يراه المشاهد

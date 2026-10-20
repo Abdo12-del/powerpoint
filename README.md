@@ -114,6 +114,10 @@ import { ConfettiOnMount, Typewriter, Annotate, GsapReveal } from '@/components/
 
 ## العرض السينمائي ثلاثي الأبعاد
 
+<p align="center">
+  <img src="docs/cinematic-flyover.jpg" alt="عرض سينمائي ثلاثي الأبعاد لصفحة هبوط عربية — منتصف التحليق" width="100%" />
+</p>
+
 حزمة `CinematicShowreel` تحوّل صفحة الهبوط إلى مشهد WebGL2 حقيقي بكاميرا متحركة، لا مجرد أنيميشن CSS:
 
 - **الطبقات**: تلتقط بـ Playwright (`scripts/capture-landing.mjs` → `manifest.json`) أو تُولَّد تجريبياً على canvas (`buildDemoLayers`)، ثم تُرفع إلى نُسج WebGL بمحددات `[data-flyover="hero|card|image|logo"]`.
