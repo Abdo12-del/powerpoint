@@ -16,15 +16,19 @@ import { PrefaceScreen } from '@/components/screens/PrefaceScreen';
 import { MapScreen } from '@/components/screens/MapScreen';
 import { SlideScreen } from '@/components/screens/SlideScreen';
 import { FinalScreen } from '@/components/screens/FinalScreen';
+import { useChalkboard } from '@/chalkboard/useChalkboard';
+import { ChalkboardOverlay } from '@/chalkboard/ChalkboardOverlay';
 
 /**
  * العرض التقديمي: ينفّذ التدفق (§6)
  * العنوان ─(ابدأ)─▶ المقدمة ─(التالي)─▶ الخريطة ─(اختيار)─▶ الشرائح ─▶ الخاتمة
+ * مع حزمة السبورة والتعليق (C تعليق فوق الشريحة، B سبورة مستقلة)
  */
 export function Presentation({ data }: { data: PresentationData }) {
   const ctrl = usePresentation(data);
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
   const [helpOpen, setHelpOpen] = useState(false);
+  const board = useChalkboard();
 
   // التحقق من قائمة Definition of Done أثناء التطوير
   useEffect(() => {
@@ -33,14 +37,31 @@ export function Presentation({ data }: { data: PresentationData }) {
 
   const handlers = useMemo<KeyboardHandlers>(
     () => ({
-      next: () => (helpOpen ? setHelpOpen(false) : ctrl.next()),
-      prev: () => (helpOpen ? setHelpOpen(false) : ctrl.prev()),
-      map: ctrl.openMap,
-      escape: () => (helpOpen ? setHelpOpen(false) : ctrl.escape()),
+      // في السبورة المستقلة: الأسهم تقلّب صفحات السبورة لا الشرائح
+      next: () => {
+        if (helpOpen) return setHelpOpen(false);
+        if (board.mode === 'board') return board.nextPage();
+        ctrl.next();
+      },
+      prev: () => {
+        if (helpOpen) return setHelpOpen(false);
+        if (board.mode === 'board') return board.prevPage();
+        ctrl.prev();
+      },
+      map: () => (board.mode === 'board' ? board.close() : ctrl.openMap()),
+      escape: () => {
+        if (helpOpen) return setHelpOpen(false);
+        // Esc يغلق السبورة/التعليق أولاً ثم يسلك سلوكه الاعتيادي
+        if (board.mode !== 'off') return board.close();
+        ctrl.escape();
+      },
       fullscreen: toggleFullscreen,
       help: () => setHelpOpen((v) => !v),
+      annotate: board.toggleNotes,
+      chalkboard: board.toggleBoard,
+      clearDrawing: board.clear,
     }),
-    [ctrl, helpOpen, toggleFullscreen],
+    [ctrl, helpOpen, toggleFullscreen, board],
   );
   useKeyboardControls(handlers);
 
@@ -110,8 +131,27 @@ export function Presentation({ data }: { data: PresentationData }) {
         </motion.main>
       </AnimatePresence>
 
-      <ControlBar ctrl={ctrl} isFullscreen={isFullscreen} onFullscreen={toggleFullscreen} onHelp={onHelp} />
+      <ControlBar ctrl={ctrl} isFullscreen={isFullscreen} onFullscreen={toggleFullscreen} onHelp={onHelp} onChalkboard={board.toggleBoard} />
       <KeyboardHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
+
+      {/* السبورة والتعليق — صامتة حتى يطلبها المُقدِّم (C أو B) */}
+      <ChalkboardOverlay board={board} layerId={screenKey(ctrl.screen)} layerLabel={chalkboardLayerLabel(ctrl.screen)} />
     </div>
   );
+}
+
+/** اسم عربي قصير للطبقة يظهر في شارة التعليق */
+function chalkboardLayerLabel(screen: ReturnType<typeof usePresentation>['screen']): string {
+  switch (screen.kind) {
+    case 'slide':
+      return `الشريحة ${screen.index + 1}`;
+    case 'preface':
+      return 'المقدمة';
+    case 'map':
+      return 'الخريطة';
+    case 'final':
+      return 'الخاتمة';
+    default:
+      return 'شاشة العنوان';
+  }
 }

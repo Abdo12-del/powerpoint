@@ -25,13 +25,14 @@
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
 - **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **16 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، العرض السينمائي، الشورييل الإبداعي، المؤثرات السينمائية، الموشن البحثي، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **17 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، العرض السينمائي، الشورييل الإبداعي، المؤثرات السينمائية، الموشن البحثي، السبورة والتعليق، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
 - **العرض السينمائي ثلاثي الأبعاد**: تحويل صفحة الهبوط (Playwright أو مولّد تجريبي) إلى مشهد WebGL2 بكاميرا على مسار Catmull-Rom، parallax ورفع بطاقات وظلال ناعمة وعمق ميدان، ثم انتقال إلى بطاقة ختامية باسم العلامة وعبارة متحركة — مع معاينة إطارات عند نقاط محددة وتحكم حيّ في المسار والسرعة والعمق وتثبيت أبعاد الصفحة. المختبر `/?lab=cinematic` / `/?lab=flyover` — [الدليل](docs/CINEMATIC_FLYOVER.md) + مهارة `cinematic-flyover`.
 - **العرض الإبداعي — Motion Design Showreel (NEW)**: Motion Canvas (MIT) + GSAP — 15 ثانية سينمائية: Kinetic Typography و3D Transitions وParallax وGlitch وMorphing وParticle Effects مع Slide/Zoom وتزامن مع الموسيقى (BPM) وتنسيق بصري جريء — مختبر `/?lab=showreel` ومكون `MotionDesignShowreel` — [الدليل](docs/MOTION_SHOWREEL.md) + مهارة `motion-showreel`.
 - **حزمة المؤثرات السينمائية (NEW)**: Three.js (MIT) للمشاهد ثلاثية الأبعاد + Lenis (MIT) للحركة الانسيابية — Parallax وMorphing وGlitch وParticles، تشوهات بصرية (RGB Shift / Grain / Vignette / Bloom) بمرور سينمائي واحد، انتقالات ديناميكية بين المقاطع، وتزامن كامل للحركة مع الإيقاع (BeatClock) — مختبر `/?lab=effects` ومكون `ThreeShowreel` — [الدليل](docs/CINEMATIC_EFFECTS.md) + مهارة `cinematic-effects`.
 - **الموشن جرافيك البحثي — Distilbook (NEW)**: قصة المنصة في 20 ثانية بأسلوب Showreel — Motion Canvas (فلسفة خط زمني حتمي) + GSAP + Three.js: كتابة حركية، تصوّر بصري للأفكار وشبكة المراجع والملخصات، مشهد تقطير ثلاثي الأبعاد، انتقالات Slide/Zoom/Glitch، وتزامن دقيق مع الإيقاع — مختبر `/?lab=distilbook` ومكون `DistilbookShowreel` — [الدليل](docs/DISTILBOOK_MOTION.md) + مهارة `distilbook-motion`.
+- **السبورة والتعليق (NEW)**: نموذج إضافة chalkboard من reveal.js-plugins (MIT) على نظام العروض — رسم وكتابة حرة فوق الشرائح وسبورة مستقلة متعددة الصفحات أثناء الشرح: قلم وممحاة، ألوان الطباشير والماركر، سُمك متغيّر، تراجع ومسح، حفظ محلي تلقائي وتصدير PNG — مفاتيح `C`/`B`/`Delete` متوافقة مع عقد التحكم §6 — مختبر `/?lab=chalkboard` — [الدليل](docs/CHALKBOARD.md) + مهارة `chalkboard-annotation`.
 
 ## القالب الأبيض: ماذا ترى عند التشغيل؟
 
@@ -57,7 +58,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 211 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، العرض السينمائي |
+| `npm test` | 234 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، العرض السينمائي |
 | `npm run capture` | التقاط صفحة هبوط وطبقاتها عبر Playwright ← `manifest.json` (يتطلب `npm i -D playwright` و`npx playwright install chromium`) |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
@@ -142,7 +143,7 @@ import { CinematicShowreel } from '@/components/cinematic';
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (16) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (17) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
 | **معرض المكونات** (42، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, MorphingText, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
 | **الوصفات** (10) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal, KpiCards, ChartStory } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
@@ -199,7 +200,7 @@ src/
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), blank.ts (قرار «الشاشة البيضاء»), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts
 ├── config/controls.ts           # خريطة المفاتيح
 └── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts
-.agents/skills/                   # 16 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+.agents/skills/                   # 17 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط

@@ -8,6 +8,12 @@ export interface KeyboardHandlers {
   escape: () => void;
   fullscreen: () => void;
   help: () => void;
+  /** تبديل التعليق فوق الشريحة (C) */
+  annotate?: () => void;
+  /** تبديل السبورة المستقلة (B) */
+  chalkboard?: () => void;
+  /** مسح رسم الطبقة الحالية (Delete) */
+  clearDrawing?: () => void;
 }
 
 const INTERACTIVE = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
@@ -48,6 +54,15 @@ export function useKeyboardControls(handlers: KeyboardHandlers, enabled = true) 
       } else if (KEYS.help.includes(e.key)) {
         e.preventDefault();
         handlers.help();
+      } else if (KEYS.annotate.includes(e.key) && handlers.annotate) {
+        e.preventDefault();
+        handlers.annotate();
+      } else if (KEYS.chalkboard.includes(e.key) && handlers.chalkboard) {
+        e.preventDefault();
+        handlers.chalkboard();
+      } else if (KEYS.clearDrawing.includes(e.key) && handlers.clearDrawing) {
+        e.preventDefault();
+        handlers.clearDrawing();
       }
     };
 

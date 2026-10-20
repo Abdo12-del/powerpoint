@@ -59,6 +59,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'chalkboard' || lab === 'board') {
+  // مختبر السبورة والتعليق: ?lab=chalkboard — رسم وكتابة حرة فوق الشرائح (لا يدخل حزمة العرض)
+  const ChalkboardLab = lazy(() => import('@/chalkboard/lab/ChalkboardLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <ChalkboardLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'distilbook' || lab === 'research') {
   // مختبر الموشن جرافيك البحثي: ?lab=distilbook — شورييل Distilbook القصصي (لا يدخل حزمة العرض)
   const DistilbookLab = lazy(() => import('@/distilbook/lab/DistilbookLab'));

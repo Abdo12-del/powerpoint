@@ -88,6 +88,7 @@
     "react-parallax-tilt": "^1.7.347",
     "react-type-animation": "^3.2.0",
     "recharts": "^3.10.1",
+    "reveal.js-plugins": "^4.6.0",
     "rough-notation": "^0.5.1",
     "tailwind-merge": "^3.7.0",
     "three": "^0.186.1",
