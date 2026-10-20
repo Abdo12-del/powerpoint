@@ -6,8 +6,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { FlyoverRenderer } from './renderer';
 import { buildSceneLayers } from './layers';
-import type { FlyoverConfig, CapturedLayer, FramePreview } from '../types';
-import { DEFAULT_FLYOVER_CONFIG } from '../types';
+import type { FlyoverConfig, CapturedLayer, FramePreview } from './legacy-types';
+import { DEFAULT_FLYOVER_CONFIG } from './legacy-types';
 
 export interface FlyoverCanvasProps {
   config?: Partial<FlyoverConfig>;

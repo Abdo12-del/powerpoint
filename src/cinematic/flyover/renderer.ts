@@ -9,7 +9,7 @@
 import { fragmentShaderSourceSimple, vertexShaderSource } from './shaders';
 import type { SceneLayer } from './layers';
 import { evaluateCamera, lookAt, perspective, multiply } from './camera';
-import type { FlyoverConfig } from '../types';
+import type { FlyoverConfig } from './legacy-types';
 
 function compileShader(gl: WebGL2RenderingContext, type: number, source: string): WebGLShader {
   const shader = gl.createShader(type)!;

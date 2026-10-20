@@ -1,7 +1,7 @@
 /**
  * حزمة العرض السينمائي ثلاثي الأبعاد — نقطة الدخول
  */
-export * from './types';
+export * from './flyover/legacy-types';
 export * from './capture/capture';
 export * from './flyover/FlyoverCanvas';
 export * from './flyover/useFlyoverTimeline';

@@ -3,8 +3,8 @@
  * - يثبّت الأبعاد عند 1920×1080 مع DPR=2 لضمان سلاسة الحركة
  * - يلتقط كل طبقة بشفافية لاستعمالها في مشهد WebGL2
  */
-import type { CaptureViewport } from '../types';
-import { DEFAULT_VIEWPORT } from '../types';
+import type { CaptureViewport } from '../flyover/legacy-types';
+import { DEFAULT_VIEWPORT } from '../flyover/legacy-types';
 
 export interface PlaywrightCaptureConfig {
   viewport: CaptureViewport;

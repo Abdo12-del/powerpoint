@@ -12,8 +12,8 @@
  *   import { captureLayers } from '@/cinematic/capture/capture'
  */
 
-import type { CaptureManifest, CapturedLayer, CaptureViewport } from '../types';
-import { DEFAULT_VIEWPORT } from '../types';
+import type { CaptureManifest, CapturedLayer, CaptureViewport } from '../flyover/legacy-types';
+import { DEFAULT_VIEWPORT } from '../flyover/legacy-types';
 
 export interface CaptureOptions {
   url: string;

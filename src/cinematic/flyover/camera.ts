@@ -2,7 +2,7 @@
  * مسار الكاميرا المتحركة باستمرار — Catmull-Rom spline + تحكم دقيق في السرعة والعمق
  */
 
-import type { FlyoverConfig } from '../types';
+import type { FlyoverConfig } from './legacy-types';
 
 export interface CameraState {
   position: [number, number, number];

@@ -19,6 +19,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'cinematic') {
+  // مختبر العرض السينمائي ثلاثي الأبعاد: ?lab=cinematic (اختياري: &captures=/captures/landing/manifest.json)
+  const CinematicLab = lazy(() => import('@/components/cinematic/CinematicShowreel'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <CinematicLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'charts') {
   // مختبر الرسوم البيانية: ?lab=charts — الرسوم الحركية والمكتبات الأربع بسمة واحدة (لا يدخل حزمة العرض)
   const ChartLab = lazy(() => import('@/components/charts/lab/ChartLab'));
@@ -29,8 +39,8 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
-} else if (lab === 'flyover' || lab === 'cinematic') {
-  // المختبر السينمائي ثلاثي الأبعاد: ?lab=flyover — WebGL2 + Playwright (لا يدخل حزمة العرض)
+} else if (lab === 'flyover') {
+  // المختبر السينمائي المستقل: ?lab=flyover — WebGL2 + Playwright (لا يدخل حزمة العرض)
   const FlyoverLab = lazy(() => import('@/cinematic/lab/FlyoverLab'));
   root.render(
     <StrictMode>

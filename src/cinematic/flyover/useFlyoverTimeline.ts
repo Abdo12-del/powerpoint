@@ -3,8 +3,8 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import type { FlyoverConfig } from '../types';
-import { DEFAULT_FLYOVER_CONFIG } from '../types';
+import type { FlyoverConfig } from './legacy-types';
+import { DEFAULT_FLYOVER_CONFIG } from './legacy-types';
 
 export interface FlyoverTimelineController {
   time: number;

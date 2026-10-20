@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { FlyoverCanvas } from '@/cinematic/flyover/FlyoverCanvas';
-import type { FlyoverConfig } from '@/cinematic/types';
+import type { FlyoverConfig } from '@/cinematic/flyover/legacy-types';
 
 export interface FlyoverSceneProps {
   brand?: string;

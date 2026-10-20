@@ -2,7 +2,7 @@
  * إدارة طبقات المشهد ثلاثي الأبعاد — تحويل لقطات الصفحة إلى مستويات بعمق مختلف
  */
 
-import type { CapturedLayer } from '../types';
+import type { CapturedLayer } from './legacy-types';
 
 export interface SceneLayer {
   id: string;

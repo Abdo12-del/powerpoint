@@ -7,7 +7,7 @@ import { useState, useRef } from 'react';
 import { ArrowRight, Camera, Download, Pause, Play, RotateCcw, Eye, Layers, Aperture, Timer, Move3d, Sparkles } from 'lucide-react';
 import { FlyoverCanvas } from '../flyover/FlyoverCanvas';
 import { useFlyoverTimeline } from '../flyover/useFlyoverTimeline';
-import { DEFAULT_FLYOVER_CONFIG } from '../types';
+import { DEFAULT_FLYOVER_CONFIG } from '../flyover/legacy-types';
 
 export default function FlyoverLab() {
   const timeline = useFlyoverTimeline({}, [0, 2.5, 5, 8, 11, 14, 16]);
