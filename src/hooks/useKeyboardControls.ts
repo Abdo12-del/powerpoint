@@ -14,6 +14,12 @@ export interface KeyboardHandlers {
   chalkboard?: () => void;
   /** مسح رسم الطبقة الحالية (Delete) */
   clearDrawing?: () => void;
+  /** تكبير/خروج مركزي (Z) — نموذج RevealZoom */
+  zoomToggle?: () => void;
+  /** تسليط الضوء (S) */
+  spotlight?: () => void;
+  /** مؤشر الليزر (L) */
+  laser?: () => void;
 }
 
 const INTERACTIVE = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
@@ -63,6 +69,15 @@ export function useKeyboardControls(handlers: KeyboardHandlers, enabled = true) 
       } else if (KEYS.clearDrawing.includes(e.key) && handlers.clearDrawing) {
         e.preventDefault();
         handlers.clearDrawing();
+      } else if (KEYS.zoomToggle.includes(e.key) && handlers.zoomToggle) {
+        e.preventDefault();
+        handlers.zoomToggle();
+      } else if (KEYS.spotlight.includes(e.key) && handlers.spotlight) {
+        e.preventDefault();
+        handlers.spotlight();
+      } else if (KEYS.laser.includes(e.key) && handlers.laser) {
+        e.preventDefault();
+        handlers.laser();
       }
     };
 

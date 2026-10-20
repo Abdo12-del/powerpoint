@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, CircleHelp, Home, Map as MapIcon, Maximize, Minimize, PenLine } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleHelp, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
 import type { PresentationController } from '@/hooks/usePresentation';
 import { cn } from '@/lib/cn';
 
@@ -10,6 +10,12 @@ interface ControlBarProps {
   onHelp: () => void;
   /** فتح السبورة المستقلة — يُمرَّر من Presentation عند تثبيت حزمة السبورة */
   onChalkboard?: () => void;
+  /** تكبير/خروج مركزي (حزمة التكبير والتركيز) */
+  onZoom?: () => void;
+  /** تسليط الضوء */
+  onSpotlight?: () => void;
+  /** مؤشر الليزر */
+  onLaser?: () => void;
 }
 
 function CtrlButton({
@@ -48,7 +54,7 @@ function CtrlButton({
 }
 
 /** شريط التحكم أسفل الشاشة: أزرار + عدّاد «الشريحة 5 / 22» (§6). */
-export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard }: ControlBarProps) {
+export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onZoom, onSpotlight, onLaser }: ControlBarProps) {
   const { screen, slides, current } = ctrl;
   const isTitle = screen.kind === 'title';
   const isFinal = screen.kind === 'final';
@@ -112,6 +118,21 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkbo
         {onChalkboard && (
           <CtrlButton label="سبورة مستقلة (B)" onClick={onChalkboard}>
             <PenLine className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onZoom && (
+          <CtrlButton label="تكبير مركزي (Z) — أو Alt+Click على أي جزء" onClick={onZoom}>
+            <Search className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onSpotlight && (
+          <CtrlButton label="تسليط الضوء (S)" onClick={onSpotlight}>
+            <Lightbulb className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onLaser && (
+          <CtrlButton label="مؤشر ليزر (L)" onClick={onLaser}>
+            <Wifi className="h-5 w-5 rotate-90" />
           </CtrlButton>
         )}
         <CtrlButton label="اختصارات لوحة المفاتيح (?)" onClick={onHelp}>

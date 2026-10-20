@@ -6,7 +6,18 @@
  * على لوحة المفاتيح العربية (m ⇄ ة، f ⇄ ب، h ⇄ ا)، حتى لا يحتاج المُقدِّم لتبديل اللغة.
  */
 export const KEYS: Record<
-  'next' | 'prev' | 'map' | 'escape' | 'fullscreen' | 'help' | 'annotate' | 'chalkboard' | 'clearDrawing',
+  | 'next'
+  | 'prev'
+  | 'map'
+  | 'escape'
+  | 'fullscreen'
+  | 'help'
+  | 'annotate'
+  | 'chalkboard'
+  | 'clearDrawing'
+  | 'spotlight'
+  | 'laser'
+  | 'zoomToggle',
   readonly string[]
 > = {
   next: ['ArrowRight', 'Enter', ' ', 'PageDown'],
@@ -19,6 +30,10 @@ export const KEYS: Record<
   annotate: ['c', 'C', 'ؤ'],
   chalkboard: ['b', 'B', 'لا'],
   clearDrawing: ['Delete'],
+  // التكبير والتركيز (نموذج إضافة zoom المدمجة مع reveal.js: Alt+Click، وZ للتوسيط — وحروفها العربية)
+  zoomToggle: ['z', 'Z', 'ئ'],
+  spotlight: ['s', 'S', 'س'],
+  laser: ['l', 'L', 'م'],
 };
 
 /** تسميات الاختصارات كما تظهر في نافذة المساعدة. */
@@ -32,6 +47,10 @@ export const SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ['C'], label: 'التعليق فوق الشريحة' },
   { keys: ['B'], label: 'سبورة مستقلة' },
   { keys: ['Delete'], label: 'مسح الرسم (أثناء التعليق/السبورة)' },
+  { keys: ['Alt + Click'], label: 'تكبير نحو نقطة الشرح (نقر ثانٍ للخروج)' },
+  { keys: ['Z'], label: 'تكبير/خروج (مركزي)' },
+  { keys: ['S'], label: 'تسليط الضوء على موضع الشرح' },
+  { keys: ['L'], label: 'مؤشر ليزر' },
 ];
 
 /** الحد الأدنى لمسافة السحب باللمس (بكسل) لاعتباره تنقّلاً. */

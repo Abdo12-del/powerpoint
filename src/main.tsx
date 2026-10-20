@@ -59,6 +59,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'spotlight' || lab === 'zoom') {
+  // مختبر التكبير والتركيز: ?lab=spotlight — نموذج RevealZoom + ليزر وتسليط ضوء (لا يدخل حزمة العرض)
+  const SpotlightLab = lazy(() => import('@/spotlight/lab/SpotlightLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <SpotlightLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'chalkboard' || lab === 'board') {
   // مختبر السبورة والتعليق: ?lab=chalkboard — رسم وكتابة حرة فوق الشرائح (لا يدخل حزمة العرض)
   const ChalkboardLab = lazy(() => import('@/chalkboard/lab/ChalkboardLab'));

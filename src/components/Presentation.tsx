@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { PresentationData } from '@/types/presentation';
 import { usePresentation } from '@/hooks/usePresentation';
@@ -18,17 +18,22 @@ import { SlideScreen } from '@/components/screens/SlideScreen';
 import { FinalScreen } from '@/components/screens/FinalScreen';
 import { useChalkboard } from '@/chalkboard/useChalkboard';
 import { ChalkboardOverlay } from '@/chalkboard/ChalkboardOverlay';
+import { useSpotlight } from '@/spotlight/useSpotlight';
+import { SpotlightOverlay } from '@/spotlight/SpotlightOverlay';
+import { zoomCss } from '@/spotlight/engine';
+import { ZOOM_TRANSITION_S } from '@/spotlight/types';
 
 /**
  * العرض التقديمي: ينفّذ التدفق (§6)
  * العنوان ─(ابدأ)─▶ المقدمة ─(التالي)─▶ الخريطة ─(اختيار)─▶ الشرائح ─▶ الخاتمة
- * مع حزمة السبورة والتعليق (C تعليق فوق الشريحة، B سبورة مستقلة)
+ * مع السبورة والتعليق (C/B) والتكبير والتركيز (Alt+Click / Z / S / L)
  */
 export function Presentation({ data }: { data: PresentationData }) {
   const ctrl = usePresentation(data);
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
   const [helpOpen, setHelpOpen] = useState(false);
   const board = useChalkboard();
+  const spot = useSpotlight();
 
   // التحقق من قائمة Definition of Done أثناء التطوير
   useEffect(() => {
@@ -51,8 +56,11 @@ export function Presentation({ data }: { data: PresentationData }) {
       map: () => (board.mode === 'board' ? board.close() : ctrl.openMap()),
       escape: () => {
         if (helpOpen) return setHelpOpen(false);
-        // Esc يغلق السبورة/التعليق أولاً ثم يسلك سلوكه الاعتيادي
+        // الخروج بالطبقات: السبورة ← الليزر ← تسليط الضوء ← التكبير ← السلوك الاعتيادي
         if (board.mode !== 'off') return board.close();
+        if (spot.laserOn) return spot.toggleLaser();
+        if (spot.spotlightOn) return spot.toggleSpotlight();
+        if (spot.zoomActive) return spot.zoomOut();
         ctrl.escape();
       },
       fullscreen: toggleFullscreen,
@@ -60,10 +68,40 @@ export function Presentation({ data }: { data: PresentationData }) {
       annotate: board.toggleNotes,
       chalkboard: board.toggleBoard,
       clearDrawing: board.clear,
+      zoomToggle: spot.toggleZoomCenter,
+      spotlight: spot.toggleSpotlight,
+      laser: spot.toggleLaser,
     }),
-    [ctrl, helpOpen, toggleFullscreen, board],
+    [ctrl, helpOpen, toggleFullscreen, board, spot],
   );
   useKeyboardControls(handlers);
+
+  // Alt+Click تكبير نحو نقطة الشرح (نموذج RevealZoom: Ctrl على لينكس) — خارج أزرار الواجهة والسبورة
+  const onStagePointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      const key = /Linux/.test(window.navigator.platform) ? 'ctrlKey' : 'altKey';
+      if (!e[key]) return;
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('button, a, input, select, textarea, [data-no-zoom]')) return;
+      if (board.mode !== 'off') return; // أثناء الرسم: النقر يرسم لا يُكبّر
+      e.preventDefault();
+      const stage = zoomStageRef.current;
+      if (!stage) return;
+      spot.zoomAt(e.clientX, e.clientY, stage.getBoundingClientRect());
+    },
+    [board.mode, spot],
+  );
+  const zoomStageRef = useRef<HTMLDivElement>(null);
+
+  // العجلة: أثناء التكبير تغيّر المستوى، وأثناء تسليط الضوء تغيّر نصف القطر
+  const onStageWheel = useCallback(
+    (e: React.WheelEvent) => {
+      if (spot.zoomActive) spot.nudgeZoom(e.deltaY < 0 ? 0.25 : -0.25);
+      else if (spot.spotlightOn) spot.nudgeSpotlightRadius(e.deltaY < 0 ? 10 : -10);
+    },
+    [spot],
+  );
+
 
   const swipe = useSwipe(ctrl.next, ctrl.prev);
   const onHelp = useCallback(() => setHelpOpen((v) => !v), []);
@@ -107,7 +145,12 @@ export function Presentation({ data }: { data: PresentationData }) {
   }
 
   return (
-    <div className="relative h-dvh w-full overflow-hidden bg-slate-950 text-slate-100" {...swipe}>
+    <div
+      className="relative h-dvh w-full overflow-hidden bg-slate-950 text-slate-100"
+      {...swipe}
+      onPointerDown={onStagePointerDown}
+      onWheel={onStageWheel}
+    >
       {/* خلفية زخرفية هادئة */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 end-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-400/10 blur-3xl" />
@@ -127,15 +170,36 @@ export function Presentation({ data }: { data: PresentationData }) {
           exit="exit"
           className="relative z-10 h-full w-full"
         >
-          {content}
+          {/* مرحلة التكبير — نموذج RevealZoom: scale+translate نحو نقطة النقر */}
+          <div
+            ref={zoomStageRef}
+            data-testid="zoom-stage"
+            data-zoomed={spot.zoomActive || undefined}
+            className="h-full w-full"
+            style={zoomCss(spot.zoom, ZOOM_TRANSITION_S)}
+          >
+            {content}
+          </div>
         </motion.main>
       </AnimatePresence>
 
-      <ControlBar ctrl={ctrl} isFullscreen={isFullscreen} onFullscreen={toggleFullscreen} onHelp={onHelp} onChalkboard={board.toggleBoard} />
+      <ControlBar
+        ctrl={ctrl}
+        isFullscreen={isFullscreen}
+        onFullscreen={toggleFullscreen}
+        onHelp={onHelp}
+        onChalkboard={board.toggleBoard}
+        onZoom={spot.toggleZoomCenter}
+        onSpotlight={spot.toggleSpotlight}
+        onLaser={spot.toggleLaser}
+      />
       <KeyboardHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
 
       {/* السبورة والتعليق — صامتة حتى يطلبها المُقدِّم (C أو B) */}
       <ChalkboardOverlay board={board} layerId={screenKey(ctrl.screen)} layerLabel={chalkboardLayerLabel(ctrl.screen)} />
+
+      {/* التكبير والتركيز: تسليط الضوء ومؤشر الليزر — شفافتان للنقر */}
+      <SpotlightOverlay spot={spot} />
     </div>
   );
 }
