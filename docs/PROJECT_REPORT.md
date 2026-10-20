@@ -43,6 +43,7 @@
 | الأدلة | 14 دليلاً في `docs/` + 3 لقطات WebGL حقيقية |
 | المختبرات الحية | **10 مختبرات عبر 15 مساراً** |
 | المعرفة المعروضة | 42 مكوّن معرض + 10 وصفات جاهزة (`src/recipes/`) |
+| الحزم البرمجية المباشرة | **77 إنتاجاً + 16 تطويراً** (والسجل الكامل في §9) |
 
 ---
 
@@ -168,7 +169,67 @@
 
 ---
 
-## 9. توصيات للخطوة القادمة (مرتبة بالقيمة)
+## 9. سجل الحزم البرمجية (Dependencies)
+
+**الإجمالي:** 93 حزمة مباشرة (77 إنتاجاً + 16 تطويراً) تجرّ معها 895 مدخلاً مثبّتاً في `node_modules` (مباشر + متعدٍّ). النسخ أدناه هي المثبّتة فعلياً من `package-lock.json`.
+
+### 9.1 حزم الإنتاج (77) مصنّفة
+
+| الفئة | الحزمة | النسخة | الرخصة | الدور |
+|---|---|---|---|---|
+| **الأساس** | `react` / `react-dom` | 19.3.1 | MIT | إطار الواجهة |
+| | `clsx` / `tailwind-merge` | 2.1.1 / 3.7.0 | MIT | دمج الأصناف والأنماط |
+| | `tw-animate-css` | 1.4.0 | MIT | حركات Tailwind جاهزة |
+| | `lucide-react` | 0.577.0 | ISC | الأيقونات |
+| **الحركة** | `framer-motion` | 12.43.0 | MIT | حركة المكوّنات والتخطيط |
+| | `gsap` + `@gsap/react` | 3.15.0 / 2.1.2 | GSAP Standard (مجاني) | خطوط زمنية متقدمة وuseGSAP |
+| | `@formkit/auto-animate` | 0.10.0 | MIT | حركة إدراج تلقائية |
+| | `react-type-animation` | 3.2.0 | MIT | كتابة آلية |
+| | `@number-flow/react` | 0.6.2 | MIT | أرقام متدحرجة |
+| | `rough-notation` | 0.5.1 | MIT | تعليقات شبيهة بالرسم اليدوي |
+| | `canvas-confetti` | 1.9.4 | ISC | احتفالات |
+| | `@tsparticles/react` + `engine` + `slim` | 4.4.0 | MIT | جزيئات الخلفية |
+| | `lottie-react` | 3.1.2 | MIT | تشغيل Lottie |
+| **ثلاثي الأبعاد** | `three` | 0.186.1 | MIT | WebGL |
+| | `lenis` | 1.3.27 | MIT | تمرير انسيابي |
+| | `react-parallax-tilt` | 1.7.347 | MIT | ميلان وبارالاكس |
+| **نماذج reveal.js** | `reveal.js` | 6.0.2 | MIT | مرجع نماذج Zoom/Notes (بلا استيراد مباشر) |
+| | `reveal.js-plugins` | 4.6.0 | MIT | مرجع نموذج chalkboard (بلا استيراد مباشر) |
+| **الرسوم البيانية** | `d3-array` / `interpolate` / `scale` / `shape` | 3.2.4 / 3.0.1 / 4.0.2 / 3.2.0 | ISC | حسابات الرسوم المخصّصة |
+| | `recharts` | 3.10.1 | MIT | غلاف مكوّنات React |
+| | `@nivo/*` (12 حزمة: core, bar, line, pie, radar, bump, funnel, heatmap, sankey, treemap, waffle, radial-bar, theming) | 0.99.0 | MIT | رسوم جاهزة بسمة القالب |
+| | `chart.js` + `react-chartjs-2` + `chartjs-plugin-datalabels` | 4.5.1 / 5.3.1 / 2.2.0 | MIT | Canvas |
+| | `echarts` + `echarts-for-react` | 6.1.0 / 3.0.6 | Apache-2.0 / MIT | رسوم غنية |
+| **الخطوط (29)** | متغيرة (17): `alexandria` `baloo-bhaijaan-2` `cairo` `changa` `el-messiri` `inter` `kufam` `lemonada` `marhey` `markazi-text` `noto-kufi-arabic` `noto-naskh-arabic` `noto-sans-arabic` `readex-pro` `reem-kufi` `rubik` `vazirmatn` | 5.3.0 | OFL-1.1 | خطوط عربية/لاتينية متغيرة |
+| | ثابتة (12): `almarai` `amiri` `aref-ruqaa` `fira-code` `harmattan` `ibm-plex-sans-arabic` `jetbrains-mono` `jomhuria` `katibeh` `rakkas` `scheherazade-new` `tajawal` | 5.3.0 | OFL-1.1 | خطوط كلاسيكية ومكملة |
+| **النص العربي** | `harfbuzzjs` | 1.6.3 | MIT | تشكيل النص (Shaping) |
+| | `fitty` | 2.4.2 | MIT | ملاءمة الحجم تلقائياً |
+
+### 9.2 حزم التطوير (16)
+
+| الفئة | الحزمة | النسخة | الرخصة |
+|---|---|---|---|
+| البناء | `vite` / `@vitejs/plugin-react` | 7.3.7 / 5.2.0 | MIT |
+| الأنماط | `tailwindcss` / `@tailwindcss/vite` | 4.3.3 | MIT |
+| اللغة | `typescript` | 5.9.3 | Apache-2.0 |
+| الاختبار | `vitest` / `jsdom` | 3.2.7 / 30.1.3 | MIT |
+| الأنواع | `@types/react` / `react-dom` / `node` / `three` / `canvas-confetti` / `d3-array` / `d3-interpolate` / `d3-scale` / `d3-shape` | 19.3.0 … 22.20.5 | MIT |
+
+### 9.3 ملخص الرخص (93 حزمة مباشرة)
+
+| الرخصة | العدد | ملاحظات |
+|---|---|---|
+| MIT | 54 | الغالبية — بما فيها React وThree.js وreveal.js وVite |
+| OFL-1.1 | 29 | كل الخطوط (SIL Open Font License) |
+| ISC | 6 | d3 الأربع + canvas-confetti + lucide-react |
+| Apache-2.0 | 2 | echarts + typescript |
+| GSAP Standard License | 2 | `gsap` و`@gsap/react` — **مجانية للاستخدام** لكنها ليست MIT؛ الاستيراد الوحيد عبر useGSAP |
+
+> **ملاحظتان:** (1) `reveal.js` و`reveal.js-plugins` تُستعملان **مراجع قراءة فقط** — نُقلت نماذجها (Zoom/Notes/chalkboard) يدوياً إلى حزم القالب لتبقى متوافقة RTL ومالكة الكود، لذا لا استيراد مباشر منها في `src/`. (2) لا توجد أي حزمة برخصة مقيدة (GPL/AGPL أو Copyleft) — الشجرة كلها رخص متساهلة.
+
+---
+
+## 10. توصيات للخطوة القادمة (مرتبة بالقيمة)
 
 1. **مؤقت عكسي لكل شريحة** في نافذة المعلم (زمن مخطط لكل شريحة + تحذير تجاوز) — امتداد طبيعي للحزمة 7.
 2. **تصدير/استيراد رسومات السبورة** (PNG + localStorage لاستئناف الجلسة) — إكمال الحزمة 5.
