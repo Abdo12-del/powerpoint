@@ -49,6 +49,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'effects') {
+  // مختبر المؤثرات السينمائية: ?lab=effects — Three.js + Lenis + تشوهات بصرية (لا يدخل حزمة العرض)
+  const EffectsLab = lazy(() => import('@/effects/lab/EffectsLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <EffectsLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'showreel' || lab === 'motion') {
   // مختبر الموشن الشورييل: ?lab=showreel — Motion Canvas + GSAP (لا يدخل حزمة العرض)
   const ShowreelLab = lazy(() => import('@/showreel/lab/ShowreelLab'));

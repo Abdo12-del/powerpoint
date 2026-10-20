@@ -28,6 +28,8 @@
 | `numbers-and-counters` | KPI متحرك، نسبة، عدّاد، أرقام معكوسة في RTL | `NumberRoll` (number-flow) مقابل `NumberTicker`/نمط `stats`، المحلية ونمط الأرقام، `dir="ltr"`، وصفة شريحة إحصاء |
 | `data-charts-motion` | شريحة فيها رسم بياني، لوحة مؤشرات، رسم معكوس/غير مقروء في RTL | الرسالة ← الشكل، الطبقة (مخصّص/Recharts/Nivo/Chart.js/ECharts)، التحميل الكسول، كوريغرافيا الكشف، جدول مرايا RTL لكل مكتبة، الأرقام والألوان، مراجع لكل مكتبة في `references/` (`docs/CHARTS.md`) |
 | `cinematic-flyover` | «عرض سينمائي ثلاثي الأبعاد»، تحليق فوق صفحة هبوط، مسار كاميرا وDoF، بطاقة ختامية | التقاط Playwright → طبقات، مسارات جاهزة ونقاط مخصّصة، العمق والـ parallax، معاينة الإطارات، تثبيت الأبعاد (`docs/CINEMATIC_FLYOVER.md`، `?lab=cinematic`) |
+| `motion-showreel` | «شورييل موشن جرافيك 15 ثانية»، Kinetic/3D/Glitch/Morph/Particles، تزامن BPM | 7 مشاهد بـ GSAP + Motion Canvas فلسفة، Beat sync، انتقالات Slide/Zoom، تنسيق جريء (`docs/MOTION_SHOWREEL.md`، `?lab=showreel`) |
+| `cinematic-effects` | «مؤثرات سينمائية»، مشهد Three.js، تشوهات بصرية، Lenis، مزامنة الإيقاع | `ThreeShowreel` + `BeatClock` + `CinemaPass`، Morph/Particles/Glitch جاهزة، انتقالات DOM، بارالاكس Lenis، بديل آمن بلا WebGL (`docs/CINEMATIC_EFFECTS.md`، `?lab=effects`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.
