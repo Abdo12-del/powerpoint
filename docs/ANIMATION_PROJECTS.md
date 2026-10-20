@@ -30,6 +30,7 @@
 | `cinematic-flyover` | «عرض سينمائي ثلاثي الأبعاد»، تحليق فوق صفحة هبوط، مسار كاميرا وDoF، بطاقة ختامية | التقاط Playwright → طبقات، مسارات جاهزة ونقاط مخصّصة، العمق والـ parallax، معاينة الإطارات، تثبيت الأبعاد (`docs/CINEMATIC_FLYOVER.md`، `?lab=cinematic`) |
 | `motion-showreel` | «شورييل موشن جرافيك 15 ثانية»، Kinetic/3D/Glitch/Morph/Particles، تزامن BPM | 7 مشاهد بـ GSAP + Motion Canvas فلسفة، Beat sync، انتقالات Slide/Zoom، تنسيق جريء (`docs/MOTION_SHOWREEL.md`، `?lab=showreel`) |
 | `cinematic-effects` | «مؤثرات سينمائية»، مشهد Three.js، تشوهات بصرية، Lenis، مزامنة الإيقاع | `ThreeShowreel` + `BeatClock` + `CinemaPass`، Morph/Particles/Glitch جاهزة، انتقالات DOM، بارالاكس Lenis، بديل آمن بلا WebGL (`docs/CINEMATIC_EFFECTS.md`، `?lab=effects`) |
+| `distilbook-motion` | «شورييل قصصي لمنصة»، موشن بحثي (أفكار/مراجع/ملخصات)، كتابة حركية بمحتوى مخصص | خط زمني حتمي (فلسفة Motion Canvas) + GSAP، 7 مشاهد/20ث، مشهد تقطير Three.js، شبكة استشهادات SVG، انتقالات Slide/Zoom/Glitch، تزامن BPM، فصول قابلة للقفز (`docs/DISTILBOOK_MOTION.md`، `?lab=distilbook`) |
 | `animation-qa` | مراجعة نهائية، «الحركة بطيئة/متقطعة» | فحوص آلية + 12 بنداً لكل شريحة + إصلاحات شائعة |
 
 إذا كان وكيلك لا يكتشف المهارات تلقائياً: اطلب منه صراحة «اقرأ `.agents/skills/<name>/SKILL.md`» — أو انظر `AGENTS.md` الذي يشير إليها.

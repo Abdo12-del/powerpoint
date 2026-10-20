@@ -59,6 +59,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'distilbook' || lab === 'research') {
+  // مختبر الموشن جرافيك البحثي: ?lab=distilbook — شورييل Distilbook القصصي (لا يدخل حزمة العرض)
+  const DistilbookLab = lazy(() => import('@/distilbook/lab/DistilbookLab'));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <DistilbookLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'showreel' || lab === 'motion') {
   // مختبر الموشن الشورييل: ?lab=showreel — Motion Canvas + GSAP (لا يدخل حزمة العرض)
   const ShowreelLab = lazy(() => import('@/showreel/lab/ShowreelLab'));
