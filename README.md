@@ -24,7 +24,7 @@
 - **عقد التحكم** كاملاً: أسهم / Enter / Space / Esc / M / F، شريط تقدّم، عدّاد «الشريحة 5 / 12»، فأرة ولمس.
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
-- **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…). لمذكرات التخرج أضفنا **موجّه اختيار منهج العرض** حسب التخصص ونوع الدراسة، وخرائط المجالات الرسمية الـ15 في نظام LMD، مع قواعد جامعية موثقة بوضوح نطاقها وتاريخها وحدودها — [`الدليل`](docs/THESIS_PRESENTATION_ROUTER.md) و`src/thesis/`.
+- **تعليمات AI معيارية**: القواعد المصدرية مقسّمة حسب الموضوع في `.ruler/`، وRuler يولّد `AGENTS.md` و`CLAUDE.md` و`.github/copilot-instructions.md`. عدّل المصدر ثم شغّل `npm run ai:rules` — [دليل التنظيم](docs/AI_RULES.md). لمنهجيات المذكرات اقرأ [`الدليل`](docs/THESIS_PRESENTATION_ROUTER.md) و`src/thesis/`.
 - **20 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، العرض السينمائي، الشورييل الإبداعي، المؤثرات السينمائية، الموشن البحثي، السبورة والتعليق، التكبير والتركيز، ملاحظات المعلم ومؤقت العرض، مراجعة الجودة، توجيه مناهج المذكرات) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
@@ -211,15 +211,22 @@ docs/
 ├── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
 ├── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
-└── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
+├── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
+└── AI_RULES.md                   # مصدر التعليمات المعيارية، مخرجات الوكلاء، وطريقة تحديثها
 public/                           # الشعار (logo.png) + favicon.png + apple-touch-icon.png
 scripts/
 └── capture-landing.mjs          # التقاط صفحة الهبوط وطبقاتها عبر Playwright → manifest.json
 .github/
+├── copilot-instructions.md       # مخرج Ruler لـ GitHub Copilot
 ├── workflows/deploy.yml          # نشر تلقائي على GitHub Pages عند كل دفع إلى main (BASE_PATH = /<اسم-المستودع>/)
 ├── workflows/ci.yml              # فحص طلبات السحب: npm run check
 └── social-preview.png            # صورة المعاينة الاجتماعية (1280×640) — تُرفع من Settings → Social preview
-AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
+.ruler/                           # مصدر تعليمات AI المعيارية (Ruler)
+├── AGENTS.md                     # سياق المشروع وفهرس القواعد
+├── ruler.toml                    # الوكلاء المستهدفون والمخرجات المتتبعة
+└── rules/                         # قواعد حسب الموضوع: العرض، التصميم، المكتبات، الرسائل، الحركة، الجودة
+AGENTS.md                         # مخرج Ruler مشترك للوكلاء المتوافقين
+CLAUDE.md                         # مخرج Ruler لـ Claude Code
 ```
 
 ## النشر

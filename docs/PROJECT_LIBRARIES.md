@@ -4,7 +4,7 @@
 
 ## سياسة الوكيل
 
-1. اقرأ `AGENTS.md` وهذا الفهرس قبل اقتراح مكتبة أو إضافة اعتماد.
+1. اقرأ تعليمات الوكيل المولّدة (`AGENTS.md` أو ملف الأداة المناسبة) وهذا الفهرس قبل اقتراح مكتبة أو إضافة اعتماد. المصدر المنظم للقواعد هو `.ruler/`.
 2. اختر المكتبة المناسبة من الجداول، ثم ابحث عن مغلّف جاهز أو مثال في المسارات المذكورة قبل الاستيراد المباشر.
 3. أعد استعمال المكونات والمغلّفات الحالية (`src/components/`, `src/recipes/`, `src/lib/`) متى غطّت الحاجة.
 4. حمّل المكتبات الثقيلة/الاختيارية كسولاً عند توفر ذلك؛ لا تضفها إلى الحزمة الأولية بلا حاجة.
@@ -65,6 +65,7 @@
 | الحزمة | الغرض |
 |---|---|
 | `vite`, `@vitejs/plugin-react`, `@tailwindcss/vite`, `tailwindcss` | خادم التطوير والبناء وتحويل React وTailwind؛ حافظ على إعدادات `vite.config.*` وCSS الحالية. |
+| `@intellectronica/ruler` | إدارة تعليمات AI المعيارية في `.ruler/` وتوليد ملفات الوكلاء عبر `npm run ai:rules`؛ لا تعدّل المخرجات المولّدة يدوياً. |
 | `typescript` | فحص وبناء TypeScript؛ لا تتجاوز أخطاء النوع بـ`any` أو تعطيل الفحوص إلا لضرورة موثقة. |
 | `vitest`, `jsdom` | اختبارات الوحدات وتكامل DOM؛ أضف/حدّث اختباراً مع السلوك الجديد. |
 | `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape` | تعريفات TypeScript للمكتبات المقابلة؛ لا تستوردها وقت التشغيل. |
@@ -82,5 +83,5 @@
 ### Dev dependencies
 
 <!-- dev-packages:start -->
-`@tailwindcss/vite`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape`, `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@vitejs/plugin-react`, `jsdom`, `tailwindcss`, `typescript`, `vite`, `vitest`
+`@intellectronica/ruler`, `@tailwindcss/vite`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape`, `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@vitejs/plugin-react`, `jsdom`, `tailwindcss`, `typescript`, `vite`, `vitest`
 <!-- dev-packages:end -->
