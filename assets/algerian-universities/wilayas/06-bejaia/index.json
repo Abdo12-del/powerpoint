@@ -1,0 +1,52 @@
+{
+  "wilayaCode": "06",
+  "wilayaNameAr": "بجاية",
+  "wilayaNameFr": "Béjaïa",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00133",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي ببجاية",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00016",
+      "nameAr": "جامعة بجاية – عبد الرحمان ميرة",
+      "nameFr": "Université de Béjaia – Abderrahmane Mira",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/06-bejaia/universite-abderrahmane-mira-bejaia__جامعة-بجاية-عبد-الرحمن-ميرة.png",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:University_of_B%C3%A9ja%C3%AFa_logo.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/42/University_of_B%C3%A9ja%C3%AFa_logo.png",
+        "author": "University of Béjaïa",
+        "license": "Public domain (PD-textlogo; Commons file page)",
+        "dimensions": "945 × 309",
+        "sourceNote": "Commons file page identifies the University as author and says the source is the University.",
+        "svg": null,
+        "status": "png-collected-svg-not-published-in-source"
+      }
+    },
+    {
+      "id": "00091",
+      "nameAr": "المدرسة العليا في علوم وتكنولوجيات الإعلام الآلي ببجاية",
+      "nameFr": "École Supérieure en Sciences et Technologies de l’Informatique et du Numérique de Bejaia",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

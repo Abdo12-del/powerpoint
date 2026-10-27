@@ -1,0 +1,21 @@
+{
+  "wilayaCode": "32",
+  "wilayaNameAr": "البيض",
+  "wilayaNameFr": "El Bayadh",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00174",
+      "nameAr": "المركز الجامعي بالبيض – نور البشير",
+      "nameFr": "Centre universitaire d’El Bayadh – Nour Bachir",
+      "type": "centre_universitaire",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

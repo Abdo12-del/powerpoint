@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "40",
+  "wilayaNameAr": "خنشلة",
+  "wilayaNameFr": "Khenchela",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00030",
+      "nameAr": "جامعة خنشلة – عباس لغرور",
+      "nameFr": "Université de Khenchela – Abbas Laghrour",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "svg": null,
+        "sourcePage": "https://univ-khenchela.dz/fr/ancienne-page-daccueil",
+        "original": "https://www.univ-khenchela.dz/static/medias/2025/06/LOGO-UNIVERSITY-ABBES-LAGHROUR-KHENCHELA-2024-1-1003x1024.jpg",
+        "author": "Université Abbes Laghrour Khenchela (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "1003 × 1024 (source filename)",
+        "sourceNote": "2024-labelled logo file served from the official university site.",
+        "status": "png-collected-no-svg-license-not-stated",
+        "jpg": "wilayas/40-khenchela/universite-abbes-laghrour-khenchela__جامعة-عباس-لغرور-خنشلة.jpg"
+      }
+    }
+  ]
+}

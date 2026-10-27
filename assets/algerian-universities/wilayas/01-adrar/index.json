@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "01",
+  "wilayaNameAr": "أدرار",
+  "wilayaNameFr": "Adrar",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00126",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بأدرار",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00003",
+      "nameAr": null,
+      "nameFr": "Université d’Adrar – Ahmed Draya",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/01-adrar/universite-ahmed-draia-adrar__جامعة-أحمد-دراية-أدرار.png",
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:University-of-Ahmed-Dra%C3%AFa-Adrar-Logo.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/5f/University-of-Ahmed-Dra%C3%AFa-Adrar-Logo.png",
+        "author": "جامعة أحمد دراية أدرار",
+        "license": "CC BY-SA 4.0",
+        "dimensions": "2083 × 1492",
+        "sourceNote": "Commons page cites the official university website as source and credits the university as author.",
+        "status": "png-collected-svg-not-published-in-source"
+      }
+    }
+  ]
+}

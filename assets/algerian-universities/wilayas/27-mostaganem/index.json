@@ -1,0 +1,65 @@
+{
+  "wilayaCode": "27",
+  "wilayaNameAr": "مستغانم",
+  "wilayaNameFr": "Mostaganem",
+  "institutionCount": 4,
+  "institutions": [
+    {
+      "id": "00144",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بمستغانم",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00169",
+      "nameAr": "المدرسة العليا للأساتذة بمستغانم",
+      "nameFr": "Ecole Normale Supérieure de Mostaganem",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00078",
+      "nameAr": "المدرسة العليا في علوم الفلآحة بمستغانم سابقا-ق. ت. ع.ط.ح. – مستغانم",
+      "nameFr": "Ecole Supérieure Agronomique de Mostaganem ex EP SNV Mostaganem",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00036",
+      "nameAr": "جامعة عبد الحميد ابن باديس مستغانم",
+      "nameFr": "Université de Mostaganem – Abdelhamid Ibn Badis",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "svg": null,
+        "sourcePage": "http://catalogue.univ-mosta.dz/bc/",
+        "original": "http://catalogue.univ-mosta.dz/bc/images/site/logo.jpg",
+        "author": "Université Abdelhamid Ibn Badis de Mostaganem (official library/catalogue subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "180 × 180",
+        "sourceNote": "Logo served by the university’s library/catalogue subdomain; resolution is low.",
+        "status": "png-collected-low-resolution-no-svg-license-not-stated",
+        "jpg": "wilayas/27-mostaganem/universite-abdelhamid-ibn-badis-mostaganem__جامعة-عبد-الحميد-بن-باديس-مستغانم.jpg"
+      }
+    }
+  ]
+}

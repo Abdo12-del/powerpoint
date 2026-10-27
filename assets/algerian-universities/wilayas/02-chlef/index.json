@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "02",
+  "wilayaNameAr": "الشلف",
+  "wilayaNameFr": "Chlef",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00022",
+      "nameAr": "جامعة الشلف – حسيبة بن بوعلي",
+      "nameFr": "Université de Chlef – Hassiba Benbouali",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/02-chlef/universite-hassiba-benbouali-chlef__جامعة-حسيبة-بن-بوعلي-الشلف.png",
+        "svg": null,
+        "sourcePage": "https://bu.univ-chlef.dz/",
+        "original": "http://bu.univ-chlef.dz/images/site/logo.png",
+        "author": "Université Hassiba Benbouali de Chlef (logo served by official university-library subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "216 × 180 (source image returned)",
+        "sourceNote": "Official university library subdomain directly serves this image as its logo.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

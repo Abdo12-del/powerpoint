@@ -1,0 +1,125 @@
+{
+  "wilayaCode": "42",
+  "wilayaNameAr": "تيبازة",
+  "wilayaNameFr": "Tipaza",
+  "institutionCount": 9,
+  "institutions": [
+    {
+      "id": "00094",
+      "nameAr": "الأكاديمية العسكرية بشرشال (شرشال، ولاية تيبازة)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00100",
+      "nameAr": "المدرسة العليا للإشارة ( القليعة، ولاية تيبازة)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00114",
+      "nameAr": "المدرسة الوطنية لحفظ الممتلكات الثقافية (تيبازة)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00059",
+      "nameAr": "مدرسة الدراسات العليا التجارية",
+      "nameFr": "Ecole des hautes études commerciales",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00068",
+      "nameAr": "المدرسة الوطنية العليا للمناجمنت",
+      "nameFr": "Ecole nationale supérieure de management",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00075",
+      "nameAr": null,
+      "nameFr": "Ecole nationale supérieure en statistique et en économie appliquée",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00081",
+      "nameAr": "المدرسة العليا للتجارة- المجاهد مولود قاسم نايت بلقاسم",
+      "nameFr": "Ecole Supérieure de Commerce-Mouloud Kacem Naït Belkacem",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00083",
+      "nameAr": "المدرسة العليا للتسيير و الاقتصاد الرقمي",
+      "nameFr": "Ecole Supérieure de Gestion et d’Economie Numérique",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00049",
+      "nameAr": "جامعة تيبازة – عبد الله مرسلي",
+      "nameFr": "université de Tipaza – Abdallah Morsli",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

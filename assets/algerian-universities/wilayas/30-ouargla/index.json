@@ -1,0 +1,52 @@
+{
+  "wilayaCode": "30",
+  "wilayaNameAr": "ورقلة",
+  "wilayaNameFr": "Ouargla",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00146",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بورقلة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00170",
+      "nameAr": "المدرسة العليا للأساتذة ورقلة",
+      "nameFr": "Ecole normale supérieure de Ouargla",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00038",
+      "nameAr": "جامعة ورقلة – قاصدي مرباح",
+      "nameFr": "Université de Ouargla – Kasdi Merbah",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "svg": null,
+        "sourcePage": "https://elearning.univ-ouargla.dz/",
+        "original": "https://elearning.univ-ouargla.dz/pluginfile.php/1/core_admin/logocompact/300x300/1791985568/Logo%20UKMO_PNG.jpg",
+        "author": "Université Kasdi Merbah Ouargla (official e-learning domain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "200 × 200 (source image returned)",
+        "sourceNote": "Logo displayed by the university e-learning service.",
+        "status": "png-collected-no-svg-license-not-stated",
+        "jpg": "wilayas/30-ouargla/universite-kasdi-merbah-ouargla__جامعة-قاصدي-مرباح-ورقلة.jpg"
+      }
+    }
+  ]
+}

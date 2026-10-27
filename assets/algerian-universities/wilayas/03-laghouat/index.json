@@ -1,0 +1,47 @@
+{
+  "wilayaCode": "03",
+  "wilayaNameAr": "الأغواط",
+  "wilayaNameFr": "Laghouat",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00173",
+      "nameAr": "المركز الجامعي آفلو",
+      "nameFr": "Centre universitaire d’Aflou",
+      "type": "centre_universitaire",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00168",
+      "nameAr": "المدرسة العليا للأساتذة بالأغواط – طالب عبد الرحمان",
+      "nameFr": "Ecole normale supérieure de Laghouat – Taleb Abderrahmane",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00032",
+      "nameAr": "جامعة الأغواط – عمار ثليجي",
+      "nameFr": "Université de Laghouat – Amar Telidji",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "04",
+  "wilayaNameAr": "أم البواقي",
+  "wilayaNameFr": "Oum El Bouaghi",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00039",
+      "nameAr": "جامعة أم البواقي – العربي بن مهيدي",
+      "nameFr": "Université de Oum El Bouaghi – Larbi Ben M’hidi",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/04-oum-el-bouaghi/universite-larbi-ben-mhidi-oum-el-bouaghi__جامعة-العربي-بن-مهيدي-أم-البواقي.png",
+        "svg": null,
+        "sourcePage": "https://www.univ-oeb.dz/fr/cropped-logo-3-png/",
+        "original": "https://www.univ-oeb.dz/wp-content/uploads/2022/02/cropped-logo-3.png",
+        "author": "Université Larbi Ben M’hidi Oum El Bouaghi (official site)",
+        "license": "Not stated by source; institutional mark/trademark",
+        "sourceNote": "Logo image is embedded and linked directly on the university’s official site page.",
+        "status": "png-collected-official-site-license-not-stated",
+        "dimensions": "225 × 225"
+      }
+    }
+  ]
+}

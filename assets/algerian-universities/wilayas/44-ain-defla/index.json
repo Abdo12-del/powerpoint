@@ -1,0 +1,34 @@
+{
+  "wilayaCode": "44",
+  "wilayaNameAr": "عين الدفلى",
+  "wilayaNameFr": "Aïn Defla",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00142",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بعين الدفلة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00029",
+      "nameAr": "جامعة خميس مليانة – الجيلالي بونعامة",
+      "nameFr": "Université de Khemis Miliana – Djilali Bounaama",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

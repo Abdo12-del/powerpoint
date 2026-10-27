@@ -1,0 +1,28 @@
+{
+  "wilayaCode": "17",
+  "wilayaNameAr": "الجلفة",
+  "wilayaNameFr": "Djelfa",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00026",
+      "nameAr": "جامعة الجلفة – زيان عاشور",
+      "nameFr": "Université de Djelfa – Ziane Achour",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "jpg": "wilayas/17-djelfa/universite-ziane-achour-djelfa__جامعة-زيان-عاشور-الجلفة.jpg",
+        "svg": null,
+        "sourcePage": "https://www.uniranks.com/universities/ziane-achour-university-of-djelfa",
+        "original": "https://d107tomoq7qta0.cloudfront.net/images/universities-logos/pOdxeLUbvU6p9NUy6E7hfSKO7uaZG2sqe3jdZgVe.jpg",
+        "corroboratingSourcePage": "https://www.unirank.org/dz/uni/universite-ziane-achour-de-djelfa/",
+        "author": "Université Ziane Achour de Djelfa (as identified by third-party university directories)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "1080 × 1080",
+        "sourceNote": "Logo is identified by the Uniranks directory; UniRank separately labels a matching seal as the university official logo. Neither image source is the official university domain.",
+        "status": "jpg-third-party-directory-source-corroborated-license-not-stated"
+      }
+    }
+  ]
+}

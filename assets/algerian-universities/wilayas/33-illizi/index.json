@@ -1,0 +1,21 @@
+{
+  "wilayaCode": "33",
+  "wilayaNameAr": "إليزي",
+  "wilayaNameFr": "Illizi",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00175",
+      "nameAr": "المركز الجامعي إليزي المقاوم الشيخ آمود بن مختار",
+      "nameFr": "Centre Universitaire d’Illizi-Cheikh Amoud ben Mokhtar",
+      "type": "centre_universitaire",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

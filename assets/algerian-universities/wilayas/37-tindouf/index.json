@@ -1,0 +1,21 @@
+{
+  "wilayaCode": "37",
+  "wilayaNameAr": "تندوف",
+  "wilayaNameFr": "Tindouf",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00048",
+      "nameAr": "جامعة بتندوف – المجاهد علي كافي",
+      "nameFr": "Université de Tindouf-Ali Kafi",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

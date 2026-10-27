@@ -1,0 +1,91 @@
+{
+  "wilayaCode": "19",
+  "wilayaNameAr": "سطيف",
+  "wilayaNameFr": "Sétif",
+  "institutionCount": 6,
+  "institutions": [
+    {
+      "id": "00110",
+      "nameAr": "المدرسة المتخصصة في الحوامات (عين أرنات، ولاية سطيف)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00119",
+      "nameAr": "المعهد العالي للتجارة والاقتصاد سطيف",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00138",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بسطيف",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00171",
+      "nameAr": "المدرسة العليا للأساتذة سطيف المجاهد مسعود زغار",
+      "nameFr": "Ecole normale supérieure de setif – Messaoud Zeghar",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00042",
+      "nameAr": "جامعة سطيف1 – فرحات عباس",
+      "nameFr": "Université de Sétif 1 – Ferhat Abbas",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/19-setif/universite-ferhat-abbas-setif-1__جامعة-فرحات-عباس-سطيف-1.png",
+        "svg": null,
+        "sourcePage": "https://fr.univ-setif.dz/universite/a-propos",
+        "original": "https://fr.univ-setif.dz/images/logo-ufas.png",
+        "author": "Université Ferhat Abbas Sétif 1 (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "3508 × 2480",
+        "sourceNote": "Image asset linked from the official university about page.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    },
+    {
+      "id": "00043",
+      "nameAr": "جامعة سطيف2 – لمين دباغين",
+      "nameFr": "Université de Sétif 2 – Mohamed Lamine Debaghine",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

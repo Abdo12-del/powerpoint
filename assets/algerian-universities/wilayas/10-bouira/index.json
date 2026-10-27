@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "10",
+  "wilayaNameAr": "البويرة",
+  "wilayaNameFr": "Bouira",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00128",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بالبويرة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00020",
+      "nameAr": "جامعة البويرة – آكلي محند أولحاج",
+      "nameFr": "Université de Bouira – Akli Mohand Oulhadj",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/10-bouira/universite-akli-mohand-oulhadj-bouira__جامعة-أكلي-محند-أولحاج-البويرة.png",
+        "svg": null,
+        "sourcePage": "https://elearning.univ-bouira.dz/?lang=ar&redirect=0",
+        "original": "https://elearning.univ-bouira.dz/pluginfile.php/1/core_admin/logocompact/300x300/1788441010/logo%20(2).png",
+        "author": "Université Akli Mohand Oulhadj de Bouira (official e-learning domain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "(Moodle logo asset; local source image)",
+        "sourceNote": "University emblem served by the official e-learning portal.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

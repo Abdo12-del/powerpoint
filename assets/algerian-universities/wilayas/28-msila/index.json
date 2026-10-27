@@ -1,0 +1,52 @@
+{
+  "wilayaCode": "28",
+  "wilayaNameAr": "المسيلة",
+  "wilayaNameFr": "M’Sila",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00131",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بالمسيلة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00164",
+      "nameAr": "المدرسة العليا للأساتذة بوسعادة المجاهد الفريق احمد قايد صالح",
+      "nameFr": "Ecole normale supérieure de Bou Saâda",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00033",
+      "nameAr": "جامعة المسيلة – محمد بوضياف",
+      "nameFr": "Université de M’sila – Mohamed Boudiaf",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/28-msila/universite-mohamed-boudiaf-msila__جامعة-محمد-بوضياف-المسيلة.png",
+        "svg": null,
+        "sourcePage": "https://isia.univ-msila.dz/",
+        "original": "https://isia.univ-msila.dz/images/umsila_logo.png",
+        "author": "Université Mohamed Boudiaf de M’Sila (official university-institute subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "222 × 227",
+        "sourceNote": "Logo image served by the official ISIA subdomain under univ-msila.dz.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

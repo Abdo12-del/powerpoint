@@ -1,0 +1,736 @@
+{
+  "wilayaCode": "16",
+  "wilayaNameAr": "الجزائر",
+  "wilayaNameFr": "Alger",
+  "institutionCount": 53,
+  "institutions": [
+    {
+      "id": "00095",
+      "nameAr": "المدرسة العسكرية المتعددة التقينات (برج البحري، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00096",
+      "nameAr": "المدرسة العليا البحرية بتامنتفوست (تامنتفوست، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00097",
+      "nameAr": "المدرسة العليا العسكرية للإعلام والاتصال (سيدي فرج، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00098",
+      "nameAr": "المدرسة العليا لتقنيات الطيران (الدار البيضاء، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00101",
+      "nameAr": "المدرسة العليا للدرك الوطني (زرالدة، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00102",
+      "nameAr": "المدرسة العليا للدفاع الجوي عن الإقليم (الرغاية، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00103",
+      "nameAr": "المدرسة العليا للضمان الاجتماعي (بن عكنون، ولاية الجزائر).",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00105",
+      "nameAr": "المدرسة العليا للعتاد (الحراش، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00106",
+      "nameAr": "المدرسة العليا للعلوم والتكنولوجيا واد الرمان العاشور.الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00107",
+      "nameAr": "المدرسة العليا للفندقة والإطعام عين البنيان بالجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00108",
+      "nameAr": "المدرسة العليا للفنون الجميلة (الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00109",
+      "nameAr": "المدرسة العليا لمهن البناء بلوزداد.الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00111",
+      "nameAr": "المدرسة الوطنية التحضيرية لدراسة مهندس (الرويبة، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00113",
+      "nameAr": "المدرسة الوطنية العليا للبريد وتكنولوجيات الإعلام والاتصال (الكاليتوس، ولاية الجزائر).",
+      "nameFr": "École Nationale Supérieure des TIC et de la Poste (ENSTICP)",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/ecole-nationale-superieure-tic-poste-ensticp-alger__المدرسة-الوطنية-العليا-لتكنولوجيات-الإعلام-والاتصال-والبريد.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://inptic.edu.dz/?p=986",
+        "original": "https://inptic.edu.dz/wp-content/uploads/2023/04/ENSTICP_logo--1024x250.png",
+        "author": "ENSTICP (official institution website)",
+        "license": "Not stated; institutional logo/trademark",
+        "dimensions": "1024 × 250",
+        "sourceNote": "The institution’s official 2023 post identifies this as its new official logo; includes Arabic, French/Latin acronym, and English label.",
+        "status": "png-collected-official-site-license-not-stated"
+      }
+    },
+    {
+      "id": "00115",
+      "nameAr": "المدرسة الوطنية لشبه الطبي للصحة العسكرية (عين النعجة،",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00116",
+      "nameAr": "المدرسة الوطنية للصحة العسكرية (عين النعجة، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00118",
+      "nameAr": "المعهد العالي لدراسات الأمن الوطني (الأبيار، ولاية الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00120",
+      "nameAr": "المعهد العالي للتسيير دالي براهيم",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00122",
+      "nameAr": "المعهد العالي للعلوم برج الكيفان الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00123",
+      "nameAr": "المعهد العالي للعلوم والتكنولوجيا – علوم تجريبية ابن رشد",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00124",
+      "nameAr": "المعهد الوطني العالي للموسيقى (الجزائر)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00125",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00148",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي للقابلات بالجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00150",
+      "nameAr": "المعهد الوطني لمهن فنون العرض والسمعي البصري",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00152",
+      "nameAr": "مدرسة ادارة الأعمال بالجزائر(بيزناس سكول) حيدرة الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00153",
+      "nameAr": "مدرسة التكوين في تقنيات التسيير دالي ابراهيم الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00154",
+      "nameAr": "معهد إدارة الأعمال ( أنسيم سوب) حيدرة الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00155",
+      "nameAr": "معهد البصريات اولاد فايت. الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00157",
+      "nameAr": "معهد التكنولوجيا ( نوميديا) سيدي عبد الله .الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00158",
+      "nameAr": "معهد التكوين في التأمينات والتسيير بن عكنون.الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00159",
+      "nameAr": "معهد المناجمنت سعيد حمدين بالجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00160",
+      "nameAr": "معهد المناجمنت والتطوير الشراقة.الجزائر",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00060",
+      "nameAr": "المدرسة الوطنية المتعددة التقنيات",
+      "nameFr": "Ecole Nationale Polytechnique",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00063",
+      "nameAr": "المدرسة الوطنية العليا للفلاحة -المجاهد خالف عبد الله المدعو قاصدي مرباح",
+      "nameFr": "Ecole nationale supérieure agronomique- Khalef Abdellah alias Kasdi Merbah",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00067",
+      "nameAr": "المدرسة الوطنية العليا للصحافة وعلوم الإعلام",
+      "nameFr": "Ecole nationale supérieure de journalisme et des sciences de l’information",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00069",
+      "nameAr": null,
+      "nameFr": "Ecole Nationale Supérieure de Technologie",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00071",
+      "nameAr": null,
+      "nameFr": "Ecole nationale supérieure des sciences de la mer et de l’aménagement du littoral",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00072",
+      "nameAr": "المدرسة الوطنية العليا للعلوم السياسية",
+      "nameFr": "Ecole Nationale Supérieure des sciences politiques",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00073",
+      "nameAr": null,
+      "nameFr": "Ecole nationale supérieure des travaux publics – Francis Jeanson",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00065",
+      "nameAr": "المدرسة الوطنية العليا للإعلام الآلي",
+      "nameFr": "Ecole nationale supérieure d’informatique",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/ecole-nationale-superieure-informatique-alger__المدرسة-الوطنية-العليا-للإعلام-الآلي-الجزائر.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://www.esi.dz/logos/",
+        "original": "https://www.esi.dz/wp-content/uploads/2021/04/ESI-Logo-BG-e1627076162748.png",
+        "author": "École nationale supérieure d’informatique (official logo page)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "300 × 224",
+        "sourceNote": "Direct image linked from the school’s official logo page.",
+        "status": "png-collected-official-site-license-not-stated"
+      }
+    },
+    {
+      "id": "00076",
+      "nameAr": "المدرسة الوطنية العليا للبيطرة-الشهيد الربيع بوشامة",
+      "nameFr": "Ecole nationale supérieure vétérinaire – Rabie Bouchama",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/ecole-nationale-superieure-veterinaire-rabie-bouchama__المدرسة-الوطنية-العليا-للبيطرة-ربيع-بوشامة.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://www.ensv.dz/",
+        "original": "https://www.ensv.dz/wp-content/uploads/2015/09/logo.png",
+        "author": "École nationale supérieure vétérinaire Rabie Bouchama (official site)",
+        "license": "Not stated; institutional wordmark/trademark",
+        "dimensions": "209 × 114",
+        "sourceNote": "Image file hosted on the institution’s official domain at the legacy path /wp-content/uploads/2015/09/logo.png; its former logo page currently returns 404. The local file is a wordmark on a blue field, not a standalone emblem.",
+        "status": "png-collected-official-site-wordmark-license-not-stated"
+      }
+    },
+    {
+      "id": "00165",
+      "nameAr": "المدرسة العليا للأساتذة بوزريعة الشيخ مبارك بن محمد إبراهيمي الميلي الجزائري",
+      "nameFr": "Ecole normale supérieure de Bouzaréah – Cheikh Mubarak Ben Mohamed Brahimi El Mili",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00167",
+      "nameAr": "المدرسة العليا للأساتذة القبة الشيخ محمد البشير الإبراهيمي",
+      "nameFr": "Ecole normale supérieure de Kouba – Mohamed Bachir El Ibrahimi",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00172",
+      "nameAr": "المدرسة العليا للأساتذة الصم والبكم",
+      "nameFr": "Ecole normale supérieure de sourds muets",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00077",
+      "nameAr": "المدرسة المتعددة العلوم للهندسة المعمارية والعمران-المجاهد حسين آيت أحمد",
+      "nameFr": "Ecole Polytechnique d’architecture et d’Urbanisme-Hocine Aït Ahmed",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/ecole-polytechnique-architecture-urbanisme__المدرسة-المتعددة-العلوم-للهندسة-المعمارية-والعمران.png",
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:%C3%89cole_Polytechnique_d%27Architecture_et_d%27Urbanisme_Hocine_A%C3%AFt_Ahmed.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/21/%C3%89cole_Polytechnique_d%27Architecture_et_d%27Urbanisme_Hocine_A%C3%AFt_Ahmed.png",
+        "author": "École Polytechnique d'Architecture et d'Urbanisme Hocine Aït Ahmed",
+        "license": "CC0 1.0",
+        "dimensions": "757 × 353",
+        "sourceNote": "Commons page cites the official school website and credits the school as author.",
+        "status": "png-collected-svg-not-published-in-source"
+      }
+    },
+    {
+      "id": "00085",
+      "nameAr": null,
+      "nameFr": "Ecole Supérieure des Sciences appliquées d’Alger ex EP ST Alger",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00088",
+      "nameAr": "المدرسة العليا في علوم الغذاء والصناعات الغذائية الفلاحية بالجزائر سابقا- ق. ت. ع.ط.ح -الجزائر",
+      "nameFr": "Ecole Supérieure des Sciences de l’Aliment et des Industries Agroalimentaires d’Alger ex EP SNV Alger",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00031",
+      "nameAr": "جامعة التكوين المتواصل",
+      "nameFr": "Université de la Formation Continue",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00053",
+      "nameAr": "جامعة الجزائر هواري بومدين للعلوم و التكنولوجيا",
+      "nameFr": "Université des sciences et de la technologie d’Alger, Houari Boumediène",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/universite-houari-boumediene-usthb-alger__جامعة-هواري-بومدين-للعلوم-والتكنولوجيا-الجزائر.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:USTHB.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/a/a2/USTHB.png",
+        "author": "DINADUBOIS (Commons uploader; source marked own work)",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "dimensions": "612 × 328",
+        "sourceNote": "Commons identifies this as the USTHB logo and releases it under CC0; full 612 × 328 file stored locally.",
+        "status": "png-collected-commons-cc0"
+      }
+    },
+    {
+      "id": "00004",
+      "nameAr": "جامعة الجزائر1 – بن يوسف بن خدة",
+      "nameFr": "Université d’Alger 1 – Benyoucef Benkhedda",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/universite-benyoucef-benkhedda-alger-1__جامعة-بن-يوسف-بن-خدة-الجزائر-1.png",
+        "svg": null,
+        "sourcePage": "https://fr.wikipedia.org/wiki/Fichier:Logo_de_l%27Universit%C3%A9_d%27Alger_Benyoucef-Benkhedda.png",
+        "original": "https://upload.wikimedia.org/wikipedia/fr/2/27/Logo_de_l%27Universit%C3%A9_d%27Alger_Benyoucef-Benkhedda.png",
+        "author": "Unknown; Wikipedia file history credits uploader RiadS99",
+        "license": "Registered trademark; copyright/re-use restrictions apply. Source page states original source is https://www.univ-alger.dz/",
+        "dimensions": "900 × 900",
+        "sourceNote": "Wikimedia file page records the university website as the original source and labels this a trademark; retain for identification/reference, not presumed freely reusable.",
+        "status": "png-collected-official-source-trademark-restricted"
+      }
+    },
+    {
+      "id": "00005",
+      "nameAr": "جامعة الجزائر 2 – أبوالقاسم سعد الله",
+      "nameFr": "Université d’Alger 2 – Abou el Kacem Saâdallah",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00006",
+      "nameAr": "جامعة الجزائر3 ابراهيم سلطان شيبوط",
+      "nameFr": "Université d’Alger 3 – Brahim Soltane Chaibout",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/16-alger/universite-ibrahim-sultan-chaibout-alger-3__جامعة-إبراهيم-سلطان-شيبوط-الجزائر-3.png",
+        "svg": null,
+        "sourcePage": "https://univ-alger3.dz/fr/",
+        "original": "https://www.univ-alger3.dz/fr/wp-content/uploads/2019/02/logo.png",
+        "author": "Université d’Alger 3 (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "200 × 135 (source image returned)",
+        "sourceNote": "Direct logo asset served by the official university site.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    },
+    {
+      "id": "00074",
+      "nameAr": "المدرسة الوطنية العليا للذكاء الاصطناعي",
+      "nameFr": "École Nationale Supérieure en Intelligence Artificielle",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "41",
+  "wilayaNameAr": "سوق أهراس",
+  "wilayaNameFr": "Souk Ahras",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00044",
+      "nameAr": "جامعة سوق أهراس – محمد الشريف مساعدية",
+      "nameFr": "Université de Souk Ahras – Mohammed-Chérif Messaadia",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/41-souk-ahras/universite-mohamed-cherif-messaadia-souk-ahras__جامعة-محمد-الشريف-مساعدية-سوق-أهراس.png",
+        "svg": null,
+        "sourcePage": "https://univ-soukahras.dz/fr/",
+        "original": "https://univ-soukahras.dz/static/images/logo-post-thumb.png",
+        "author": "Université Mohamed Chérif Messaadia Souk-Ahras (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "150 × 150",
+        "sourceNote": "Logo image served by the official university site; compact thumbnail resolution.",
+        "status": "png-collected-low-resolution-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

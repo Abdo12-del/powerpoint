@@ -99,6 +99,16 @@ if (lab === 'fonts') {
       </Suspense>
     </StrictMode>,
   );
+} else if (lab === 'simulations') {
+  // حزمة المحاكاة التفاعلية: ?lab=simulations — فيزياء وكيمياء وأحياء ورياضيات داخل العرض
+  const SimulationLab = lazy(() => import('@/simulations/InteractiveSimulations').then((module) => ({ default: module.InteractiveSimulations })));
+  root.render(
+    <StrictMode>
+      <Suspense fallback={null}>
+        <SimulationLab />
+      </Suspense>
+    </StrictMode>,
+  );
 } else if (lab === 'showreel' || lab === 'motion') {
   // مختبر الموشن الشورييل: ?lab=showreel — Motion Canvas + GSAP (لا يدخل حزمة العرض)
   const ShowreelLab = lazy(() => import('@/showreel/lab/ShowreelLab'));

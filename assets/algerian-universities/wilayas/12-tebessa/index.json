@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "12",
+  "wilayaNameAr": "تبسة",
+  "wilayaNameFr": "Tébessa",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00129",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بالتبسة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00046",
+      "nameAr": "جامعة تبسة – العربي التبسي",
+      "nameFr": "Université de Tébessa – Larbi Tébessi",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/12-tebessa/universite-larbi-tebessi-tebessa__جامعة-العربي-التبسي-تبسة.png",
+        "svg": null,
+        "sourcePage": "https://www.univ-tebessa.dz/",
+        "original": "https://www.univ-tebessa.dz/wp-content/uploads/2022/12/logo-LTU.png",
+        "author": "Université Echahid Cheikh Larbi Tebessi (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "448 × 314",
+        "sourceNote": "Direct logo asset served by the official university domain.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}
