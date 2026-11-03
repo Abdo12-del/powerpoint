@@ -1,0 +1,60 @@
+{
+  "wilayaCode": "13",
+  "wilayaNameAr": "تلمسان",
+  "wilayaNameFr": "Tlemcen",
+  "institutionCount": 4,
+  "institutions": [
+    {
+      "id": "00177",
+      "nameAr": "المركز الجامعي لمغنية",
+      "nameFr": "Centre universitaire de Maghnia",
+      "type": "centre_universitaire",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00084",
+      "nameAr": null,
+      "nameFr": "Ecole Supérieure de Management de Tlemcen ex EPSECG Tlemcen",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00086",
+      "nameAr": "المدرسة العليا في علوم التطبيقية بتلمسان سابقا- ق. ت. ع. ت.- تلمسان",
+      "nameFr": "Ecole Supérieure des Sciences Appliquées de Tlemcen ex EP ST Tlemcen",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00052",
+      "nameAr": "جامعة أبو بكر بلقايد تلمسان",
+      "nameFr": "Université de Tlemcen – Abou Bekr Belkaid",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

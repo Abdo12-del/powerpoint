@@ -1,0 +1,47 @@
+{
+  "wilayaCode": "21",
+  "wilayaNameAr": "سكيكدة",
+  "wilayaNameFr": "Skikda",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00140",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بسكيكدة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00161",
+      "nameAr": "المدرسة العليا لأساتذة التعليم التكنولوجي بسكيكدة",
+      "nameFr": "Ecole normale supérieure d’enseignement technologique de Skikda",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00055",
+      "nameAr": "جامعة سكيكدة – 20 أوت 1955",
+      "nameFr": "Université du 20 Août 1955 de Skikda",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

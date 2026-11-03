@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "39",
+  "wilayaNameAr": "الوادي",
+  "wilayaNameFr": "El Oued",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00093",
+      "nameAr": "المدرسة الوطنية العليا للزراعات الصحراوية – الوادي",
+      "nameFr": "L’Ecole supérieure de l’agriculture saharienne – El Oued",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00007",
+      "nameAr": "جامعة الوادي – حمة لخضر",
+      "nameFr": "Université d’El Oued – Hamma Lakhdar",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/39-el-oued/universite-hamma-lakhdar-el-oued__جامعة-حمه-لخضر-الوادي.png",
+        "svg": null,
+        "sourcePage": "https://faculty.univ-eloued.dz/faculty/ft",
+        "original": "https://faculty.univ-eloued.dz/images/logo2.png",
+        "author": "Université Echahid Hamma Lakhdar - El Oued (official faculty subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "600 × 600 (source image returned)",
+        "sourceNote": "Official Faculty of Technology subdomain displays the university logo.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

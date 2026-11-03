@@ -1,0 +1,135 @@
+{
+  "wilayaCode": "25",
+  "wilayaNameAr": "قسنطينة",
+  "wilayaNameFr": "Constantine",
+  "institutionCount": 9,
+  "institutions": [
+    {
+      "id": "00143",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بقسنطينة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00062",
+      "nameAr": "المدرسة الوطنية المتعددة التقنيات بقسنطينة-المفكر مالك بن نبي",
+      "nameFr": "Ecole Nationale Polytechnique de Constantine- Malek Bennabi",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00066",
+      "nameAr": "المدرسة الوطنية العليا في البيوتكنولوجيا بقسنطينة – الشهيد توفيق خزندار",
+      "nameFr": "Ecole Nationale Supérieure de Biotechnologie de Constantine – Tewfik Khaznadar",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00166",
+      "nameAr": "المدرسة العليا للأساتذة الآداب والعلوم الانسانية قسنطينة الكاتبة آسيا جبار",
+      "nameFr": "Ecole normale supérieure de Constantine -Assia Djebar",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00082",
+      "nameAr": "المدرسة العليا المحاسبة والمالية بقسنطينة سابقا- ق. ت.ع.ا.ت.ع.ت – قسنطينة",
+      "nameFr": "Ecole Supérieure de Comptabilité et de Finance de Constantine ex EPSECG Constantine",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00023",
+      "nameAr": "جامعة قسنطينة1 – الإخوة منتوري",
+      "nameFr": "Université de Constantine 1 – Frères Mentouri",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/25-constantine/universite-freres-mentouri-constantine-1__جامعة-الإخوة-منتوري-قسنطينة-1.png",
+        "svg": null,
+        "sourcePage": "https://www.unirank.org/dz/uni/universite-freres-mentouri-constantine-1/",
+        "original": "https://www.unirank.org/i/logos-seals/universite-freres-mentouri-constantine-1-dz-logo-seal.png",
+        "author": "Université Frères Mentouri Constantine 1 (mark; indexed and labelled official by uniRank)",
+        "license": "Not stated by uniRank; institutional mark/trademark",
+        "dimensions": "800 × 800",
+        "sourceNote": "The uniRank institution profile identifies this as the official UMC seal and links to the university domain; the source file is served at full 800-pixel resolution.",
+        "status": "png-collected-reliable-third-party-source-license-not-stated"
+      }
+    },
+    {
+      "id": "00024",
+      "nameAr": "جامعة قسنطينة 2 – عبد الحميد مهري",
+      "nameFr": "Université de Constantine 2 – Abdelhamid Mehri",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00025",
+      "nameAr": "جامعة قسنطينة 3- المجاهد صالح بوبنيدر",
+      "nameFr": "Université de Constantine 3 -Salah Boubnider",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/25-constantine/universite-salah-boubnider-constantine-3__جامعة-صالح-بوبنيدر-قسنطينة-3.png",
+        "svg": null,
+        "sourcePage": "https://ead.univ-constantine3.dz/?lang=ar",
+        "original": "https://ead.univ-constantine3.dz/pluginfile.php/1/core_admin/logocompact/300x300/1790641795/uc3.png",
+        "author": "Université Constantine 3 Salah Boubnider (official e-learning domain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "300 × 300 (source logo image)",
+        "sourceNote": "Logo displayed by the university’s official e-learning service.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    },
+    {
+      "id": "00054",
+      "nameAr": "جامعة قسنطينة للعلوم الإسلامية الأمير عبد القادر",
+      "nameFr": "Université des sciences islamiques Emir Abdelkader de Constantine",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

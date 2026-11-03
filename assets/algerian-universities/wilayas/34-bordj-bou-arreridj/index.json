@@ -1,0 +1,40 @@
+{
+  "wilayaCode": "34",
+  "wilayaNameAr": "برج بوعريريج",
+  "wilayaNameFr": "Bordj Bou Arréridj",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00156",
+      "nameAr": "معهد البصريات برج بوعريريج",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00019",
+      "nameAr": "جامعة برج بوعريريج – محمد البشير الابراهيمي",
+      "nameFr": "Université de Bordj Bou Arréridj – Mohamed Bachir El Ibrahimi",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/34-bordj-bou-arreridj/universite-mohamed-bachir-el-ibrahimi-bordj-bou-arreridj__جامعة-محمد-البشير-الإبراهيمي-برج-بوعريريج.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://elearning.univ-bba.dz/",
+        "original": "https://elearning.univ-bba.dz/pluginfile.php/1/core_admin/logocompact/300x300/1791383016/footer-logo.png.png",
+        "author": "Université Mohamed Bachir El Ibrahimi (official e-learning service)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "300 × 300",
+        "sourceNote": "Standalone university seal shown by the official e-learning service.",
+        "status": "png-collected-official-university-subdomain-license-not-stated"
+      }
+    }
+  ]
+}

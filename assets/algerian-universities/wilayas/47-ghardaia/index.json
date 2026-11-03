@@ -1,0 +1,52 @@
+{
+  "wilayaCode": "47",
+  "wilayaNameAr": "غرداية",
+  "wilayaNameFr": "Ghardaïa",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00117",
+      "nameAr": "المعهد العالي لألداب واللغات “الغفران” غرداية",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00121",
+      "nameAr": "المعهد العالي للعلوم الانسانية والتطبيقية غرداية",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "private",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00027",
+      "nameAr": "جامعة غرداية",
+      "nameFr": "Université de Ghardaia",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/47-ghardaia/universite-ghardaia__جامعة-غرداية.png",
+        "svg": null,
+        "sourcePage": "https://www.unirank.org/dz/uni/universite-de-ghardaia/",
+        "original": "https://www.unirank.org/i/logos-seals/universite-de-ghardaia-dz-logo-seal.png",
+        "author": "Université de Ghardaïa (mark; indexed and labelled official by uniRank)",
+        "license": "Not stated by uniRank; institutional mark/trademark",
+        "dimensions": "800 × 800",
+        "sourceNote": "The uniRank profile labels this as the official UG seal; the image is a full-resolution seal rather than a search thumbnail. The university website is separately listed in officialWebsite.",
+        "status": "png-collected-reliable-third-party-source-license-not-stated"
+      }
+    }
+  ]
+}

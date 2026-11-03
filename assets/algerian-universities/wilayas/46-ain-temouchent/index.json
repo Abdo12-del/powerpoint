@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "46",
+  "wilayaNameAr": "عين تموشنت",
+  "wilayaNameFr": "Aïn Témouchent",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00011",
+      "nameAr": "جامعة عين تموشنت",
+      "nameFr": "Université de Aïn Témouchent",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/46-ain-temouchent/universite-belhadj-bouchaib-ain-temouchent__جامعة-بلحاج-بوعشيب-عين-تموشنت.png",
+        "svg": null,
+        "sourcePage": "https://www.univ-temouchent.edu.dz/",
+        "original": "https://www.univ-temouchent.edu.dz/images/logo7.png",
+        "author": "Université Belhadj Bouchaib Aïn Témouchent (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "200 × 223",
+        "sourceNote": "Direct logo asset served by the official university site.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

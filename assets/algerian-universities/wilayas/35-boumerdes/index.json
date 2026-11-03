@@ -1,0 +1,26 @@
+{
+  "wilayaCode": "35",
+  "wilayaNameAr": "بومرداس",
+  "wilayaNameFr": "Boumerdès",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00021",
+      "nameAr": "جامعة بومرداس – محمد بوقرة",
+      "nameFr": "Université de Boumerdès – M’hamed Bougara",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/35-boumerdes/universite-mhamed-bougara-boumerdes__جامعة-محمد-بوقرة-بومرداس.png",
+        "svg": null,
+        "sourcePage": "https://fhc.univ-boumerdes.dz/",
+        "original": "https://fhc.univ-boumerdes.dz/wp-content/uploads/2024/03/Universite-MHamed-Bougara-de-Boumerdes-150x150.png",
+        "author": "Université M’hamed Bougara de Boumerdès (official faculty subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "150 × 150",
+        "sourceNote": "Official faculty subdomain directly serves the university seal.",
+        "status": "png-collected-low-resolution-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

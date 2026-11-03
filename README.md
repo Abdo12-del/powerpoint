@@ -24,10 +24,11 @@
 - **عقد التحكم** كاملاً: أسهم / Enter / Space / Esc / M / F، شريط تقدّم، عدّاد «الشريحة 5 / 12»، فأرة ولمس.
 - **تحقق آلي** من قائمة Definition of Done (§10): معرفات فريدة ببادئة الفصل، تمهيد/خلاصة لكل فصل، 3–5 فصول، 4–8 شرائح، عناوين ≤ 6 كلمات، وقائمة بالشرائح التي ما تزال فارغة.
 - **عدّة حركة كاملة مثبتة مسبقاً** (GSAP، Lottie، confetti، tsParticles، آلة كاتبة، rough-notation، tilt، auto-animate، tw-animate-css) مع مغلّفات جاهزة في `src/components/effects/` — [الكتالوج](docs/ANIMATION_LIBRARIES.md).
-- **موجز للوكلاء** في [`AGENTS.md`](AGENTS.md): كل ما يحتاجه وكيل برمجي ليحوّل القالب إلى عرض مكتمل (مذكرة تخرج، تقرير، دورة…).
-- **19 مهارة (Agent Skills)** في `.agents/skills/` (مخرج الحركة، GSAP، framer-motion، المعرض، المخططات، Lottie/الوسائط، الطباعة العربية، حركة النص، الخط يُكتب، الأرقام، الرسوم البيانية، العرض السينمائي، الشورييل الإبداعي، المؤثرات السينمائية، الموشن البحثي، السبورة والتعليق، التكبير والتركيز، ملاحظات المعلم ومؤقت العرض، مراجعة الجودة) + **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [الدليل](docs/ANIMATION_PROJECTS.md).
+- **تعليمات AI معيارية**: القواعد المصدرية مقسّمة حسب الموضوع في `.ruler/`، وRuler يولّد `AGENTS.md` و`CLAUDE.md` و`.github/copilot-instructions.md`. عدّل المصدر ثم شغّل `npm run ai:rules` — [دليل التنظيم](docs/AI_RULES.md). لمنهجيات المذكرات اقرأ [`الدليل`](docs/THESIS_PRESENTATION_ROUTER.md) و`src/thesis/`.
+- **22 مهارة (Agent Skills)** في `.agents/skills/`: 20 محلية متخصصة للعرض، الحركة، الرسوم، الخطوط، وتوجيه المذكرات، إضافة إلى مهارتي React المستوردتين (`vercel-composition-patterns` و`vercel-react-best-practices`) — [طريقة الجمع والتحديث](docs/AGENT_SKILLS.md). معها **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [دليل الحركة](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
+- **مختبر المحاكاة العلمية**: 12 تجربة بالعربية والإنجليزية عبر أربعة مجالات، تشمل مشاهد Three.js الأصلية وستة نماذج 2D من BN Lab، تصادمات Matter.js وتداخل موجي بـp5.js؛ المحركات تُحمّل عند الطلب — [الدليل](docs/INTERACTIVE_SIMULATIONS.md).
 - **العرض السينمائي ثلاثي الأبعاد**: تحويل صفحة الهبوط (Playwright أو مولّد تجريبي) إلى مشهد WebGL2 بكاميرا على مسار Catmull-Rom، parallax ورفع بطاقات وظلال ناعمة وعمق ميدان، ثم انتقال إلى بطاقة ختامية باسم العلامة وعبارة متحركة — مع معاينة إطارات عند نقاط محددة وتحكم حيّ في المسار والسرعة والعمق وتثبيت أبعاد الصفحة. المختبر `/?lab=cinematic` / `/?lab=flyover` — [الدليل](docs/CINEMATIC_FLYOVER.md) + مهارة `cinematic-flyover`.
 - **العرض الإبداعي — Motion Design Showreel (NEW)**: Motion Canvas (MIT) + GSAP — 15 ثانية سينمائية: Kinetic Typography و3D Transitions وParallax وGlitch وMorphing وParticle Effects مع Slide/Zoom وتزامن مع الموسيقى (BPM) وتنسيق بصري جريء — مختبر `/?lab=showreel` ومكون `MotionDesignShowreel` — [الدليل](docs/MOTION_SHOWREEL.md) + مهارة `motion-showreel`.
 - **حزمة المؤثرات السينمائية (NEW)**: Three.js (MIT) للمشاهد ثلاثية الأبعاد + Lenis (MIT) للحركة الانسيابية — Parallax وMorphing وGlitch وParticles، تشوهات بصرية (RGB Shift / Grain / Vignette / Bloom) بمرور سينمائي واحد، انتقالات ديناميكية بين المقاطع، وتزامن كامل للحركة مع الإيقاع (BeatClock) — مختبر `/?lab=effects` ومكون `ThreeShowreel` — [الدليل](docs/CINEMATIC_EFFECTS.md) + مهارة `cinematic-effects`.
@@ -60,7 +61,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 278 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، العرض السينمائي |
+| `npm test` | 293 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، المحاكاة العلمية، العرض السينمائي |
 | `npm run capture` | التقاط صفحة هبوط وطبقاتها عبر Playwright ← `manifest.json` (يتطلب `npm i -D playwright` و`npx playwright install chromium`) |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
@@ -145,7 +146,7 @@ import { CinematicShowreel } from '@/components/cinematic';
 
 | ما هو | أين | الاستعمال |
 |---|---|---|
-| **مهارات الوكلاء** (18) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها Claude Code / Codex / Cursor / Copilot تلقائياً؛ أو اطلب «اقرأ مهارة presentation-motion-director» |
+| **مهارات الوكلاء** (22) | `.agents/skills/<name>/SKILL.md` (و`.claude/skills` رابط) | يحمّلها الوكيل المتوافق تلقائياً؛ طريقة جمع المهارات وتحديثها: [`docs/AGENT_SKILLS.md`](docs/AGENT_SKILLS.md) |
 | **معرض المكونات** (42، MIT) | `src/components/gallery/` | `import { AnimatedBeam, NumberTicker, TextAnimate, TextEffect, TextLoop, MorphingText, Terminal, Marquee, Meteors, Safari } from '@/components/gallery'` |
 | **الوصفات** (10) | `src/recipes/` | `import { StatsCountUp, RelationBeams, TimelineDraw, CodeTerminal, KpiCards, ChartStory } from '@/recipes'` — انسخ وعدّل |
 | **كتالوج المشاريع** | `docs/ANIMATION_PROJECTS.md` | مشاريع GitHub للاستعارة لاحقاً مع الرخص وملاحظات العربية |
@@ -161,6 +162,7 @@ import { CinematicShowreel } from '@/components/cinematic';
 | **مشاريع حركة الخطوط** | `src/lib/text-shaper.ts`, `src/fonts/calligraphy.ts` + `@/components/gallery` | HarfBuzz wasm كسول (≈430KB خارج الحزمة الأساسية)، 10 خطوط قابلة للرسم، و`TextEffect`/`TextLoop`/`TextShimmer`/`MorphingText`/`LineShadowText` — [`docs/TEXT_ANIMATION_PROJECTS.md`](docs/TEXT_ANIMATION_PROJECTS.md) + مهارات `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
 | **المختبر** | `/?lab=fonts` | الكتالوج حسب النوع + الاقترانات مع تطبيق حي + عروض الحركة (كسول، خارج حزمة العرض) |
 | **الرسوم البيانية** | `@/components/charts` + `/?lab=charts` | رسوم حركية مخصّصة (RTL أصلي، framer-motion + d3) ومغلّفات كسولة لـ Recharts/Nivo/Chart.js/ECharts بسمة واحدة — [`docs/CHARTS.md`](docs/CHARTS.md) + مهارة `data-charts-motion` |
+| **المحاكاة العلمية** | `@/simulations` + `/?lab=simulations` | 12 تجربة عربية/2D/3D، مع محركات BN Lab وMatter.js وp5.js تُحمّل عند الاختيار — [`docs/INTERACTIVE_SIMULATIONS.md`](docs/INTERACTIVE_SIMULATIONS.md) |
 | **الدليل والقواعد** | `docs/TYPOGRAPHY.md` + مهارة `arabic-typography-motion` | لا `letter-spacing`/مائل اصطناعي على العربية، حركة بالكلمات والمحاور فقط، أحجام وارتفاعات السطر |
 
 ## التحكم أثناء العرض
@@ -180,6 +182,7 @@ import { CinematicShowreel } from '@/components/cinematic';
 ```
 src/
 ├── types/presentation.ts        # العقود: PresentationData, ChapterData, SlideData, PrefaceStep, FinalData
+├── thesis/                      # موجّه مناهج الدفاع حسب التخصص + قواعد مؤسسية موثقة واختبارات
 ├── data/                        # ← الاستمارات التي تُملأ لكل عرض (بيضاء تماماً افتراضياً: حقول فارغة و content: null)
 │   ├── presentation.tsx         #    شاشة العنوان + المقدمة + الخاتمة
 │   ├── typography.ts            #    اقتران الخطوط للعرض (preset + تجاوزات)
@@ -196,13 +199,15 @@ src/
 │   ├── charts/                  # الرسوم البيانية: theme + motion/ (6 رسوم مخصّصة) + recharts/ (حاوية shadcn) + nivo/ + chartjs/ + echarts/ + lab/ (?lab=charts)
 │   └── gallery/                 # 42 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
 ├── cinematic/                   # محرّك WebGL2: camera, shaders, renderer, capture, landing (صفحة تجريبية)
+├── simulations/                 # مختبر المحاكاة: كتالوج 12 تجربة، adapters لـ BN Lab وMatter.js وp5.js
 ├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
 ├── lib/                         # navigation.ts, validate.ts (Definition of Done), blank.ts (قرار «الشاشة البيضاء»), gsap.ts (GSAP مُهيّأ + splitWords), motion-prefs.ts, cn.ts
 ├── config/controls.ts           # خريطة المفاتيح
 └── __tests__/                   # validate, navigation, render, archetypes, effects, gallery, recipes, typography, text-shaper, typography-projects, charts
-.agents/skills/                   # 19 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+.agents/skills/                   # 22 مهارة (Agent Skills) — .claude/skills رابط رمزي إليها
+skills-lock.json                  # مصدر وبصمة المهارتين المستوردتين من GitHub
 docs/
 ├── PRESENTATION_TEMPLATE_SPEC.md # المواصفة الكاملة (البنية، التدفق، الأنماط، الوصفة، القواعد)
 ├── ARCHETYPES.md                 # مرجع خصائص المكونات + مقتطف استعمال لكل نمط
@@ -210,15 +215,25 @@ docs/
 ├── ANIMATION_PROJECTS.md         # المهارات + المعرض + الوصفات + كتالوج مشاريع GitHub
 ├── TYPOGRAPHY.md                 # الخطوط حسب النوع + الاقترانات + قواعد الطباعة العربية + حركة النص
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
-└── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
-public/                           # الشعار (logo.png) + favicon.png + apple-touch-icon.png
+├── AGENT_SKILLS.md               # جمع المهارات المحلية من مستودعات عامة دون تسجيل دخول إلى skills.md
+├── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
+├── INTERACTIVE_SIMULATIONS.md    # كتالوج التجارب العلمية، المحركات، دورة الحياة، والتنبيهات العلمية
+├── PROJECT_LIBRARIES.md          # فهرس مكتبات التشغيل والتطوير وإرشادات إعادة استخدامها
+└── AI_RULES.md                   # مصدر التعليمات المعيارية، مخرجات الوكلاء، وطريقة تحديثها
+public/                           # الشعار وfavicon + public/licenses/ لتراخيص محركات المحاكاة الموزعة
 scripts/
 └── capture-landing.mjs          # التقاط صفحة الهبوط وطبقاتها عبر Playwright → manifest.json
 .github/
+├── copilot-instructions.md       # مخرج Ruler لـ GitHub Copilot
 ├── workflows/deploy.yml          # نشر تلقائي على GitHub Pages عند كل دفع إلى main (BASE_PATH = /<اسم-المستودع>/)
 ├── workflows/ci.yml              # فحص طلبات السحب: npm run check
 └── social-preview.png            # صورة المعاينة الاجتماعية (1280×640) — تُرفع من Settings → Social preview
-AGENTS.md                         # موجز لأي وكيل برمجي يُطلب منه إنتاج عرض من هذا القالب
+.ruler/                           # مصدر تعليمات AI المعيارية (Ruler)
+├── AGENTS.md                     # سياق المشروع وفهرس القواعد
+├── ruler.toml                    # الوكلاء المستهدفون والمخرجات المتتبعة
+└── rules/                         # قواعد حسب الموضوع: العرض، التصميم، المكتبات، الرسائل، الحركة، الجودة
+AGENTS.md                         # مخرج Ruler مشترك للوكلاء المتوافقين
+CLAUDE.md                         # مخرج Ruler لـ Claude Code
 ```
 
 ## النشر

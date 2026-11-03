@@ -1,0 +1,60 @@
+{
+  "wilayaCode": "09",
+  "wilayaNameAr": "البليدة",
+  "wilayaNameFr": "Blida",
+  "institutionCount": 4,
+  "institutions": [
+    {
+      "id": "00127",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بالبليدة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00064",
+      "nameAr": "المدرسة الوطنية العليا للري-المجاهد عرباوي ‬عبد الله",
+      "nameFr": "Ecole nationale supérieure d’hydraulique – Arbaoui Abdellah",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00002",
+      "nameAr": null,
+      "nameFr": "Université Blida 1 – Saad Dahlab",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00018",
+      "nameAr": "جامعة البليدة 2 – لونيسي علي",
+      "nameFr": "Université de Blida 2 – Lounici Ali",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

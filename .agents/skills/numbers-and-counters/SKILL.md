@@ -1,6 +1,13 @@
 ---
 name: numbers-and-counters
-description: Animated numbers, counters, percentages and stats for this Arabic presentation template — NumberRoll (number-flow: locale-aware digit rolling, ar-EG Arabic-Indic vs ar-DZ/en Western digits, percent/compact/currency formats, prefix/suffix, trend), NumberTicker (count-up), AnimatedCircularProgressBar, the stats archetype and the <Num> badge, tabular-nums, dir="ltr" wrapping, one digit style per deck, timing, and testing. Use when asked to animate a KPI, count up a number, show a percentage/ratio, roll a date or score, or when numbers look reversed or jumpy in RTL. الأرقام والعدّادات المتحركة في RTL.
+description: >-
+  Animated numbers, counters, percentages, and statistics for this Arabic presentation
+  template. Covers NumberRoll and number-flow (locale-aware digit rolling, ar-EG Arabic-
+  Indic versus ar-DZ or English Western digits, percent/compact/currency formats,
+  prefixes, suffixes, and trends), NumberTicker, AnimatedCircularProgressBar, the stats
+  archetype, the Num badge, tabular-nums, dir="ltr" wrapping, consistent digit style,
+  timing, and tests. Use for KPIs, counts, percentages, ratios, dates, scores, or when
+  numbers look reversed or jumpy in RTL. الأرقام والعدّادات المتحركة في RTL.
 metadata:
   short-description: الأرقام والعدّادات — number-flow وNumberTicker في سياق RTL
 ---

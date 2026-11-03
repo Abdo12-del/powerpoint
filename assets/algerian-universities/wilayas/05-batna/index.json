@@ -1,0 +1,84 @@
+{
+  "wilayaCode": "05",
+  "wilayaNameAr": "باتنة",
+  "wilayaNameFr": "Batna",
+  "institutionCount": 5,
+  "institutions": [
+    {
+      "id": "00132",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بباتنة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00176",
+      "nameAr": "المركز الجامعي بريكة – أحمد حمودة بن عبد الرزاق المدعو سي الحواس",
+      "nameFr": "Centre Universitaire de Barika – Si El Haouès",
+      "type": "centre_universitaire",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00092",
+      "nameAr": "المدرسة الوطنية العليا للطاقات المتجددة والبيئة والتنمية المستدامة",
+      "nameFr": "L’Ecole nationale supérieure des énergies renouvelables, environnement et développement durable – Batna",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00013",
+      "nameAr": "جامعة باتنة 1 – الحاج لخضر",
+      "nameFr": "Université de Batna 1 – Hadj Lakhder",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/05-batna/universite-hadj-lakhder-batna-1__جامعة-الحاج-لخضر-باتنة-1.png",
+        "jpg": null,
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A8%D8%A7%D8%AA%D9%86%D8%A9_1_%D8%A7%D9%84%D8%AD%D8%A7%D8%AC_%D9%84%D8%AE%D8%B6%D8%B1.svg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2e/%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A8%D8%A7%D8%AA%D9%86%D8%A9_1_%D8%A7%D9%84%D8%AD%D8%A7%D8%AC_%D9%84%D8%AE%D8%B6%D8%B1.svg",
+        "author": "University of Batna 1 (as stated by Commons)",
+        "license": "CC BY-SA 4.0",
+        "sourceNote": "The official SVG is 3,500 × 4,241 and licensed CC BY-SA 4.0; local PNG is Wikimedia’s 500 × 606 SVG preview. SVG source linked in original, not copied as a wrapper.",
+        "status": "png-preview-from-cc-by-sa-svg-source-vector-linked",
+        "dimensions": "500 × 606"
+      }
+    },
+    {
+      "id": "00014",
+      "nameAr": "جامعة باتنة 2 – مصطفى بن بولعيد",
+      "nameFr": "Université de Batna 2 – Mustapha Ben Boulaid",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/05-batna/universite-mustapha-ben-boulaid-batna-2__جامعة-مصطفى-بن-بولعيد-باتنة-2.png",
+        "svg": null,
+        "sourcePage": "https://fr.wikipedia.org/wiki/Fichier:Universit%C3%A9_de_Batna_2-Mostefa_Ben_Boulaid.png",
+        "original": "https://upload.wikimedia.org/wikipedia/fr/c/cd/Universit%C3%A9_de_Batna_2-Mostefa_Ben_Boulaid.png",
+        "author": "Unknown; uploader credited as RiadS99",
+        "license": "Registered trademark; copyright/re-use restrictions apply. File page cites http://old.univ-batna2.dz/LOGO as source.",
+        "sourceNote": "Identity/source verified on file page; local PNG is a 500 × 719 preview because the 1,487 × 2,137 original was not obtainable through the image retrieval path. Kept explicitly as a preview rather than represented as full-resolution.",
+        "status": "png-preview-collected-trademark-restricted-original-higher-resolution",
+        "dimensions": "500 × 719"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "wilayaCode": "38",
+  "wilayaNameAr": "تيسمسيلت",
+  "wilayaNameFr": "Tissemsilt",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00050",
+      "nameAr": null,
+      "nameFr": "Université de Tissemsilt",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "jpg": "wilayas/38-tissemsilt/universite-ahmed-ben-yahia-el-wancharissi-tissemsilt__جامعة-أحمد-بن-يحيى-الونشريسي-تيسمسيلت.jpg",
+        "svg": null,
+        "sourcePage": "https://elearning.univ-tissemsilt.dz/",
+        "original": "https://elearning.univ-tissemsilt.dz/wp-content/uploads/2025/09/logo3.jpg",
+        "author": "Université de Tissemsilt (official e-learning domain)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "885 × 192",
+        "sourceNote": "University lockup logo from the official e-learning site; bilingual Arabic/English with duplicated seal elements as published.",
+        "status": "jpg-collected-official-university-subdomain-license-not-stated"
+      }
+    }
+  ]
+}

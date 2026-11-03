@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "14",
+  "wilayaNameAr": "تيارت",
+  "wilayaNameFr": "Tiaret",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00136",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بتيارت",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00047",
+      "nameAr": "جامعة بن خلدون تيارت",
+      "nameFr": "Université de Tiaret – Ibn Khaldoun",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/14-tiaret/universite-ibn-khaldoun-tiaret__جامعة-ابن-خلدون-تيارت.png",
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:%D8%AC%D8%A7%D9%85%D8%B9%D8%A9-%D8%A7%D8%A8%D9%86-%D8%AE%D9%84%D8%AF%D9%88%D9%86-%D8%B4%D8%B9%D8%A7%D8%B1-%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/09/%D8%AC%D8%A7%D9%85%D8%B9%D8%A9-%D8%A7%D8%A8%D9%86-%D8%AE%D9%84%D8%AF%D9%88%D9%86-%D8%B4%D8%B9%D8%A7%D8%B1-%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7.png",
+        "author": "Recreated by Riad Salih; source identified as Université Ibn Khaldoun de Tiaret",
+        "license": "Public domain per Commons PD-textlogo rationale; non-copyright restrictions such as trademarks may apply",
+        "sourceNote": "Commons identifies the source as the university and marks this simple-shape/text logo public domain. Local file is 4,582 × 4,481, the highest source resolution.",
+        "status": "png-collected-commons-public-domain-textlogo",
+        "dimensions": "4582 × 4481"
+      }
+    }
+  ]
+}

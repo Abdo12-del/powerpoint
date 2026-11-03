@@ -1,0 +1,41 @@
+{
+  "wilayaCode": "18",
+  "wilayaNameAr": "جيجل",
+  "wilayaNameFr": "Jijel",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00137",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بجيجل",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00028",
+      "nameAr": "جامعة جيجل – محمد الصديق بن يحي",
+      "nameFr": "Université de Jijel – Mohammed Seddik Ben yahia",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "jpg": "wilayas/18-jijel/universite-mohammed-seddik-ben-yahia-jijel__جامعة-محمد-الصديق-بن-يحيى-جيجل.jpg",
+        "sourcePage": "https://www.edarabia.com/19922/universite-de-jijel/",
+        "original": "https://www.edarabia.com/wp-content/uploads/2013/09/universite-de-jijel-logo-algeria.jpg",
+        "author": "Université Mohammed Seddik Ben Yahia de Jijel (as identified by Edarabia directory)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "350 × 350",
+        "sourceNote": "Edarabia provides the 350 × 350 mark; the same university crest appears on Jijel University’s official e-learning service, providing corroboration.",
+        "status": "jpg-third-party-directory-source-license-not-stated",
+        "corroboratingSourcePage": "https://elearning.univ-jijel.dz/course/view.php?id=9747"
+      }
+    }
+  ]
+}

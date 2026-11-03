@@ -1,0 +1,21 @@
+{
+  "wilayaCode": "11",
+  "wilayaNameAr": "تمنراست",
+  "wilayaNameFr": "Tamanrasset",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00045",
+      "nameAr": "جامعة تامنغست",
+      "nameFr": "Université de Tamenghasset",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}

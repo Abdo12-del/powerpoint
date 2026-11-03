@@ -1,0 +1,58 @@
+{
+  "wilayaCode": "22",
+  "wilayaNameAr": "سيدي بلعباس",
+  "wilayaNameFr": "Sidi Bel Abbès",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00141",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بسيدي بلعباس",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00080",
+      "nameAr": "المدرسة العليا للإعلام الآلي بسيدي بلعباس- 08 ماي",
+      "nameFr": "Ecole Supérieure d’Informatique (Sidi Bel Abbes)- 08 Mai 1945",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/22-sidi-bel-abbes/esi-sidi-bel-abbes__المدرسة-العليا-للإعلام-الآلي-سيدي-بلعباس.png",
+        "svg": null,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:ESI-SBA_logo_V3.svg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/1d/ESI-SBA_logo_V3.svg",
+        "author": "Original: Higher School of Computer Science of Sidi Bel Abbes (ESI-SBA); vector by Lichtt",
+        "license": "Public domain (PD-textlogo; Commons file page; trademark restrictions may apply)",
+        "dimensions": "SVG nominal 265 × 201; local PNG preview 330 × 250",
+        "sourceNote": "Commons page attributes the original logo to ESI-SBA. The local PNG is the Commons raster preview; the upstream SVG is linked but could not be copied as a local vector in this environment.",
+        "status": "png-preview-from-svg-original-not-downloaded",
+        "upstreamSvgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/ESI-SBA_logo_V3.svg"
+      }
+    },
+    {
+      "id": "00058",
+      "nameAr": "جامعة جيلالي ليابس سيدي بلعباس",
+      "nameFr": "Université Sidi Bel Abbès – Djillali Liabes",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/22-sidi-bel-abbes/universite-djillali-liabes-sidi-bel-abbes__جامعة-جيلالي-ليابس-سيدي-بلعباس.png",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Logo_de_l%27Universit%C3%A9_de_Djilali_Liab%C3%A9s.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Logo_de_l%27Universit%C3%A9_de_Djilali_Liab%C3%A9s.png",
+        "author": "Université Djillali Liabès de Sidi Bel Abbès (حاضنة الجامعة)",
+        "license": "CC BY 2.5",
+        "dimensions": "500 × 500",
+        "sourceNote": "Commons file page credits the university’s incubator and cites the institution’s UDLsba account as source.",
+        "svg": null,
+        "status": "png-collected-svg-not-published-in-source"
+      }
+    }
+  ]
+}

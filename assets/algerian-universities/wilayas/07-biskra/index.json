@@ -1,0 +1,39 @@
+{
+  "wilayaCode": "07",
+  "wilayaNameAr": "بسكرة",
+  "wilayaNameFr": "Biskra",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00134",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي ببسكرة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00017",
+      "nameAr": "جامعة بسكرة – محمد خيضر",
+      "nameFr": "Université de Biskra – Mohamed Khider",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/07-biskra/universite-mohamed-khider-biskra__جامعة-محمد-خيضر-بسكرة.png",
+        "svg": null,
+        "sourcePage": "https://univ-biskra.dz/index.php/en/?lang=fr%2F&start=49",
+        "original": "https://univ-biskra.dz/images/crsi2018/banner/Logo_mobile.png",
+        "author": "Université Mohamed Khider Biskra (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "594 × 339",
+        "sourceNote": "Logo served by the official university domain; unrelated search results showing banners were excluded.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    }
+  ]
+}

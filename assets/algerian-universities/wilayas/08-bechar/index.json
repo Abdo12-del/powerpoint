@@ -1,0 +1,47 @@
+{
+  "wilayaCode": "08",
+  "wilayaNameAr": "بشار",
+  "wilayaNameFr": "Béchar",
+  "institutionCount": 3,
+  "institutions": [
+    {
+      "id": "00135",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي ببشار",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00163",
+      "nameAr": null,
+      "nameFr": "Ecole normale supérieure de Béchar",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00015",
+      "nameAr": "جامعة طاهري محمد بشار",
+      "nameFr": "Université de Béchar – Mohamed Tahri",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    }
+  ]
+}
