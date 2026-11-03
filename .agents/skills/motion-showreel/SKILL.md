@@ -1,3 +1,12 @@
+---
+name: motion-showreel
+description: >
+  Create or improve a 15-second motion-design showreel with kinetic typography, 3D
+  transitions, parallax, glitch, morphing, particles, slide/zoom, beat synchronization,
+  and a bold visual style. Use when the user requests a motion-graphics reel or an
+  animated brand presentation; مهارة الشورييل الإبداعي والحركة السينمائية.
+---
+
 # مهارة: العرض الإبداعي — Motion Design Showreel
 
 ## متى تُستعمل

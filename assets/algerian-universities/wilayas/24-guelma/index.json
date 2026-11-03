@@ -1,0 +1,27 @@
+{
+  "wilayaCode": "24",
+  "wilayaNameAr": "قالمة",
+  "wilayaNameFr": "Guelma",
+  "institutionCount": 1,
+  "institutions": [
+    {
+      "id": "00001",
+      "nameAr": "جامعة قالمة – 08 ماي 1945",
+      "nameFr": "Université 8 Mai 1945 de Guelma",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/24-guelma/universite-8-mai-1945-guelma__جامعة-8-ماي-1945-قالمة.png",
+        "svg": null,
+        "jpg": null,
+        "sourcePage": "https://www.unirank.org/dz/uni/universite-8-mai-1945-guelma/",
+        "original": "https://www.unirank.org/i/logos-seals/universite-8-mai-1945-guelma-dz-logo-seal.png",
+        "author": "Université 8 Mai 1945 de Guelma (mark; indexed and labelled official by uniRank)",
+        "license": "Not stated by uniRank; institutional mark/trademark",
+        "dimensions": "800 × 800",
+        "sourceNote": "uniRank labels the seal as the university official logo; full local file is 800 × 800.",
+        "status": "png-collected-reliable-third-party-source-license-not-stated"
+      }
+    }
+  ]
+}

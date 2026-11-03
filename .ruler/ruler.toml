@@ -1,0 +1,21 @@
+# ملفات .ruler هي المصدر؛ هذه الوكلاء تتلقى النسخة المجمّعة المولّدة.
+default_agents = ["agentsmd", "claude", "copilot"]
+
+# الملفات المولّدة محفوظة في Git كي تعمل التعليمات بعد الاستنساخ دون خطوة إعداد إضافية.
+[gitignore]
+enabled = false
+
+# لا نحتاج إلى إدارة MCP أو نسخ المهارات؛ مهارات المشروع الحالية في .agents/skills.
+[mcp]
+enabled = false
+
+[backup]
+enabled = false
+
+[agents.claude]
+enabled = true
+output_path = "CLAUDE.md"
+
+[agents.copilot]
+enabled = true
+output_path = ".github/copilot-instructions.md"

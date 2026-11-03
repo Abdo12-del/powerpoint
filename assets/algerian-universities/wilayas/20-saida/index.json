@@ -1,0 +1,41 @@
+{
+  "wilayaCode": "20",
+  "wilayaNameAr": "سعيدة",
+  "wilayaNameFr": "Saïda",
+  "institutionCount": 2,
+  "institutions": [
+    {
+      "id": "00139",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بسعيدة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00041",
+      "nameAr": "جامعة الدكتور مولاي الطاهر سعيدة",
+      "nameFr": "Université de Saida – Tahar Moulay",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "jpg": "wilayas/20-saida/universite-tahar-moulay-saida__جامعة-الطاهر-مولاي-سعيدة.jpg",
+        "sourcePage": "https://www.uniranks.com/universities/taher-moulay-university-of-saida",
+        "original": "https://d107tomoq7qta0.cloudfront.net/images/universities-logos/6Hzs1iHy0lB1hM7JRUD141pqgRSLJ4tgnzlt7nOvJ.jpg",
+        "author": "Université Dr Moulay Tahar de Saida (as identified by third-party university directory)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "1080 × 1080",
+        "sourceNote": "The Uniranks directory supplies the local 1080 × 1080 logo image; UniRank independently labels the same mark as the official Tahar Moulay logo. Both are third-party sources.",
+        "status": "jpg-third-party-directory-source-license-not-stated",
+        "corroboratingSourcePage": "https://www.unirank.org/dz/uni/universite-tahar-moulay-de-saida/"
+      }
+    }
+  ]
+}

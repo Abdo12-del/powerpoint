@@ -1,0 +1,65 @@
+{
+  "wilayaCode": "23",
+  "wilayaNameAr": "عنابة",
+  "wilayaNameFr": "Annaba",
+  "institutionCount": 4,
+  "institutions": [
+    {
+      "id": "00149",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي للقابلات بعنابة",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00070",
+      "nameAr": null,
+      "nameFr": "Ecole nationale supérieure des mines et de la métallurgie – Amar Laskri",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00089",
+      "nameAr": null,
+      "nameFr": "Ecole Supérieure des Technologies Industrielles de Annaba ex EP ST Annaba",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00012",
+      "nameAr": "جامعة عنابة – باجي مختار",
+      "nameFr": "Université de Annaba – Badji Mokhtar",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/23-annaba/universite-badji-mokhtar-annaba__جامعة-عنابة-باجي-مختار.png",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Badji_Mokhtar_-_Annaba_University_Logo.png",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/27/Badji_Mokhtar_-_Annaba_University_Logo.png",
+        "author": "Université Badji Mokhtar - Annaba",
+        "license": "CC BY-SA 4.0",
+        "dimensions": "1500 × 1500",
+        "sourceNote": "Commons file page credits the university as creator/uploader.",
+        "svg": null,
+        "status": "png-collected-svg-not-published-in-source"
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "wilayaCode": "31",
+  "wilayaNameAr": "وهران",
+  "wilayaNameFr": "Oran",
+  "institutionCount": 12,
+  "institutions": [
+    {
+      "id": "00099",
+      "nameAr": "المدرسة العليا للإدارة العسكرية (وهران)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00104",
+      "nameAr": "المدرسة العليا للطيران( تافراوي، ولاية وهران)",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00112",
+      "nameAr": "المدرسة الوطنية العليا للاتصالات السلكية واللّاسلكية وتكنولوجيات الإعلام والاتصال (وهران).",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00147",
+      "nameAr": "المعهد الوطني للتكوين العالي شبه الطبي بوهران 1",
+      "nameFr": null,
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00061",
+      "nameAr": null,
+      "nameFr": "Ecole Nationale Polytechnique d’Oran – Maurice Audin",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00162",
+      "nameAr": "المدرسة العليا للأساتذة بوهران",
+      "nameFr": "Ecole Normale Supérieure d’Oran",
+      "type": "ens",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00087",
+      "nameAr": "المدرسة العليا للعلوم البيولوجية بوهران سابقا-ق. ت. ع.ط.ح. – وھران",
+      "nameFr": "Ecole Supérieure des sciences Biologiques d’ Oran ex EP SNV Oran",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00079",
+      "nameAr": "المدرسة العليا للإقتصاد بوهران سابقا- ق. ت.ع.ا.ت.ع.ت – وھران",
+      "nameFr": "Ecole Supérieure d’Economie d’Oran ex EPSECG Oran",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00090",
+      "nameAr": "المدرسة العليا في الهندسة الكهروبائية والطاقوية بوهران سابقا-ق. ت. ع. ت.- وھران",
+      "nameFr": "Ecole Supérieure en Génie Electrique et Energétique d’Oran ex EP ST Oran",
+      "type": "grande_ecole",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "sourcePage": null,
+        "status": "not-yet-collected"
+      }
+    },
+    {
+      "id": "00009",
+      "nameAr": "جامعة احمد بن بلة وهران 1 السانية",
+      "nameFr": "Université d’Oran 1 – Ahmed Ben Bella",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/31-oran/universite-oran-1-ahmed-ben-bella__جامعة-وهران-1-أحمد-بن-بلة.png",
+        "svg": null,
+        "sourcePage": "https://vrre.univ-oran1.dz/",
+        "original": "https://vrre.univ-oran1.dz/main_assets/images/logo/logo.png",
+        "author": "Université Oran 1 Ahmed Ben Bella (official vice-rectorate subdomain)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "700 × 430 (source image returned)",
+        "sourceNote": "Direct logo asset served by an official univ-oran1.dz subdomain.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    },
+    {
+      "id": "00010",
+      "nameAr": "جامعة وهران 2 محمد بن أحمد المدعو الرائد سي موسى",
+      "nameFr": "Université d’Oran 2 – Mohamed Ben Ahmed",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": "wilayas/31-oran/universite-mohamed-ben-ahmed-oran-2__جامعة-محمد-بن-أحمد-وهران-2.png",
+        "svg": null,
+        "sourcePage": "https://www.univ-oran2.dz/",
+        "original": "https://www.univ-oran2.dz/images/logo-4.png",
+        "author": "Université Oran 2 Mohamed Ben Ahmed (official site)",
+        "license": "Not stated on source page; institutional mark/trademark",
+        "dimensions": "960 × 250 (source image returned)",
+        "sourceNote": "Direct logo asset served by the official university domain.",
+        "status": "png-collected-no-svg-license-not-stated"
+      }
+    },
+    {
+      "id": "00057",
+      "nameAr": "جامعة محمد بوضياف العلوم والتكنولوجيا- وهران",
+      "nameFr": "Université Mohamed Boudiaf des sciences et de la technologie – Mohamed Boudiaf",
+      "type": "universite",
+      "sector": "public",
+      "logo": {
+        "png": null,
+        "svg": null,
+        "jpg": "wilayas/31-oran/universite-mohamed-boudiaf-usto-oran__جامعة-محمد-بوضياف-العلوم-والتكنولوجيا-وهران.jpg",
+        "sourcePage": "https://www.eduopinions.com/universities/universities-in-algeria/universit%C3%A9-des-sciences-et-de-la-technologie-doran-mohamed-boudiaf-ustomb/",
+        "original": "https://www.eduopinions.com/wp-content/uploads/2024/05/University-of-Science-and-Technology-Mohamed-Boudiaf-350x350.jpg",
+        "author": "USTO-MB (as identified by EduOpinions directory)",
+        "license": "Not stated; institutional mark/trademark",
+        "dimensions": "350 × 350",
+        "sourceNote": "EduOpinions provides the 350 × 350 seal; UniRank independently labels the matching mark as USTO-MB’s official logo.",
+        "status": "jpg-third-party-directory-source-license-not-stated",
+        "corroboratingSourcePage": "https://www.unirank.org/dz/uni/universite-des-sciences-et-de-la-technologie-d-oran-mohamed-boudiaf/"
+      }
+    }
+  ]
+}
