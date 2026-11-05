@@ -27,11 +27,13 @@ import { ZOOM_TRANSITION_S } from '@/spotlight/types';
 import { PresenterWindow } from '@/presenter/PresenterWindow';
 import { notesFor, screenInfo } from '@/presenter/notes';
 import { PRESENTER_WINDOW_FEATURES, PRESENTER_WINDOW_NAME } from '@/presenter/types';
+import { EquipmentLayer, EquipmentPanel, useEquipment } from '@/equipment';
 
 /**
  * العرض التقديمي: ينفّذ التدفق (§6)
  * العنوان ─(ابدأ)─▶ المقدمة ─(التالي)─▶ الخريطة ─(اختيار)─▶ الشرائح ─▶ الخاتمة
  * مع السبورة والتعليق (C/B) والتكبير والتركيز (Alt+Click / Z / S / L)
+ * والمعدات العلمية: معرض PNG يُدرج في الشريحة المفتوحة (G)
  * ونافذة المعلم: الملاحظات والمعاينة والمؤقت (N)
  */
 export function Presentation({ data }: { data: PresentationData }) {
@@ -40,6 +42,7 @@ export function Presentation({ data }: { data: PresentationData }) {
   const [helpOpen, setHelpOpen] = useState(false);
   const board = useChalkboard();
   const spot = useSpotlight();
+  const equipment = useEquipment();
 
   // ─── نافذة المعلم: نموذج Reveal Notes — نافذة منفصلة بمعاينتين وملاحظات ومؤقت ───
   const [presenterMode, setPresenterMode] = useState<'closed' | 'popup' | 'embedded'>('closed');
@@ -115,19 +118,24 @@ export function Presentation({ data }: { data: PresentationData }) {
         if (spot.laserOn) return spot.toggleLaser();
         if (spot.spotlightOn) return spot.toggleSpotlight();
         if (spot.zoomActive) return spot.zoomOut();
+        if (equipment.panelOpen) return equipment.close();
         ctrl.escape();
       },
       fullscreen: toggleFullscreen,
       help: () => setHelpOpen((v) => !v),
       annotate: board.toggleNotes,
       chalkboard: board.toggleBoard,
+      equipment: () => {
+        // المعرض مرتبط بالشريحة المفتوحة فقط — لا يُفتح على العنوان/الخريطة/الخاتمة
+        if (ctrl.screen.kind === 'slide') equipment.toggle();
+      },
       clearDrawing: board.clear,
       zoomToggle: spot.toggleZoomCenter,
       spotlight: spot.toggleSpotlight,
       laser: spot.toggleLaser,
       presenter: openPresenter,
     }),
-    [ctrl, helpOpen, toggleFullscreen, board, spot, presenterMode, openPresenter, closePresenter],
+    [ctrl, helpOpen, toggleFullscreen, board, spot, equipment, presenterMode, openPresenter, closePresenter],
   );
   useKeyboardControls(handlers);
 
@@ -165,9 +173,20 @@ export function Presentation({ data }: { data: PresentationData }) {
   // آخر شريحة زارها المشاهد — تُميَّز في الخريطة كنقطة استئناف
   const lastSlideId = ctrl.visited.length > 0 ? ctrl.slides[ctrl.lastSlide]?.slide.id : undefined;
 
-  /** مُصيّر أي شاشة — يُستعمل للمحتوى الحي ولمعاينتي نافذة المعلم */
+  // ─── المعدات العلمية: مرتبطة بالشريحة المفتوحة ───
+  const currentSlideId = screen.kind === 'slide' ? (ctrl.slides[screen.index]?.slide.id ?? null) : null;
+  const { setActiveSlide: setEquipmentSlide, close: closeEquipment, panelOpen: equipmentOpen } = equipment;
+  useEffect(() => {
+    setEquipmentSlide(currentSlideId);
+  }, [currentSlideId, setEquipmentSlide]);
+  // مغادرة الشرائح (خريطة/عنوان/خاتمة) تُغلق اللوحة تلقائياً
+  useEffect(() => {
+    if (!currentSlideId && equipmentOpen) closeEquipment();
+  }, [currentSlideId, equipmentOpen, closeEquipment]);
+
+  /** مُصيّر أي شاشة — يُستعمل للمحتوى الحي ولمعاينتي نافذة المعلم (preview = بلا تحرير) */
   const renderScreen = useCallback(
-    (s: Screen): ReactNode => {
+    (s: Screen, preview = false): ReactNode => {
       switch (s.kind) {
         case 'title':
           return <TitleScreen meta={data.meta} onStart={ctrl.next} />;
@@ -184,13 +203,23 @@ export function Presentation({ data }: { data: PresentationData }) {
               onSelect={ctrl.gotoSlide}
             />
           );
-        case 'slide':
-          return ctrl.slides[s.index] ? <SlideScreen item={ctrl.slides[s.index]} /> : null;
+        case 'slide': {
+          const item = ctrl.slides[s.index];
+          if (!item) return null;
+          return (
+            <SlideScreen
+              item={item}
+              equipment={
+                <EquipmentLayer ctrl={equipment} slideId={item.slide.id} editing={!preview && equipment.panelOpen} />
+              }
+            />
+          );
+        }
         case 'final':
           return <FinalScreen data={data.final} onMap={ctrl.openMap} onRestart={ctrl.restart} />;
       }
     },
-    [data, ctrl, lastSlideId],
+    [data, ctrl, lastSlideId, equipment],
   );
 
   // تحديث نافذة المعلم بعد كل رسم — الشاشة والملاحظات والمعاينات تبقى متزامنة
@@ -209,7 +238,7 @@ export function Presentation({ data }: { data: PresentationData }) {
         nextInfo={screenInfo(nxt, data, ctrl.slides)}
         notes={notesFor(screen, data, ctrl.slides)}
         progress={ctrl.progress}
-        renderScreen={renderScreen}
+        renderScreen={(s) => renderScreen(s, true)}
         onNext={ctrl.next}
         onPrev={ctrl.prev}
         variant="popup"
@@ -292,12 +321,17 @@ export function Presentation({ data }: { data: PresentationData }) {
         onFullscreen={toggleFullscreen}
         onHelp={onHelp}
         onChalkboard={board.toggleBoard}
+        onEquipment={equipment.toggle}
+        equipmentActive={equipment.panelOpen}
         onZoom={spot.toggleZoomCenter}
         onSpotlight={spot.toggleSpotlight}
         onLaser={spot.toggleLaser}
         onPresenter={openPresenter}
       />
       <KeyboardHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
+
+      {/* لوحة المعدات العلمية — معرض جانبي داخل العارض، الشريحة تبقى مفتوحة */}
+      {equipment.panelOpen && screen.kind === 'slide' && <EquipmentPanel ctrl={equipment} />}
 
       {/* السبورة والتعليق — صامتة حتى يطلبها المُقدِّم (C أو B) */}
       <ChalkboardOverlay board={board} layerId={screenKey(ctrl.screen)} layerLabel={chalkboardLayerLabel(ctrl.screen)} />
@@ -318,7 +352,7 @@ export function Presentation({ data }: { data: PresentationData }) {
               nextInfo={screenInfo(nextScreenNode, data, ctrl.slides)}
               notes={notesFor(screen, data, ctrl.slides)}
               progress={ctrl.progress}
-              renderScreen={renderScreen}
+              renderScreen={(s) => renderScreen(s, true)}
               onNext={ctrl.next}
               onPrev={ctrl.prev}
               variant="embedded"

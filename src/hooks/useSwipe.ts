@@ -9,6 +9,12 @@ export function useSwipe(onNext: () => void, onPrev: () => void) {
   const start = useRef<{ x: number; y: number } | null>(null);
 
   const onTouchStart = (e: TouchEvent) => {
+    // عناصر تفاعلية (معدات مُدرجة، لوحة المعرض…) تُدير سحبها بنفسها — لا تنقّل
+    const target = e.target as HTMLElement | null;
+    if (target?.closest?.('[data-no-swipe]')) {
+      start.current = null;
+      return;
+    }
     const t = e.touches[0];
     start.current = t ? { x: t.clientX, y: t.clientY } : null;
   };

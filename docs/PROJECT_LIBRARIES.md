@@ -31,9 +31,6 @@
 | `lenis` | تمرير ناعم للمشاهد التي تحتاجه؛ تحقق من تكامل المشروع وتقليل الحركة قبل إضافته. |
 | `reveal.js`, `reveal.js-plugins` | عروض Reveal.js/ملحقاتها عند الحاجة؛ لا تستبدل بنية العرض الحالية بها دون طلب. |
 | `three` | مشاهد ورسوم WebGL/3D؛ اعزلها في شاشة/مكوّن كسول وقدّم بديلاً عند غياب WebGL. |
-| `bn-lab-simulations` | تجارب تفاعلية ثنائية الأبعاد جاهزة؛ استورد التجربة المطلوبة فقط من `bn-lab-simulations/experiments/*` واعرضها داخل `EngineScene` مع عناصر تحكم عربية من الكتالوج. MIT؛ مثبت من GitHub عند commit ثابت، لا من npm registry. |
-| `matter-js` | محرك أجسام صلبة 2D؛ استخدمه لتجارب حركة وتصادم مخصصة، وليس كمكتبة تجارب جاهزة. MIT؛ التحميل الكسول داخل `EngineScenes.tsx`. |
-| `p5` | رسم ومحاكاة Canvas 2D مخصصة؛ لا يوفّر محللاً علمياً بحد ذاته. LGPL-2.1؛ استخدم instance mode مع تنظيف `remove()` عند فك المكوّن. |
 | `@tsparticles/engine`, `@tsparticles/react`, `@tsparticles/slim` | خلفيات الجسيمات؛ استخدم `ParticlesBackground` وpresets الموجودة، لا تنشئ محركاً ثانياً. |
 | `canvas-confetti` | احتفال خفيف؛ استخدم `fireConfetti` أو `ConfettiOnMount` واحترم تقليل الحركة. |
 | `lottie-react` | تشغيل ملفات Lottie؛ استخدم `LottiePlayer` والتحميل الكسول، وضع الأصول في المسار المعتمد. |
@@ -71,7 +68,7 @@
 | `@intellectronica/ruler` | إدارة تعليمات AI المعيارية في `.ruler/` وتوليد ملفات الوكلاء عبر `npm run ai:rules`؛ لا تعدّل المخرجات المولّدة يدوياً. |
 | `typescript` | فحص وبناء TypeScript؛ لا تتجاوز أخطاء النوع بـ`any` أو تعطيل الفحوص إلا لضرورة موثقة. |
 | `vitest`, `jsdom` | اختبارات الوحدات وتكامل DOM؛ أضف/حدّث اختباراً مع السلوك الجديد. |
-| `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape`, `@types/matter-js` | تعريفات TypeScript للمكتبات المقابلة؛ لا تستوردها وقت التشغيل. |
+| `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape` | تعريفات TypeScript للمكتبات المقابلة؛ لا تستوردها وقت التشغيل. |
 
 ## سجل الأسماء الكامل (مطابق لـ`package.json`)
 
@@ -80,11 +77,11 @@
 ### Runtime dependencies
 
 <!-- runtime-packages:start -->
-`@fontsource-variable/alexandria`, `@fontsource-variable/baloo-bhaijaan-2`, `@fontsource-variable/cairo`, `@fontsource-variable/changa`, `@fontsource-variable/el-messiri`, `@fontsource-variable/inter`, `@fontsource-variable/kufam`, `@fontsource-variable/lemonada`, `@fontsource-variable/marhey`, `@fontsource-variable/markazi-text`, `@fontsource-variable/noto-kufi-arabic`, `@fontsource-variable/noto-naskh-arabic`, `@fontsource-variable/noto-sans-arabic`, `@fontsource-variable/readex-pro`, `@fontsource-variable/reem-kufi`, `@fontsource-variable/rubik`, `@fontsource-variable/vazirmatn`, `@fontsource/almarai`, `@fontsource/amiri`, `@fontsource/aref-ruqaa`, `@fontsource/fira-code`, `@fontsource/harmattan`, `@fontsource/ibm-plex-sans-arabic`, `@fontsource/jetbrains-mono`, `@fontsource/jomhuria`, `@fontsource/katibeh`, `@fontsource/rakkas`, `@fontsource/scheherazade-new`, `@fontsource/tajawal`, `@formkit/auto-animate`, `@gsap/react`, `@nivo/bar`, `@nivo/bump`, `@nivo/core`, `@nivo/funnel`, `@nivo/heatmap`, `@nivo/line`, `@nivo/pie`, `@nivo/radar`, `@nivo/radial-bar`, `@nivo/sankey`, `@nivo/theming`, `@nivo/treemap`, `@nivo/waffle`, `@number-flow/react`, `@tsparticles/engine`, `@tsparticles/react`, `@tsparticles/slim`, `@xyflow/react`, `bn-lab-simulations`, `canvas-confetti`, `chart.js`, `chartjs-plugin-datalabels`, `clsx`, `d3-array`, `d3-interpolate`, `d3-scale`, `d3-shape`, `echarts`, `echarts-for-react`, `fitty`, `framer-motion`, `gsap`, `harfbuzzjs`, `lenis`, `lottie-react`, `lucide-react`, `matter-js`, `p5`, `react`, `react-chartjs-2`, `react-dom`, `react-parallax-tilt`, `react-type-animation`, `recharts`, `reveal.js`, `reveal.js-plugins`, `rough-notation`, `tailwind-merge`, `three`, `tw-animate-css`
+`@fontsource-variable/alexandria`, `@fontsource-variable/baloo-bhaijaan-2`, `@fontsource-variable/cairo`, `@fontsource-variable/changa`, `@fontsource-variable/el-messiri`, `@fontsource-variable/inter`, `@fontsource-variable/kufam`, `@fontsource-variable/lemonada`, `@fontsource-variable/marhey`, `@fontsource-variable/markazi-text`, `@fontsource-variable/noto-kufi-arabic`, `@fontsource-variable/noto-naskh-arabic`, `@fontsource-variable/noto-sans-arabic`, `@fontsource-variable/readex-pro`, `@fontsource-variable/reem-kufi`, `@fontsource-variable/rubik`, `@fontsource-variable/vazirmatn`, `@fontsource/almarai`, `@fontsource/amiri`, `@fontsource/aref-ruqaa`, `@fontsource/fira-code`, `@fontsource/harmattan`, `@fontsource/ibm-plex-sans-arabic`, `@fontsource/jetbrains-mono`, `@fontsource/jomhuria`, `@fontsource/katibeh`, `@fontsource/rakkas`, `@fontsource/scheherazade-new`, `@fontsource/tajawal`, `@formkit/auto-animate`, `@gsap/react`, `@nivo/bar`, `@nivo/bump`, `@nivo/core`, `@nivo/funnel`, `@nivo/heatmap`, `@nivo/line`, `@nivo/pie`, `@nivo/radar`, `@nivo/radial-bar`, `@nivo/sankey`, `@nivo/theming`, `@nivo/treemap`, `@nivo/waffle`, `@number-flow/react`, `@tsparticles/engine`, `@tsparticles/react`, `@tsparticles/slim`, `@xyflow/react`, `canvas-confetti`, `chart.js`, `chartjs-plugin-datalabels`, `clsx`, `d3-array`, `d3-interpolate`, `d3-scale`, `d3-shape`, `echarts`, `echarts-for-react`, `fitty`, `framer-motion`, `gsap`, `harfbuzzjs`, `lenis`, `lottie-react`, `lucide-react`, `react`, `react-chartjs-2`, `react-dom`, `react-parallax-tilt`, `react-type-animation`, `recharts`, `reveal.js`, `reveal.js-plugins`, `rough-notation`, `tailwind-merge`, `three`, `tw-animate-css`
 <!-- runtime-packages:end -->
 
 ### Dev dependencies
 
 <!-- dev-packages:start -->
-`@intellectronica/ruler`, `@tailwindcss/vite`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape`, `@types/matter-js`, `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@vitejs/plugin-react`, `jsdom`, `tailwindcss`, `typescript`, `vite`, `vitest`
+`@intellectronica/ruler`, `@tailwindcss/vite`, `@types/canvas-confetti`, `@types/d3-array`, `@types/d3-interpolate`, `@types/d3-scale`, `@types/d3-shape`, `@types/node`, `@types/react`, `@types/react-dom`, `@types/three`, `@vitejs/plugin-react`, `jsdom`, `tailwindcss`, `typescript`, `vite`, `vitest`
 <!-- dev-packages:end -->
