@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, CircleHelp, FlaskConical, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
+import { Beaker, ChevronLeft, ChevronRight, CircleHelp, FlaskConical, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
 import type { PresentationController } from '@/hooks/usePresentation';
 import { cn } from '@/lib/cn';
 
@@ -14,6 +14,10 @@ interface ControlBarProps {
   onEquipment?: () => void;
   /** هل لوحة المعدات مفتوحة؟ (تمييز الزر) */
   equipmentActive?: boolean;
+  /** تشغيل/إيقاف وضع التجربة على الشريحة الحالية */
+  onLab?: () => void;
+  /** هل وضع التجربة مفعّل؟ (تمييز الزر) */
+  labActive?: boolean;
   /** تكبير/خروج مركزي (حزمة التكبير والتركيز) */
   onZoom?: () => void;
   /** تسليط الضوء */
@@ -60,7 +64,7 @@ function CtrlButton({
 }
 
 /** شريط التحكم أسفل الشاشة: أزرار + عدّاد «الشريحة 5 / 22» (§6). */
-export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onEquipment, equipmentActive, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
+export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onEquipment, equipmentActive, onLab, labActive, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
   const { screen, slides, current } = ctrl;
   const isTitle = screen.kind === 'title';
   const isFinal = screen.kind === 'final';
@@ -135,6 +139,17 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkbo
           >
             <FlaskConical className="h-5 w-5" />
             <span className="hidden text-sm font-semibold xl:inline">المعدات</span>
+          </CtrlButton>
+        )}
+        {onLab && (
+          <CtrlButton
+            label="وضع التجربة (T) — شغّل إجراءات المعدات على الشريحة نفسها"
+            onClick={onLab}
+            disabled={screen.kind !== 'slide'}
+            className={cn(labActive && 'border-amber-400/40 bg-amber-400/15 text-amber-100')}
+          >
+            <Beaker className="h-5 w-5" />
+            <span className="hidden text-sm font-semibold xl:inline">تجربة</span>
           </CtrlButton>
         )}
         {onZoom && (

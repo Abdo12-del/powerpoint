@@ -112,8 +112,11 @@ function Harness({ slideId = 'ch1-demo' }: { slideId?: string }) {
       <button type="button" data-testid="h-close" onClick={ctrl.close}>
         close
       </button>
+      <button type="button" data-testid="h-lab" onClick={ctrl.toggleLab}>
+        lab
+      </button>
       <div data-testid="stage" style={{ position: 'relative', width: 1000, height: 600 }}>
-        <EquipmentLayer ctrl={ctrl} slideId={slideId} editing={ctrl.panelOpen} />
+        <EquipmentLayer ctrl={ctrl} slideId={slideId} editing={ctrl.panelOpen} labMode={ctrl.labMode} />
       </div>
       {ctrl.panelOpen && <EquipmentPanel ctrl={ctrl} />}
     </div>
@@ -126,34 +129,84 @@ function mountHarness(): void {
 }
 
 describe('لوحة المعدات العلمية (EquipmentPanel)', () => {
-  it('تعرض الأصول العشرة بأسماء عربية وصور مصغرة داخل العارض', () => {
+  it('تعرض الأصول الخمسة والستين بأسماء عربية وصور مصغرة داخل العارض', () => {
     mountHarness();
     expect(q('[data-testid="equipment-panel"]')).not.toBeNull();
-    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(10);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(65);
     expect(q('[data-testid="equipment-tile-microscope"]')?.textContent).toContain('مجهر');
     expect(q('[data-testid="equipment-tile-beaker"] img')).not.toBeNull();
+    // عناصر التخصصات الجديدة ظاهرة في المعرض نفسه
+    expect(q('[data-testid="equipment-tile-burette"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-oscilloscope"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-centrifuge"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-geological-hammer"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-stethoscope"]')).not.toBeNull();
   });
 
-  it('البحث يرشح النتائج بالعربية واللاتينية', () => {
+  it('البحث يرشح النتائج بالعربية والفرنسية وبمعرف الأصل', () => {
     mountHarness();
     const search = q<HTMLInputElement>('[data-testid="equipment-search"]')!;
+    // «مجهر» يطابق المجهر وشريحة المجهر
     setInputValue(search, 'مجهر');
-    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(2);
     expect(q('[data-testid="equipment-tile-microscope"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-microscope-slide"]')).not.toBeNull();
+    // بالفرنسية
+    setInputValue(search, 'centrifugeuse');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(q('[data-testid="equipment-tile-centrifuge"]')).not.toBeNull();
+    setInputValue(search, 'bécher');
+    expect(q('[data-testid="equipment-tile-beaker"]')).not.toBeNull();
+    setInputValue(search, 'tensiomètre');
+    expect(q('[data-testid="equipment-tile-blood-pressure-monitor"]')).not.toBeNull();
     setInputValue(search, 'goggles');
     expect(q('[data-testid="equipment-tile-safety-goggles"]')).not.toBeNull();
+    // بمعرف الأصل
+    setInputValue(search, 'geological-hammer');
+    expect(q('[data-testid="equipment-tile-geological-hammer"]')).not.toBeNull();
     setInputValue(search, 'لا-يوجد-xyz');
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(0);
     expect(container.textContent).toContain('لا نتائج مطابقة');
   });
 
-  it('التصفح بالفئات يرشح النتائج', () => {
+  it('التصفح بالفئات القديمة يرشح النتائج', () => {
     mountHarness();
     click(q('[data-testid="equipment-cat-safety"]')!);
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
     expect(q('[data-testid="equipment-tile-safety-goggles"]')).not.toBeNull();
     click(q('[data-testid="equipment-cat-glassware"]')!);
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(5);
+  });
+
+  it('فئات التخصصات العلمية الجديدة قابلة للتصفح بعددها الصحيح', () => {
+    mountHarness();
+    const counts: Array<[string, number, string]> = [
+      ['chemistry', 15, 'burette'],
+      ['physics', 14, 'oscilloscope'],
+      ['biology', 10, 'centrifuge'],
+      ['geology', 7, 'geological-hammer'],
+      ['health', 9, 'stethoscope'],
+    ];
+    for (const [category, count, sampleId] of counts) {
+      const chip = q(`[data-testid="equipment-cat-${category}"]`);
+      expect(chip).not.toBeNull();
+      click(chip!);
+      expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(count);
+      expect(q(`[data-testid="equipment-tile-${sampleId}"]`)).not.toBeNull();
+    }
+    // العودة إلى «الكل» تستعيد الأصول الخمسة والستين
+    click(qa('[role="group"][aria-label="فئات المعدات"] button')[0]);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(65);
+  });
+
+  it('البحث داخل فئة تخصصية يجمع الفلترين معاً', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-cat-geology"]')!);
+    setInputValue(q<HTMLInputElement>('[data-testid="equipment-search"]')!, 'loupe');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(q('[data-testid="equipment-tile-hand-lens"]')).not.toBeNull();
+    setInputValue(q<HTMLInputElement>('[data-testid="equipment-search"]')!, 'burette');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(0);
   });
 
   it('نقر الصورة يضيف العنصر إلى الشريحة (بديل اللمس ولوحة المفاتيح) والتراجع يعيده', () => {
@@ -234,6 +287,129 @@ describe('طبقة الشريحة (EquipmentLayer)', () => {
     expect(item.style.aspectRatio).toBe('512 / 512'); // النسبة لم تتغير
     click(q('[data-testid="equipment-undo"]')!);
     expect((q('[data-testid="equipment-item"]') as HTMLElement).style.width).toBe('16%');
+  });
+});
+
+describe('وضع التجربة داخل الشريحة (EquipmentSimulator)', () => {
+  it('زر «تجربة» يظهر للمعدات القابلة للتشغيل فقط، ويفتح بطاقة الإجراء على الشريحة نفسها', () => {
+    mountHarness();
+    // كأس زجاجي بلا إجراء تعليمي
+    click(q('[data-testid="equipment-tile-beaker"]')!);
+    expect(q('[data-testid="equipment-sim-open"]')).toBeNull();
+    // السحاحة لها إجراء معايرة
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    const open = q('[data-testid="equipment-sim-open"]');
+    expect(open).not.toBeNull();
+    click(open!);
+    expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+    // ما زلنا في الشريحة نفسها: الطبقة والعناصر موجودة
+    expect(q('[data-testid="equipment-layer"]')).not.toBeNull();
+    expect(qa('[data-testid="equipment-item"]')).toHaveLength(2);
+    // الإغلاق لا يحذف أي عنصر
+    click(q('[data-testid="sim-close"]')!);
+    expect(q('[data-testid="equipment-simulator"]')).toBeNull();
+    expect(qa('[data-testid="equipment-item"]')).toHaveLength(2);
+  });
+
+  it('المعايرة تعمل فعلياً: الحجم يغيّر اللون والخطأ والحكم', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+
+    const slider = q<HTMLInputElement>('[data-testid="sim-control-volume"]')!;
+    setInputValue(slider, '4');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('4 mL');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('لم تصل');
+
+    setInputValue(slider, '12.5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12.5 mL');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('ممتاز');
+
+    setInputValue(slider, '20');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('تجاوز كبير');
+
+    // إعادة الضبط تعيد الحجم إلى الصفر
+    click(q('[data-testid="sim-reset"]')!);
+    expect((q<HTMLInputElement>('[data-testid="sim-control-volume"]')!).value).toBe('0');
+  });
+
+  it('وضع التجربة في العرض: العنصر القابل للتشغيل يصبح زراً بلا مقابض تحرير', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    click(q('[data-testid="h-close"]')!); // إغلاق اللوحة = وضع التقديم
+    const item = q('[data-testid="equipment-item"]')!;
+    expect(q('[data-testid="equipment-sim-open"]')).toBeNull();
+    expect(item.getAttribute('data-runnable')).toBeNull();
+
+    click(q('[data-testid="h-lab"]')!); // تفعيل وضع التجربة
+    const labLayer = q('[data-testid="equipment-layer"]')!;
+    expect(labLayer.getAttribute('data-lab-mode')).not.toBeNull();
+    expect(item.getAttribute('data-runnable')).not.toBeNull();
+    expect(item.getAttribute('role')).toBe('button');
+    // لا مقابض حذف/تحجيم في وضع العرض
+    expect(q('[data-testid="equipment-delete"]')).toBeNull();
+    expect(q('[data-testid="equipment-resize"]')).toBeNull();
+
+    click(q('[data-testid="equipment-item"]')!);
+    expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+  });
+
+  it('pH والميزان والأوتوكلاف: التفاعل يغيّر القراءة فعلياً', () => {
+    mountHarness();
+
+    // pH: تغيير العينة يغيّر القراءة
+    click(q('[data-testid="equipment-tile-ph-meter"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('7');
+    click(q('[data-testid="sim-sample-acid"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('2');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('حمضي');
+    click(q('[data-testid="sim-sample-base"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12');
+    click(q('[data-testid="sim-close"]')!);
+
+    // الميزان: التصفير يُظهر كتلة صافية صفرية
+    click(q('[data-testid="equipment-tile-analytical-balance"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    setInputValue(q<HTMLInputElement>('[data-testid="sim-control-sample"]')!, '12.5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12.5000 g');
+    click(q('[data-testid="sim-tare"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('0.0000 g');
+    click(q('[data-testid="sim-close"]')!);
+
+    // الأوتوكلاف: 121°C و15 دقيقة = تعقيم كامل
+    click(q('[data-testid="equipment-tile-autoclave"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('كامل');
+    setInputValue(q<HTMLInputElement>('[data-testid="sim-control-auto-min"]')!, '5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('غير مكتمل');
+  });
+
+  it('إجراءات أخرى تعمل: لهب، إشارة، طرد مركزي، بوصلة، ضغط دم', () => {
+    mountHarness();
+    const cases: Array<[string, string, string]> = [
+      ['bunsen-burner', 'sim-control-air', '°C'],
+      ['oscilloscope', 'sim-control-freq', 'ms'],
+      ['centrifuge', 'sim-control-spin', '×g'],
+      ['geological-compass', 'sim-control-strike', '°'],
+      ['blood-pressure-monitor', 'sim-control-pressure', 'mmHg'],
+      ['microscope', 'sim-control-focus', '%'],
+      ['magnetic-stirrer', 'sim-control-rpm', 'rpm'],
+      ['ph-meter', 'sim-sample-acid', 'pH'],
+      ['analytical-balance', 'sim-control-sample', 'g'],
+      ['incubator', 'sim-control-inc-temp', '%'],
+      ['autoclave', 'sim-control-auto-temp', 'bar'],
+    ];
+    for (const [assetId, testid, unit] of cases) {
+      click(q(`[data-testid="equipment-tile-${assetId}"]`)!);
+      // آخر عنصر مُدرج هو المحدد
+      click(q('[data-testid="equipment-sim-open"]')!);
+      expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+      expect(q(`[data-testid="${testid}"]`)).not.toBeNull();
+      expect(q('[data-testid="sim-readout"]')?.textContent).toContain(unit);
+      click(q('[data-testid="sim-close"]')!);
+      expect(q('[data-testid="equipment-simulator"]')).toBeNull();
+    }
   });
 });
 
@@ -320,5 +496,30 @@ describe('التكامل مع العارض الحالي (Presentation)', () => {
     expect(qa('[data-testid="equipment-item"]')).toHaveLength(1);
     pressKey('y', { ctrlKey: true }); // إعادة الحذف → يختفي مجدداً
     expect(qa('[data-testid="equipment-item"]')).toHaveLength(0);
+  }, 20000);
+
+  it('وضع التجربة من شريط التحكم وT: يعمل على الشريحة المفتوحة وEsc يخرجه', async () => {
+    act(() => root.render(<Presentation data={presentation} />));
+    await gotoFirstSlide();
+    const layer = () => q('[data-testid="equipment-layer"]')!;
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+
+    // زر التجربة في شريط التحكم
+    const labButton = q<HTMLButtonElement>('button[aria-label^="وضع التجربة"]');
+    expect(labButton).not.toBeNull();
+    click(labButton!);
+    expect(layer().getAttribute('data-lab-mode')).not.toBeNull();
+    expect(container.textContent).toContain('الشريحة 1');
+
+    // T يبدّل الوضع (وما زلنا في الشريحة)
+    pressKey('t');
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+    pressKey('t');
+    expect(layer().getAttribute('data-lab-mode')).not.toBeNull();
+
+    // Esc يخرج من وضع التجربة قبل مغادرة الشريحة
+    pressKey('Escape');
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+    expect(container.textContent).toContain('الشريحة 1');
   }, 20000);
 });

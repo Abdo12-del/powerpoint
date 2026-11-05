@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="mesh" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1f5f9"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="128" cy="96" rx="98" ry="34" fill="url(#rim)"/>
+    <ellipse cx="128" cy="96" rx="78" ry="24" fill="url(#mesh)"/>
+    <path d="M60 96 L60 160 Q128 196 196 160 L196 96" stroke="url(#rim)" stroke-width="14" fill="none"/>
+    <path d="M74 88 L182 88 M82 104 L174 104 M70 96 L186 96 M96 78 L96 114 M128 74 L128 118 M160 78 L160 114" stroke="#94a3b8" stroke-width="3" fill="none"/>
+    <path d="M40 196 L216 196" stroke="#a8a29e" stroke-width="8" fill="none"/>
+    <circle cx="92" cy="178" r="6" fill="#d6d3d1"/>
+    <circle cx="116" cy="184" r="5" fill="#a8a29e"/>
+    <circle cx="146" cy="180" r="7" fill="#d6d3d1"/>
+    <circle cx="170" cy="186" r="5" fill="#a8a29e"/>
+  </g>
+</svg>

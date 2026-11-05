@@ -119,6 +119,7 @@ export function Presentation({ data }: { data: PresentationData }) {
         if (spot.spotlightOn) return spot.toggleSpotlight();
         if (spot.zoomActive) return spot.zoomOut();
         if (equipment.panelOpen) return equipment.close();
+        if (equipment.labMode) return equipment.closeLab();
         ctrl.escape();
       },
       fullscreen: toggleFullscreen,
@@ -128,6 +129,10 @@ export function Presentation({ data }: { data: PresentationData }) {
       equipment: () => {
         // المعرض مرتبط بالشريحة المفتوحة فقط — لا يُفتح على العنوان/الخريطة/الخاتمة
         if (ctrl.screen.kind === 'slide') equipment.toggle();
+      },
+      lab: () => {
+        // وضع التجربة كذلك: تفاعل على الشريحة المفتوحة وحدها
+        if (ctrl.screen.kind === 'slide') equipment.toggleLab();
       },
       clearDrawing: board.clear,
       zoomToggle: spot.toggleZoomCenter,
@@ -210,7 +215,12 @@ export function Presentation({ data }: { data: PresentationData }) {
             <SlideScreen
               item={item}
               equipment={
-                <EquipmentLayer ctrl={equipment} slideId={item.slide.id} editing={!preview && equipment.panelOpen} />
+                <EquipmentLayer
+                  ctrl={equipment}
+                  slideId={item.slide.id}
+                  editing={!preview && equipment.panelOpen}
+                  labMode={!preview && equipment.labMode}
+                />
               }
             />
           );
@@ -323,6 +333,8 @@ export function Presentation({ data }: { data: PresentationData }) {
         onChalkboard={board.toggleBoard}
         onEquipment={equipment.toggle}
         equipmentActive={equipment.panelOpen}
+        onLab={equipment.toggleLab}
+        labActive={equipment.labMode}
         onZoom={spot.toggleZoomCenter}
         onSpotlight={spot.toggleSpotlight}
         onLaser={spot.toggleLaser}

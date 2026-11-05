@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#93c5fd" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="powder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#powder)" d="M104 132 Q128 112 152 132 Q140 146 128 146 Q116 146 104 132 Z"/>
+    <path fill="url(#glass)" d="M48 168 Q48 96 128 96 Q208 96 208 168 Q208 180 192 180 L64 180 Q48 180 48 168 Z"/>
+    <path d="M70 156 Q74 118 116 108" stroke="#ffffff" stroke-width="6" opacity="0.6" fill="none"/>
+    <path d="M60 180 L196 180" stroke="#ffffff" stroke-width="5" opacity="0.35" fill="none"/>
+    <ellipse cx="128" cy="96" rx="76" ry="10" fill="url(#glass)"/>
+  </g>
+</svg>

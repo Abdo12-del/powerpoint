@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="north" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fca5a5"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="south" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#93c5fd"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M64 216 L64 116 Q64 52 128 52 Q192 52 192 116 L192 216 L148 216 L148 116 Q148 96 128 96 Q108 96 108 116 L108 216 Z" fill="url(#south)"/>
+    <path d="M64 216 L64 168 L108 168 L108 216 Z" fill="url(#north)"/>
+    <path d="M148 216 L148 168 L192 168 L192 216 Z" fill="url(#north)"/>
+    <path d="M64 168 L108 168 M148 168 L192 168" stroke="#1e293b" stroke-width="6" fill="none"/>
+    <path d="M78 200 L78 196 M98 200 L98 196 M162 200 L162 196 M182 200 L182 196" stroke="#ffffff" stroke-width="4" opacity="0.6" fill="none"/>
+    <path d="M78 110 Q80 72 110 62" stroke="#ffffff" stroke-width="6" opacity="0.45" fill="none"/>
+    <path d="M216 96 L240 96 M216 128 L246 128 M216 160 L240 160" stroke="#94a3b8" stroke-width="5" stroke-dasharray="8 8" fill="none"/>
+  </g>
+</svg>

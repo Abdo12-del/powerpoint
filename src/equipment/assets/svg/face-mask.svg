@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="mask" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#bfdbfe"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#mask)" d="M44 76 Q128 56 212 76 L204 134 Q196 196 128 210 Q60 196 52 134 Z"/>
+    <path d="M52 106 Q128 92 204 106 M50 134 Q128 120 206 134 M56 164 Q128 152 200 164" stroke="#94a3b8" stroke-width="5" fill="none"/>
+    <path d="M60 84 Q58 60 74 48" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+    <path d="M196 84 Q198 60 182 48" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+    <path d="M120 74 L136 74 M116 100 L140 100" stroke="#ffffff" stroke-width="5" opacity="0.8" fill="none"/>
+  </g>
+</svg>

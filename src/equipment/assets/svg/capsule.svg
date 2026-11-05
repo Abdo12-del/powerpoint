@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="halfA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fca5a5"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="halfB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-34 128 128)">
+      <path fill="url(#halfA)" d="M128 44 L128 130 L196 130 L196 92 Q196 44 162 44 Z"/>
+      <path fill="url(#halfA)" d="M128 44 Q94 44 94 78 L94 130 L128 130 Z"/>
+      <path fill="url(#halfB)" d="M60 130 L128 130 L128 214 L78 214 Q60 214 56 194 Q52 160 60 130 Z"/>
+      <path fill="url(#halfB)" d="M128 130 L176 130 L176 186 Q152 196 128 196 Z"/>
+      <path d="M128 130 L176 130" stroke="#94a3b8" stroke-width="5" fill="none"/>
+      <path d="M110 56 L110 120" stroke="#ffffff" stroke-width="6" opacity="0.5" fill="none"/>
+      <path d="M74 142 L74 196" stroke="#ffffff" stroke-width="6" opacity="0.7" fill="none"/>
+    </g>
+  </g>
+</svg>

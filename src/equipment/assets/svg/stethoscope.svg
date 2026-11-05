@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="tube" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M72 32 L72 96 Q72 140 112 152" stroke="url(#steel)" stroke-width="10" fill="none"/>
+    <path d="M152 32 L152 96 Q152 140 112 152" stroke="url(#steel)" stroke-width="10" fill="none"/>
+    <circle cx="72" cy="28" r="12" fill="#94a3b8"/>
+    <circle cx="152" cy="28" r="12" fill="#94a3b8"/>
+    <path d="M112 152 Q112 186 152 196 Q196 206 200 168" stroke="url(#tube)" stroke-width="11" fill="none"/>
+    <circle cx="204" cy="152" r="28" fill="url(#steel)"/>
+    <circle cx="204" cy="152" r="16" fill="#cbd5e1"/>
+    <path d="M120 168 Q128 182 148 188" stroke="#ffffff" stroke-width="5" opacity="0.35" fill="none"/>
+    <path d="M66 48 L66 90" stroke="#ffffff" stroke-width="4" opacity="0.5" fill="none"/>
+  </g>
+</svg>

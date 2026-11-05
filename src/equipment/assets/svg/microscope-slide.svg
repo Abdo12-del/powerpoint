@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="slide" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="specimen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a3e635"/>
+      <stop offset="1" stop-color="#4d7c0f"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-12 128 128)">
+      <rect x="20" y="96" width="216" height="64" rx="10" fill="url(#slide)"/>
+      <rect x="96" y="104" width="64" height="48" rx="6" fill="#e0f2fe"/>
+      <ellipse cx="128" cy="128" rx="20" ry="12" fill="url(#specimen)"/>
+      <circle cx="120" cy="124" r="4" fill="#ecfccb" stroke="none"/>
+      <circle cx="136" cy="132" r="3" fill="#ecfccb" stroke="none"/>
+      <path d="M32 110 L32 146" stroke="#ffffff" stroke-width="6" opacity="0.6" fill="none"/>
+    </g>
+    <path d="M36 208 L220 176" stroke="#94a3b8" stroke-width="5" stroke-dasharray="9 8" fill="none"/>
+  </g>
+</svg>

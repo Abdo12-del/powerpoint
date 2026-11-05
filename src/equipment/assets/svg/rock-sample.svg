@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="rock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6d3d1"/>
+      <stop offset="1" stop-color="#78716c"/>
+    </linearGradient>
+    <linearGradient id="layer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a8a29e"/>
+      <stop offset="1" stop-color="#57534e"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#rock)" d="M28 168 L52 96 L104 52 L176 56 L216 116 L226 184 L160 220 L84 222 Z"/>
+    <path d="M52 96 L104 116 L176 108 L216 116" stroke="url(#layer)" stroke-width="7" fill="none"/>
+    <path d="M104 116 L96 176 L84 222" stroke="#57534e" stroke-width="6" fill="none"/>
+    <path d="M104 116 L176 108 L172 172 L160 220" stroke="#57534e" stroke-width="6" fill="none"/>
+    <path d="M96 176 L172 172" stroke="#57534e" stroke-width="6" fill="none"/>
+    <path d="M72 70 Q92 62 110 66" stroke="#ffffff" stroke-width="6" opacity="0.5" fill="none"/>
+    <circle cx="140" cy="142" r="7" fill="#d6d3d1" stroke="#57534e" stroke-width="3"/>
+    <circle cx="118" cy="196" r="5" fill="#d6d3d1" stroke="#57534e" stroke-width="3"/>
+  </g>
+</svg>

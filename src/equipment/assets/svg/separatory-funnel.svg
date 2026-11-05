@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="phaseA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="phaseB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="108" y="14" width="40" height="16" rx="6" fill="#cbd5e1"/>
+    <path fill="url(#glass)" d="M118 30 L138 30 L138 62 L182 152 Q188 168 170 168 L86 168 Q68 168 74 152 L118 62 Z"/>
+    <path fill="url(#phaseB)" stroke="none" d="M74 140 L182 140 L182 152 Q188 168 170 168 L86 168 Q68 168 74 152 Z"/>
+    <path fill="url(#phaseA)" stroke="none" d="M92 112 L164 112 L182 140 L74 140 Z"/>
+    <path d="M120 196 L136 196 L136 214 L120 214 Z" fill="#94a3b8"/>
+    <rect x="88" y="188" width="80" height="14" rx="7" fill="#64748b"/>
+    <circle cx="176" cy="195" r="12" fill="#475569"/>
+    <circle cx="176" cy="195" r="4" fill="#e2e8f0" stroke="none"/>
+    <path d="M116 214 L140 214 L132 236 L124 236 Z" fill="url(#glass)"/>
+    <path d="M124 74 L124 160" stroke="#ffffff" stroke-width="5" opacity="0.45" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="slab" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6d3d1"/>
+      <stop offset="1" stop-color="#78716c"/>
+    </linearGradient>
+    <linearGradient id="ammonite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#slab)" d="M20 92 L72 40 L200 52 L236 132 L188 218 L56 208 Z"/>
+    <circle cx="128" cy="132" r="62" fill="url(#ammonite)"/>
+    <path d="M128 132 Q128 90 164 96 Q196 104 190 138 Q184 168 148 166 Q118 164 118 138 Q118 118 138 118 Q152 118 152 132 Q152 142 142 142" stroke="#7c2d12" stroke-width="7" fill="none"/>
+    <path d="M66 118 Q72 168 108 194" stroke="#fde68a" stroke-width="5" opacity="0.55" fill="none"/>
+    <path d="M60 70 L92 56" stroke="#ffffff" stroke-width="6" opacity="0.45" fill="none"/>
+  </g>
+</svg>

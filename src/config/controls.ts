@@ -15,6 +15,7 @@ export const KEYS: Record<
   | 'annotate'
   | 'chalkboard'
   | 'equipment'
+  | 'lab'
   | 'clearDrawing'
   | 'spotlight'
   | 'laser'
@@ -33,6 +34,8 @@ export const KEYS: Record<
   chalkboard: ['b', 'B', 'لا'],
   // المعدات العلمية: معرض PNG يُدرج في الشريحة المفتوحة (G — وحرفها العربي ل)
   equipment: ['g', 'G', 'ل'],
+  // وضع التجربة: تشغيل الإجراءات التفاعلية للمعدات على الشريحة (T — وحرفها العربي ف)
+  lab: ['t', 'T', 'ف'],
   clearDrawing: ['Delete'],
   // التكبير والتركيز (نموذج إضافة zoom المدمجة مع reveal.js: Alt+Click، وZ للتوسيط — وحروفها العربية)
   zoomToggle: ['z', 'Z', 'ئ'],
@@ -53,6 +56,7 @@ export const SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ['C'], label: 'التعليق فوق الشريحة' },
   { keys: ['B'], label: 'سبورة مستقلة' },
   { keys: ['G'], label: 'المعدات العلمية: معرض صور تُدرج في الشريحة' },
+  { keys: ['T'], label: 'وضع التجربة: تشغيل معايرة/لهب/خلط/إشارة… على الشريحة' },
   { keys: ['Delete'], label: 'مسح الرسم (أثناء التعليق/السبورة)' },
   { keys: ['Alt + Click'], label: 'تكبير نحو نقطة الشرح (نقر ثانٍ للخروج)' },
   { keys: ['Z'], label: 'تكبير/خروج (مركزي)' },

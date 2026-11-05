@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a7f3d0"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#glass)" d="M86 62 L86 132 Q86 146 100 146 L156 146 Q170 146 170 132 L170 62 Z"/>
+    <path fill="url(#liquid)" stroke="none" d="M86 92 L170 92 L170 132 Q170 146 156 146 L100 146 Q86 146 86 132 Z"/>
+    <ellipse cx="128" cy="92" rx="42" ry="6" fill="#d1fae5" stroke="none"/>
+    <path d="M100 104 Q112 98 124 104 Q136 110 148 104" stroke="#ffffff" stroke-width="4" opacity="0.7" fill="none"/>
+    <rect x="104" y="136" width="48" height="10" rx="5" fill="#475569"/>
+    <path fill="url(#body)" d="M48 146 L208 146 Q218 146 218 158 L218 190 Q218 202 206 202 L50 202 Q38 202 38 190 L38 158 Q38 146 48 146 Z"/>
+    <rect x="46" y="146" width="164" height="12" rx="6" fill="#f1f5f9"/>
+    <circle cx="184" cy="180" r="16" fill="#475569"/>
+    <circle cx="184" cy="176" r="4" fill="#e2e8f0" stroke="none"/>
+    <rect x="70" y="170" width="40" height="16" rx="6" fill="#1e293b"/>
+    <circle cx="130" cy="180" r="9" fill="#22c55e"/>
+    <path d="M96 70 L96 130" stroke="#ffffff" stroke-width="5" opacity="0.55" fill="none"/>
+  </g>
+</svg>
