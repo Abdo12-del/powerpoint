@@ -3,12 +3,16 @@
  * - وضع التحرير (لوحة المعرض مفتوحة): تحديد، سحب، تحجيم بمقبض زاوية
  *   يحفظ نسبة الأبعاد، حذف، واستقبال الإفلات من اللوحة.
  * - وضع التقديم: صور فقط، بلا مقابض وبلا اعتراض للنقر.
+ * - وضع التجربة (T): المعدات ذات الإجراء التعليمي تصبح قابلة للتشغيل
+ *   وتُفتح بطاقة الإجراء فوق الشريحة نفسها — بلا صفحة مستقلة ولا مسار جديد.
  * كل الإحداثيات نسب إلى مستطيل الشريحة فتبقى صحيحة عند تغيير الحجم.
  */
-import { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Play, X } from 'lucide-react';
 import { assetById } from './catalog';
 import { clampPlacement, NOMINAL_RECT, relativePoint, widthFromPointer, type SlideRect } from './geometry';
+import { EquipmentSimulator } from './EquipmentSimulator';
+import { procedureFor } from './simulation';
 import { DND_MIME, DND_PREFIX } from './types';
 import type { EquipmentAsset, PlacedEquipment } from './types';
 import type { EquipmentController } from './useEquipment';
@@ -20,6 +24,8 @@ export interface EquipmentLayerProps {
   slideId: string;
   /** وضع التحرير: مقابض وتفاعل. غير ذلك: عرض صامت */
   editing: boolean;
+  /** وضع التجربة: يفعّل الإجراءات التفاعلية للمعدات القابلة للتشغيل */
+  labMode?: boolean;
 }
 
 interface GestureState {
@@ -37,18 +43,29 @@ function EquipmentNode({
   item,
   asset,
   editing,
+  labMode,
   selected,
   ctrl,
   rectOf,
+  onSimulate,
 }: {
   item: PlacedEquipment;
   asset: EquipmentAsset;
   editing: boolean;
+  labMode: boolean;
   selected: boolean;
   ctrl: EquipmentController;
   rectOf: () => SlideRect;
+  onSimulate: () => void;
 }) {
   const gesture = useRef<GestureState | null>(null);
+  const procedure = procedureFor(asset.id);
+  /** قابل للتشغيل فعلياً: له إجراء تعليمي ووضع التجربة مفعّل */
+  const runnable = Boolean(procedure) && labMode;
+  /** في العرض (بلا تحرير) يصبح العنصر القابل للتشغيل زراً مباشراً */
+  const itemAsButton = runnable && !editing;
+  /** في التحرير: زر «تجربة» يظهر على العنصر المحدد فقط (لا يزدحم المعرض) */
+  const showRunBadge = Boolean(procedure) && editing && selected;
 
   const startGesture = (e: React.PointerEvent<HTMLElement>, mode: 'move' | 'resize') => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -92,13 +109,22 @@ function EquipmentNode({
     <div
       data-equipment-item={item.id}
       data-testid="equipment-item"
-      role={editing ? 'button' : undefined}
-      tabIndex={editing ? 0 : undefined}
-      aria-label={editing ? `${asset.name} — اسحب للتحريك، الأسهم للضبط، Delete للحذف` : asset.name}
+      data-runnable={runnable || undefined}
+      role={editing || itemAsButton ? 'button' : undefined}
+      tabIndex={editing || itemAsButton ? 0 : undefined}
+      aria-label={
+        itemAsButton
+          ? `${asset.name} — تشغيل ${procedure?.title}`
+          : editing
+            ? `${asset.name} — اسحب للتحريك، الأسهم للضبط، Delete للحذف`
+            : asset.name
+      }
       className={cn(
         'absolute select-none',
         editing && 'cursor-move touch-none rounded-sm focus-visible:outline-2 focus-visible:outline-amber-300',
         editing && selected && 'outline-2 outline-amber-300/90 outline-dashed',
+        itemAsButton &&
+          'pointer-events-auto cursor-pointer rounded-sm ring-1 ring-amber-300/40 transition hover:ring-2 hover:ring-amber-300/80 focus-visible:outline-2 focus-visible:outline-amber-300',
       )}
       style={{
         left: `${item.x * 100}%`,
@@ -106,6 +132,14 @@ function EquipmentNode({
         width: `${item.w * 100}%`,
         aspectRatio: `${asset.width} / ${asset.height}`,
       }}
+      onClick={
+        itemAsButton
+          ? (e) => {
+              e.stopPropagation();
+              onSimulate();
+            }
+          : undefined
+      }
       onPointerDown={editing ? (e) => startGesture(e, 'move') : undefined}
       onPointerMove={editing ? onPointerMove : undefined}
       onPointerUp={editing ? endGesture : undefined}
@@ -117,7 +151,15 @@ function EquipmentNode({
               // Enter/Space على العنصر لا يقلبان الشريحة
               if (e.key === 'Enter' || e.key === ' ') e.preventDefault();
             }
-          : undefined
+          : itemAsButton
+            ? (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onSimulate();
+                }
+              }
+            : undefined
       }
     >
       <img
@@ -126,6 +168,24 @@ function EquipmentNode({
         draggable={false}
         className="pointer-events-none h-full w-full drop-shadow-lg"
       />
+
+      {showRunBadge && (
+        <button
+          type="button"
+          data-testid="equipment-sim-open"
+          aria-label={`تشغيل ${procedure!.title} — ${asset.name}`}
+          title={`تشغيل: ${procedure!.title}`}
+          className="absolute -top-3 -start-3 inline-flex h-7 items-center gap-1 rounded-full border border-amber-300/40 bg-slate-950/90 px-2 text-[10px] font-bold text-amber-100 shadow-lg transition hover:bg-amber-400/25 focus-visible:outline-2 focus-visible:outline-amber-300"
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSimulate();
+          }}
+        >
+          <Play className="h-3 w-3" />
+          تجربة
+        </button>
+      )}
 
       {editing && selected && (
         <>
@@ -164,10 +224,14 @@ function EquipmentNode({
   );
 }
 
-/** الطبقة الكاملة: حاوية الإفلات + كل عناصر الشريحة */
-export function EquipmentLayer({ ctrl, slideId, editing }: EquipmentLayerProps) {
+/** الطبقة الكاملة: حاوية الإفلات + كل عناصر الشريحة + بطاقة الإجراء */
+export function EquipmentLayer({ ctrl, slideId, editing, labMode = false }: EquipmentLayerProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [simItemId, setSimItemId] = useState<string | null>(null);
   const items = ctrl.itemsOf(slideId);
+  const simItem = simItemId ? items.find((entry) => entry.id === simItemId) : undefined;
+  const simAsset = simItem ? assetById(simItem.assetId) : undefined;
+  const simRunnable = simAsset ? Boolean(procedureFor(simAsset.id)) : false;
   const rectOf = (): SlideRect => ref.current?.getBoundingClientRect() ?? NOMINAL_RECT;
 
   // تسجيل المستطيل الحي للقصّ الصحيح في التحريك بالأسهم
@@ -203,7 +267,8 @@ export function EquipmentLayer({ ctrl, slideId, editing }: EquipmentLayerProps) 
       ref={ref}
       data-testid="equipment-layer"
       data-editing={editing || undefined}
-      {...(editing ? { 'data-no-swipe': '' } : {})}
+      data-lab-mode={labMode || undefined}
+      {...(editing || labMode ? { 'data-no-swipe': '' } : {})}
       className={cn('absolute inset-0', editing ? 'z-20' : 'pointer-events-none z-10 overflow-hidden')}
       onDragOver={editing ? onDragOver : undefined}
       onDrop={editing ? onDrop : undefined}
@@ -217,12 +282,18 @@ export function EquipmentLayer({ ctrl, slideId, editing }: EquipmentLayerProps) 
             item={item}
             asset={asset}
             editing={editing}
+            labMode={labMode}
             selected={editing && ctrl.selectedId === item.id}
             ctrl={ctrl}
             rectOf={rectOf}
+            onSimulate={() => setSimItemId(item.id)}
           />
         );
       })}
+
+      {simRunnable && simAsset && (
+        <EquipmentSimulator asset={simAsset} onClose={() => setSimItemId(null)} />
+      )}
 
       {editing && items.length === 0 && (
         <div className="pointer-events-none absolute inset-4 flex items-center justify-center rounded-2xl border-2 border-dashed border-amber-300/25">

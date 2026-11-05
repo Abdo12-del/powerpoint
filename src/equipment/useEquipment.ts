@@ -20,6 +20,12 @@ const INTERACTIVE = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
 export interface EquipmentController {
   /** هل لوحة المعرض مفتوحة؟ (فتحها = وضع تحرير الشريحة الحالية) */
   panelOpen: boolean;
+  /** هل «وضع التجربة» مفعّل؟ عندها تُشغَّل الإجراءات التفاعلية على الشريحة */
+  labMode: boolean;
+  /** تفعيل/إيقاف وضع التجربة على الشريحة الحالية (لا يعمل خارج الشرائح) */
+  toggleLab: () => void;
+  /** إيقاف وضع التجربة (يُستدعى عند Esc أو مغادرة الشريحة) */
+  closeLab: () => void;
   /** العنصر المحدد حالياً (إن وجد) */
   selectedId: string | null;
   /** الشريحة النشطة — تُضبط من العرض عند كل تنقّل */
@@ -63,6 +69,7 @@ export function useEquipment(): EquipmentController {
   const store = storeRef.current;
 
   const [panelOpen, setPanelOpen] = useState(false);
+  const [labMode, setLabMode] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [activeSlideId, setActiveSlideId] = useState<string | null>(null);
   const [revision, setRevision] = useState(0);
@@ -110,9 +117,19 @@ export function useEquipment(): EquipmentController {
   const select = useCallback((itemId: string | null) => setSelectedId(itemId), []);
 
   const setActiveSlide = useCallback((slideId: string | null) => {
-    if (activeSlideRef.current !== slideId) setSelectedId(null);
+    if (activeSlideRef.current !== slideId) {
+      setSelectedId(null);
+      setLabMode(false); // وضع التجربة مرتبط بالشريحة المفتوحة وحدها
+    }
     setActiveSlideId(slideId);
   }, []);
+
+  const toggleLab = useCallback(() => {
+    if (!activeSlideRef.current) return;
+    setLabMode((on) => !on);
+  }, []);
+
+  const closeLab = useCallback(() => setLabMode(false), []);
 
   const registerRectProvider = useCallback((provider: (() => SlideRect) | null) => {
     rectProviderRef.current = provider;
@@ -263,6 +280,9 @@ export function useEquipment(): EquipmentController {
 
   return {
     panelOpen,
+    labMode,
+    toggleLab,
+    closeLab,
     selectedId,
     activeSlideId,
     revision,

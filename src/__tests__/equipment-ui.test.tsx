@@ -112,8 +112,11 @@ function Harness({ slideId = 'ch1-demo' }: { slideId?: string }) {
       <button type="button" data-testid="h-close" onClick={ctrl.close}>
         close
       </button>
+      <button type="button" data-testid="h-lab" onClick={ctrl.toggleLab}>
+        lab
+      </button>
       <div data-testid="stage" style={{ position: 'relative', width: 1000, height: 600 }}>
-        <EquipmentLayer ctrl={ctrl} slideId={slideId} editing={ctrl.panelOpen} />
+        <EquipmentLayer ctrl={ctrl} slideId={slideId} editing={ctrl.panelOpen} labMode={ctrl.labMode} />
       </div>
       {ctrl.panelOpen && <EquipmentPanel ctrl={ctrl} />}
     </div>
@@ -287,6 +290,94 @@ describe('طبقة الشريحة (EquipmentLayer)', () => {
   });
 });
 
+describe('وضع التجربة داخل الشريحة (EquipmentSimulator)', () => {
+  it('زر «تجربة» يظهر للمعدات القابلة للتشغيل فقط، ويفتح بطاقة الإجراء على الشريحة نفسها', () => {
+    mountHarness();
+    // كأس زجاجي بلا إجراء تعليمي
+    click(q('[data-testid="equipment-tile-beaker"]')!);
+    expect(q('[data-testid="equipment-sim-open"]')).toBeNull();
+    // السحاحة لها إجراء معايرة
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    const open = q('[data-testid="equipment-sim-open"]');
+    expect(open).not.toBeNull();
+    click(open!);
+    expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+    // ما زلنا في الشريحة نفسها: الطبقة والعناصر موجودة
+    expect(q('[data-testid="equipment-layer"]')).not.toBeNull();
+    expect(qa('[data-testid="equipment-item"]')).toHaveLength(2);
+    // الإغلاق لا يحذف أي عنصر
+    click(q('[data-testid="sim-close"]')!);
+    expect(q('[data-testid="equipment-simulator"]')).toBeNull();
+    expect(qa('[data-testid="equipment-item"]')).toHaveLength(2);
+  });
+
+  it('المعايرة تعمل فعلياً: الحجم يغيّر اللون والخطأ والحكم', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+
+    const slider = q<HTMLInputElement>('[data-testid="sim-control-volume"]')!;
+    setInputValue(slider, '4');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('4 mL');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('لم تصل');
+
+    setInputValue(slider, '12.5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12.5 mL');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('ممتاز');
+
+    setInputValue(slider, '20');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('تجاوز كبير');
+
+    // إعادة الضبط تعيد الحجم إلى الصفر
+    click(q('[data-testid="sim-reset"]')!);
+    expect((q<HTMLInputElement>('[data-testid="sim-control-volume"]')!).value).toBe('0');
+  });
+
+  it('وضع التجربة في العرض: العنصر القابل للتشغيل يصبح زراً بلا مقابض تحرير', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-tile-burette"]')!);
+    click(q('[data-testid="h-close"]')!); // إغلاق اللوحة = وضع التقديم
+    const item = q('[data-testid="equipment-item"]')!;
+    expect(q('[data-testid="equipment-sim-open"]')).toBeNull();
+    expect(item.getAttribute('data-runnable')).toBeNull();
+
+    click(q('[data-testid="h-lab"]')!); // تفعيل وضع التجربة
+    const labLayer = q('[data-testid="equipment-layer"]')!;
+    expect(labLayer.getAttribute('data-lab-mode')).not.toBeNull();
+    expect(item.getAttribute('data-runnable')).not.toBeNull();
+    expect(item.getAttribute('role')).toBe('button');
+    // لا مقابض حذف/تحجيم في وضع العرض
+    expect(q('[data-testid="equipment-delete"]')).toBeNull();
+    expect(q('[data-testid="equipment-resize"]')).toBeNull();
+
+    click(q('[data-testid="equipment-item"]')!);
+    expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+  });
+
+  it('إجراءات أخرى تعمل: لهب، إشارة، طرد مركزي، بوصلة، ضغط دم', () => {
+    mountHarness();
+    const cases: Array<[string, string, string]> = [
+      ['bunsen-burner', 'sim-control-air', '°C'],
+      ['oscilloscope', 'sim-control-freq', 'ms'],
+      ['centrifuge', 'sim-control-spin', '×g'],
+      ['geological-compass', 'sim-control-strike', '°'],
+      ['blood-pressure-monitor', 'sim-control-pressure', 'mmHg'],
+      ['microscope', 'sim-control-focus', '%'],
+      ['magnetic-stirrer', 'sim-control-rpm', 'rpm'],
+    ];
+    for (const [assetId, testid, unit] of cases) {
+      click(q(`[data-testid="equipment-tile-${assetId}"]`)!);
+      // آخر عنصر مُدرج هو المحدد
+      click(q('[data-testid="equipment-sim-open"]')!);
+      expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
+      expect(q(`[data-testid="${testid}"]`)).not.toBeNull();
+      expect(q('[data-testid="sim-readout"]')?.textContent).toContain(unit);
+      click(q('[data-testid="sim-close"]')!);
+      expect(q('[data-testid="equipment-simulator"]')).toBeNull();
+    }
+  });
+});
+
 describe('التكامل مع العارض الحالي (Presentation)', () => {
   /** من شاشة العنوان إلى أول شريحة: عنوان ← 4 مقدمة ← خريطة ← شريحة */
   async function gotoFirstSlide(): Promise<void> {
@@ -370,5 +461,30 @@ describe('التكامل مع العارض الحالي (Presentation)', () => {
     expect(qa('[data-testid="equipment-item"]')).toHaveLength(1);
     pressKey('y', { ctrlKey: true }); // إعادة الحذف → يختفي مجدداً
     expect(qa('[data-testid="equipment-item"]')).toHaveLength(0);
+  }, 20000);
+
+  it('وضع التجربة من شريط التحكم وT: يعمل على الشريحة المفتوحة وEsc يخرجه', async () => {
+    act(() => root.render(<Presentation data={presentation} />));
+    await gotoFirstSlide();
+    const layer = () => q('[data-testid="equipment-layer"]')!;
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+
+    // زر التجربة في شريط التحكم
+    const labButton = q<HTMLButtonElement>('button[aria-label^="وضع التجربة"]');
+    expect(labButton).not.toBeNull();
+    click(labButton!);
+    expect(layer().getAttribute('data-lab-mode')).not.toBeNull();
+    expect(container.textContent).toContain('الشريحة 1');
+
+    // T يبدّل الوضع (وما زلنا في الشريحة)
+    pressKey('t');
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+    pressKey('t');
+    expect(layer().getAttribute('data-lab-mode')).not.toBeNull();
+
+    // Esc يخرج من وضع التجربة قبل مغادرة الشريحة
+    pressKey('Escape');
+    expect(layer().getAttribute('data-lab-mode')).toBeNull();
+    expect(container.textContent).toContain('الشريحة 1');
   }, 20000);
 });

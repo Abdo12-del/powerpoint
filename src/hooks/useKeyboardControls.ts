@@ -14,6 +14,8 @@ export interface KeyboardHandlers {
   chalkboard?: () => void;
   /** تبديل لوحة المعدات العلمية (G) */
   equipment?: () => void;
+  /** تبديل وضع التجربة — تشغيل إجراءات المعدات على الشريحة (T) */
+  lab?: () => void;
   /** مسح رسم الطبقة الحالية (Delete) */
   clearDrawing?: () => void;
   /** تكبير/خروج مركزي (Z) — نموذج RevealZoom */
@@ -73,6 +75,9 @@ export function useKeyboardControls(handlers: KeyboardHandlers, enabled = true) 
       } else if (KEYS.equipment.includes(e.key) && handlers.equipment) {
         e.preventDefault();
         handlers.equipment();
+      } else if (KEYS.lab.includes(e.key) && handlers.lab) {
+        e.preventDefault();
+        handlers.lab();
       } else if (KEYS.clearDrawing.includes(e.key) && handlers.clearDrawing) {
         e.preventDefault();
         handlers.clearDrawing();
