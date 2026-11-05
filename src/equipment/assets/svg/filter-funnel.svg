@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fefce8"/>
+      <stop offset="1" stop-color="#e7e5e4"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#glass)" d="M50 54 L206 54 L140 148 L140 218 L116 218 L116 148 Z"/>
+    <path fill="url(#paper)" stroke="#94a3b8" stroke-width="5" d="M66 64 L190 64 L134 142 L122 142 Z"/>
+    <ellipse cx="128" cy="54" rx="78" ry="12" fill="url(#glass)"/>
+    <path fill="url(#glass)" d="M116 142 L140 142 L140 218 L116 218 Z"/>
+    <ellipse cx="128" cy="218" rx="12" ry="8" fill="#bae6fd"/>
+    <path d="M126 224 Q128 234 130 224" fill="#7dd3fc" stroke="none"/>
+    <path d="M74 58 L106 58" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none"/>
+    <path d="M122 160 L122 208" stroke="#ffffff" stroke-width="5" opacity="0.55" fill="none"/>
+  </g>
+</svg>

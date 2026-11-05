@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="case" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1f5f9"/>
+      <stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="24" y="56" width="208" height="140" rx="16" fill="url(#case)"/>
+    <rect x="42" y="74" width="78" height="42" rx="8" fill="url(#screen)"/>
+    <rect x="136" y="74" width="78" height="42" rx="8" fill="url(#screen)"/>
+    <text x="81" y="104" text-anchor="middle" font-family="monospace" font-size="24" fill="#f87171" stroke="none">12.0</text>
+    <text x="175" y="104" text-anchor="middle" font-family="monospace" font-size="24" fill="#4ade80" stroke="none">0.50</text>
+    <circle cx="72" cy="154" r="20" fill="#475569"/>
+    <path d="M72 154 L84 142" stroke="#f1f5f9" stroke-width="5" fill="none"/>
+    <circle cx="140" cy="154" r="20" fill="#475569"/>
+    <path d="M140 154 L140 138" stroke="#f1f5f9" stroke-width="5" fill="none"/>
+    <circle cx="196" cy="140" r="14" fill="#dc2626"/>
+    <circle cx="196" cy="174" r="14" fill="#1e293b"/>
+    <path d="M188 140 L204 140 M196 132 L196 148" stroke="#fecaca" stroke-width="3.5" fill="none"/>
+    <path d="M188 174 L204 174" stroke="#cbd5e1" stroke-width="3.5" fill="none"/>
+    <path d="M40 66 L40 142" stroke="#ffffff" stroke-width="6" opacity="0.5" fill="none"/>
+  </g>
+</svg>

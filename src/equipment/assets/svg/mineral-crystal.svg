@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="crystal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="0.5" stop-color="#bae6fd"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="crystal2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f3ff"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#crystal2)" d="M70 210 L52 128 L84 66 L104 130 L96 210 Z"/>
+    <path fill="url(#crystal)" d="M104 210 L96 116 L134 32 L162 110 L154 210 Z"/>
+    <path fill="url(#crystal2)" d="M154 210 L162 132 L196 92 L210 168 L198 210 Z"/>
+    <path d="M118 108 L134 32" stroke="#ffffff" stroke-width="6" opacity="0.7" fill="none"/>
+    <path d="M66 140 L84 66" stroke="#ffffff" stroke-width="5" opacity="0.55" fill="none"/>
+    <path d="M176 130 L196 92" stroke="#ffffff" stroke-width="5" opacity="0.5" fill="none"/>
+    <path d="M20 210 L236 210" stroke="#78716c" stroke-width="8" fill="none"/>
+  </g>
+</svg>

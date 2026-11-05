@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glove" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#93c5fd"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-12 92 128)">
+      <path fill="url(#glove)" d="M44 210 L52 120 Q52 104 64 104 Q76 104 76 120 L76 96 Q76 80 88 80 Q100 80 100 96 L100 88 Q100 72 112 72 Q124 72 124 88 L124 106 Q124 96 134 96 Q144 96 144 108 L144 176 Q144 214 112 224 L84 232 Q54 226 44 210 Z"/>
+      <path d="M62 122 L62 196" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none"/>
+    </g>
+    <g transform="rotate(16 178 140) scale(0.86) translate(46 34)">
+      <path fill="url(#glove)" d="M44 210 L52 120 Q52 104 64 104 Q76 104 76 120 L76 96 Q76 80 88 80 Q100 80 100 96 L100 88 Q100 72 112 72 Q124 72 124 88 L124 106 Q124 96 134 96 Q144 96 144 108 L144 176 Q144 214 112 224 L84 232 Q54 226 44 210 Z"/>
+      <path d="M62 122 L62 196" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none"/>
+    </g>
+  </g>
+</svg>

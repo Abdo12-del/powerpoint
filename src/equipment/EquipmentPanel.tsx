@@ -98,7 +98,7 @@ export function EquipmentPanel({ ctrl }: EquipmentPanelProps) {
                 ctrl.close();
               }
             }}
-            placeholder="ابحث: قارورة، مجهر، ماصة…"
+            placeholder="ابحث: قارورة، bécher، ميزان…"
             aria-label="ابحث في المعدات العلمية"
             data-testid="equipment-search"
             className="w-full rounded-xl border border-white/10 bg-white/[0.06] py-2 pe-3 ps-8 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-400/40 focus:outline-none"
@@ -192,7 +192,8 @@ export function EquipmentPanel({ ctrl }: EquipmentPanelProps) {
           <span className="ms-auto text-[11px] tabular-nums text-slate-400">عناصر الشريحة: {slideCount}</span>
         </div>
         <p className="mt-2 text-[11px] leading-5 text-slate-400">
-          اسحب صورة إلى الشريحة أو انقرها للإضافة. حدّد العنصر ثم حرّكه بالأسهم، وغيّر حجمه من المقبض، واحذفه بـ Delete.
+          اسحب صورة إلى الشريحة أو انقرها للإضافة. ابحث بالعربية أو الفرنسية أو بمعرف الأصل، وصفِّ النتائج
+          بالفئة. حدّد العنصر ثم حرّكه بالأسهم، وغيّر حجمه من المقبض، واحذفه بـ Delete.
         </p>
       </div>
     </aside>

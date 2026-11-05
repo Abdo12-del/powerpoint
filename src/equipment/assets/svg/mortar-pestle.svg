@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="ceramic" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f5f4"/>
+      <stop offset="1" stop-color="#a8a29e"/>
+    </linearGradient>
+    <linearGradient id="powder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcd34d"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#ceramic)" d="M52 108 L204 108 Q196 196 128 204 Q60 196 52 108 Z"/>
+    <ellipse cx="128" cy="108" rx="72" ry="12" fill="#e7e5e4"/>
+    <path fill="url(#powder)" stroke="none" d="M84 120 Q128 108 172 120 Q160 142 128 144 Q96 142 84 120 Z"/>
+    <g transform="rotate(24 160 96)">
+      <rect x="146" y="42" width="28" height="104" rx="14" fill="url(#ceramic)"/>
+      <circle cx="160" cy="38" r="17" fill="#d6d3d1"/>
+      <path d="M152 60 L152 130" stroke="#ffffff" stroke-width="5" opacity="0.5" fill="none"/>
+    </g>
+    <path d="M68 124 Q74 176 112 194" stroke="#ffffff" stroke-width="6" opacity="0.45" fill="none"/>
+  </g>
+</svg>

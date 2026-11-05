@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="grip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="tray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-14 128 72)">
+      <rect x="40" y="62" width="104" height="22" rx="11" fill="url(#grip)"/>
+      <path d="M144 62 L206 73 L144 84 Z" fill="url(#blade)"/>
+      <path d="M52 73 L136 73" stroke="#e0f2fe" stroke-width="4" opacity="0.7" fill="none"/>
+    </g>
+    <g transform="rotate(12 128 132)">
+      <path d="M36 126 L192 126 Q200 126 200 134 Q200 142 192 142 L36 142 Q28 142 28 134 Q28 126 36 126 Z" fill="url(#blade)"/>
+      <path d="M150 126 L196 108 M150 142 L196 160" stroke="url(#blade)" stroke-width="7" fill="none"/>
+      <circle cx="204" cy="104" r="13" fill="none" stroke="#475569" stroke-width="6"/>
+      <circle cx="204" cy="164" r="13" fill="none" stroke="#475569" stroke-width="6"/>
+      <path d="M60 134 L112 134" stroke="#64748b" stroke-width="4" fill="none"/>
+    </g>
+    <rect x="30" y="182" width="196" height="46" rx="14" fill="url(#tray)"/>
+    <path d="M48 190 L208 190" stroke="#ffffff" stroke-width="5" opacity="0.5" fill="none"/>
+    <path d="M64 210 L104 210 M120 210 L160 210 M176 210 L196 210" stroke="#64748b" stroke-width="4" fill="none"/>
+  </g>
+</svg>

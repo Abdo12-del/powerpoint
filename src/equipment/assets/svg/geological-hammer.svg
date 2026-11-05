@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cbd5e1"/>
+      <stop offset="1" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d6a86a"/>
+      <stop offset="1" stop-color="#92400e"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-22 128 128)">
+      <rect x="112" y="86" width="28" height="146" rx="14" fill="url(#wood)"/>
+      <path d="M120 100 L120 214" stroke="#fde68a" stroke-width="5" opacity="0.5" fill="none"/>
+      <path d="M52 62 L186 62 Q202 62 202 78 L202 94 Q202 110 186 110 L52 110 Z" fill="url(#head)"/>
+      <path d="M52 62 L24 86 L52 110 Z" fill="url(#head)"/>
+      <rect x="150" y="74" width="34" height="24" rx="6" fill="#334155"/>
+      <path d="M64 76 L142 76" stroke="#ffffff" stroke-width="5" opacity="0.45" fill="none"/>
+    </g>
+    <path d="M196 196 L228 208 M204 172 L236 176" stroke="#f59e0b" stroke-width="5" fill="none" opacity="0.9"/>
+  </g>
+</svg>

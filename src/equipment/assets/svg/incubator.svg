@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#a8a29e"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="34" y="18" width="188" height="220" rx="18" fill="url(#body)"/>
+    <rect x="50" y="34" width="156" height="158" rx="10" fill="#e7e5e4"/>
+    <rect x="66" y="50" width="124" height="126" rx="8" fill="url(#glass)"/>
+    <path d="M66 88 L190 88 M66 126 L190 126" stroke="#94a3b8" stroke-width="5" fill="none"/>
+    <rect x="78" y="62" width="34" height="20" rx="5" fill="#fca5a5"/>
+    <rect x="120" y="62" width="26" height="20" rx="5" fill="#bfdbfe"/>
+    <rect x="78" y="100" width="26" height="20" rx="5" fill="#fcd34d"/>
+    <rect x="114" y="100" width="38" height="20" rx="5" fill="#bbf7d0"/>
+    <rect x="78" y="138" width="38" height="20" rx="5" fill="#ddd6fe"/>
+    <path d="M74 58 L74 168" stroke="#ffffff" stroke-width="6" opacity="0.6" fill="none"/>
+    <rect x="176" y="106" width="12" height="52" rx="6" fill="#64748b"/>
+    <rect x="50" y="196" width="156" height="30" rx="10" fill="#78716c"/>
+    <rect x="62" y="204" width="46" height="14" rx="5" fill="#1e293b"/>
+    <path d="M68 211 L102 211" stroke="#4ade80" stroke-width="4" fill="none"/>
+    <circle cx="132" cy="211" r="8" fill="#475569"/>
+    <circle cx="156" cy="211" r="8" fill="#22c55e"/>
+    <circle cx="180" cy="211" r="8" fill="#475569"/>
+    <path d="M196 30 L196 62" stroke="#ffffff" stroke-width="5" opacity="0.45" fill="none"/>
+  </g>
+</svg>

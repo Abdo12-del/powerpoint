@@ -126,34 +126,84 @@ function mountHarness(): void {
 }
 
 describe('لوحة المعدات العلمية (EquipmentPanel)', () => {
-  it('تعرض الأصول العشرة بأسماء عربية وصور مصغرة داخل العارض', () => {
+  it('تعرض الأصول الخمسة والستين بأسماء عربية وصور مصغرة داخل العارض', () => {
     mountHarness();
     expect(q('[data-testid="equipment-panel"]')).not.toBeNull();
-    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(10);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(65);
     expect(q('[data-testid="equipment-tile-microscope"]')?.textContent).toContain('مجهر');
     expect(q('[data-testid="equipment-tile-beaker"] img')).not.toBeNull();
+    // عناصر التخصصات الجديدة ظاهرة في المعرض نفسه
+    expect(q('[data-testid="equipment-tile-burette"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-oscilloscope"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-centrifuge"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-geological-hammer"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-stethoscope"]')).not.toBeNull();
   });
 
-  it('البحث يرشح النتائج بالعربية واللاتينية', () => {
+  it('البحث يرشح النتائج بالعربية والفرنسية وبمعرف الأصل', () => {
     mountHarness();
     const search = q<HTMLInputElement>('[data-testid="equipment-search"]')!;
+    // «مجهر» يطابق المجهر وشريحة المجهر
     setInputValue(search, 'مجهر');
-    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(2);
     expect(q('[data-testid="equipment-tile-microscope"]')).not.toBeNull();
+    expect(q('[data-testid="equipment-tile-microscope-slide"]')).not.toBeNull();
+    // بالفرنسية
+    setInputValue(search, 'centrifugeuse');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(q('[data-testid="equipment-tile-centrifuge"]')).not.toBeNull();
+    setInputValue(search, 'bécher');
+    expect(q('[data-testid="equipment-tile-beaker"]')).not.toBeNull();
+    setInputValue(search, 'tensiomètre');
+    expect(q('[data-testid="equipment-tile-blood-pressure-monitor"]')).not.toBeNull();
     setInputValue(search, 'goggles');
     expect(q('[data-testid="equipment-tile-safety-goggles"]')).not.toBeNull();
+    // بمعرف الأصل
+    setInputValue(search, 'geological-hammer');
+    expect(q('[data-testid="equipment-tile-geological-hammer"]')).not.toBeNull();
     setInputValue(search, 'لا-يوجد-xyz');
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(0);
     expect(container.textContent).toContain('لا نتائج مطابقة');
   });
 
-  it('التصفح بالفئات يرشح النتائج', () => {
+  it('التصفح بالفئات القديمة يرشح النتائج', () => {
     mountHarness();
     click(q('[data-testid="equipment-cat-safety"]')!);
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
     expect(q('[data-testid="equipment-tile-safety-goggles"]')).not.toBeNull();
     click(q('[data-testid="equipment-cat-glassware"]')!);
     expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(5);
+  });
+
+  it('فئات التخصصات العلمية الجديدة قابلة للتصفح بعددها الصحيح', () => {
+    mountHarness();
+    const counts: Array<[string, number, string]> = [
+      ['chemistry', 15, 'burette'],
+      ['physics', 14, 'oscilloscope'],
+      ['biology', 10, 'centrifuge'],
+      ['geology', 7, 'geological-hammer'],
+      ['health', 9, 'stethoscope'],
+    ];
+    for (const [category, count, sampleId] of counts) {
+      const chip = q(`[data-testid="equipment-cat-${category}"]`);
+      expect(chip).not.toBeNull();
+      click(chip!);
+      expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(count);
+      expect(q(`[data-testid="equipment-tile-${sampleId}"]`)).not.toBeNull();
+    }
+    // العودة إلى «الكل» تستعيد الأصول الخمسة والستين
+    click(qa('[role="group"][aria-label="فئات المعدات"] button')[0]);
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(65);
+  });
+
+  it('البحث داخل فئة تخصصية يجمع الفلترين معاً', () => {
+    mountHarness();
+    click(q('[data-testid="equipment-cat-geology"]')!);
+    setInputValue(q<HTMLInputElement>('[data-testid="equipment-search"]')!, 'loupe');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(1);
+    expect(q('[data-testid="equipment-tile-hand-lens"]')).not.toBeNull();
+    setInputValue(q<HTMLInputElement>('[data-testid="equipment-search"]')!, 'burette');
+    expect(qa('[data-testid^="equipment-tile-"]')).toHaveLength(0);
   });
 
   it('نقر الصورة يضيف العنصر إلى الشريحة (بديل اللمس ولوحة المفاتيح) والتراجع يعيده', () => {

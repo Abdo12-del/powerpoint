@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="blister" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bae6fd" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#7dd3fc" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="36" y="52" width="184" height="96" rx="14" fill="url(#blister)"/>
+    <circle cx="76" cy="86" r="18" fill="url(#pill)"/>
+    <circle cx="128" cy="86" r="18" fill="url(#pill)"/>
+    <circle cx="180" cy="86" r="18" fill="url(#pill)"/>
+    <path d="M58 86 L94 86 M110 86 L146 86 M162 86 L198 86" stroke="#94a3b8" stroke-width="5" fill="none"/>
+    <circle cx="76" cy="118" r="16" fill="url(#pill)"/>
+    <circle cx="128" cy="118" r="16" fill="url(#pill)"/>
+    <circle cx="180" cy="118" r="16" fill="url(#pill)"/>
+    <ellipse cx="92" cy="196" rx="30" ry="20" fill="url(#pill)" transform="rotate(-18 92 196)"/>
+    <path d="M74 186 L108 206" stroke="#94a3b8" stroke-width="5" fill="none"/>
+    <ellipse cx="172" cy="200" rx="28" ry="18" fill="url(#pill)" transform="rotate(14 172 200)"/>
+    <path d="M156 190 L188 210" stroke="#94a3b8" stroke-width="5" fill="none"/>
+    <path d="M52 64 L140 64" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none"/>
+  </g>
+</svg>

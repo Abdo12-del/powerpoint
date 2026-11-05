@@ -4,8 +4,23 @@
  * وتُخزَّن إحداثياتها نسباً إلى أبعاد الشريحة (0..1) لا إلى الشاشة.
  */
 
-/** فئات التصفح في المعرض */
-export type EquipmentCategory = 'glassware' | 'tools' | 'devices' | 'safety' | 'heating';
+/**
+ * فئات التصفح في المعرض.
+ * الفئات الخمس الأولى أصلية (بقيت كما هي حتى لا تنكسر البيانات المحفوظة
+ * في localStorage)، والفئات الجديدة تقابل التخصصات العلمية في الجامعات
+ * الجزائرية: الكيمياء، الفيزياء، الأحياء، الجيولوجيا، الصحة.
+ */
+export type EquipmentCategory =
+  | 'glassware'
+  | 'tools'
+  | 'devices'
+  | 'safety'
+  | 'heating'
+  | 'chemistry'
+  | 'physics'
+  | 'biology'
+  | 'geology'
+  | 'health';
 
 /** أصل في الكتالوج: صورة PNG محلية شفافة + بيانات وصفية للبحث */
 export interface EquipmentAsset {
@@ -65,9 +80,14 @@ export const NUDGE_LARGE = 0.05;
 /** حدّ خطوات التراجع المحفوظة في الجلسة */
 export const HISTORY_LIMIT = 60;
 
-/** تسميات الفئات بالعربية */
+/** تسميات الفئات بالعربية (الترتيب: الأصول ثم التخصصات العلمية) */
 export const EQUIPMENT_CATEGORIES: ReadonlyArray<{ id: EquipmentCategory; label: string }> = [
   { id: 'glassware', label: 'الزجاجيات' },
+  { id: 'chemistry', label: 'الكيمياء' },
+  { id: 'physics', label: 'الفيزياء' },
+  { id: 'biology', label: 'الأحياء' },
+  { id: 'geology', label: 'الجيولوجيا' },
+  { id: 'health', label: 'الصحة' },
   { id: 'tools', label: 'أدوات المختبر' },
   { id: 'devices', label: 'الأجهزة' },
   { id: 'safety', label: 'السلامة' },

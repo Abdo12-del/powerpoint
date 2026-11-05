@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="barrel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a7f3d0"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="rotate(-28 128 128)">
+      <rect x="46" y="108" width="132" height="42" rx="8" fill="url(#barrel)"/>
+      <rect x="46" y="118" width="76" height="32" fill="url(#liquid)" stroke="none"/>
+      <rect x="38" y="100" width="14" height="58" rx="6" fill="#cbd5e1"/>
+      <rect x="172" y="112" width="14" height="34" rx="6" fill="#94a3b8"/>
+      <path d="M186 122 L222 128 L222 130 L186 136 Z" fill="#cbd5e1"/>
+      <path d="M222 128 L244 129" stroke="#94a3b8" stroke-width="5" fill="none"/>
+      <rect x="18" y="96" width="12" height="66" rx="6" fill="#94a3b8"/>
+      <rect x="26" y="124" width="20" height="10" rx="4" fill="#94a3b8"/>
+      <path d="M60 100 L60 158 M78 100 L78 158 M96 100 L96 158 M114 100 L114 158 M132 100 L132 158 M150 100 L150 158" stroke="#475569" stroke-width="3.5" fill="none"/>
+      <path d="M56 116 L56 142" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none"/>
+    </g>
+  </g>
+</svg>

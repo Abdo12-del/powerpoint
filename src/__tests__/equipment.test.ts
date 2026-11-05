@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import { readFileSync, readdirSync } from 'node:fs';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { EQUIPMENT, assetById, matchesQuery } from '@/equipment/catalog';
 import {
@@ -20,6 +21,9 @@ import {
 import { DEFAULT_WIDTH, EQUIPMENT_CATEGORIES, HISTORY_LIMIT, MAX_WIDTH, MIN_WIDTH } from '@/equipment/types';
 import type { PlacedEquipment } from '@/equipment/types';
 
+/** جذر المستودع لفحص أصول PNG/SVG الملتزمة فعلياً (vitest يعمل من جذر المشروع) */
+const root = `${process.cwd()}/`;
+
 const RECT = { left: 100, top: 50, width: 1000, height: 600 };
 
 function item(overrides: Partial<PlacedEquipment> = {}): PlacedEquipment {
@@ -31,8 +35,8 @@ beforeEach(() => {
 });
 
 describe('كتالوج المعدات العلمية', () => {
-  it('يوفر عشرة أصول PNG محلية شفافة بأسماء عربية ومعرفات فريدة', () => {
-    expect(EQUIPMENT).toHaveLength(10);
+  it('يوفر 65 أصلاً PNG محلياً شفافاً بأسماء عربية ومعرفات فريدة ثابتة', () => {
+    expect(EQUIPMENT).toHaveLength(65);
     const ids = EQUIPMENT.map((asset) => asset.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const asset of EQUIPMENT) {
@@ -40,44 +44,179 @@ describe('كتالوج المعدات العلمية', () => {
       expect(/[\u0600-\u06FF]/.test(asset.name)).toBe(true);
       expect(asset.src.endsWith('.png')).toBe(true);
       expect(asset.src.startsWith('http')).toBe(false); // محلي مجمّع، ليس رابطاً خارجياً
-      expect(asset.width).toBeGreaterThan(0);
-      expect(asset.height).toBeGreaterThan(0);
+      expect(asset.width).toBe(512);
+      expect(asset.height).toBe(512);
+      expect(asset.id).toMatch(/^[a-z0-9-]+$/); // معرفات ثابتة لا تنكسر في localStorage
+      expect(asset.keywords.length).toBeGreaterThan(0);
     }
   });
 
-  it('يغطي المعدات المطلوبة: قوارير ومخابير وأنابيب وحاملها وكأس وماصة وطبق بتري ومجهر ونظارات ومصباح', () => {
-    const ids = EQUIPMENT.map((asset) => asset.id);
-    for (const required of [
-      'erlenmeyer-flask',
-      'graduated-cylinder',
-      'beaker',
-      'test-tube',
-      'test-tube-rack',
-      'dropper-pipette',
-      'petri-dish',
-      'microscope',
-      'safety-goggles',
-      'spirit-lamp',
-    ]) {
-      expect(ids).toContain(required);
+  it('لكل أصل مصدر SVG وناتج PNG شفاف 512×512 موجودان في المستودع', () => {
+    const svgFiles = new Set(readdirSync(root + 'src/equipment/assets/svg'));
+    const pngFiles = new Set(readdirSync(root + 'src/equipment/assets/png'));
+    let totalBytes = 0;
+    for (const asset of EQUIPMENT) {
+      expect(svgFiles.has(`${asset.id}.svg`)).toBe(true);
+      expect(pngFiles.has(`${asset.id}.png`)).toBe(true);
+      const png = readFileSync(root + `src/equipment/assets/png/${asset.id}.png`);
+      expect(png.subarray(1, 4).toString()).toBe('PNG');
+      expect(png.readUInt32BE(16)).toBe(512); // العرض في IHDR
+      expect(png.readUInt32BE(20)).toBe(512); // الارتفاع في IHDR
+      expect(png[25]).toBe(6); // RGBA = خلفية شفافة
+      expect(png.byteLength).toBeLessThan(120 * 1024); // لا ملفات ضخمة بلا داعٍ
+      totalBytes += png.byteLength;
     }
+    // سقف معقول لكل حزمة الصور (65 صورة أصلية)
+    expect(totalBytes).toBeLessThan(4 * 1024 * 1024);
+  });
+
+  it('يغطي الحد الأدنى للمعدات في كل تخصص علمي', () => {
+    const ids = new Set(EQUIPMENT.map((asset) => asset.id));
+    const required: Record<string, string[]> = {
+      // الأصول العشرة القديمة — معرفاتها وفئاتها لم تتغيّر
+      legacy: [
+        'erlenmeyer-flask',
+        'graduated-cylinder',
+        'beaker',
+        'test-tube',
+        'test-tube-rack',
+        'dropper-pipette',
+        'petri-dish',
+        'microscope',
+        'safety-goggles',
+        'spirit-lamp',
+      ],
+      // D02 — علوم المادة: الكيمياء
+      chemistry: [
+        'burette',
+        'volumetric-flask',
+        'round-bottom-flask',
+        'separatory-funnel',
+        'liebig-condenser',
+        'filter-funnel',
+        'watch-glass',
+        'crucible',
+        'mortar-pestle',
+        'bunsen-burner',
+        'tripod-gauze',
+        'analytical-balance',
+        'ph-meter',
+        'magnetic-stirrer',
+        'stirring-rod',
+      ],
+      // D02 — علوم المادة: الفيزياء
+      physics: [
+        'convex-lens',
+        'concave-lens',
+        'glass-prism',
+        'spring',
+        'pendulum',
+        'slotted-weights',
+        'vernier-caliper',
+        'multimeter',
+        'oscilloscope',
+        'magnet',
+        'tuning-fork',
+        'thermometer',
+        'stopwatch',
+        'power-supply',
+      ],
+      // D04 — علوم الطبيعة والحياة
+      biology: [
+        'microscope-slide',
+        'micropipette',
+        'inoculation-loop',
+        'dissecting-kit',
+        'centrifuge',
+        'autoclave',
+        'incubator',
+        'dna-helix',
+        'cell-model',
+        'microtube',
+      ],
+      // D05 — علوم الأرض والكون
+      geology: [
+        'geological-hammer',
+        'hand-lens',
+        'geological-compass',
+        'rock-sample',
+        'mineral-crystal',
+        'fossil',
+        'sieve',
+      ],
+      // D15 — علوم الصحة
+      health: [
+        'stethoscope',
+        'syringe',
+        'blood-pressure-monitor',
+        'blood-tube',
+        'tablets',
+        'capsule',
+        'medical-gloves',
+        'face-mask',
+        'heart-model',
+      ],
+    };
+    for (const [field, list] of Object.entries(required)) {
+      for (const id of list) expect({ field, id, found: ids.has(id) }).toMatchObject({ found: true });
+    }
+    // الأصول القديمة بقيت في فئاتها القديمة (لا تنكسر بيانات localStorage)
+    expect(assetById('beaker')!.category).toBe('glassware');
+    expect(assetById('microscope')!.category).toBe('devices');
+    expect(assetById('spirit-lamp')!.category).toBe('heating');
   });
 
   it('كل فئة معرّفة لها أصل واحد على الأقل، وكل أصل ينتمي لفئة معرّفة', () => {
     const categoryIds = EQUIPMENT_CATEGORIES.map((cat) => cat.id);
+    const expectedCounts: Record<string, number> = {
+      glassware: 5,
+      chemistry: 15,
+      physics: 14,
+      biology: 10,
+      geology: 7,
+      health: 9,
+      tools: 2,
+      devices: 1,
+      safety: 1,
+      heating: 1,
+    };
+    expect(categoryIds).toHaveLength(10);
+    expect(new Set(categoryIds).size).toBe(10);
     for (const cat of categoryIds) {
       expect(EQUIPMENT.some((asset) => asset.category === cat)).toBe(true);
+      expect(EQUIPMENT.filter((asset) => asset.category === cat)).toHaveLength(expectedCounts[cat]);
     }
     for (const asset of EQUIPMENT) {
       expect(categoryIds).toContain(asset.category);
     }
+    expect(Object.values(expectedCounts).reduce((sum, n) => sum + n, 0)).toBe(EQUIPMENT.length);
   });
 
-  it('البحث يعمل بالعربية واللاتينية ويتسامح مع همزات الألف والتاء المربوطة', () => {
+  it('البحث يعمل بالعربية والفرنسية وبمعرف الأصل ويتسامح مع الهمزات والتاء المربوطة', () => {
+    // عربي
     expect(matchesQuery(assetById('microscope')!, 'مجهر')).toBe(true);
-    expect(matchesQuery(assetById('microscope')!, 'microscope')).toBe(true);
     expect(matchesQuery(assetById('erlenmeyer-flask')!, 'قاروره')).toBe(true);
-    expect(matchesQuery(assetById('safety-goggles')!, 'نظارات')).toBe(true);
+    expect(matchesQuery(assetById('burette')!, 'سحاحة')).toBe(true);
+    expect(matchesQuery(assetById('geological-hammer')!, 'مطرقة')).toBe(true);
+    expect(matchesQuery(assetById('stethoscope')!, 'سماعة')).toBe(true);
+    // فرنسي (بما في ذلك الحروف المشكّلة والمسافات)
+    expect(matchesQuery(assetById('beaker')!, 'bécher')).toBe(true);
+    expect(matchesQuery(assetById('beaker')!, 'becher')).toBe(true);
+    expect(matchesQuery(assetById('burette')!, 'burette')).toBe(true);
+    expect(matchesQuery(assetById('volumetric-flask')!, 'fiole jaugée')).toBe(true);
+    expect(matchesQuery(assetById('centrifuge')!, 'centrifugeuse')).toBe(true);
+    expect(matchesQuery(assetById('multimeter')!, 'multimètre')).toBe(true);
+    expect(matchesQuery(assetById('oscilloscope')!, 'oscilloscope')).toBe(true);
+    expect(matchesQuery(assetById('geological-hammer')!, 'marteau')).toBe(true);
+    expect(matchesQuery(assetById('hand-lens')!, 'loupe')).toBe(true);
+    expect(matchesQuery(assetById('geological-compass')!, 'boussole')).toBe(true);
+    expect(matchesQuery(assetById('stethoscope')!, 'stéthoscope')).toBe(true);
+    expect(matchesQuery(assetById('syringe')!, 'seringue')).toBe(true);
+    expect(matchesQuery(assetById('blood-pressure-monitor')!, 'tensiomètre')).toBe(true);
+    // بمعرف الأصل (كلمة واحدة أو معرف كامل)
+    expect(matchesQuery(assetById('microscope-slide')!, 'microscope-slide')).toBe(true);
+    expect(matchesQuery(assetById('microscope-slide')!, 'slide')).toBe(true);
+    // سلوك الحالات الحدّية
     expect(matchesQuery(assetById('beaker')!, '')).toBe(true);
     expect(matchesQuery(assetById('beaker')!, 'xyz-لا-يوجد')).toBe(false);
   });
