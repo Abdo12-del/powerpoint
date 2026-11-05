@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, CircleHelp, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleHelp, FlaskConical, GraduationCap, Home, Lightbulb, Map as MapIcon, Maximize, Minimize, PenLine, Search, Wifi } from 'lucide-react';
 import type { PresentationController } from '@/hooks/usePresentation';
 import { cn } from '@/lib/cn';
 
@@ -10,6 +10,10 @@ interface ControlBarProps {
   onHelp: () => void;
   /** فتح السبورة المستقلة — يُمرَّر من Presentation عند تثبيت حزمة السبورة */
   onChalkboard?: () => void;
+  /** فتح/إغلاق لوحة المعدات العلمية داخل الشريحة الحالية */
+  onEquipment?: () => void;
+  /** هل لوحة المعدات مفتوحة؟ (تمييز الزر) */
+  equipmentActive?: boolean;
   /** تكبير/خروج مركزي (حزمة التكبير والتركيز) */
   onZoom?: () => void;
   /** تسليط الضوء */
@@ -56,7 +60,7 @@ function CtrlButton({
 }
 
 /** شريط التحكم أسفل الشاشة: أزرار + عدّاد «الشريحة 5 / 22» (§6). */
-export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
+export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkboard, onEquipment, equipmentActive, onZoom, onSpotlight, onLaser, onPresenter }: ControlBarProps) {
   const { screen, slides, current } = ctrl;
   const isTitle = screen.kind === 'title';
   const isFinal = screen.kind === 'final';
@@ -120,6 +124,17 @@ export function ControlBar({ ctrl, isFullscreen, onFullscreen, onHelp, onChalkbo
         {onChalkboard && (
           <CtrlButton label="سبورة مستقلة (B)" onClick={onChalkboard}>
             <PenLine className="h-5 w-5" />
+          </CtrlButton>
+        )}
+        {onEquipment && (
+          <CtrlButton
+            label="المعدات العلمية (G) — معرض صور يُدرج في الشريحة"
+            onClick={onEquipment}
+            disabled={screen.kind !== 'slide'}
+            className={cn(equipmentActive && 'border-amber-400/40 bg-amber-400/15 text-amber-100')}
+          >
+            <FlaskConical className="h-5 w-5" />
+            <span className="hidden text-sm font-semibold xl:inline">المعدات</span>
           </CtrlButton>
         )}
         {onZoom && (

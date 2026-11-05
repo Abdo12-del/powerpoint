@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#64748b"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="tube" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#94a3b8"/>
+      <stop offset="1" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#0f172a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#body)" d="M150 212 Q186 176 178 128 Q172 92 142 76 L128 94 Q152 106 158 132 Q164 170 134 212 Z"/>
+    <rect x="50" y="210" width="156" height="22" rx="11" fill="url(#body)"/>
+    <rect x="72" y="148" width="108" height="16" rx="6" fill="url(#tube)"/>
+    <path d="M92 156 L116 156" stroke="#e2e8f0" stroke-width="4" opacity="0.7" fill="none"/>
+    <rect x="104" y="164" width="12" height="22" fill="#475569"/>
+    <circle cx="110" cy="194" r="13" fill="url(#lamp)"/>
+    <g transform="rotate(-26 124 88)">
+      <rect x="106" y="20" width="36" height="72" rx="8" fill="url(#tube)"/>
+      <rect x="112" y="6" width="24" height="18" rx="6" fill="#334155"/>
+      <rect x="112" y="92" width="24" height="16" rx="4" fill="#334155"/>
+      <path d="M118 108 L130 108 L127 122 L121 122 Z" fill="#94a3b8"/>
+      <path d="M114 30 L114 80" stroke="#e2e8f0" stroke-width="4" opacity="0.5" fill="none"/>
+    </g>
+    <circle cx="176" cy="140" r="14" fill="url(#tube)"/>
+    <circle cx="176" cy="140" r="5" fill="#1e293b" stroke="none"/>
+  </g>
+</svg>

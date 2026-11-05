@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="fuel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcd34d"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#flame)" d="M128 22 Q152 50 147 72 Q143 90 128 92 Q113 90 109 72 Q104 50 128 22 Z"/>
+    <path fill="#93c5fd" stroke="none" d="M128 56 Q138 68 136 77 Q134 86 128 87 Q122 86 120 77 Q118 68 128 56 Z"/>
+    <rect x="121" y="88" width="14" height="22" rx="4" fill="#e2e8f0"/>
+    <rect x="102" y="106" width="52" height="14" rx="6" fill="#64748b"/>
+    <path fill="url(#glass)" d="M96 120 L160 120 Q170 120 172 132 L177 194 Q179 216 156 216 L100 216 Q77 216 79 194 L84 132 Q86 120 96 120 Z"/>
+    <path fill="url(#fuel)" stroke="none" d="M82 162 L174 162 L177 194 Q179 216 156 216 L100 216 Q77 216 79 194 Z"/>
+    <ellipse cx="128" cy="162" rx="46" ry="6" fill="#fde68a" stroke="none"/>
+    <path d="M96 132 L92 196" stroke="#ffffff" stroke-width="6" opacity="0.45" fill="none"/>
+  </g>
+</svg>

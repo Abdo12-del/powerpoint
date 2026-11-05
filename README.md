@@ -28,7 +28,7 @@
 - **22 مهارة (Agent Skills)** في `.agents/skills/`: 20 محلية متخصصة للعرض، الحركة، الرسوم، الخطوط، وتوجيه المذكرات، إضافة إلى مهارتي React المستوردتين (`vercel-composition-patterns` و`vercel-react-best-practices`) — [طريقة الجمع والتحديث](docs/AGENT_SKILLS.md). معها **معرض 42 مكوّناً** مستعاراً من Magic UI وmotion-primitives (MIT) في `src/components/gallery/` + **10 وصفات** جاهزة في `src/recipes/` — [دليل الحركة](docs/ANIMATION_PROJECTS.md).
 - **مشاريع حركة الخطوط مثبّتة**: HarfBuzz (wasm كسول) لمؤثر «الخط يُكتب» بمسارات SVG حقيقية للعربية (`CalligraphyText`، 10 خطوط قابلة للرسم)، number-flow للأرقام المتدحرجة (`NumberRoll`)، fitty للعناوين التي تملأ الشاشة (`FitText`)، و5 مكونات نصية جديدة في المعرض — [الدليل](docs/TEXT_ANIMATION_PROJECTS.md).
 - **الرسوم البيانية وحركاتها**: 6 رسوم حركية مخصّصة بـ RTL أصلي (`MotionBarChart`, `MotionLineChart`, `MotionDonutChart`, `MotionRadarChart`, `Sparkline`, `MotionBarList`) + 4 مكتبات مثبّتة بسمة واحدة ومرايا RTL جاهزة (Recharts عبر حاوية shadcn، Nivo، Chart.js، Apache ECharts — كلها كسولة)، مختبر حي `/?lab=charts`، وصفتا `KpiCards`/`ChartStory`، ومهارة `data-charts-motion` — [الدليل](docs/CHARTS.md).
-- **مختبر المحاكاة العلمية**: 12 تجربة بالعربية والإنجليزية عبر أربعة مجالات، تشمل مشاهد Three.js الأصلية وستة نماذج 2D من BN Lab، تصادمات Matter.js وتداخل موجي بـp5.js؛ المحركات تُحمّل عند الطلب — [الدليل](docs/INTERACTIVE_SIMULATIONS.md).
+- **المعدات العلمية داخل الشريحة**: معرض جانبي في العارض نفسه (زر «المعدات العلمية» أو `G`) لعشر صور PNG شفافة أصلية — قوارير ومخابير، أنابيب اختبار وحاملها، كأس زجاجي، ماصة قطارة، طبق بتري، مجهر، نظارات واقية، ومصباح كحولي — تُسحب أو تُنقر لتُدرج في الشريحة المفتوحة، ثم تُحرّك وتُحجّم وتُحذف مع حفظ محلي لكل شريحة وتراجع/إعادة، وتظهر في التقديم بلا مقابض — [الدليل](docs/SCIENCE_EQUIPMENT.md).
 - **العرض السينمائي ثلاثي الأبعاد**: تحويل صفحة الهبوط (Playwright أو مولّد تجريبي) إلى مشهد WebGL2 بكاميرا على مسار Catmull-Rom، parallax ورفع بطاقات وظلال ناعمة وعمق ميدان، ثم انتقال إلى بطاقة ختامية باسم العلامة وعبارة متحركة — مع معاينة إطارات عند نقاط محددة وتحكم حيّ في المسار والسرعة والعمق وتثبيت أبعاد الصفحة. المختبر `/?lab=cinematic` / `/?lab=flyover` — [الدليل](docs/CINEMATIC_FLYOVER.md) + مهارة `cinematic-flyover`.
 - **العرض الإبداعي — Motion Design Showreel (NEW)**: Motion Canvas (MIT) + GSAP — 15 ثانية سينمائية: Kinetic Typography و3D Transitions وParallax وGlitch وMorphing وParticle Effects مع Slide/Zoom وتزامن مع الموسيقى (BPM) وتنسيق بصري جريء — مختبر `/?lab=showreel` ومكون `MotionDesignShowreel` — [الدليل](docs/MOTION_SHOWREEL.md) + مهارة `motion-showreel`.
 - **حزمة المؤثرات السينمائية (NEW)**: Three.js (MIT) للمشاهد ثلاثية الأبعاد + Lenis (MIT) للحركة الانسيابية — Parallax وMorphing وGlitch وParticles، تشوهات بصرية (RGB Shift / Grain / Vignette / Bloom) بمرور سينمائي واحد، انتقالات ديناميكية بين المقاطع، وتزامن كامل للحركة مع الإيقاع (BeatClock) — مختبر `/?lab=effects` ومكون `ThreeShowreel` — [الدليل](docs/CINEMATIC_EFFECTS.md) + مهارة `cinematic-effects`.
@@ -61,7 +61,7 @@ npm run dev        # http://localhost:5173
 | `npm run dev` | خادم التطوير (يطبع تقرير التحقق في وحدة تحكم المتصفح) |
 | `npm run build` | فحص الأنواع + بناء الإنتاج في `dist/` |
 | `npm run preview` | معاينة البناء |
-| `npm test` | 293 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، المحاكاة العلمية، العرض السينمائي |
+| `npm test` | 325 اختباراً: التحقق (القالب الأبيض + التعبئة الجزئية)، التدفق، عرض كل شاشة/شريحة بلا نصّ ثم معبّأة، الأنماط العشرة، المؤثرات، المعرض، الوصفات، الخطوط، حركة النص، الرسوم البيانية، المعدات العلمية (الإدراج والموضع والحفظ وإزالة المختبر)، العرض السينمائي |
 | `npm run capture` | التقاط صفحة هبوط وطبقاتها عبر Playwright ← `manifest.json` (يتطلب `npm i -D playwright` و`npx playwright install chromium`) |
 | `npm run check` | أنواع + اختبارات + بناء (قبل الدمج) |
 
@@ -162,7 +162,7 @@ import { CinematicShowreel } from '@/components/cinematic';
 | **مشاريع حركة الخطوط** | `src/lib/text-shaper.ts`, `src/fonts/calligraphy.ts` + `@/components/gallery` | HarfBuzz wasm كسول (≈430KB خارج الحزمة الأساسية)، 10 خطوط قابلة للرسم، و`TextEffect`/`TextLoop`/`TextShimmer`/`MorphingText`/`LineShadowText` — [`docs/TEXT_ANIMATION_PROJECTS.md`](docs/TEXT_ANIMATION_PROJECTS.md) + مهارات `kinetic-typography`, `calligraphy-draw-on`, `numbers-and-counters` |
 | **المختبر** | `/?lab=fonts` | الكتالوج حسب النوع + الاقترانات مع تطبيق حي + عروض الحركة (كسول، خارج حزمة العرض) |
 | **الرسوم البيانية** | `@/components/charts` + `/?lab=charts` | رسوم حركية مخصّصة (RTL أصلي، framer-motion + d3) ومغلّفات كسولة لـ Recharts/Nivo/Chart.js/ECharts بسمة واحدة — [`docs/CHARTS.md`](docs/CHARTS.md) + مهارة `data-charts-motion` |
-| **المحاكاة العلمية** | `@/simulations` + `/?lab=simulations` | 12 تجربة عربية/2D/3D، مع محركات BN Lab وMatter.js وp5.js تُحمّل عند الاختيار — [`docs/INTERACTIVE_SIMULATIONS.md`](docs/INTERACTIVE_SIMULATIONS.md) |
+| **المعدات العلمية** | `@/equipment` + زر «المعدات» في شريط التحكم (`G`) | معرض PNG شفافة يُدرج في الشريحة المفتوحة: سحب/نقر، تحريك وتحجيم وحذف، حفظ محلي وتراجع/إعادة — [`docs/SCIENCE_EQUIPMENT.md`](docs/SCIENCE_EQUIPMENT.md) |
 | **الدليل والقواعد** | `docs/TYPOGRAPHY.md` + مهارة `arabic-typography-motion` | لا `letter-spacing`/مائل اصطناعي على العربية، حركة بالكلمات والمحاور فقط، أحجام وارتفاعات السطر |
 
 ## التحكم أثناء العرض
@@ -199,7 +199,7 @@ src/
 │   ├── charts/                  # الرسوم البيانية: theme + motion/ (6 رسوم مخصّصة) + recharts/ (حاوية shadcn) + nivo/ + chartjs/ + echarts/ + lab/ (?lab=charts)
 │   └── gallery/                 # 42 مكوّناً مستعاراً (Magic UI + motion-primitives, MIT) + UPSTREAM.md + LICENSES/
 ├── cinematic/                   # محرّك WebGL2: camera, shaders, renderer, capture, landing (صفحة تجريبية)
-├── simulations/                 # مختبر المحاكاة: كتالوج 12 تجربة، adapters لـ BN Lab وMatter.js وp5.js
+├── equipment/                   # المعدات العلمية: معرض PNG داخل العارض + طبقة الشريحة + مخزن بإحداثيات نسبية وحفظ محلي
 ├── recipes/                     # 10 وصفات جاهزة لأنماط الشرائح (تُنسخ إلى content)
 ├── styles/gallery.css           # إطارات الحركة (@keyframes) لمكونات المعرض
 ├── hooks/                       # usePresentation (التدفق), useKeyboardControls, useFullscreen, useSwipe
@@ -217,10 +217,10 @@ docs/
 ├── TEXT_ANIMATION_PROJECTS.md    # مشاريع حركة الخطوط المثبّتة (HarfBuzz, number-flow, fitty) + المكونات النصية + ما رُفض
 ├── AGENT_SKILLS.md               # جمع المهارات المحلية من مستودعات عامة دون تسجيل دخول إلى skills.md
 ├── CHARTS.md                     # الرسوم البيانية وحركاتها: الرسوم المخصّصة + Recharts/Nivo/Chart.js/ECharts + RTL + المختبر
-├── INTERACTIVE_SIMULATIONS.md    # كتالوج التجارب العلمية، المحركات، دورة الحياة، والتنبيهات العلمية
+├── SCIENCE_EQUIPMENT.md          # معرض المعدات العلمية: الإدراج والتحرير والحفظ والتقديم وترخيص الأصول
 ├── PROJECT_LIBRARIES.md          # فهرس مكتبات التشغيل والتطوير وإرشادات إعادة استخدامها
 └── AI_RULES.md                   # مصدر التعليمات المعيارية، مخرجات الوكلاء، وطريقة تحديثها
-public/                           # الشعار وfavicon + public/licenses/ لتراخيص محركات المحاكاة الموزعة
+public/                           # الشعار وfavicon (أصول المعدات العلمية أصلية وتعيش في src/equipment/assets/)
 scripts/
 └── capture-landing.mjs          # التقاط صفحة الهبوط وطبقاتها عبر Playwright → manifest.json
 .github/

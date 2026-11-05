@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f9ff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1e293b" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#glass)" d="M106 76 L106 102 L52 198 Q44 214 62 214 L194 214 Q212 214 204 198 L150 102 L150 76 Z"/>
+    <path fill="url(#liquid)" stroke="none" d="M77 152 L179 152 L204 198 Q212 214 194 214 L62 214 Q44 214 52 198 Z"/>
+    <ellipse cx="128" cy="152" rx="51" ry="8" fill="#a5f3fc" stroke="none"/>
+    <circle cx="112" cy="184" r="6" fill="#cffafe" stroke="none" opacity="0.8"/>
+    <circle cx="143" cy="174" r="4.5" fill="#cffafe" stroke="none" opacity="0.7"/>
+    <circle cx="128" cy="197" r="3.5" fill="#cffafe" stroke="none" opacity="0.6"/>
+    <rect x="96" y="22" width="64" height="16" rx="8" fill="url(#glass)"/>
+    <path d="M106 38 L106 76 M150 38 L150 76" fill="none"/>
+    <path d="M84 146 L100 146 M76 166 L92 166 M68 186 L84 186" stroke="#ffffff" stroke-width="5" opacity="0.75" fill="none"/>
+    <path d="M160 112 L192 192" stroke="#ffffff" stroke-width="7" opacity="0.4" fill="none"/>
+  </g>
+</svg>
