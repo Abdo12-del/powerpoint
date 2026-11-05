@@ -18,7 +18,11 @@ export type ProcedureKind =
   | 'focus'
   | 'centrifuge'
   | 'compass'
-  | 'blood-pressure';
+  | 'blood-pressure'
+  | 'ph'
+  | 'balance'
+  | 'incubator'
+  | 'autoclave';
 
 /** تعريف إجراء: الأصل المرتبط + العنوان + التلميح + وحدة القياس المعروضة */
 export interface ProcedureDef {
@@ -92,6 +96,34 @@ export const PROCEDURES: Readonly<Record<string, ProcedureDef>> = {
     title: 'قياس ضغط الدم',
     hint: 'انفخ الكُمّ ثم فرّغه ببطء: أول صوت = الانقباضي، وتوقفه = الانبساطي.',
     unit: 'mmHg',
+  },
+  'ph-meter': {
+    assetId: 'ph-meter',
+    kind: 'ph',
+    title: 'قياس pH',
+    hint: 'اغمس القطب في المحلول واقرأ القيمة: أقل من 7 حمضي، و7 معتدل، وأكثر قاعدي.',
+    unit: 'pH',
+  },
+  'analytical-balance': {
+    assetId: 'analytical-balance',
+    kind: 'balance',
+    title: 'وزن تحليلي',
+    hint: 'ضع العينة ثم اضغط «تصفير» (tare) لتقرأ كتلة العينة وحدها بدقة 0.1 mg.',
+    unit: 'g',
+  },
+  incubator: {
+    assetId: 'incubator',
+    kind: 'incubator',
+    title: 'حضانة المزارع',
+    hint: 'اضبط 37°C و24 ساعة للحصول على نمو بكتيري مثالي.',
+    unit: '°C',
+  },
+  autoclave: {
+    assetId: 'autoclave',
+    kind: 'autoclave',
+    title: 'تعقيم بالأوتوكلاف',
+    hint: 'التعقيم الكامل يحتاج 121°C على الأقل لمدة 15 دقيقة.',
+    unit: '°C',
   },
 } as const;
 
@@ -380,4 +412,134 @@ export function bloodPressureReadout(pressureMmHg: number): BloodPressureReadout
           ? 'توقف الصوت = الضغط الانبساطي'
           : 'الكُمّ فارغ — أعد النفخ';
   return { pressure, phase, pulseHeard, reading, label };
+}
+
+// ── مقياس pH ───────────────────────────────────────────────────────
+
+export type PhSampleId = 'acid' | 'water' | 'base';
+
+export interface PhSample {
+  id: PhSampleId;
+  label: string;
+  ph: number;
+  color: string;
+  nature: 'حمضي' | 'معتدل' | 'قاعدي';
+}
+
+/** ثلاث عينات قياسية تُقاس بالجهاز */
+export const PH_SAMPLES: readonly PhSample[] = [
+  { id: 'acid', label: 'حمض كلور الماء', ph: 2, color: '#ef4444', nature: 'حمضي' },
+  { id: 'water', label: 'ماء مقطر', ph: 7, color: '#22c55e', nature: 'معتدل' },
+  { id: 'base', label: 'صودا كاوية', ph: 12, color: '#3b82f6', nature: 'قاعدي' },
+] as const;
+
+export function phSample(id: string): PhSample {
+  return PH_SAMPLES.find((sample) => sample.id === id) ?? PH_SAMPLES[1];
+}
+
+export interface PhReadout {
+  ph: number;
+  color: string;
+  nature: 'حمضي' | 'معتدل' | 'قاعدي';
+  label: string;
+}
+
+/** قراءة pH مع تصنيف المحلول (7 = معتدل) */
+export function phReadout(ph: number): PhReadout {
+  const value = Math.round(clampNumber(ph, 0, 14) * 10) / 10;
+  const nature = value < 6.5 ? 'حمضي' : value > 7.5 ? 'قاعدي' : 'معتدل';
+  const color = value < 6.5 ? '#ef4444' : value > 7.5 ? '#3b82f6' : '#22c55e';
+  const label =
+    nature === 'حمضي'
+      ? 'وسط حمضي — تركيز أعلى لأيونات H₃O⁺'
+      : nature === 'قاعدي'
+        ? 'وسط قاعدي — تركيز أعلى لأيونات OH⁻'
+        : 'وسط معتدل قريب من pH الماء';
+  return { ph: value, color, nature, label };
+}
+
+// ── الميزان التحليلي ───────────────────────────────────────────────
+
+export const BALANCE_CAPACITY_G = 120;
+/** أصغر قراءة على شاشة الميزان (0.1 mg) */
+export const BALANCE_RESOLUTION_G = 0.0001;
+
+export interface BalanceReadout {
+  sampleG: number;
+  tareG: number;
+  netG: number;
+  display: string;
+  overCapacity: boolean;
+  stable: boolean;
+  label: string;
+}
+
+/** قراءة الميزان: الكتلة الصافية = العينة − التصفير، بدقة 0.1 mg */
+export function balanceReadout(
+  sampleG: number,
+  tareG = 0,
+  capacityG = BALANCE_CAPACITY_G,
+): BalanceReadout {
+  const sample = Math.round(clampNumber(sampleG, 0, capacityG) * 100) / 100;
+  const tare = Math.round(clampNumber(tareG, 0, capacityG) * 100) / 100;
+  const netG = Math.round((sample - tare) * 10000) / 10000;
+  const overCapacity = sample >= capacityG;
+  const stable = Math.abs(netG) < BALANCE_RESOLUTION_G * 10;
+  const display = `${netG.toFixed(4)} g`;
+  const label = overCapacity
+    ? 'تجاوز سعة الميزان — أزل جزءاً من العينة'
+    : stable
+      ? 'القراءة صفر بعد التصفير — ضع العينة'
+      : `الكتلة الصافية ${display}`;
+  return { sampleG: sample, tareG: tare, netG, display, overCapacity, stable, label };
+}
+
+// ── الحاضنة ────────────────────────────────────────────────────────
+
+export const INCUBATOR_OPTIMAL_C = 37;
+
+export interface IncubatorReadout {
+  tempC: number;
+  hours: number;
+  /** نسبة النمو 0..100 */
+  growth: number;
+  label: string;
+  optimal: boolean;
+}
+
+/** نمو المزرعة: يبلغ ذروته عند 37°C ويتراجع بالحرارة والبعد عن الزمن الكافي */
+export function incubatorReadout(tempC: number, hours: number): IncubatorReadout {
+  const temp = Math.round(clampNumber(tempC, 25, 45));
+  const time = Math.round(clampNumber(hours, 0, 72));
+  const tempFactor = clampNumber(1 - Math.abs(temp - INCUBATOR_OPTIMAL_C) / 12, 0, 1);
+  const timeFactor = clampNumber(time / 24, 0, 1);
+  const growth = Math.round(tempFactor * timeFactor * 100);
+  const optimal = temp === INCUBATOR_OPTIMAL_C && time >= 24;
+  const label = growth >= 80 ? 'نمو ممتاز' : growth >= 30 ? 'نمو ضعيف' : 'لا نمو ملحوظ';
+  return { tempC: temp, hours: time, growth, label, optimal };
+}
+
+// ── الأوتوكلاف ─────────────────────────────────────────────────────
+
+export interface AutoclaveReadout {
+  tempC: number;
+  minutes: number;
+  /** الضغط التقريبي بالبار فوق الضغط الجوي */
+  pressureBar: number;
+  sterile: boolean;
+  label: string;
+}
+
+/** التعقيم الكامل: ≥121°C لمدة ≥15 دقيقة (ضغط بخار مشبّع) */
+export function autoclaveReadout(tempC: number, minutes: number): AutoclaveReadout {
+  const temp = Math.round(clampNumber(tempC, 100, 134));
+  const time = Math.round(clampNumber(minutes, 0, 60));
+  const pressureBar = Math.round((1 + (temp - 100) * 0.024) * 100) / 100;
+  const sterile = temp >= 121 && time >= 15;
+  const label = sterile
+    ? 'تعقيم كامل — كل الأشكال الخضرية والفيروسات غير المغلّفة'
+    : temp < 121
+      ? 'الحرارة أقل من 121°C — تعقيم غير مكتمل'
+      : 'الزمن أقل من 15 دقيقة — تعقيم غير مكتمل';
+  return { tempC: temp, minutes: time, pressureBar, sterile, label };
 }

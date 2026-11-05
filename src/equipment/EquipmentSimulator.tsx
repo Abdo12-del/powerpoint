@@ -7,13 +7,19 @@
 import { useMemo, useState } from 'react';
 import { RotateCcw, X } from 'lucide-react';
 import {
+  PH_SAMPLES,
   PROCEDURES,
+  autoclaveReadout,
+  balanceReadout,
   bloodPressureReadout,
   centrifugeState,
   compassReadout,
   flameState,
   focusBlur,
   focusClarity,
+  incubatorReadout,
+  phReadout,
+  phSample,
   signalReadout,
   stirState,
   titrationReadout,
@@ -38,6 +44,13 @@ interface SimState {
   strike: number;
   dip: number;
   pressure: number;
+  phSampleId: string;
+  sampleG: number;
+  tareG: number;
+  incTemp: number;
+  incHours: number;
+  autoTemp: number;
+  autoMinutes: number;
 }
 
 const INITIAL: SimState = {
@@ -52,6 +65,13 @@ const INITIAL: SimState = {
   strike: 0,
   dip: 0,
   pressure: 180,
+  phSampleId: 'water',
+  sampleG: 0,
+  tareG: 0,
+  incTemp: 37,
+  incHours: 24,
+  autoTemp: 121,
+  autoMinutes: 15,
 };
 
 /** شريط تحكم بسيط بنمط اللوحة */
@@ -300,6 +320,99 @@ function BloodPressureStage({ pressure }: { pressure: number }) {
   );
 }
 
+/** مشهد مقياس pH */
+function PhStage({ sampleId }: { sampleId: string }) {
+  const sample = phSample(sampleId);
+  const read = phReadout(sample.ph);
+  return (
+    <svg viewBox="0 0 240 116" className="h-28 w-full" aria-hidden>
+      <rect x="14" y="16" width="86" height="76" rx="8" fill="#f59e0b" stroke="#1e293b" strokeWidth="2.5" />
+      <rect x="24" y="26" width="66" height="36" rx="4" fill="#0f172a" />
+      <text x="57" y="53" fontSize="22" fill="#4ade80" fontFamily="monospace" textAnchor="middle">
+        {read.ph.toFixed(1)}
+      </text>
+      <text x="57" y="72" fontSize="8" fill="#1f2937" textAnchor="middle">pH</text>
+      <path d="M57 92 L57 100" stroke="#94a3b8" strokeWidth="4" />
+      <rect x="132" y="44" width="76" height="56" rx="6" fill="#e2e8f0" stroke="#1e293b" strokeWidth="2.5" />
+      <rect x="138" y="66" width="64" height="30" rx="3" fill={read.color} />
+      <text x="170" y="60" fontSize="10" fill="#0f172a" textAnchor="middle">{sample.label}</text>
+      <text x="170" y="112" fontSize="9" fill="#94a3b8" textAnchor="middle">{read.nature}</text>
+    </svg>
+  );
+}
+
+/** مشهد الميزان التحليلي */
+function BalanceStage({ sampleG, tareG }: { sampleG: number; tareG: number }) {
+  const read = balanceReadout(sampleG, tareG);
+  return (
+    <svg viewBox="0 0 240 116" className="h-28 w-full" aria-hidden>
+      <rect x="34" y="14" width="172" height="92" rx="8" fill="#f8fafc" stroke="#1e293b" strokeWidth="2.5" />
+      <rect x="48" y="26" width="144" height="30" rx="4" fill="#0f172a" />
+      <text x="120" y="48" fontSize="17" fill="#a7f3d0" fontFamily="monospace" textAnchor="middle">
+        {read.display}
+      </text>
+      <ellipse cx="120" cy="74" rx="34" ry="7" fill="#cbd5e1" stroke="#475569" strokeWidth="2" />
+      <rect x="108" y={66 - Math.min(18, sampleG / 6)} width="24" height={Math.min(18, sampleG / 6)} rx="3" fill="#fbbf24" />
+      <rect x="76" y="92" width="88" height="6" rx="3" fill="#94a3b8" />
+      <text x="196" y="74" fontSize="8" fill="#64748b">tare</text>
+      <text x="196" y="86" fontSize="8" fill="#64748b">{read.tareG.toFixed(1)}</text>
+    </svg>
+  );
+}
+
+/** مشهد الحاضنة: مستعمرات تنمو مع الحرارة والزمن */
+function IncubatorStage({ tempC, hours }: { tempC: number; hours: number }) {
+  const read = incubatorReadout(tempC, hours);
+  const colonies = Math.round((read.growth / 100) * 9);
+  return (
+    <svg viewBox="0 0 240 116" className="h-28 w-full" aria-hidden>
+      <rect x="24" y="12" width="192" height="94" rx="8" fill="#e7e5e4" stroke="#1e293b" strokeWidth="2.5" />
+      <rect x="38" y="24" width="164" height="70" rx="6" fill="#e0f2fe" opacity="0.9" />
+      {[60, 120, 180].map((cx, i) => (
+        <g key={cx}>
+          <circle cx={cx} cy="60" r="22" fill="#f0fdf4" stroke="#94a3b8" strokeWidth="1.5" />
+          {Array.from({ length: colonies }).map((_, j) => (
+            <circle
+              key={j}
+              cx={cx - 12 + ((j * 7 + i * 5) % 22)}
+              cy={52 + ((j * 5 + i * 3) % 16)}
+              r={1.6 + (read.growth / 100) * 1.4}
+              fill="#65a30d"
+              opacity={0.4 + read.growth / 160}
+            />
+          ))}
+        </g>
+      ))}
+      <text x="120" y="102" fontSize="9" fill="#1f2937" textAnchor="middle">
+        {read.tempC}°C · {read.hours}h · {read.growth}%
+      </text>
+    </svg>
+  );
+}
+
+/** مشهد الأوتوكلاف */
+function AutoclaveStage({ tempC, minutes }: { tempC: number; minutes: number }) {
+  const read = autoclaveReadout(tempC, minutes);
+  const angle = -120 + ((read.tempC - 100) / 34) * 240;
+  return (
+    <svg viewBox="0 0 240 116" className="h-28 w-full" aria-hidden>
+      <rect x="28" y="16" width="104" height="88" rx="10" fill="#cbd5e1" stroke="#1e293b" strokeWidth="2.5" />
+      <circle cx="80" cy="52" r="26" fill="#f8fafc" stroke="#1e293b" strokeWidth="2" />
+      <g transform={`rotate(${angle} 80 52)`}>
+        <path d="M80 52 L80 32" stroke="#dc2626" strokeWidth="2.5" />
+      </g>
+      <circle cx="80" cy="52" r="3" fill="#334155" />
+      <text x="80" y="90" fontSize="9" fill="#1f2937" textAnchor="middle">{read.pressureBar} bar</text>
+      <rect x="146" y="30" width="70" height="22" rx="6" fill={read.sterile ? '#22c55e' : '#f97316'} />
+      <text x="181" y="45" fontSize="9" fill="#082f49" textAnchor="middle">
+        {read.sterile ? 'معقّم ✓' : 'غير معقّم'}
+      </text>
+      <text x="181" y="66" fontSize="9" fill="#334155" textAnchor="middle">{read.tempC}°C</text>
+      <text x="181" y="80" fontSize="9" fill="#334155" textAnchor="middle">{read.minutes} min</text>
+    </svg>
+  );
+}
+
 export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) {
   const procedure = PROCEDURES[asset.id];
   const [state, setState] = useState<SimState>(INITIAL);
@@ -325,6 +438,14 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
         return { compass: compassReadout(state.strike, state.dip) };
       case 'blood-pressure':
         return { bp: bloodPressureReadout(state.pressure) };
+      case 'ph':
+        return { ph: phReadout(phSample(state.phSampleId).ph) };
+      case 'balance':
+        return { balance: balanceReadout(state.sampleG, state.tareG) };
+      case 'incubator':
+        return { incubator: incubatorReadout(state.incTemp, state.incHours) };
+      case 'autoclave':
+        return { autoclave: autoclaveReadout(state.autoTemp, state.autoMinutes) };
       default:
         return {};
     }
@@ -350,6 +471,14 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
         return `${derived.compass!.strikeText} · الميل ${derived.compass!.dip}° · ${derived.compass!.label}`;
       case 'blood-pressure':
         return `${derived.bp!.reading} mmHg · ${derived.bp!.label}`;
+      case 'ph':
+        return `pH ${derived.ph!.ph} · ${derived.ph!.nature} · ${derived.ph!.label}`;
+      case 'balance':
+        return `${derived.balance!.display} · ${derived.balance!.label}`;
+      case 'incubator':
+        return `${derived.incubator!.tempC} °C · ${derived.incubator!.hours} h · نمو ${derived.incubator!.growth}% · ${derived.incubator!.label}`;
+      case 'autoclave':
+        return `${derived.autoclave!.tempC} °C · ${derived.autoclave!.minutes} min · ${derived.autoclave!.pressureBar} bar · ${derived.autoclave!.label}`;
     }
   })();
 
@@ -401,6 +530,10 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
         {procedure.kind === 'centrifuge' && <CentrifugeStage rpm={state.spinRpm} seconds={state.seconds} />}
         {procedure.kind === 'compass' && <CompassStage strike={state.strike} dip={state.dip} />}
         {procedure.kind === 'blood-pressure' && <BloodPressureStage pressure={state.pressure} />}
+        {procedure.kind === 'ph' && <PhStage sampleId={state.phSampleId} />}
+        {procedure.kind === 'balance' && <BalanceStage sampleG={state.sampleG} tareG={state.tareG} />}
+        {procedure.kind === 'incubator' && <IncubatorStage tempC={state.incTemp} hours={state.incHours} />}
+        {procedure.kind === 'autoclave' && <AutoclaveStage tempC={state.autoTemp} minutes={state.autoMinutes} />}
       </div>
 
       <div className="space-y-2 px-3 pb-2">
@@ -537,6 +670,98 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
           />
         )}
 
+        {procedure.kind === 'ph' && (
+          <div role="group" aria-label="عينات القياس" className="flex flex-wrap gap-1.5">
+            {PH_SAMPLES.map((sample) => (
+              <button
+                key={sample.id}
+                type="button"
+                data-testid={`sim-sample-${sample.id}`}
+                aria-pressed={state.phSampleId === sample.id}
+                onClick={() => set('phSampleId')(sample.id)}
+                className={cn(
+                  'rounded-full border px-2.5 py-1 text-[11px] font-semibold transition focus-visible:outline-2 focus-visible:outline-amber-300',
+                  state.phSampleId === sample.id
+                    ? 'border-amber-400/50 bg-amber-400/15 text-amber-100'
+                    : 'border-white/10 bg-white/[0.04] text-slate-300 hover:border-white/25',
+                )}
+              >
+                {sample.label}
+              </button>
+            ))}
+          </div>
+        )}
+        {procedure.kind === 'balance' && (
+          <>
+            <Slider
+              label="كتلة العينة"
+              value={state.sampleG}
+              min={0}
+              max={120}
+              step={0.01}
+              unit="g"
+              testid="sim-control-sample"
+              onChange={set('sampleG')}
+            />
+            <button
+              type="button"
+              data-testid="sim-tare"
+              onClick={() => set('tareG')(state.sampleG)}
+              className="w-full rounded-lg border border-amber-400/30 bg-amber-400/10 px-2 py-1.5 text-[11px] font-bold text-amber-100 transition hover:bg-amber-400/20 focus-visible:outline-2 focus-visible:outline-amber-300"
+            >
+              تصفير (tare)
+            </button>
+          </>
+        )}
+        {procedure.kind === 'incubator' && (
+          <>
+            <Slider
+              label="درجة الحضانة"
+              value={state.incTemp}
+              min={25}
+              max={45}
+              step={1}
+              unit="°C"
+              testid="sim-control-inc-temp"
+              onChange={set('incTemp')}
+            />
+            <Slider
+              label="مدة الحضانة"
+              value={state.incHours}
+              min={0}
+              max={72}
+              step={1}
+              unit="ساعة"
+              testid="sim-control-inc-hours"
+              onChange={set('incHours')}
+            />
+          </>
+        )}
+        {procedure.kind === 'autoclave' && (
+          <>
+            <Slider
+              label="حرارة التعقيم"
+              value={state.autoTemp}
+              min={100}
+              max={134}
+              step={1}
+              unit="°C"
+              testid="sim-control-auto-temp"
+              onChange={set('autoTemp')}
+            />
+            <Slider
+              label="مدة التعقيم"
+              value={state.autoMinutes}
+              min={0}
+              max={60}
+              step={1}
+              unit="دقيقة"
+              testid="sim-control-auto-min"
+              onChange={set('autoMinutes')}
+            />
+          </>
+        )}
+
         <div data-testid="sim-readout" className="flex flex-wrap gap-1.5" aria-live="polite">
           {procedure.kind === 'titration' && (
             <>
@@ -577,6 +802,30 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
             </>
           )}
           {procedure.kind === 'blood-pressure' && <Chip label="القراءة" value={`${derived.bp!.reading} mmHg`} />}
+          {procedure.kind === 'ph' && (
+            <>
+              <Chip label="pH" value={`${derived.ph!.ph}`} />
+              <Chip label="الوسط" value={derived.ph!.nature} />
+            </>
+          )}
+          {procedure.kind === 'balance' && (
+            <>
+              <Chip label="الكتلة" value={derived.balance!.display} />
+              <Chip label="العينة" value={`${derived.balance!.sampleG} g`} />
+            </>
+          )}
+          {procedure.kind === 'incubator' && (
+            <>
+              <Chip label="النمو" value={`${derived.incubator!.growth}%`} />
+              <Chip label="الحرارة" value={`${derived.incubator!.tempC} °C`} />
+            </>
+          )}
+          {procedure.kind === 'autoclave' && (
+            <>
+              <Chip label="الضغط" value={`${derived.autoclave!.pressureBar} bar`} />
+              <Chip label="التعقيم" value={derived.autoclave!.sterile ? 'كامل' : 'غير مكتمل'} />
+            </>
+          )}
         </div>
 
         <p data-testid="sim-verdict" className={cn('text-[11px] leading-5 text-amber-200/90')}>
@@ -596,7 +845,15 @@ export function EquipmentSimulator({ asset, onClose }: EquipmentSimulatorProps) 
                       ? derived.compass!.label
                       : procedure.kind === 'blood-pressure'
                         ? derived.bp!.label
-                        : procedure.hint}
+                        : procedure.kind === 'ph'
+                          ? derived.ph!.label
+                          : procedure.kind === 'balance'
+                            ? derived.balance!.label
+                            : procedure.kind === 'incubator'
+                              ? derived.incubator!.label
+                              : procedure.kind === 'autoclave'
+                                ? derived.autoclave!.label
+                                : procedure.hint}
         </p>
         <p className="sr-only" data-testid="sim-summary">
           {readoutText}

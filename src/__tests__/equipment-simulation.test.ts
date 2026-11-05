@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { EQUIPMENT, assetById } from '@/equipment/catalog';
 import {
+  PH_SAMPLES,
   PROCEDURES,
   PROCEDURE_COUNT,
+  autoclaveReadout,
+  balanceReadout,
   bloodPressureReadout,
   centrifugeState,
   clampNumber,
@@ -10,6 +13,9 @@ import {
   flameState,
   focusBlur,
   focusClarity,
+  incubatorReadout,
+  phReadout,
+  phSample,
   procedureFor,
   relativeCentrifugalForce,
   signalReadout,
@@ -24,8 +30,8 @@ import {
 
 describe('الإجراءات المخبرية المصغّرة — النماذج الحسابية', () => {
   it('تعريف الإجراءات: 8 إجراءات مرتبطة بأصول موجودة فعلاً في الكتالوج', () => {
-    expect(PROCEDURE_COUNT).toBe(8);
-    expect(Object.keys(PROCEDURES)).toHaveLength(8);
+    expect(PROCEDURE_COUNT).toBe(12);
+    expect(Object.keys(PROCEDURES)).toHaveLength(12);
     for (const [assetId, procedure] of Object.entries(PROCEDURES)) {
       expect(procedure.assetId).toBe(assetId);
       const asset = assetById(assetId);
@@ -165,6 +171,74 @@ describe('الإجراءات المخبرية المصغّرة — النماذ�
 
     expect(bloodPressureReadout(0).phase).toBe('low');
     expect(bloodPressureReadout(500).pressure).toBe(200);
+  });
+
+  it('مقياس pH: ثلاث عينات قياسية وتصنيف صحيح للوسط', () => {
+    expect(PH_SAMPLES).toHaveLength(3);
+    expect(phSample('acid').ph).toBe(2);
+    expect(phSample('water').ph).toBe(7);
+    expect(phSample('base').ph).toBe(12);
+    expect(phSample('unknown').id).toBe('water'); // احتياط آمن
+
+    const acid = phReadout(2);
+    expect(acid.nature).toBe('حمضي');
+    expect(acid.color).toBe('#ef4444');
+    expect(acid.label).toContain('H₃O⁺');
+
+    expect(phReadout(7).nature).toBe('معتدل');
+    const base = phReadout(12);
+    expect(base.nature).toBe('قاعدي');
+    expect(base.label).toContain('OH⁻');
+    expect(phReadout(7.2).nature).toBe('معتدل');
+    expect(phReadout(20).ph).toBe(14); // قصّ
+  });
+
+  it('الميزان التحليلي: تصفير وكتلة صافية بدقة 0.1 mg وسعة', () => {
+    const raw = balanceReadout(12.5);
+    expect(raw.netG).toBe(12.5);
+    expect(raw.display).toBe('12.5000 g');
+    expect(raw.stable).toBe(false);
+
+    const tared = balanceReadout(12.5, 12.5);
+    expect(tared.netG).toBe(0);
+    expect(tared.stable).toBe(true);
+    expect(tared.label).toContain('صفر');
+
+    const net = balanceReadout(30.25, 10);
+    expect(net.netG).toBe(20.25);
+    expect(net.display).toBe('20.2500 g');
+
+    const over = balanceReadout(200);
+    expect(over.overCapacity).toBe(true);
+    expect(over.sampleG).toBe(120);
+    expect(over.label).toContain('تجاوز');
+  });
+
+  it('الحاضنة: النمو الأمثل عند 37°C بعد 24 ساعة', () => {
+    const optimal = incubatorReadout(37, 24);
+    expect(optimal.growth).toBe(100);
+    expect(optimal.optimal).toBe(true);
+    expect(optimal.label).toBe('نمو ممتاز');
+
+    expect(incubatorReadout(37, 0).growth).toBe(0);
+    expect(incubatorReadout(25, 24).growth).toBeLessThan(optimal.growth);
+    expect(incubatorReadout(37, 12).growth).toBe(50);
+    expect(incubatorReadout(45, 24).label).toBe('نمو ضعيف');
+    expect(incubatorReadout(37, 200).hours).toBe(72);
+  });
+
+  it('الأوتوكلاف: التعقيم الكامل عند 121°C و15 دقيقة', () => {
+    const sterile = autoclaveReadout(121, 15);
+    expect(sterile.sterile).toBe(true);
+    expect(sterile.label).toContain('تعقيم كامل');
+    expect(sterile.pressureBar).toBeCloseTo(1.5, 2);
+
+    expect(autoclaveReadout(110, 30).sterile).toBe(false);
+    expect(autoclaveReadout(110, 30).label).toContain('أقل من 121');
+    expect(autoclaveReadout(121, 5).sterile).toBe(false);
+    expect(autoclaveReadout(121, 5).label).toContain('الزمن');
+    expect(autoclaveReadout(134, 60).sterile).toBe(true);
+    expect(autoclaveReadout(200, 90).tempC).toBe(134);
   });
 
   it('قصّ الأرقام يتحمّل القيم غير الصالحة', () => {

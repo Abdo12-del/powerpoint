@@ -354,6 +354,37 @@ describe('وضع التجربة داخل الشريحة (EquipmentSimulator)', (
     expect(q('[data-testid="equipment-simulator"]')).not.toBeNull();
   });
 
+  it('pH والميزان والأوتوكلاف: التفاعل يغيّر القراءة فعلياً', () => {
+    mountHarness();
+
+    // pH: تغيير العينة يغيّر القراءة
+    click(q('[data-testid="equipment-tile-ph-meter"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('7');
+    click(q('[data-testid="sim-sample-acid"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('2');
+    expect(q('[data-testid="sim-verdict"]')?.textContent).toContain('حمضي');
+    click(q('[data-testid="sim-sample-base"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12');
+    click(q('[data-testid="sim-close"]')!);
+
+    // الميزان: التصفير يُظهر كتلة صافية صفرية
+    click(q('[data-testid="equipment-tile-analytical-balance"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    setInputValue(q<HTMLInputElement>('[data-testid="sim-control-sample"]')!, '12.5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('12.5000 g');
+    click(q('[data-testid="sim-tare"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('0.0000 g');
+    click(q('[data-testid="sim-close"]')!);
+
+    // الأوتوكلاف: 121°C و15 دقيقة = تعقيم كامل
+    click(q('[data-testid="equipment-tile-autoclave"]')!);
+    click(q('[data-testid="equipment-sim-open"]')!);
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('كامل');
+    setInputValue(q<HTMLInputElement>('[data-testid="sim-control-auto-min"]')!, '5');
+    expect(q('[data-testid="sim-readout"]')?.textContent).toContain('غير مكتمل');
+  });
+
   it('إجراءات أخرى تعمل: لهب، إشارة، طرد مركزي، بوصلة، ضغط دم', () => {
     mountHarness();
     const cases: Array<[string, string, string]> = [
@@ -364,6 +395,10 @@ describe('وضع التجربة داخل الشريحة (EquipmentSimulator)', (
       ['blood-pressure-monitor', 'sim-control-pressure', 'mmHg'],
       ['microscope', 'sim-control-focus', '%'],
       ['magnetic-stirrer', 'sim-control-rpm', 'rpm'],
+      ['ph-meter', 'sim-sample-acid', 'pH'],
+      ['analytical-balance', 'sim-control-sample', 'g'],
+      ['incubator', 'sim-control-inc-temp', '%'],
+      ['autoclave', 'sim-control-auto-temp', 'bar'],
     ];
     for (const [assetId, testid, unit] of cases) {
       click(q(`[data-testid="equipment-tile-${assetId}"]`)!);
